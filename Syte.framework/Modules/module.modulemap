@@ -1,0 +1,11 @@
+framework module Syte {
+  umbrella header "Syte.h"
+
+  export *
+  module * { export * }
+}
+
+module Syte.Swift {
+    header "Syte-Swift.h"
+    requires objc
+}
