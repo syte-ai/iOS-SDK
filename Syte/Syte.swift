@@ -45,6 +45,8 @@ open class SyteAI: NSObject {
             feeds: feeds,
             success: success,
             fail: fail)
+        
+        self.callAnalytics(name: "bounds");
     }
     
     public func getBoundsForImage(fromUrl imageUrl: String,
@@ -63,11 +65,14 @@ open class SyteAI: NSObject {
             feeds: feeds,
             success: success,
             fail: fail)
+        
+        self.callAnalytics(name: "bounds");
     }
     
     public func getOffers(url: String, success: @escaping (OfferDetails) -> Void,
                           fail: ((SyteError) -> Void)?) {
         HttpClient.shared.getOffers(api: url, success: success, fail: fail)
+        self.callAnalytics(name: "offers");
     }
 }
 
@@ -88,6 +93,10 @@ public extension SyteAI {
     
     func setDebugMode(_ isOn: Bool) {
         Logger.isDebugging = isOn
+    }
+    
+    func callAnalytics(name: String) {
+        HttpClient.shared.callAnalytics(name: name, config: config);
     }
     
     func generateParamsString() -> String {

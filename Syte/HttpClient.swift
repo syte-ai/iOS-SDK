@@ -11,6 +11,7 @@ import Foundation
 class HttpClient: NSObject {
     private let AUTHORIZATION_HEADER = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5nZXIiOiI4R0hNVzNLZGM3QWQ3K3BFSDZ1MTJnPT0iLCJ0aW1lc3RhbXAiOjE1NTQ2NDA0MjY4MjAsInV1aWQiOiI2MmFkM2I3MC0yZmY0LTVhYTktODU1NS04N2VkNTVjMzVmOWYifQ.CBi1Ehm2KUlb_e6u2R4W120SnfKqvyxJtfPiMWwEXg4"
     private let BASE_URL = "https://cdn.syteapi.com"
+    private let BASE_ANALYTICS_URL = "https://syteapi.com"
     
     static let shared = HttpClient()
     private override init() {
@@ -182,6 +183,19 @@ extension HttpClient {
             Logger.succeed(response: rawData)
             success?(rawData)
             }.resume()
+    }
+    
+    func callAnalytics(name: String, config: Config) {
+        let api = "\(BASE_ANALYTICS_URL)/et?account_id=\(config.accountID ?? "")&sig=\(config.token ?? "")&name=\(name)&count=1&tags=ios_sdk"
+        guard let url = URL(string: api) else {
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        URLSession.shared.dataTask(with: request) {
+            (data, response, error) in
+        }.resume()
     }
 }
 
