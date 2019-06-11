@@ -80,6 +80,13 @@ class ViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var config = Config()
+        config.catalog = Config.Catalog.default
+        config.currency = "ILS"
+        config.gender = .male
+        syte.modifyConfig(config: config)
+        
         linkTextField.text = "http://wearesyte.com/syte_docs/images/1.jpeg"
         imageView.isUserInteractionEnabled = true
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(viewOffer)))

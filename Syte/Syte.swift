@@ -10,6 +10,7 @@ import Foundation
 
 open class SyteAI: NSObject {
     var config = Config()
+    var isOverrideConfig = false
     
     public func getCategory(completion: @escaping (_ categories: [String], _ error: SyteError?) -> Void) {
         HttpClient.shared.getCategories(success: { [weak self] (categories) in
@@ -21,7 +22,11 @@ open class SyteAI: NSObject {
     }
     
     public func modifyConfig(config: Config) {
-        
+        var newConfig = config
+        newConfig.accountID = self.config.accountID
+        newConfig.token = self.config.token
+        self.config = newConfig
+        isOverrideConfig = true
     }
     
     public func getBoundsForImage(image: UIImage,
@@ -34,6 +39,7 @@ open class SyteAI: NSObject {
         }
         HttpClient.shared.uploadImage(
             image: image,
+            params: generateParamsString(),
             accountID: accountID,
             token: token,
             feeds: feeds,
@@ -51,6 +57,7 @@ open class SyteAI: NSObject {
         }
         HttpClient.shared.uploadImage(
             fromUrl: imageUrl,
+            params: generateParamsString(),
             accountID: accountID,
             token: token,
             feeds: feeds,
@@ -81,5 +88,20 @@ public extension SyteAI {
     
     func setDebugMode(_ isOn: Bool) {
         Logger.isDebugging = isOn
+    }
+    
+    func generateParamsString() -> String {
+        var params = "";
+        if isOverrideConfig {
+            params += "&force_gender=\(config.gender.rawValue)"
+            if let cat = config.category {
+                params += "&force_cats=\(cat)"
+            }
+            if config.currency.count == 3 {
+                params += "&force_currency=\(config.currency)"
+            }
+        }
+        
+        return params;
     }
 }

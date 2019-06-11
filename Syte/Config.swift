@@ -9,25 +9,25 @@
 import Foundation
 
 public struct Config {
-    enum Catalog: String {
+    public enum Catalog: String {
         case `default`, home, general
     }
-    enum Gender: String {
+    public enum Gender: String {
         case male, female, boy, girl, hd, general
     }
     
     var accountID: String?
     var token: String?
-    var features = [String: AnyObject]()
-    var catalog = Catalog.default
-    var currency = "USD"
-    var gender = Gender.general
-    var category: String?
+    public var features = [String: AnyObject]()
+    public var catalog = Catalog.default
+    public var currency = "USD"
+    public var gender = Gender.general
+    public var category: String?
     var categories = [String]()
     
-    init() {}
+    public init() {}
     
-    init(accountID: String, token: String, rawData: AnyObject) {
+    public init(accountID: String, token: String, rawData: AnyObject) {
         self.accountID = accountID
         self.token = token
         
