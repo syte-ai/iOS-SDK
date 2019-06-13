@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  TestSyte
-//
-//  Created by David Jinely on 6/1/19.
-//  Copyright © 2019 David Jinely. All rights reserved.
-//
-
 import UIKit
 import Syte
 

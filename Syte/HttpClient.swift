@@ -1,11 +1,3 @@
-//
-//  HttpClient.swift
-//  Syte
-//
-//  Created by David Jinely on 5/31/19.
-//  Copyright © 2019 David Jinely. All rights reserved.
-//
-
 import Foundation
 
 class HttpClient: NSObject {

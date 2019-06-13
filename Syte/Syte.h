@@ -1,11 +1,3 @@
-//
-//  Syte.h
-//  Syte
-//
-//  Created by David Jinely on 6/1/19.
-//  Copyright © 2019 David Jinely. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for Syte.

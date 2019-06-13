@@ -1,11 +1,3 @@
-//
-//  Bounds.swift
-//  Syte
-//
-//  Created by David Jinely on 6/4/19.
-//  Copyright © 2019 David Jinely. All rights reserved.
-//
-
 import Foundation
 
 open class ImageBounds {

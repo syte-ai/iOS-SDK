@@ -1,11 +1,3 @@
-//
-//  Logger.swift
-//  Syte
-//
-//  Created by David Jinely on 6/2/19.
-//  Copyright © 2019 David Jinely. All rights reserved.
-//
-
 import Foundation
 
 struct Logger {

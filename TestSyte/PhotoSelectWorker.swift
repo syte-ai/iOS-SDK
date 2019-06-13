@@ -1,11 +1,3 @@
-//
-//  ImageSelector.swift
-//  WorkshopFixir
-//
-//  Created by David Jinely on 5/30/19.
-//  Copyright © 2017 David Jinely. All rights reserved.
-//
-
 import UIKit
 
 fileprivate protocol PhotoSelectorDelegate: class {
