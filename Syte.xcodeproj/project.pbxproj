@@ -35,8 +35,20 @@
 		264448C722A4FED5001A8ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 264448C622A4FED5001A8ECA /* Assets.xcassets */; };
 		264448CA22A4FED5001A8ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 264448C822A4FED5001A8ECA /* LaunchScreen.storyboard */; };
 		264448D022A5038E001A8ECA /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264448CF22A5038E001A8ECA /* HttpClient.swift */; };
+		6324E45322C8800F002359EE /* SyteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324E45222C8800F002359EE /* SyteTests.swift */; };
+		6324E45522C8800F002359EE /* Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264448A622A4FBF6001A8ECA /* Syte.framework */; };
 		6328852022ACF2C000865F41 /* PhotoSelectWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328851F22ACF2BF00865F41 /* PhotoSelectWorker.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6324E45622C8800F002359EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2644489D22A4FBF6001A8ECA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 264448A522A4FBF6001A8ECA;
+			remoteInfo = Syte;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		26083CC422A61E48003869B0 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -57,6 +69,11 @@
 		264448C922A4FED5001A8ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		264448CB22A4FED5001A8ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		264448CF22A5038E001A8ECA /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		6324E44322C87DFC002359EE /* SyteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyteTests.m; sourceTree = "<group>"; };
+		6324E44522C87DFC002359EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6324E45022C8800F002359EE /* SyteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SyteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6324E45222C8800F002359EE /* SyteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteTests.swift; sourceTree = "<group>"; };
+		6324E45422C8800F002359EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6328851F22ACF2BF00865F41 /* PhotoSelectWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +92,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6324E44D22C8800F002359EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6324E45522C8800F002359EE /* Syte.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -83,6 +108,8 @@
 			children = (
 				264448A822A4FBF6001A8ECA /* Syte */,
 				264448BE22A4FED3001A8ECA /* TestSyte */,
+				6324E44222C87DFC002359EE /* SyteTests */,
+				6324E45122C8800F002359EE /* SyteTests */,
 				264448A722A4FBF6001A8ECA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -92,6 +119,7 @@
 			children = (
 				264448A622A4FBF6001A8ECA /* Syte.framework */,
 				264448BD22A4FED3001A8ECA /* TestSyte.app */,
+				6324E45022C8800F002359EE /* SyteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +153,24 @@
 				264448CB22A4FED5001A8ECA /* Info.plist */,
 			);
 			path = TestSyte;
+			sourceTree = "<group>";
+		};
+		6324E44222C87DFC002359EE /* SyteTests */ = {
+			isa = PBXGroup;
+			children = (
+				6324E44322C87DFC002359EE /* SyteTests.m */,
+				6324E44522C87DFC002359EE /* Info.plist */,
+			);
+			path = SyteTests;
+			sourceTree = "<group>";
+		};
+		6324E45122C8800F002359EE /* SyteTests */ = {
+			isa = PBXGroup;
+			children = (
+				6324E45222C8800F002359EE /* SyteTests.swift */,
+				6324E45422C8800F002359EE /* Info.plist */,
+			);
+			path = SyteTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,15 +222,33 @@
 			productReference = 264448BD22A4FED3001A8ECA /* TestSyte.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6324E44F22C8800F002359EE /* SyteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6324E45822C8800F002359EE /* Build configuration list for PBXNativeTarget "SyteTests" */;
+			buildPhases = (
+				6324E44C22C8800F002359EE /* Sources */,
+				6324E44D22C8800F002359EE /* Frameworks */,
+				6324E44E22C8800F002359EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6324E45722C8800F002359EE /* PBXTargetDependency */,
+			);
+			name = SyteTests;
+			productName = SyteTests;
+			productReference = 6324E45022C8800F002359EE /* SyteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		2644489D22A4FBF6001A8ECA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1020;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1020;
-				ORGANIZATIONNAME = "Ky Nguyen";
+				ORGANIZATIONNAME = Syte.ai;
 				TargetAttributes = {
 					264448A522A4FBF6001A8ECA = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -195,6 +259,9 @@
 					};
 					264448BC22A4FED3001A8ECA = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					6324E44F22C8800F002359EE = {
+						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
@@ -214,6 +281,7 @@
 				264448A522A4FBF6001A8ECA /* Syte */,
 				264448B322A4FDBD001A8ECA /* UniversalSyte */,
 				264448BC22A4FED3001A8ECA /* TestSyte */,
+				6324E44F22C8800F002359EE /* SyteTests */,
 			);
 		};
 /* End PBXProject section */
@@ -233,6 +301,13 @@
 				264448CA22A4FED5001A8ECA /* LaunchScreen.storyboard in Resources */,
 				264448C722A4FED5001A8ECA /* Assets.xcassets in Resources */,
 				264448C522A4FED3001A8ECA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6324E44E22C8800F002359EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +359,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6324E44C22C8800F002359EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6324E45322C8800F002359EE /* SyteTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6324E45722C8800F002359EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 264448A522A4FBF6001A8ECA /* Syte */;
+			targetProxy = 6324E45622C8800F002359EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		264448C322A4FED3001A8ECA /* Main.storyboard */ = {
@@ -529,6 +620,42 @@
 			};
 			name = Release;
 		};
+		6324E45922C8800F002359EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SyteTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.syte.sdk.SyteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6324E45A22C8800F002359EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SyteTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ai.syte.sdk.SyteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -564,6 +691,15 @@
 			buildConfigurations = (
 				264448CD22A4FED5001A8ECA /* Debug */,
 				264448CE22A4FED5001A8ECA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6324E45822C8800F002359EE /* Build configuration list for PBXNativeTarget "SyteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6324E45922C8800F002359EE /* Debug */,
+				6324E45A22C8800F002359EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
