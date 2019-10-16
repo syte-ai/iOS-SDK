@@ -1,11 +1,3 @@
-//
-//  Syte.h
-//  Syte
-//
-//  Created by Ky Nguyen on 6/3/19.
-//  Copyright © 2019 Ky Nguyen. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for Syte.
