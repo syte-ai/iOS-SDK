@@ -22,7 +22,7 @@ open class SyteAI: NSObject {
     }
     
     public func getBoundsForImage(image: UIImage,
-                                  feeds: [String],
+                                  feed: String,
                                   success: @escaping ([ImageBounds]) -> Void,
                                   fail: ((SyteError) -> Void)?) {
         guard let accountID = config.accountID, let token = config.token else {
@@ -34,7 +34,7 @@ open class SyteAI: NSObject {
             params: generateParamsString(),
             accountID: accountID,
             token: token,
-            feeds: feeds,
+            feed: feed,
             success: success,
             fail: fail)
         
@@ -42,7 +42,7 @@ open class SyteAI: NSObject {
     }
     
     public func getBoundsForImage(fromUrl imageUrl: String,
-                                  feeds: [String],
+                                  feed: String,
                                   success: @escaping ([ImageBounds]) -> Void,
                                   fail: ((SyteError) -> Void)?) {
         guard let accountID = config.accountID, let token = config.token else {
@@ -54,7 +54,7 @@ open class SyteAI: NSObject {
             params: generateParamsString(),
             accountID: accountID,
             token: token,
-            feeds: feeds,
+            feed: feed,
             success: success,
             fail: fail)
         
