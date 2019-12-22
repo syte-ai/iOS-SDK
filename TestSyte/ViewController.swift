@@ -26,7 +26,7 @@ class ViewController: UITableViewController {
     
     @IBAction func getBoundsFromLink(_ sender: Any) {
         syte.getBoundsForImage(fromUrl: linkTextField.text!,
-                               feeds: ["general"],
+                               feed: "general",
                                success: { (bounds) in
                                 DispatchQueue.main.async() {
                                     self.downloadImage(from: self.linkTextField.text!, to: self.imageView)
@@ -41,7 +41,7 @@ class ViewController: UITableViewController {
     @IBAction func uploadImage(_ sender: Any) {
         PhotoSelectorWorker { (image) in
             self.imageView.image = image
-            self.syte.getBoundsForImage(image: image, feeds: ["general"],
+            self.syte.getBoundsForImage(image: image, feed: "general",
                                    success: { (bounds) in
                                     DispatchQueue.main.async() {
                                         self.bounds = bounds

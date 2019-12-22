@@ -21,7 +21,7 @@ class SyteTests: XCTestCase {
         let expect = expectation(description: "getBoundsForImage")
         
         sut.getBoundsForImage(fromUrl: "http://wearesyte.com/syte_docs/images/1.jpeg",
-                               feeds: ["general"],
+                               feed: "general",
                                success: { (bounds) in
                                 XCTAssertEqual(bounds.count, 3, "Wrong bounds count")
                                 

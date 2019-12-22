@@ -55,11 +55,10 @@ class HttpClient: NSObject {
                      params: String,
                      accountID: String,
                      token: String,
-                     feeds: [String],
+                     feed: String,
                      success: @escaping ([ImageBounds]) -> Void,
                      fail: ((SyteError) -> Void)?) {
-        let feed = feeds.joined(separator: ",")
-        let api = "\(BASE_URL)/v1.1/offers/bb?account_id=\(accountID)&sig=\(token)\(params)"
+        let api = "\(BASE_URL)/v1.1/offers/bb?account_id=\(accountID)&sig=\(token)&feed=\(feed)\(params)"
         guard let url = URL(string: api) else {
             fail?(InvalidApiError(url: api))
             return
@@ -84,11 +83,10 @@ class HttpClient: NSObject {
                      params: String,
                      accountID: String,
                      token: String,
-                     feeds: [String],
+                     feed: String,
                      success: @escaping ([ImageBounds]) -> Void,
                      fail: ((SyteError) -> Void)?) {
-        let feed = feeds.joined(separator: ",")
-        let api = "\(BASE_URL)/v1.1/offers/bb?account_id=\(accountID)&sig=\(token)&payload_type=image_bin\(params)"
+        let api = "\(BASE_URL)/v1.1/offers/bb?account_id=\(accountID)&sig=\(token)&feed=\(feed)&payload_type=image_bin\(params)"
         guard let url = URL(string: api) else {
             fail?(InvalidApiError(url: api))
             return
