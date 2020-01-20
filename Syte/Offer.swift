@@ -15,7 +15,7 @@ open class Ad: Decodable {
     public var imageUrl: String?
     public var merchant: String?
     public var originalPrice: String?
-    public var originalData: OriginalData?
+    public var original_data: OriginalData?
     public var price: String?
     public var sku: String?
     
