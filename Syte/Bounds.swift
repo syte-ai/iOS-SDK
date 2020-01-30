@@ -5,8 +5,8 @@ open class ImageBounds {
     public var label: String?
     public var gender: String?
     public var center: CGPoint?
+    public var b0: CGPoint?
     public var b1: CGPoint?
-    public var b2: CGPoint?
     public var catalog: String?
     init(rawData: AnyObject) {
         offers = rawData["offers"] as? String
@@ -14,8 +14,8 @@ open class ImageBounds {
         gender = rawData["gender"] as? String
         catalog = rawData["catalog"] as? String
         center = getPoint(key: "center", in: rawData)
+        b0 = getPoint(key: "b0", in: rawData)
         b1 = getPoint(key: "b1", in: rawData)
-        b2 = getPoint(key: "b2", in: rawData)
     }
     
     private func getPoint(key: String, in rawData: AnyObject) -> CGPoint? {
