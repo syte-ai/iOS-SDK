@@ -131,6 +131,31 @@ class HttpClient: NSObject {
             }
         }, fail: fail)
     }
+    
+    func getRecommendations(accountID: String,
+                            token: String,
+                            feed: String,
+                            sku: String,
+                            fields: String,
+                            features: String,
+                            success: @escaping (RecommendationDetails) -> Void,
+                            fail: ((SyteError) -> Void)?) {
+        let api = "\(BASE_URL)/v1.1/similars?q=sku:\(sku)&feed=\(feed)&account_id=\(accountID)&sig=\(token)&fields=\(fields)&features=\(features)"
+        guard let url = URL(string: api) else {
+            fail?(InvalidApiError(url: api))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        executeRequest(request: request, successData: { (data) in
+            do {
+                let results = try JSONDecoder().decode(RecommendationDetails.self, from: data)
+                success(results)
+            } catch let err {
+                fail?(NoValidDataError(rawData: err.localizedDescription as AnyObject))
+            }
+        }, fail: fail)
+    }
 }
 
 extension HttpClient {
