@@ -66,6 +66,34 @@ open class SyteAI: NSObject {
         HttpClient.shared.getOffers(api: url, success: success, fail: fail)
         self.callAnalytics(name: "offers");
     }
+    
+    /// Syte Recommendation Engines includes 'similar items' and 'shop the look'.
+    /// - Parameters:
+    ///   - sku: Product sku
+    ///   - feed: feed type
+    ///   - features: features (similars, ctl, ...)
+    ///   - fields: fields required in the response (* indicates all fields)
+    ///   - success: success
+    ///   - fail: fail
+    public func getRecommendationForFeatures(sku: String,
+                                             feed: String,
+                                             features: String = "similars",
+                                             fields: String = "*",
+                                             success: @escaping (RecommendationDetails) -> Void,
+                                             fail: ((SyteError) -> Void)?) {
+        guard let accountID = config.accountID, let token = config.token else {
+            fail?(UnauthorizationError(config: config))
+            return
+        }
+        HttpClient.shared.getRecommendations(accountID: accountID,
+                                             token: token,
+                                             feed: feed,
+                                             sku: sku,
+                                             fields: fields,
+                                             features: features,
+                                             success: success,
+                                             fail: fail)
+    }
 }
 
 public extension SyteAI {

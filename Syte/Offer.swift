@@ -63,3 +63,7 @@ open class OriginalData: Decodable {
         case suitable_for = "Fashion:suitable_for"
     }
 }
+
+open class RecommendationDetails: Decodable {
+    public var response: [Ad]
+}
