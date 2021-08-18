@@ -1,9 +1,11 @@
 import Foundation
 
 public class SyteError {
+    
     var code: Int = 0
     var message: String?
     var data: Any?
+    
     init(response: URLResponse?, error: Error?) {
         code = (response as? HTTPURLResponse)?.statusCode ?? 0
         message = error?.localizedDescription
@@ -24,27 +26,33 @@ public class SyteError {
         Logger.fail(error: data)
     }
     init() {}
+    
 }
 
 class NoInternetError: SyteError {
+    
     override init() {
         super.init()
         code = -1001
         message = "No internet connection"
         Logger.fail(error: message!)
     }
+    
 }
 
 class InvalidApiError: SyteError {
+    
     init(url: String) {
         super.init()
         code = 1002
         message = "API \(url) is invalid"
         Logger.fail(error: url)
     }
+    
 }
 
 class NoValidDataError: SyteError {
+    
     init(rawData: AnyObject) {
         super.init()
         code = 1003
@@ -52,9 +60,11 @@ class NoValidDataError: SyteError {
         data = rawData
         Logger.fail(error: rawData)
     }
+    
 }
 
 class NoDataError: SyteError {
+    
     init(rawData: AnyObject?) {
         super.init()
         code = 1003
@@ -62,9 +72,11 @@ class NoDataError: SyteError {
         data = rawData
         Logger.fail(error: rawData)
     }
+    
 }
 
 class UnauthorizationError: SyteError {
+    
     init(config: Config) {
         super.init()
         code = 401
@@ -74,4 +86,5 @@ class UnauthorizationError: SyteError {
             "token": config.token
         ]
     }
+    
 }

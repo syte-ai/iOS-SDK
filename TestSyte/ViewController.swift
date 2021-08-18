@@ -2,6 +2,7 @@ import UIKit
 import Syte
 
 class ViewController: UITableViewController {
+    
     let syte = SyteAI(accountID: "7300", token: "5ca6690b445ef77f87d3bbd5")
     var offerDetails = [OfferDetails]()
     var bounds = [ImageBounds]()
@@ -13,7 +14,7 @@ class ViewController: UITableViewController {
     
     @objc func getOffer(sender: UIButton) {
         self.syte.getOffers(url: bounds[sender.tag].offers!, success: { (offerDetail) in
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 var text = "------Bound \(sender.tag + 1) Offers - Ads count: \(offerDetail.ads.count)---------\n"
                 if offerDetail.ads.isEmpty { return }
                 text += offerDetail.ads[0].getFullDescription()
@@ -28,33 +29,33 @@ class ViewController: UITableViewController {
         syte.getBoundsForImage(fromUrl: linkTextField.text!,
                                feed: "general",
                                success: { (bounds) in
-                                DispatchQueue.main.async() {
+                                DispatchQueue.main.async {
                                     self.downloadImage(from: self.linkTextField.text!, to: self.imageView)
                                     self.bounds = bounds
                                 }
                                 
-        }, fail: { error in
-            print(error)
-        })
+                               }, fail: { error in
+                                print(error)
+                               })
     }
     
     @IBAction func uploadImage(_ sender: Any) {
         PhotoSelectorWorker { (image) in
             self.imageView.image = image
             self.syte.getBoundsForImage(image: image, feed: "general",
-                                   success: { (bounds) in
-                                    DispatchQueue.main.async() {
-                                        self.bounds = bounds
-                                    }
-                                    
-            }, fail: { error in
-                print(error)
-            })
+                                        success: { (bounds) in
+                                            DispatchQueue.main.async {
+                                                self.bounds = bounds
+                                            }
+                                            
+                                        }, fail: { error in
+                                            print(error)
+                                        })
         }.execute()
     }
     
     @IBAction func retrieveBounds(_ sender: Any) {
-        DispatchQueue.main.async() {
+        DispatchQueue.main.async {
             self.showBoundButton()
             self.offerCountLabel.text = "Bounds: \(self.bounds.count)"
         }
@@ -91,7 +92,7 @@ class ViewController: UITableViewController {
         }
     }
     
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
@@ -102,10 +103,10 @@ class ViewController: UITableViewController {
             guard let data = data, error == nil else { return }
             print(response?.suggestedFilename ?? url.lastPathComponent)
             print("Download Finished")
-            DispatchQueue.main.async() {
+            DispatchQueue.main.async {
                 imageView.image = UIImage(data: data)
             }
         }
     }
+    
 }
-

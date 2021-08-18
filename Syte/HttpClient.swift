@@ -1,11 +1,13 @@
 import Foundation
 
 class HttpClient: NSObject {
+    
     private let AUTHORIZATION_HEADER = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaW5nZXIiOiI4R0hNVzNLZGM3QWQ3K3BFSDZ1MTJnPT0iLCJ0aW1lc3RhbXAiOjE1NTQ2NDA0MjY4MjAsInV1aWQiOiI2MmFkM2I3MC0yZmY0LTVhYTktODU1NS04N2VkNTVjMzVmOWYifQ.CBi1Ehm2KUlb_e6u2R4W120SnfKqvyxJtfPiMWwEXg4"
     private let BASE_URL = "https://cdn.syteapi.com"
     private let BASE_ANALYTICS_URL = "https://syteapi.com"
     
     static let shared = HttpClient()
+    
     private override init() {
         super.init()
     }
@@ -27,7 +29,7 @@ class HttpClient: NSObject {
                     return
                 }
                 success(categories)
-        }, fail: fail)
+            }, fail: fail)
     }
     
     func getAccount(accountID: String,
@@ -51,6 +53,7 @@ class HttpClient: NSObject {
         }, fail: fail)
     }
     
+    // swiftlint:disable function_parameter_count
     func uploadImage(fromUrl imageUrl: String,
                      params: String,
                      accountID: String,
@@ -101,11 +104,11 @@ class HttpClient: NSObject {
         let body = NSMutableData()
         body.append(imageData)
         request.httpBody = body as Data
-
+        
         executeRequest(request: request, success: { rawData in
             guard let object = rawData as? NSDictionary,
-                let boundsData = object.allValues.first as? [AnyObject] else { fail?(NoValidDataError(rawData: rawData))
-                    return
+                  let boundsData = object.allValues.first as? [AnyObject] else { fail?(NoValidDataError(rawData: rawData))
+                return
             }
             let bounds = boundsData.map({ return ImageBounds(rawData: $0) })
             success(bounds)
@@ -131,9 +134,13 @@ class HttpClient: NSObject {
             }
         }, fail: fail)
     }
+    
+    // swiftlint:enable function_parameter_count
+    
 }
 
 extension HttpClient {
+    
     private func executeRequest(request: URLRequest,
                                 success: ((AnyObject) -> Void)? = nil,
                                 successData: ((Data) -> Void)? = nil,
@@ -144,8 +151,7 @@ extension HttpClient {
         }
         
         Logger.start(url: request.url?.absoluteString ?? "")
-        URLSession.shared.dataTask(with: request) {
-            (data, response, error) in
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let error = error {
                 Logger.fail(error: error)
@@ -166,13 +172,13 @@ extension HttpClient {
             }
             
             guard let rawData = try? JSONSerialization
-                .jsonObject(with: data, options: .allowFragments) as AnyObject else {
-                    fail?(NoDataError(rawData: response))
-                    return
+                    .jsonObject(with: data, options: .allowFragments) as AnyObject else {
+                fail?(NoDataError(rawData: response))
+                return
             }
             Logger.succeed(response: rawData)
             success?(rawData)
-            }.resume()
+        }.resume()
     }
     
     func callAnalytics(name: String, config: Config) {
@@ -183,15 +189,17 @@ extension HttpClient {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        URLSession.shared.dataTask(with: request) {
-            (data, response, error) in
+        URLSession.shared.dataTask(with: request) { (_, _, _) in
         }.resume()
     }
+    
 }
 
 extension NSMutableData {
+    
     func appendString(_ string: String) {
         let data = string.data(using: String.Encoding.utf8, allowLossyConversion: false)
         append(data!)
     }
+    
 }

@@ -5,7 +5,9 @@ open class OfferDetails: Decodable {
     public var currency_tla: String
 }
 
+// swiftlint:disable type_name
 open class Ad: Decodable {
+    // swiftlint:enable type_name
     public var bbCategories = [String]()
     public var brand: String?
     public var categories = [String]()
@@ -28,9 +30,11 @@ open class Ad: Decodable {
         string += "floatPrice: \(floatPrice ?? 0)\n"
         return string
     }
+    
 }
 
 open class OriginalData: Decodable {
+    
     public var suitable_for: String?
     public var alternate_image: String?
     public var aw_image_url: String?
@@ -59,7 +63,8 @@ open class OriginalData: Decodable {
     public var search_price: String?
     public var store_price: String?
     
-    private enum CodingKeys : String, CodingKey {
+    private enum CodingKeys: String, CodingKey {
         case suitable_for = "Fashion:suitable_for"
     }
+    
 }

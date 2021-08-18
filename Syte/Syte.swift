@@ -1,6 +1,7 @@
 import Foundation
 
 open class SyteAI: NSObject {
+    
     var config = Config()
     var isOverrideConfig = false
     
@@ -38,7 +39,7 @@ open class SyteAI: NSObject {
             success: success,
             fail: fail)
         
-        self.callAnalytics(name: "bounds");
+        self.callAnalytics(name: "bounds")
     }
     
     public func getBoundsForImage(fromUrl imageUrl: String,
@@ -58,17 +59,19 @@ open class SyteAI: NSObject {
             success: success,
             fail: fail)
         
-        self.callAnalytics(name: "bounds");
+        self.callAnalytics(name: "bounds")
     }
     
     public func getOffers(url: String, success: @escaping (OfferDetails) -> Void,
                           fail: ((SyteError) -> Void)?) {
         HttpClient.shared.getOffers(api: url, success: success, fail: fail)
-        self.callAnalytics(name: "offers");
+        self.callAnalytics(name: "offers")
     }
+    
 }
 
 public extension SyteAI {
+    
     convenience init(accountID: String, token: String) {
         self.init()
         config.accountID = accountID
@@ -88,11 +91,11 @@ public extension SyteAI {
     }
     
     func callAnalytics(name: String) {
-        HttpClient.shared.callAnalytics(name: name, config: config);
+        HttpClient.shared.callAnalytics(name: name, config: config)
     }
     
     func generateParamsString() -> String {
-        var params = "";
+        var params = ""
         if isOverrideConfig {
             params += "&force_gender=\(config.gender.rawValue)"
             if let cat = config.category {
@@ -103,6 +106,7 @@ public extension SyteAI {
             }
         }
         
-        return params;
+        return params
     }
+    
 }

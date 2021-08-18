@@ -1,9 +1,11 @@
 import Foundation
 
 public struct Config {
+    
     public enum Catalog: String {
         case `default`, home, general
     }
+    
     public enum Gender: String {
         case male, female, boy, girl, hd, general
     }
@@ -30,13 +32,13 @@ public struct Config {
         
         let catalogPath = "data.products.syteapp.catalog"
         if let raw = rawData.value(forKeyPath: catalogPath) as? String,
-            let data = Config.Catalog(rawValue: raw) {
+           let data = Config.Catalog(rawValue: raw) {
             catalog = data
         }
         
         let genderPath = "data.products.syteapp.gender"
         if let raw = rawData.value(forKeyPath: genderPath) as? String,
-            let data = Config.Gender(rawValue: raw) {
+           let data = Config.Gender(rawValue: raw) {
             gender = data
         }
         
@@ -45,4 +47,5 @@ public struct Config {
             currency = raw
         }
     }
+    
 }

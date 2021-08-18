@@ -4,25 +4,25 @@ import XCTest
 class SyteTests: XCTestCase {
     
     var sut: SyteAI!
-
+    
     override func setUp() {
         super.setUp()
         sut = SyteAI(accountID: "7300", token: "5ca6690b445ef77f87d3bbd5")
         sut.setDebugMode(true)
         
     }
-
+    
     override func tearDown() {
         sut = nil
         super.tearDown()
     }
-
+    
     func testSDK() {
         let expect = expectation(description: "getBoundsForImage")
         
         sut.getBoundsForImage(fromUrl: "http://wearesyte.com/syte_docs/images/1.jpeg",
-                               feed: "general",
-                               success: { (bounds) in
+                              feed: "general",
+                              success: { (bounds) in
                                 XCTAssertEqual(bounds.count, 3, "Wrong bounds count")
                                 
                                 self.sut.getOffers(url: bounds[0].offers!, success: { (offerDetail) in
@@ -31,9 +31,9 @@ class SyteTests: XCTestCase {
                                 }, fail: { err in
                                     print(err)
                                 })
-        }, fail: { error in
-            print(error)
-        })
+                              }, fail: { error in
+                                print(error)
+                              })
         
         waitForExpectations(timeout: 10) { error in
             if let error = error {
@@ -41,5 +41,5 @@ class SyteTests: XCTestCase {
             }
         }
     }
-
+    
 }

@@ -5,15 +5,16 @@ fileprivate protocol PhotoSelectorDelegate: class {
     func didSelect(_ image: UIImage)
 }
 
-fileprivate class PhotoSelector : NSObject {
-    var delegate: PhotoSelectorDelegate?
+fileprivate class PhotoSelector: NSObject {
+    
+    weak var delegate: PhotoSelectorDelegate?
     func showSelection() {
         
-        let pickPhoto = UIAlertAction(title: "Choose Photo", style: .default) { (action) in
+        let pickPhoto = UIAlertAction(title: "Choose Photo", style: .default) { (_) in
             self.pickImageFromPhotoLibrary()
         }
         
-        let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { (action) in
+        let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { (_) in
             self.takePhoto()
         }
         
@@ -23,15 +24,18 @@ fileprivate class PhotoSelector : NSObject {
         menu.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         delegate?.present(menu)
     }
+    
     deinit {
         print("Deinit \(NSStringFromClass(type(of: self)))")
     }
+    
 }
 
 extension PhotoSelector: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        var pickedImage : UIImage
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        var pickedImage: UIImage
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             pickedImage = image
         } else {
@@ -57,11 +61,13 @@ extension PhotoSelector: UINavigationControllerDelegate, UIImagePickerController
         imagePicker.delegate = self
         delegate?.present(imagePicker)
     }
+    
 }
 
 class PhotoSelectorWorker {
-    var successResponse : ((UIImage) -> Void)? = nil
-    var selectedImage : UIImage?
+    
+    var successResponse: ((UIImage) -> Void)?
+    var selectedImage: UIImage?
     fileprivate var picker: PhotoSelector?
     
     init(finishSelection: ((UIImage) -> Void)?) {
@@ -75,7 +81,8 @@ class PhotoSelectorWorker {
     }
 }
 
-extension PhotoSelectorWorker : PhotoSelectorDelegate {
+extension PhotoSelectorWorker: PhotoSelectorDelegate {
+    
     func present(_ controller: UIViewController) {
         DispatchQueue.main.async {
             UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true)
@@ -87,4 +94,5 @@ extension PhotoSelectorWorker : PhotoSelectorDelegate {
         successResponse?(image)
         picker = nil
     }
+    
 }
