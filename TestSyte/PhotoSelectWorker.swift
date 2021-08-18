@@ -35,7 +35,7 @@ extension PhotoSelector: UINavigationControllerDelegate, UIImagePickerController
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             pickedImage = image
         } else {
-            pickedImage = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+            pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage ?? UIImage()
         }
         
         picker.dismiss(animated: true, completion: nil)
@@ -78,10 +78,7 @@ class PhotoSelectorWorker {
 extension PhotoSelectorWorker : PhotoSelectorDelegate {
     func present(_ controller: UIViewController) {
         DispatchQueue.main.async {
-            (UIApplication.shared.delegate as! AppDelegate)
-                .window?
-                .rootViewController?
-                .present(controller, animated: true)
+            UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true)
         }
     }
     func didSelect(_ image: UIImage) {

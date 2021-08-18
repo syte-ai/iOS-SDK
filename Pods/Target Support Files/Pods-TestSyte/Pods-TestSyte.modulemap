@@ -1,0 +1,6 @@
+framework module Pods_TestSyte {
+  umbrella header "Pods-TestSyte-umbrella.h"
+
+  export *
+  module * { export * }
+}

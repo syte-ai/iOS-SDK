@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -39,6 +39,10 @@
 		6324E45522C8800F002359EE /* Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264448A622A4FBF6001A8ECA /* Syte.framework */; };
 		6328852022ACF2C000865F41 /* PhotoSelectWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328851F22ACF2BF00865F41 /* PhotoSelectWorker.swift */; };
 		635DE36F23570A1D00492B78 /* Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264448A622A4FBF6001A8ECA /* Syte.framework */; };
+		757AF66126CD1F14000BC1CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 757AF66026CD1F14000BC1CE /* .swiftlint.yml */; };
+		C544523FF681188C8BBAEFA6 /* Pods_Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3A34E2B71E721F310B719E /* Pods_Syte.framework */; };
+		E1D183E69D1F47A27E15093B /* Pods_TestSyte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD88F1E80EA67891EBD121 /* Pods_TestSyte.framework */; };
+		EDB336FE14288D4E5257585B /* Pods_Syte_SyteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB32B09DCFE0246D61194D6 /* Pods_Syte_SyteTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02BD88F1E80EA67891EBD121 /* Pods_TestSyte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestSyte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1394A7545272145CB2436DCD /* Pods-TestSyte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSyte.release.xcconfig"; path = "Target Support Files/Pods-TestSyte/Pods-TestSyte.release.xcconfig"; sourceTree = "<group>"; };
+		15F4AE1D48C240526BA85799 /* Pods-Syte.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte.release.xcconfig"; path = "Target Support Files/Pods-Syte/Pods-Syte.release.xcconfig"; sourceTree = "<group>"; };
 		26083CC422A61E48003869B0 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		26083CC622A61E52003869B0 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		26083CC822A61EED003869B0 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -70,12 +77,17 @@
 		264448C922A4FED5001A8ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		264448CB22A4FED5001A8ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		264448CF22A5038E001A8ECA /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
-		6324E44322C87DFC002359EE /* SyteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyteTests.m; sourceTree = "<group>"; };
-		6324E44522C87DFC002359EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		385D4F1CD6C1A8E39C2328CF /* Pods-Syte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte.debug.xcconfig"; path = "Target Support Files/Pods-Syte/Pods-Syte.debug.xcconfig"; sourceTree = "<group>"; };
+		44460C6C055373D19AF5CB3C /* Pods-TestSyte.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestSyte.debug.xcconfig"; path = "Target Support Files/Pods-TestSyte/Pods-TestSyte.debug.xcconfig"; sourceTree = "<group>"; };
+		5D3A34E2B71E721F310B719E /* Pods_Syte.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syte.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6324E45022C8800F002359EE /* SyteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SyteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6324E45222C8800F002359EE /* SyteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteTests.swift; sourceTree = "<group>"; };
 		6324E45422C8800F002359EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6328851F22ACF2BF00865F41 /* PhotoSelectWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectWorker.swift; sourceTree = "<group>"; };
+		6873FDE43ACAC5F01FFF7B95 /* Pods-Syte-SyteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte-SyteTests.release.xcconfig"; path = "Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests.release.xcconfig"; sourceTree = "<group>"; };
+		6DB32B09DCFE0246D61194D6 /* Pods_Syte_SyteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syte_SyteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		757AF66026CD1F14000BC1CE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A89169E2D2E29FBA649C7786 /* Pods-Syte-SyteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte-SyteTests.debug.xcconfig"; path = "Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C544523FF681188C8BBAEFA6 /* Pods_Syte.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				635DE36F23570A1D00492B78 /* Syte.framework in Frameworks */,
+				E1D183E69D1F47A27E15093B /* Pods_TestSyte.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6324E45522C8800F002359EE /* Syte.framework in Frameworks */,
+				EDB336FE14288D4E5257585B /* Pods_Syte_SyteTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,11 +123,13 @@
 		2644489C22A4FBF6001A8ECA = {
 			isa = PBXGroup;
 			children = (
+				757AF66026CD1F14000BC1CE /* .swiftlint.yml */,
 				264448A822A4FBF6001A8ECA /* Syte */,
 				264448BE22A4FED3001A8ECA /* TestSyte */,
-				6324E44222C87DFC002359EE /* SyteTests */,
 				6324E45122C8800F002359EE /* SyteTests */,
 				264448A722A4FBF6001A8ECA /* Products */,
+				EF10483522ACD71485121946 /* Pods */,
+				EFC2AC115C2EFBD9CE603BEC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,15 +174,6 @@
 			path = TestSyte;
 			sourceTree = "<group>";
 		};
-		6324E44222C87DFC002359EE /* SyteTests */ = {
-			isa = PBXGroup;
-			children = (
-				6324E44322C87DFC002359EE /* SyteTests.m */,
-				6324E44522C87DFC002359EE /* Info.plist */,
-			);
-			path = SyteTests;
-			sourceTree = "<group>";
-		};
 		6324E45122C8800F002359EE /* SyteTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +181,29 @@
 				6324E45422C8800F002359EE /* Info.plist */,
 			);
 			path = SyteTests;
+			sourceTree = "<group>";
+		};
+		EF10483522ACD71485121946 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				385D4F1CD6C1A8E39C2328CF /* Pods-Syte.debug.xcconfig */,
+				15F4AE1D48C240526BA85799 /* Pods-Syte.release.xcconfig */,
+				A89169E2D2E29FBA649C7786 /* Pods-Syte-SyteTests.debug.xcconfig */,
+				6873FDE43ACAC5F01FFF7B95 /* Pods-Syte-SyteTests.release.xcconfig */,
+				44460C6C055373D19AF5CB3C /* Pods-TestSyte.debug.xcconfig */,
+				1394A7545272145CB2436DCD /* Pods-TestSyte.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EFC2AC115C2EFBD9CE603BEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D3A34E2B71E721F310B719E /* Pods_Syte.framework */,
+				6DB32B09DCFE0246D61194D6 /* Pods_Syte_SyteTests.framework */,
+				02BD88F1E80EA67891EBD121 /* Pods_TestSyte.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,10 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264448AE22A4FBF6001A8ECA /* Build configuration list for PBXNativeTarget "Syte" */;
 			buildPhases = (
+				A01E43633BC20CAEBFDB4AE7 /* [CP] Check Pods Manifest.lock */,
 				264448A122A4FBF6001A8ECA /* Headers */,
 				264448A222A4FBF6001A8ECA /* Sources */,
 				264448A322A4FBF6001A8ECA /* Frameworks */,
 				264448A422A4FBF6001A8ECA /* Resources */,
+				757AF65F26CD1B43000BC1CE /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -211,9 +244,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 264448CC22A4FED5001A8ECA /* Build configuration list for PBXNativeTarget "TestSyte" */;
 			buildPhases = (
+				D6C5C6B4CA6722C7170BB0CE /* [CP] Check Pods Manifest.lock */,
 				264448B922A4FED3001A8ECA /* Sources */,
 				264448BA22A4FED3001A8ECA /* Frameworks */,
 				264448BB22A4FED3001A8ECA /* Resources */,
+				757AF66226CD21DD000BC1CE /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -228,9 +263,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6324E45822C8800F002359EE /* Build configuration list for PBXNativeTarget "SyteTests" */;
 			buildPhases = (
+				8C53E60D86A6D12BFCA56969 /* [CP] Check Pods Manifest.lock */,
 				6324E44C22C8800F002359EE /* Sources */,
 				6324E44D22C8800F002359EE /* Frameworks */,
 				6324E44E22C8800F002359EE /* Resources */,
+				AF2AD42C35817A808F78C9CC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -293,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757AF66126CD1F14000BC1CE /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +370,125 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-Universal\n# Make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n# Next, work out if we're in SIMULATOR or REAL DEVICE\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\nBUILD_PRODUCTS=\"${SYMROOT}/../../../../Products\"\ncp -R \"${BUILD_PRODUCTS}/Debug-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_PRODUCTS}/Debug-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n# Step 5. Convenience step to copy the framework to the project's directory\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n# Step 6. Convenience step to open the project's directory in Finder\nopen \"${PROJECT_DIR}\"\n";
+		};
+		757AF65F26CD1B43000BC1CE /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		757AF66226CD21DD000BC1CE /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		8C53E60D86A6D12BFCA56969 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Syte-SyteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A01E43633BC20CAEBFDB4AE7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Syte-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF2AD42C35817A808F78C9CC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6C5C6B4CA6722C7170BB0CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TestSyte-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -527,6 +684,7 @@
 		};
 		264448AF22A4FBF6001A8ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 385D4F1CD6C1A8E39C2328CF /* Pods-Syte.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -545,6 +703,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ai.syte.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -553,6 +712,7 @@
 		};
 		264448B022A4FBF6001A8ECA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15F4AE1D48C240526BA85799 /* Pods-Syte.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -571,6 +731,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ai.syte.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -594,9 +755,11 @@
 		};
 		264448CD22A4FED5001A8ECA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44460C6C055373D19AF5CB3C /* Pods-TestSyte.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S5XX5YG7TB;
 				INFOPLIST_FILE = TestSyte/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -611,9 +774,11 @@
 		};
 		264448CE22A4FED5001A8ECA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1394A7545272145CB2436DCD /* Pods-TestSyte.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S5XX5YG7TB;
 				INFOPLIST_FILE = TestSyte/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -628,6 +793,7 @@
 		};
 		6324E45922C8800F002359EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A89169E2D2E29FBA649C7786 /* Pods-Syte-SyteTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SyteTests/Info.plist;
@@ -646,6 +812,7 @@
 		};
 		6324E45A22C8800F002359EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6873FDE43ACAC5F01FFF7B95 /* Pods-Syte-SyteTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SyteTests/Info.plist;
