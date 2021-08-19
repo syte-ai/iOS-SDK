@@ -40,6 +40,11 @@
 		6328852022ACF2C000865F41 /* PhotoSelectWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328851F22ACF2BF00865F41 /* PhotoSelectWorker.swift */; };
 		635DE36F23570A1D00492B78 /* Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264448A622A4FBF6001A8ECA /* Syte.framework */; };
 		757AF66126CD1F14000BC1CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 757AF66026CD1F14000BC1CE /* .swiftlint.yml */; };
+		757AF66526CD3A54000BC1CE /* SyteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF66426CD3A54000BC1CE /* SyteConfiguration.swift */; };
+		757AF66A26CD4A9A000BC1CE /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF66926CD4A9A000BC1CE /* BaseProvider.swift */; };
+		757AF66C26CD51FC000BC1CE /* InitSyte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF66B26CD51FC000BC1CE /* InitSyte.swift */; };
+		757AF67026CD5CE4000BC1CE /* SyteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF66F26CD5CE4000BC1CE /* SyteResult.swift */; };
+		757AF67226CD6326000BC1CE /* SyteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF67126CD6326000BC1CE /* SyteStorage.swift */; };
 		C544523FF681188C8BBAEFA6 /* Pods_Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3A34E2B71E721F310B719E /* Pods_Syte.framework */; };
 		E1D183E69D1F47A27E15093B /* Pods_TestSyte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD88F1E80EA67891EBD121 /* Pods_TestSyte.framework */; };
 		EDB336FE14288D4E5257585B /* Pods_Syte_SyteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB32B09DCFE0246D61194D6 /* Pods_Syte_SyteTests.framework */; };
@@ -87,6 +92,11 @@
 		6873FDE43ACAC5F01FFF7B95 /* Pods-Syte-SyteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte-SyteTests.release.xcconfig"; path = "Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests.release.xcconfig"; sourceTree = "<group>"; };
 		6DB32B09DCFE0246D61194D6 /* Pods_Syte_SyteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syte_SyteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		757AF66026CD1F14000BC1CE /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		757AF66426CD3A54000BC1CE /* SyteConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteConfiguration.swift; sourceTree = "<group>"; };
+		757AF66926CD4A9A000BC1CE /* BaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProvider.swift; sourceTree = "<group>"; };
+		757AF66B26CD51FC000BC1CE /* InitSyte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSyte.swift; sourceTree = "<group>"; };
+		757AF66F26CD5CE4000BC1CE /* SyteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteResult.swift; sourceTree = "<group>"; };
+		757AF67126CD6326000BC1CE /* SyteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteStorage.swift; sourceTree = "<group>"; };
 		A89169E2D2E29FBA649C7786 /* Pods-Syte-SyteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte-SyteTests.debug.xcconfig"; path = "Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,16 +156,11 @@
 		264448A822A4FBF6001A8ECA /* Syte */ = {
 			isa = PBXGroup;
 			children = (
+				757AF67326CD632F000BC1CE /* Old */,
+				757AF66D26CD5CCF000BC1CE /* Data */,
+				757AF66326CD3A48000BC1CE /* Core */,
 				264448A922A4FBF6001A8ECA /* Syte.h */,
 				264448AA22A4FBF6001A8ECA /* Info.plist */,
-				264448B122A4FD41001A8ECA /* Syte.swift */,
-				26083CC822A61EED003869B0 /* Config.swift */,
-				26083CCA22A65E55003869B0 /* Reachability.swift */,
-				26083CC422A61E48003869B0 /* Logger.swift */,
-				26083CC622A61E52003869B0 /* Error.swift */,
-				264448CF22A5038E001A8ECA /* HttpClient.swift */,
-				26083CCC22A6688D003869B0 /* Bounds.swift */,
-				26083CD022A671FE003869B0 /* Offer.swift */,
 			);
 			path = Syte;
 			sourceTree = "<group>";
@@ -181,6 +186,72 @@
 				6324E45422C8800F002359EE /* Info.plist */,
 			);
 			path = SyteTests;
+			sourceTree = "<group>";
+		};
+		757AF66326CD3A48000BC1CE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				757AF66626CD4A7B000BC1CE /* API */,
+				757AF66426CD3A54000BC1CE /* SyteConfiguration.swift */,
+				757AF66B26CD51FC000BC1CE /* InitSyte.swift */,
+				757AF67126CD6326000BC1CE /* SyteStorage.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		757AF66626CD4A7B000BC1CE /* API */ = {
+			isa = PBXGroup;
+			children = (
+				757AF66826CD4A87000BC1CE /* Services */,
+				757AF66726CD4A81000BC1CE /* Providers */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		757AF66726CD4A81000BC1CE /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				757AF66926CD4A9A000BC1CE /* BaseProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		757AF66826CD4A87000BC1CE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		757AF66D26CD5CCF000BC1CE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				757AF66E26CD5CD8000BC1CE /* Result */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		757AF66E26CD5CD8000BC1CE /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				757AF66F26CD5CE4000BC1CE /* SyteResult.swift */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		757AF67326CD632F000BC1CE /* Old */ = {
+			isa = PBXGroup;
+			children = (
+				264448B122A4FD41001A8ECA /* Syte.swift */,
+				26083CC822A61EED003869B0 /* Config.swift */,
+				26083CCA22A65E55003869B0 /* Reachability.swift */,
+				26083CC422A61E48003869B0 /* Logger.swift */,
+				26083CC622A61E52003869B0 /* Error.swift */,
+				264448CF22A5038E001A8ECA /* HttpClient.swift */,
+				26083CCC22A6688D003869B0 /* Bounds.swift */,
+				26083CD022A671FE003869B0 /* Offer.swift */,
+			);
+			path = Old;
 			sourceTree = "<group>";
 		};
 		EF10483522ACD71485121946 /* Pods */ = {
@@ -498,13 +569,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				26083CD122A671FF003869B0 /* Offer.swift in Sources */,
+				757AF66526CD3A54000BC1CE /* SyteConfiguration.swift in Sources */,
 				26083CC722A61E52003869B0 /* Error.swift in Sources */,
+				757AF66C26CD51FC000BC1CE /* InitSyte.swift in Sources */,
 				26083CCD22A6688D003869B0 /* Bounds.swift in Sources */,
 				264448B222A4FD41001A8ECA /* Syte.swift in Sources */,
 				26083CCB22A65E55003869B0 /* Reachability.swift in Sources */,
+				757AF67226CD6326000BC1CE /* SyteStorage.swift in Sources */,
 				26083CC922A61EED003869B0 /* Config.swift in Sources */,
 				26083CC522A61E48003869B0 /* Logger.swift in Sources */,
 				264448D022A5038E001A8ECA /* HttpClient.swift in Sources */,
+				757AF66A26CD4A9A000BC1CE /* BaseProvider.swift in Sources */,
+				757AF67026CD5CE4000BC1CE /* SyteResult.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

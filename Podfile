@@ -8,6 +8,7 @@ target 'Syte' do
   # Pods for Syte
 	pod 'Moya'
   pod 'SwiftLint'
+  pod 'SwiftKeychainWrapper'
 
   target 'SyteTests' do
     # Pods for testing

@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
+${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework
