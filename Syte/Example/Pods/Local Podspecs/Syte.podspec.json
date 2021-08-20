@@ -1,0 +1,33 @@
+{
+  "name": "Syte",
+  "version": "0.1.0",
+  "summary": "A short description of Syte.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/syte-ai/iOS-SDK",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "tarasenko.artur": "artur.tarasenko@cloverdynamics.com"
+  },
+  "source": {
+    "git": "https://github.com/syte-ai/iOS-SDK.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "Syte/Classes/**/*",
+  "dependencies": {
+    "Moya": [
+
+    ],
+    "SwiftLint": [
+
+    ],
+    "SwiftKeychainWrapper": [
+
+    ]
+  }
+}
