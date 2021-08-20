@@ -22,7 +22,7 @@ pod 'Syte'
 
 ## Author
 
-alexvnukov, tarasenko.artur.dev@gmail.com
+Artur Tarasenko, artur.tarasenko@cloverdynamics.com
 
 ## License
 
