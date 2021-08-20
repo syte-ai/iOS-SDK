@@ -14,6 +14,9 @@ excluded:
 - Pods
 #- "*/*/R.generated.swift"
 
+included:
+  - ../Syte
+  - ../Example
 
 line_length: 350
 
@@ -26,6 +29,7 @@ warning: 500
 error: 1000
 
 identifier_name:
-min_length: 2
+    min_length: 2
+
 type_name:
-min_length: 2
+    min_length: 2
