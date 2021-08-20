@@ -40,7 +40,7 @@ final class SyteConfiguration {
      Method to set locale. Will be used in requests.
      
      - parameters:
-        - locale: locale to use
+     - locale: locale to use
      */
     public func setLocale(locale: String) {
         self.locale = locale
@@ -63,7 +63,7 @@ final class SyteConfiguration {
     public func getAccountId() -> String {
         return accountId
     }
-
+    
     /**
      Getter for signature
      
@@ -81,7 +81,7 @@ final class SyteConfiguration {
     public func getUserId() -> String {
         return storage.getUserId()
     }
-
+    
     /**
      Getter for session ID
      

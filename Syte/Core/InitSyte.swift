@@ -10,7 +10,7 @@ import Foundation
 
 final class InitSyte {
     
-    private static let tag = "InitSyte"
+    private static let tag = String(describing: InitSyte.self)
     
     private enum SyteState {
         case idle, initialized

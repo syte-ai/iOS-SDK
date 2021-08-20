@@ -150,24 +150,24 @@ extension HttpClient {
             return
         }
         
-        Logger.start(url: request.url?.absoluteString ?? "")
+//        Logger.start(url: request.url?.absoluteString ?? "")
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let error = error {
-                Logger.fail(error: error)
+//                Logger.fail(error: error)
                 fail?(SyteError(response: response, error: error))
                 return
             }
             
             guard let data = data else {
-                Logger.fail(error: error)
+//                Logger.fail(error: error)
                 fail?(NoDataError(rawData: response))
                 return
             }
             
             if let successData = successData {
                 successData(data)
-                Logger.succeed(response: response)
+//                Logger.succeed(response: response)
                 return
             }
             
@@ -176,7 +176,7 @@ extension HttpClient {
                 fail?(NoDataError(rawData: response))
                 return
             }
-            Logger.succeed(response: rawData)
+//            Logger.succeed(response: rawData)
             success?(rawData)
         }.resume()
     }

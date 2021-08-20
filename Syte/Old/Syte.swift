@@ -87,7 +87,7 @@ public extension SyteAI {
     }
     
     func setDebugMode(_ isOn: Bool) {
-        Logger.isDebugging = isOn
+//        Logger.isDebugging = isOn
     }
     
     func callAnalytics(name: String) {

@@ -38,14 +38,15 @@
 		6324E45322C8800F002359EE /* SyteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6324E45222C8800F002359EE /* SyteTests.swift */; };
 		6324E45522C8800F002359EE /* Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264448A622A4FBF6001A8ECA /* Syte.framework */; };
 		6328852022ACF2C000865F41 /* PhotoSelectWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6328851F22ACF2BF00865F41 /* PhotoSelectWorker.swift */; };
-		635DE36F23570A1D00492B78 /* Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264448A622A4FBF6001A8ECA /* Syte.framework */; };
 		757AF66126CD1F14000BC1CE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 757AF66026CD1F14000BC1CE /* .swiftlint.yml */; };
 		757AF66526CD3A54000BC1CE /* SyteConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF66426CD3A54000BC1CE /* SyteConfiguration.swift */; };
 		757AF66A26CD4A9A000BC1CE /* BaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF66926CD4A9A000BC1CE /* BaseProvider.swift */; };
 		757AF66C26CD51FC000BC1CE /* InitSyte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF66B26CD51FC000BC1CE /* InitSyte.swift */; };
 		757AF67026CD5CE4000BC1CE /* SyteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF66F26CD5CE4000BC1CE /* SyteResult.swift */; };
 		757AF67226CD6326000BC1CE /* SyteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF67126CD6326000BC1CE /* SyteStorage.swift */; };
-		C544523FF681188C8BBAEFA6 /* Pods_Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3A34E2B71E721F310B719E /* Pods_Syte.framework */; };
+		757AF67626CE52B6000BC1CE /* SyteLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757AF67526CE52B6000BC1CE /* SyteLogger.swift */; };
+		757AF67C26CE9AD9000BC1CE /* Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 264448A622A4FBF6001A8ECA /* Syte.framework */; };
+		757AF67F26CE9B13000BC1CE /* Pods_Syte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3A34E2B71E721F310B719E /* Pods_Syte.framework */; };
 		E1D183E69D1F47A27E15093B /* Pods_TestSyte.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD88F1E80EA67891EBD121 /* Pods_TestSyte.framework */; };
 		EDB336FE14288D4E5257585B /* Pods_Syte_SyteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DB32B09DCFE0246D61194D6 /* Pods_Syte_SyteTests.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +98,8 @@
 		757AF66B26CD51FC000BC1CE /* InitSyte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitSyte.swift; sourceTree = "<group>"; };
 		757AF66F26CD5CE4000BC1CE /* SyteResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteResult.swift; sourceTree = "<group>"; };
 		757AF67126CD6326000BC1CE /* SyteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteStorage.swift; sourceTree = "<group>"; };
+		757AF67526CE52B6000BC1CE /* SyteLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteLogger.swift; sourceTree = "<group>"; };
+		757AF67726CE7FDC000BC1CE /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A89169E2D2E29FBA649C7786 /* Pods-Syte-SyteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte-SyteTests.debug.xcconfig"; path = "Target Support Files/Pods-Syte-SyteTests/Pods-Syte-SyteTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C544523FF681188C8BBAEFA6 /* Pods_Syte.framework in Frameworks */,
+				757AF67F26CE9B13000BC1CE /* Pods_Syte.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,8 +116,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				635DE36F23570A1D00492B78 /* Syte.framework in Frameworks */,
 				E1D183E69D1F47A27E15093B /* Pods_TestSyte.framework in Frameworks */,
+				757AF67C26CE9AD9000BC1CE /* Syte.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +159,7 @@
 		264448A822A4FBF6001A8ECA /* Syte */ = {
 			isa = PBXGroup;
 			children = (
+				757AF67426CE52AA000BC1CE /* Util */,
 				757AF67326CD632F000BC1CE /* Old */,
 				757AF66D26CD5CCF000BC1CE /* Data */,
 				757AF66326CD3A48000BC1CE /* Core */,
@@ -254,6 +258,14 @@
 			path = Old;
 			sourceTree = "<group>";
 		};
+		757AF67426CE52AA000BC1CE /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				757AF67526CE52B6000BC1CE /* SyteLogger.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		EF10483522ACD71485121946 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +282,7 @@
 		EFC2AC115C2EFBD9CE603BEC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				757AF67726CE7FDC000BC1CE /* Alamofire.framework */,
 				5D3A34E2B71E721F310B719E /* Pods_Syte.framework */,
 				6DB32B09DCFE0246D61194D6 /* Pods_Syte_SyteTests.framework */,
 				02BD88F1E80EA67891EBD121 /* Pods_TestSyte.framework */,
@@ -570,6 +583,7 @@
 			files = (
 				26083CD122A671FF003869B0 /* Offer.swift in Sources */,
 				757AF66526CD3A54000BC1CE /* SyteConfiguration.swift in Sources */,
+				757AF67626CE52B6000BC1CE /* SyteLogger.swift in Sources */,
 				26083CC722A61E52003869B0 /* Error.swift in Sources */,
 				757AF66C26CD51FC000BC1CE /* InitSyte.swift in Sources */,
 				26083CCD22A6688D003869B0 /* Bounds.swift in Sources */,
@@ -762,6 +776,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 385D4F1CD6C1A8E39C2328CF /* Pods-Syte.debug.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -790,6 +805,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 15F4AE1D48C240526BA85799 /* Pods-Syte.release.xcconfig */;
 			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;

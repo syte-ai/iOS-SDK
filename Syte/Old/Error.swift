@@ -10,20 +10,20 @@ public class SyteError {
         code = (response as? HTTPURLResponse)?.statusCode ?? 0
         message = error?.localizedDescription
         data = error
-        Logger.fail(error: error)
+//        Logger.fail(error: error)
     }
     
     init(code: Int, message: String?, data: AnyObject?) {
         self.code = code
         self.message = message
         self.data = data
-        Logger.fail(error: data)
+//        Logger.fail(error: data)
     }
     
     init(message: String, data: AnyObject?) {
         self.message = message
         self.data = data
-        Logger.fail(error: data)
+//        Logger.fail(error: data)
     }
     init() {}
     
@@ -35,7 +35,7 @@ class NoInternetError: SyteError {
         super.init()
         code = -1001
         message = "No internet connection"
-        Logger.fail(error: message!)
+//        Logger.fail(error: message!)
     }
     
 }
@@ -46,7 +46,7 @@ class InvalidApiError: SyteError {
         super.init()
         code = 1002
         message = "API \(url) is invalid"
-        Logger.fail(error: url)
+//        Logger.fail(error: url)
     }
     
 }
@@ -58,7 +58,7 @@ class NoValidDataError: SyteError {
         code = 1003
         message = "No valid data"
         data = rawData
-        Logger.fail(error: rawData)
+//        Logger.fail(error: rawData)
     }
     
 }
@@ -70,7 +70,7 @@ class NoDataError: SyteError {
         code = 1003
         message = "No valid data"
         data = rawData
-        Logger.fail(error: rawData)
+//        Logger.fail(error: rawData)
     }
     
 }
