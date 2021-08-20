@@ -126,7 +126,7 @@ SOFTWARE.
 
 ## Syte
 
-Copyright (c) 2021 alexvnukov <tarasenko.artur.dev@gmail.com>
+Copyright (c) 2021 Artur Tarasenko <artur.tarasenko@cloverdynamics.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
