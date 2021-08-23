@@ -10,7 +10,7 @@ import Foundation
 
 /// SDK configuration
 
-final class SyteConfiguration {
+public final class SyteConfiguration {
     
     private var accountId: String
     private var signature: String
@@ -28,7 +28,7 @@ final class SyteConfiguration {
         - accountId: contact Syte for this value
         - signature: contact Syte for this value
      */
-    init(accountId: String, signature: String) {
+    public init(accountId: String, signature: String) {
         self.accountId = accountId
         self.signature = signature
         storage = SyteStorage()

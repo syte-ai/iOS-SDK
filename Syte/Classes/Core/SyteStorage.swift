@@ -9,7 +9,7 @@
 import Foundation
 import SwiftKeychainWrapper
 
-class SyteStorage {
+public class SyteStorage {
     
     private static let tag = String(describing: SyteStorage.self)
     private let storage = KeychainWrapper.standard

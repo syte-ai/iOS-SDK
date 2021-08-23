@@ -13,13 +13,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let syte = InitSyte()
+        let configuration = SyteConfiguration(accountId: "9165", signature: "601c206d0a7f780efb9360f3")
+        syte.startSessionAsync(configuration: configuration) { result in
+            print("\(result)")
+        }
         
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
         
     }
 

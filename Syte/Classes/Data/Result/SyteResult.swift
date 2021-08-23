@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SyteResult<T> {
+public class SyteResult<T> {
     
     public var data: T?
     public var resultCode = -1
