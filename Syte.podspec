@@ -40,5 +40,6 @@ Pod::Spec.new do |s|
    s.dependency 'Moya'
    s.dependency 'SwiftLint'
    s.dependency 'SwiftKeychainWrapper'
+   s.dependency 'PromiseKit'
   
 end

@@ -5,11 +5,21 @@ PODS:
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
+  - PromiseKit (6.15.3):
+    - PromiseKit/CorePromise (= 6.15.3)
+    - PromiseKit/Foundation (= 6.15.3)
+    - PromiseKit/UIKit (= 6.15.3)
+  - PromiseKit/CorePromise (6.15.3)
+  - PromiseKit/Foundation (6.15.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.15.3):
+    - PromiseKit/CorePromise
   - Result (4.1.0)
   - SwiftKeychainWrapper (4.0.1)
   - SwiftLint (0.43.1)
   - Syte (0.1.0):
     - Moya
+    - PromiseKit
     - SwiftKeychainWrapper
     - SwiftLint
 
@@ -20,6 +30,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - Moya
+    - PromiseKit
     - Result
     - SwiftKeychainWrapper
     - SwiftLint
@@ -31,10 +42,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
-  Syte: 89d30da89c11eb356ab1b86090607fd5ba419e5e
+  Syte: 071386d5a799e465dd3a26528a47dccadce42625
 
 PODFILE CHECKSUM: 29fa37040445ad32b2bc8eb79f8f553c3bc3180d
 
