@@ -12,9 +12,5 @@ public enum Catalog: String {
     case general
     case home
     case fashion
-    
-    public func getName() -> String {
-        return self.rawValue
-    }
-    
+
 }

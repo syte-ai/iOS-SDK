@@ -16,3 +16,15 @@ public class SyteResult<T> {
     public var errorMessage: String?
     
 }
+
+extension SyteResult where T == Bool {
+    
+    static func failureResult(message: String) -> SyteResult<Bool> {
+        let syteResult = SyteResult<Bool>()
+        syteResult.data = false
+        syteResult.errorMessage = message
+
+        return syteResult
+    }
+    
+}

@@ -1,6 +1,6 @@
 # Syte
 
-[![CI Status](https://img.shields.io/travis/alexvnukov/Syte.svg?style=flat)](https://travis-ci.org/alexvnukov/Syte)
+[![CI Status](https://img.shields.io/travis/arturtarasenko/Syte.svg?style=flat)](https://travis-ci.org/arturtarasenko/Syte)
 [![Version](https://img.shields.io/cocoapods/v/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
 [![License](https://img.shields.io/cocoapods/l/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
 [![Platform](https://img.shields.io/cocoapods/p/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)

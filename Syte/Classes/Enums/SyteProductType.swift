@@ -11,9 +11,5 @@ public enum SyteProductType: String {
     
     case camera = "camera"
     case discoveryButton = "discovery_button"
-    
-    public func getName() -> String {
-        return self.rawValue
-    }
-    
+ 
 }

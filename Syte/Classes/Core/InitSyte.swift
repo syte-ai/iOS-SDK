@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 public final class InitSyte {
     
@@ -17,56 +18,62 @@ public final class InitSyte {
     }
     
     private var configuration: SyteConfiguration?
-    
-//    private var remoteDataSource: SyteRemoteDataSource?
-//    private var sytePlatformSettings: SytePlatformSettings?
-//    private var eventsRemoteDataSource: EventsRemoteDataSource?
+    private let syteService = SyteService()
+    private var sytePlatformSettings: SytePlatformSettings?
     private var state = SyteState.idle
     
     public init() {}
-        
-    public func startSession(configuration: SyteConfiguration) -> SyteResult<Bool> {
+    
+    public func startSessionAsync(configuration: SyteConfiguration, _ completion: ((SyteResult<Bool>) -> Void)? = nil) {
         do {
             try InputValidator.validateInput(configuration: configuration)
+            self.configuration = configuration
+            
+            let result = SyteResult<Bool>()
+            firstly {
+                syteService.initialize(accoundId: configuration.getAccountId())
+            }.done { response in
+                if response.isSuccessful {
+                    self.sytePlatformSettings = response.data
+                    self.state = .initialized
+                } else {
+                    self.state = .idle
+                }
+                if self.state == .initialized {
+                    // TODO: fireEvent && getTextSearchClient
+                    //                        fireEvent(new EventInitialization());
+                    //                                        getTextSearchClient().getPopularSearchAsync(mConfiguration.getLocale(), result -> {
+                    //                                            if (result.isSuccessful && result.data != null && mConfiguration != null) {
+                    //                                                mConfiguration.getStorage().addPopularSearch(result.data, mConfiguration.getLocale());
+                    //                                            }
+                    //                                        });
+                }
+                result.data = response.isSuccessful
+                result.isSuccessful = response.isSuccessful
+                result.resultCode = response.resultCode
+                result.errorMessage = response.errorMessage
+            }.catch { error in
+                result.isSuccessful = false
+                result.errorMessage = error.localizedDescription
+                result.data = false
+            }.finally {
+                completion?(result)
+            }
         } catch SyteError.wrongInput(let message) {
             SyteLogger.e(tag: tag, message: message)
             let syteResult = SyteResult<Bool>()
             syteResult.data = false
             syteResult.errorMessage = message
-            return syteResult
+            completion?(syteResult)
+            return
         } catch let error {
             SyteLogger.e(tag: tag, message: error.localizedDescription)
+            let syteResult = SyteResult<Bool>()
+            syteResult.data = false
+            syteResult.errorMessage = error.localizedDescription
+            completion?(syteResult)
+            return
         }
-        self.configuration = configuration
-        
-        //        mRemoteDataSource = new SyteRemoteDataSource(mConfiguration);
-        //                mEventsRemoteDataSource = new EventsRemoteDataSource(mConfiguration);
-        let result = SyteResult<Bool>()
-//        let responseResult = SyteResult<SytePlatformSettings>()
-        
-        
-//                try {
-//                    responseResult = mRemoteDataSource.initialize();
-//                    mSytePlatformSettings = responseResult.data;
-//                    result.data = responseResult.isSuccessful;
-//                    result.isSuccessful = responseResult.isSuccessful;
-//                    result.errorMessage = responseResult.errorMessage;
-//                    mState = SyteState.INITIALIZED;
-//                } catch (Exception e) {
-//                    result.data = false;
-//                    result.isSuccessful = false;
-//                    result.errorMessage = e.getMessage();
-//                    mState = SyteState.IDLE;
-//                }
-//                result.resultCode = responseResult.resultCode;
-//                if (mState == SyteState.INITIALIZED) {
-//                    fireEvent(new EventInitialization());
-//                }
-        return result
-    }
-    
-    public func startSessionAsync(configuration: SyteConfiguration, _ completion: (SyteResult<Bool>) -> Void) {
-        
     }
     
     public func getConfiguration() -> SyteConfiguration? {
@@ -74,7 +81,17 @@ public final class InitSyte {
     }
     
     public func setConfiguration(configuration: SyteConfiguration) throws {
+        try verifyInitialized()
+        self.configuration = configuration
         
+    }
+    
+    public func getSytePlatformSettings() -> SytePlatformSettings? {
+        return state == .initialized ? sytePlatformSettings : nil
+    }
+    
+    private func verifyInitialized() throws {
+        guard state == .initialized else { throw SyteError.initializationFailed(message: "Syte is not initialized.")}
     }
     
 }

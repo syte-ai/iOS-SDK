@@ -13,8 +13,4 @@ public enum TextSearchEventType: String {
     case popularSearch = "popular_search"
     case recentSearch = "recent_search"
     
-    public func getName() -> String {
-        return self.rawValue
-    }
-    
 }

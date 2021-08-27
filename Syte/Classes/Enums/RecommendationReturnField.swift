@@ -28,8 +28,4 @@ public enum RecommendationReturnField: String {
      */
     case all = "*"
     
-    public func getName() -> String {
-        return self.rawValue
-    }
-    
 }

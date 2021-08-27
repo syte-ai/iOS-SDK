@@ -17,8 +17,4 @@ public enum EventsTag: String {
     case textSearch = "text_search"
     case shopTheLook = "shop_the_look"
     
-    public func getName() -> String {
-        return self.rawValue
-    }
-    
 }

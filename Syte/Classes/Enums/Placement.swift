@@ -13,8 +13,4 @@ public enum Placement: String {
     case searchBar = "search-bar"
     case sideMenu = "side-menu"
     
-    public func getName() -> String {
-        return self.rawValue
-    }
-    
 }

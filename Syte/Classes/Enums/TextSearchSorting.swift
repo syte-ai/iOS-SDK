@@ -12,9 +12,5 @@ public enum TextSearchSorting: String {
     case `default` = ""
     case priceAsc = "price_asc"
     case priceDesc = "price_desc"
-    
-    public func getName() -> String {
-        return self.rawValue
-    }
-    
+
 }
