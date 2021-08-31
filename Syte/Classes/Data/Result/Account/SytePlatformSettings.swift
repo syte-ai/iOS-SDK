@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SytePlatformSettings: Codable {
+public class SytePlatformSettings: Codable, ReflectedStringConvertible {
     
     public var data: PlatformSettingsData?
     

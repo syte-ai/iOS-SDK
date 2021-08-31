@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class TopSearch: Codable {
+public class TopSearch: Codable, ReflectedStringConvertible {
     
     public var itemsPerPage: Int?
     public var active: Bool?

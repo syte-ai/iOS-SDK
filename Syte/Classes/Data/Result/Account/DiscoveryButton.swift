@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class DiscoveryButton: Codable {
+public class DiscoveryButton: Codable, ReflectedStringConvertible {
     
     public var css: String?
     public var active: Bool?

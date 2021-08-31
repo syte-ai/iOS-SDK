@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CollaborativeFiltering: Codable {
+public class CollaborativeFiltering: Codable, ReflectedStringConvertible {
     
     public var active: Bool?
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Recommendations: Codable {
+public class Recommendations: Codable, ReflectedStringConvertible {
     
     public var active: Bool?
     

@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,19 +30,38 @@
                                     <action selector="sendInitializeRequestButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ur7-PH-OEA"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwS-ol-P8D">
+                                <rect key="frame" x="20" y="114" width="335" height="533"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FVU-Zt-UGU"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Knz-bF-6ou" firstAttribute="leading" secondItem="FVU-Zt-UGU" secondAttribute="leading" constant="30" id="Ain-Zo-M3A"/>
+                            <constraint firstItem="TwS-ol-P8D" firstAttribute="top" secondItem="Knz-bF-6ou" secondAttribute="bottom" constant="20" id="FiV-Xu-DLF"/>
+                            <constraint firstItem="FVU-Zt-UGU" firstAttribute="bottom" secondItem="TwS-ol-P8D" secondAttribute="bottom" constant="20" id="P9K-pa-DNl"/>
+                            <constraint firstItem="FVU-Zt-UGU" firstAttribute="trailing" secondItem="TwS-ol-P8D" secondAttribute="trailing" constant="20" id="PKJ-z1-23y"/>
                             <constraint firstItem="Knz-bF-6ou" firstAttribute="top" secondItem="FVU-Zt-UGU" secondAttribute="top" constant="50" id="jr6-o6-O9N"/>
+                            <constraint firstItem="TwS-ol-P8D" firstAttribute="leading" secondItem="FVU-Zt-UGU" secondAttribute="leading" constant="20" id="lnf-tt-aoX"/>
                             <constraint firstItem="FVU-Zt-UGU" firstAttribute="trailing" secondItem="Knz-bF-6ou" secondAttribute="trailing" constant="30" id="nku-XK-Rvh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="TwS-ol-P8D" id="xes-Yt-MSR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-54" y="37"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

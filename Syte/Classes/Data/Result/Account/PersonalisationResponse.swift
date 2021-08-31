@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class PersonalisationResponse: Codable {
+public class PersonalisationResponse: Codable, ReflectedStringConvertible {
 
     public var features: Features?
     public var modelTrainHourInterval: Int?

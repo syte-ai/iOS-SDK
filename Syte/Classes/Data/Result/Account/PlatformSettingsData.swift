@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class PlatformSettingsData: Codable {
+public class PlatformSettingsData: Codable, ReflectedStringConvertible {
     
     public var checkFeedHealth: Bool?
     public var isProduction: Bool?

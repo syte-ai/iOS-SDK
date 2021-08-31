@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class AssociationRules: Codable {
+public class AssociationRules: Codable, ReflectedStringConvertible {
     
     public var active: Bool?
     

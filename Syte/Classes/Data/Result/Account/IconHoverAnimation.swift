@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class IconHoverAnimation: Codable {
+public class IconHoverAnimation: Codable, ReflectedStringConvertible {
     
     public var auto: Bool?
     public var show: Bool?

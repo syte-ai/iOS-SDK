@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SimilarItems: Codable {
+public class SimilarItems: Codable, ReflectedStringConvertible {
     
     public var offerNavBehaviourDesktop: String?
     public var active: Bool?

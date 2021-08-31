@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class FeedsDefaults: Codable {
+public class FeedsDefaults: Codable, ReflectedStringConvertible {
     
     public var defaultFeed: String?
     public var defaultCatalog: String?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum JSONValue: Codable {
+public enum JSONValue: Codable, ReflectedStringConvertible {
     
     case string(String)
     case int(Int)

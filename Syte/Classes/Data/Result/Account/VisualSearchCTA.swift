@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class VisualSearchCTA: Codable {
+public class VisualSearchCTA: Codable, ReflectedStringConvertible {
     
     public var onFocus: Bool?
     public var header: Bool?

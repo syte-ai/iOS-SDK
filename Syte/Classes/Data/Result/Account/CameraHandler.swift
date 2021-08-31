@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CameraHandler: Codable {
+public class CameraHandler: Codable, ReflectedStringConvertible {
     
     public var enableMobileFilters: Bool?
     public var enablePersonalisationTourImages: Bool?

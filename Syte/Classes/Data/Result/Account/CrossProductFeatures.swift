@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CrossProductFeatures: Codable {
+public class CrossProductFeatures: Codable, ReflectedStringConvertible {
     
     public var resultsSortingOptions: ResultsSortingOptions?
     

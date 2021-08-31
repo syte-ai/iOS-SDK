@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ResultsSortingOptions: Codable {
+public class ResultsSortingOptions: Codable, ReflectedStringConvertible {
     
     public var viewsCount: ViewsCount?
     public var relevance: Relevance?

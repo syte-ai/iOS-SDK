@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SessionBased: Codable {
+public class SessionBased: Codable, ReflectedStringConvertible {
     
     public var active: Bool?
     

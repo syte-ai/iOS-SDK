@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Cropper: Codable {
+public class Cropper: Codable, ReflectedStringConvertible {
     
     public var forceGeneral: Bool?
     public var feed: String?

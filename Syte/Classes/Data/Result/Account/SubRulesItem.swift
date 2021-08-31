@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SubRulesItem: Codable {
+public class SubRulesItem: Codable, ReflectedStringConvertible {
     
     public var field: String?
     public var values: [JSONValue?]?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class BestSellers: Codable {
+public class BestSellers: Codable, ReflectedStringConvertible {
     
     public var dataFrame: Int?
     public var active: Bool?

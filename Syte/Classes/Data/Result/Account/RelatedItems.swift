@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RelatedItems: Codable {
+public class RelatedItems: Codable, ReflectedStringConvertible {
     
     public var active: Bool?
     public var imageSelector: String?

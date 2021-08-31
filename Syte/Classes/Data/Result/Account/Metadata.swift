@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Metadata: Codable {
+public class Metadata: Codable, ReflectedStringConvertible {
     
     public var lastUpdatedBy: Int?
     public var lastUpdatedOn: String?

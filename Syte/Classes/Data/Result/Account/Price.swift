@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Price: Codable {
+public class Price: Codable, ReflectedStringConvertible {
     
     public var field: String?
     public var displayName: String?

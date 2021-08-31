@@ -22,7 +22,9 @@ public class SyteService: SyteServiceProtocol {
             result.resultCode = response.statusCode
             do {
                 let settings = try response.map(SytePlatformSettings.self)
-                SyteLogger.v(tag: "SyteService - initialize response\n", message: (try? response.mapString()) ?? "")
+                let stringResponse = (try? response.mapString()) ?? ""
+                SyteLogger.v(tag: "SyteService - initialize response\n", message: stringResponse)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "test_response"), object: nil, userInfo: ["data": stringResponse])
                 result.data = settings
                 result.isSuccessful = true
             } catch {

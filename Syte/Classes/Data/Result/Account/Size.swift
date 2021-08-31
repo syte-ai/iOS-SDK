@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Size: Codable {
+public class Size: Codable, ReflectedStringConvertible {
     
     public var field: String?
     public var displayName: String?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class RankingStrategyItem: Codable {
+public class RankingStrategyItem: Codable, ReflectedStringConvertible {
     
     public var product: String?
     public var weights: [WeightsItem]?

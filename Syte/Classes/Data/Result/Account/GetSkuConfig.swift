@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class GetSkuConfig: Codable {
+public class GetSkuConfig: Codable, ReflectedStringConvertible {
     
     public var skuProvidersOrder: [String]?
     public var shouldReportMissingSkus: Bool?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SearchCondition: Codable {
+public class SearchCondition: Codable, ReflectedStringConvertible {
     
     public var terms: [String]?
     public var enabled: Bool?

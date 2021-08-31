@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Products: Codable {
+public class Products: Codable, ReflectedStringConvertible {
     
     public var syteapp: SyteApp?
     public var personalisation: PersonalisationResponse?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ProductCard: Codable {
+public class ProductCard: Codable, ReflectedStringConvertible {
     
     public var ratings: Ratings?
     public var addToCart: AddToCart?

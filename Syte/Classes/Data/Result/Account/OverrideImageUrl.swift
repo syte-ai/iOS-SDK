@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class OverrideImageUrl: Codable {
+public class OverrideImageUrl: Codable, ReflectedStringConvertible {
     
     public var active: Bool?
     public var selector: String?

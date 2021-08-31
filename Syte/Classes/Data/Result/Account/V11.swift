@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class V11: Codable {
+public class V11: Codable, ReflectedStringConvertible {
     
     public var personalization: PersonalizationResponse?
     public var features: [String]?

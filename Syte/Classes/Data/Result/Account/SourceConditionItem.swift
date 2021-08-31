@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SourceConditionItem: Codable {
+public class SourceConditionItem: Codable, ReflectedStringConvertible {
     
     public var values: [String]?
     public var type: String?

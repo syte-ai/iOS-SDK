@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class WeightsItem: Codable {
+public class WeightsItem: Codable, ReflectedStringConvertible {
     
     public var field: String?
     public var weight: Int?

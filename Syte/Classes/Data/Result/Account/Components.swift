@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Components: Codable {
+public class Components: Codable, ReflectedStringConvertible {
     
     public var topSearch: TopSearch?
     public var filterSearch: FilterSearch?

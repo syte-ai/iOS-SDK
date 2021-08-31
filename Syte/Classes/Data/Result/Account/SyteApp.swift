@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class SyteApp: Codable {
+public class SyteApp: Codable, ReflectedStringConvertible {
     
     private var features: Features?
     private var preloadFonts: Bool?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class FilterSearch: Codable {
+public class FilterSearch: Codable, ReflectedStringConvertible {
     
     public var itemsPerPage: Int?
     public var active: Bool?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ShopTheLookSettings: Codable {
+public class ShopTheLookSettings: Codable, ReflectedStringConvertible {
     
     public var zip: Bool?
     public var getOriginalBound: Bool?

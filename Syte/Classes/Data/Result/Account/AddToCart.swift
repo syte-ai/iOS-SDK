@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class AddToCart: Codable {
+public class AddToCart: Codable, ReflectedStringConvertible {
     
     public var active: Bool
     

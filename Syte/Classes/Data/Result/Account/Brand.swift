@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Brand: Codable {
+public class Brand: Codable, ReflectedStringConvertible {
     
     public var field: String?
     public var displayName: String?

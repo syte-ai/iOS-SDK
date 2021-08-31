@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class BoundingBox: Codable {
+public class BoundingBox: Codable, ReflectedStringConvertible {
     
     public var offerNavBehaviourDesktop: String?
     public var filtersMobileLayoutV2: Bool?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Fallback: Codable {
+public class Fallback: Codable, ReflectedStringConvertible {
     
     public var fallbackMethod: String?
     public var isFallbackActivated: Bool?

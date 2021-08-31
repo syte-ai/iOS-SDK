@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class MobileTourScreen: Codable {
+public class MobileTourScreen: Codable, ReflectedStringConvertible {
     
     public var useInspoGallery: Bool?
     public var active: Bool?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class ViewsCount: Codable {
+public class ViewsCount: Codable, ReflectedStringConvertible {
     
     public var dataFrame: Int?
     public var active: Bool?

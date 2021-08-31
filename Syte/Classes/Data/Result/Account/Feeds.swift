@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Feeds: Codable {
+public class Feeds: Codable, ReflectedStringConvertible {
     
     public var general: [String]?
     public var relatedLooks: [String]?

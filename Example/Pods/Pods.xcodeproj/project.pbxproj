@@ -154,6 +154,7 @@
 		7523481C26D6817400543108 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7523481B26D6817400543108 /* JSONValue.swift */; };
 		75553C2CD7ADF9CC563C03D836D805E9 /* Result-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2094AB124B2B1A5FECAA1B24B544C123 /* Result-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75834D3826D7CC8300A96602 /* Enum + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D3726D7CC8300A96602 /* Enum + Extensions.swift */; };
+		75834D3A26DE230500A96602 /* ReflectedStringConvertible + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D3926DE230500A96602 /* ReflectedStringConvertible + Extension.swift */; };
 		79F73BA854A7EC559E464EC446493D52 /* AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 727A414C14BCB9CDDE2D7820D7412E82 /* AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EC547DC34F3DC6491766A283E7A8201 /* SimilarProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF650A87E0DAFE792DBA3D87892B9DB /* SimilarProducts.swift */; };
 		80C48D64EBE7B006C894526E8516FA5F /* SyteProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AB39560C5C4AF36190AF4AF0CAB17 /* SyteProductType.swift */; };
@@ -489,6 +490,7 @@
 		7523481B26D6817400543108 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
 		754879AD50D793BCCD52366E744B2F7B /* ShopTheLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShopTheLook.swift; sourceTree = "<group>"; };
 		75834D3726D7CC8300A96602 /* Enum + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum + Extensions.swift"; sourceTree = "<group>"; };
+		75834D3926DE230500A96602 /* ReflectedStringConvertible + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReflectedStringConvertible + Extension.swift"; sourceTree = "<group>"; };
 		7745837951170E05D643CC51644115E0 /* Pods-Syte_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Syte_Tests.modulemap"; sourceTree = "<group>"; };
 		789E47A5840D0D848F698E5BC38E1ADE /* Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Promise.swift; sourceTree = "<group>"; };
 		78ECF6561CF46322C8FB117BC9BD893D /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -878,6 +880,7 @@
 				752347A226D51FD000543108 /* MoyaProvider + Extension.swift */,
 				7523481926D680EE00543108 /* Optional + Extension.swift */,
 				75834D3726D7CC8300A96602 /* Enum + Extensions.swift */,
+				75834D3926DE230500A96602 /* ReflectedStringConvertible + Extension.swift */,
 			);
 			name = Extensions;
 			path = Syte/Classes/Extensions;
@@ -1667,6 +1670,7 @@
 				752347D226D6278700543108 /* Features.swift in Sources */,
 				752347BE26D6270700543108 /* BoundingBox.swift in Sources */,
 				752347F226D6280D00543108 /* ProductCard.swift in Sources */,
+				75834D3A26DE230500A96602 /* ReflectedStringConvertible + Extension.swift in Sources */,
 				752347FC26D6284600543108 /* SearchCondition.swift in Sources */,
 				7523481C26D6817400543108 /* JSONValue.swift in Sources */,
 				B77460A4BC3A794B9AB1123E4D89987B /* SyteResult.swift in Sources */,

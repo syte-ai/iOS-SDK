@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Currency: Codable {
+public class Currency: Codable, ReflectedStringConvertible {
     
     public var precision: Int?
     public var format: String?

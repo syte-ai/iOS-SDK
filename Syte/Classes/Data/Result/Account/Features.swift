@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Features: Codable {
+public class Features: Codable, ReflectedStringConvertible {
     
     public var collaborativeFiltering: CollaborativeFiltering?
     public var sessionBased: SessionBased?

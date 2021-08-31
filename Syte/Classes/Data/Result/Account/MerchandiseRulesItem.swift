@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class MerchandiseRulesItem: Codable {
+public class MerchandiseRulesItem: Codable, ReflectedStringConvertible {
     
     public var subRules: [SubRulesItem]?
     public var product: String?

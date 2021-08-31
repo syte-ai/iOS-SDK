@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Filters: Codable {
+public class Filters: Codable, ReflectedStringConvertible {
     
     public var gender: Gender?
     public var size: Size?

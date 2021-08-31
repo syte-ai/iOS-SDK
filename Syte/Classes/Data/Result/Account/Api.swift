@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Api: Codable {
+public class Api: Codable, ReflectedStringConvertible {
     
     public var merchandiseRules: [MerchandiseRulesItem]?
     public var hideMissingLabels: Bool?

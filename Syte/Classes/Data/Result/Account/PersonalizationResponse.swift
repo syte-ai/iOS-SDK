@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class PersonalizationResponse: Codable {
+public class PersonalizationResponse: Codable, ReflectedStringConvertible {
 
     public var fallback: Fallback?
     public var modelVersion: String?

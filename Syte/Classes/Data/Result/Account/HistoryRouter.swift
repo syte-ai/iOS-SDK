@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class HistoryRouter: Codable {
+public class HistoryRouter: Codable, ReflectedStringConvertible {
     
     public var active: Bool?
     public var openModalOnPageLoad: Bool?

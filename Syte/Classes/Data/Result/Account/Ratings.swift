@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Ratings: Codable {
+public class Ratings: Codable, ReflectedStringConvertible {
     
     public var minRatingToShow: Int?
     public var displayRatingCount: Bool?

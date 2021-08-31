@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Theme: Codable {
+public class Theme: Codable, ReflectedStringConvertible {
     
     public var iconHoverAnimation: IconHoverAnimation?
     

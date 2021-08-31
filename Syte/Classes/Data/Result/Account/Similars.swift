@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Similars: Codable {
+public class Similars: Codable, ReflectedStringConvertible {
     
     public var useBbTags: Bool?
     
