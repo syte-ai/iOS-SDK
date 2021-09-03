@@ -13,4 +13,20 @@ enum SyteError: Error {
     case initializationFailed(message: String)
     case generalError(message: String)
     
+    var localizedDescription: String {
+        switch self {
+        case .generalError(let message), .wrongInput(let message), .initializationFailed(let message):
+            return message
+        }
+    }
+    
+}
+
+extension SyteError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .generalError(let message), .wrongInput(let message), .initializationFailed(let message):
+            return NSLocalizedString(message, comment: "")
+        }
+    }
 }

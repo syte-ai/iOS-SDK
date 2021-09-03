@@ -155,6 +155,11 @@
 		75553C2CD7ADF9CC563C03D836D805E9 /* Result-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2094AB124B2B1A5FECAA1B24B544C123 /* Result-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75834D3826D7CC8300A96602 /* Enum + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D3726D7CC8300A96602 /* Enum + Extensions.swift */; };
 		75834D3A26DE230500A96602 /* ReflectedStringConvertible + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D3926DE230500A96602 /* ReflectedStringConvertible + Extension.swift */; };
+		75834D4026DE4DAE00A96602 /* Bound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D3F26DE4DAE00A96602 /* Bound.swift */; };
+		75834D4226DE4E6800A96602 /* BoundsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D4126DE4E6800A96602 /* BoundsResult.swift */; };
+		75834D4426DE4F2800A96602 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D4326DE4F2800A96602 /* Item.swift */; };
+		75834D4626DE511E00A96602 /* ItemsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D4526DE511E00A96602 /* ItemsResult.swift */; };
+		75834D4826DE767900A96602 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75834D4726DE767900A96602 /* Utils.swift */; };
 		79F73BA854A7EC559E464EC446493D52 /* AnyPromise.h in Headers */ = {isa = PBXBuildFile; fileRef = 727A414C14BCB9CDDE2D7820D7412E82 /* AnyPromise.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EC547DC34F3DC6491766A283E7A8201 /* SimilarProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF650A87E0DAFE792DBA3D87892B9DB /* SimilarProducts.swift */; };
 		80C48D64EBE7B006C894526E8516FA5F /* SyteProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AB39560C5C4AF36190AF4AF0CAB17 /* SyteProductType.swift */; };
@@ -491,6 +496,11 @@
 		754879AD50D793BCCD52366E744B2F7B /* ShopTheLook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ShopTheLook.swift; sourceTree = "<group>"; };
 		75834D3726D7CC8300A96602 /* Enum + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum + Extensions.swift"; sourceTree = "<group>"; };
 		75834D3926DE230500A96602 /* ReflectedStringConvertible + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReflectedStringConvertible + Extension.swift"; sourceTree = "<group>"; };
+		75834D3F26DE4DAE00A96602 /* Bound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bound.swift; sourceTree = "<group>"; };
+		75834D4126DE4E6800A96602 /* BoundsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundsResult.swift; sourceTree = "<group>"; };
+		75834D4326DE4F2800A96602 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		75834D4526DE511E00A96602 /* ItemsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsResult.swift; sourceTree = "<group>"; };
+		75834D4726DE767900A96602 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7745837951170E05D643CC51644115E0 /* Pods-Syte_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Syte_Tests.modulemap"; sourceTree = "<group>"; };
 		789E47A5840D0D848F698E5BC38E1ADE /* Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Promise.swift; sourceTree = "<group>"; };
 		78ECF6561CF46322C8FB117BC9BD893D /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftKeychainWrapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -670,6 +680,10 @@
 			isa = PBXGroup;
 			children = (
 				752347A426D5259A00543108 /* Account */,
+				75834D3D26DE4D8900A96602 /* Auto Complete */,
+				75834D3E26DE4D8900A96602 /* Offers */,
+				75834D3B26DE4D8900A96602 /* Reccomendation */,
+				75834D3C26DE4D8900A96602 /* Text Search */,
 				FC0D73790AB29E8E3C7A51E8F64D3882 /* SyteResult.swift */,
 			);
 			path = Result;
@@ -683,6 +697,7 @@
 				6309FC97EF85212A536996C765A00730 /* SyteConfiguration.swift */,
 				E032ED242F7F280B3B3BBCB838F1890D /* SyteStorage.swift */,
 				DB85DC5F85A11D170AFC4E59CB0F9E29 /* API */,
+				75834D4726DE767900A96602 /* Utils.swift */,
 			);
 			name = Core;
 			path = Syte/Classes/Core;
@@ -948,6 +963,38 @@
 				7523481B26D6817400543108 /* JSONValue.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		75834D3B26DE4D8900A96602 /* Reccomendation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reccomendation;
+			sourceTree = "<group>";
+		};
+		75834D3C26DE4D8900A96602 /* Text Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Text Search";
+			sourceTree = "<group>";
+		};
+		75834D3D26DE4D8900A96602 /* Auto Complete */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Auto Complete";
+			sourceTree = "<group>";
+		};
+		75834D3E26DE4D8900A96602 /* Offers */ = {
+			isa = PBXGroup;
+			children = (
+				75834D3F26DE4DAE00A96602 /* Bound.swift */,
+				75834D4126DE4E6800A96602 /* BoundsResult.swift */,
+				75834D4326DE4F2800A96602 /* Item.swift */,
+				75834D4526DE511E00A96602 /* ItemsResult.swift */,
+			);
+			path = Offers;
 			sourceTree = "<group>";
 		};
 		75B9DEC05F51697C934FED3C9E3648AC /* iOS */ = {
@@ -1615,6 +1662,7 @@
 			files = (
 				752347A626D525A600543108 /* SytePlatformSettings.swift in Sources */,
 				59FF1950E758C547C09A60F690CF8CF9 /* BaseProvider.swift in Sources */,
+				75834D4026DE4DAE00A96602 /* Bound.swift in Sources */,
 				DE2AF2B94E2E0CCBF8B9B9062CF8CC1F /* Catalog.swift in Sources */,
 				7523480826D6287300543108 /* SourceConditionItem.swift in Sources */,
 				2E7767AEE268F1F646C7A68147F85F9F /* CropCoordinates.swift in Sources */,
@@ -1643,6 +1691,9 @@
 				752347B626D625BC00543108 /* SyteApp.swift in Sources */,
 				7523481026D6289C00543108 /* V11.swift in Sources */,
 				7523480426D6286300543108 /* Similars.swift in Sources */,
+				75834D4826DE767900A96602 /* Utils.swift in Sources */,
+				75834D4626DE511E00A96602 /* ItemsResult.swift in Sources */,
+				75834D4226DE4E6800A96602 /* BoundsResult.swift in Sources */,
 				752347C826D6273600543108 /* Components.swift in Sources */,
 				752347CC26D6274E00543108 /* Currency.swift in Sources */,
 				752347C026D6270F00543108 /* Brand.swift in Sources */,
@@ -1687,6 +1738,7 @@
 				752347C626D6272F00543108 /* Colors.swift in Sources */,
 				22DEA5214B56FC66E53B6855B0667A08 /* SyteStorage.swift in Sources */,
 				40BBE4E18C1C8A0F1FA34B34C4133127 /* TextSearch.swift in Sources */,
+				75834D4426DE4F2800A96602 /* Item.swift in Sources */,
 				2CE5AF705A5DDE41A875F190B40A25C9 /* TextSearchEventType.swift in Sources */,
 				752347A826D5342F00543108 /* PlatformSettingsData.swift in Sources */,
 				752347CE26D6277700543108 /* DiscoveryButton.swift in Sources */,

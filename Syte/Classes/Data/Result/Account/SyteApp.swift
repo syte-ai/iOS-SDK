@@ -9,16 +9,16 @@ import Foundation
 
 public class SyteApp: Codable, ReflectedStringConvertible {
     
-    private var features: Features?
-    private var preloadFonts: Bool?
-    private var showBanner: Bool?
-    private var requireApproval: Bool?
-    private var customBrand: String?
-    private var catalog: String?
-    private var theme: Theme?
-    private var originalUrl: String?
-    private var shouldReportPageViews: Bool?
-    private var url: String?
-    private var enabled: Bool?
+    public var features: Features?
+    public var preloadFonts: Bool?
+    public var showBanner: Bool?
+    public var requireApproval: Bool?
+    public var customBrand: String?
+    public var catalog: String?
+    public var theme: Theme?
+    public var originalUrl: String?
+    public var shouldReportPageViews: Bool?
+    public var url: String?
+    public var enabled: Bool?
     
 }
