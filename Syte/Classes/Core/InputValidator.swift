@@ -9,9 +9,9 @@ import Foundation
 
 class InputValidator {
     
-    public static func validateInput(requestData: ImageSearch) throws {
-        guard requestData.imageUri.isEmpty == false else { throw SyteError.generalError(message: "Image URI can not be empty.") }
-    }
+//    public static func validateInput(requestData: ImageSearch) throws {
+//        guard requestData.imageUri.isEmpty == false else { throw SyteError.generalError(message: "Image URI can not be empty.") }
+//    }
     
     public static func validateInput(requestData: UrlImageSearch) throws {
         guard requestData.imageUrl.isEmpty == false else { throw SyteError.generalError(message: "Image URI can not be empty.") }

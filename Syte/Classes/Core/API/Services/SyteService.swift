@@ -18,7 +18,7 @@ protocol SyteServiceProtocol: class {
                    syteAppRef: String, locale: String, catalog: String?, sku: String?,
                    imageUrl: String, sessionSkus: String?, options: [String: String]) -> Promise<SyteResult<BoundsResult>>
     
-    func getOffers(offersUrl: String, crop: String, forceCats: String?, catalog: String?) -> Promise<SyteResult<ItemsResult>>
+    func getOffers(offersUrl: String, crop: String?, forceCats: String?, catalog: String?) -> Promise<SyteResult<ItemsResult>>
     
 }
 
@@ -71,7 +71,7 @@ public class SyteService: SyteServiceProtocol {
         }
     }
     
-    func getOffers(offersUrl: String, crop: String, forceCats: String?, catalog: String?) -> Promise<SyteResult<ItemsResult>> {
+    func getOffers(offersUrl: String, crop: String?, forceCats: String?, catalog: String?) -> Promise<SyteResult<ItemsResult>> {
         service.request(.getOffers(offersUrl: offersUrl, crop: crop, forceCats: forceCats, catalog: catalog)).map { response -> SyteResult<ItemsResult> in
             let result = SyteResult<ItemsResult>()
             result.resultCode = response.statusCode

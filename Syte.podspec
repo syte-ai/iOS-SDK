@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.author           = { 'tarasenko.artur' => 'artur.tarasenko@cloverdynamics.com' }
   s.source           = { :git => 'https://github.com/syte-ai/iOS-SDK.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
+  #  s.static_framework = true
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'Syte/Classes/**/*'
@@ -35,7 +35,6 @@ Pod::Spec.new do |s|
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   # s.frameworks = 'UIKit', 'MapKit'
    s.dependency 'Moya'
    s.dependency 'SwiftLint'

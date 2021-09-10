@@ -19,6 +19,7 @@ public final class InitSyte {
     
     private var configuration: SyteConfiguration?
     private let syteService = SyteService()
+    private let exifService = ExifService()
     private var sytePlatformSettings: SytePlatformSettings?
     private var state = SyteState.idle
     
@@ -70,7 +71,7 @@ public final class InitSyte {
             try verifyInitialized()
             try InputValidator.validateInput(requestData: requestData)
             
-            guard let configuration = configuration else { completion(.failureResult(message: "")); return }
+            guard let configuration = configuration else { completion(.failureResult(message: "Missing configuration")); return }
             let catalog = sytePlatformSettings?.data?.products?.syteapp?.features?.boundingBox?.cropper?.catalog
             firstly {
                 getBounds(requestData: requestData, configuration: configuration, service: syteService, catalog: catalog)
@@ -86,6 +87,54 @@ public final class InitSyte {
             completion(.failureResult(message: error.localizedDescription))
         }
         
+    }
+    
+    public func getBoundsWild(requestData: ImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
+        renewTimestamp()
+        do {
+            try verifyInitialized()
+            
+            guard let configuration = configuration else { completion(.failureResult(message: "Missing configuration")); return }
+            let catalog = sytePlatformSettings?.data?.products?.syteapp?.features?.boundingBox?.cropper?.catalog
+            firstly {
+                prepareImageSearchRequestData(requestData: requestData, configuration: configuration)
+            }.then { [weak self] response -> Promise<SyteResult<BoundsResult>>  in
+                guard let strongSelf = self else { throw SyteError.generalError(message: "Something went wrong.") }
+                guard let responseData = response.data else { throw SyteError.generalError(message: "Exif removal service returned empty body.") }
+                responseData.retrieveOffersForTheFirstBound = requestData.retrieveOffersForTheFirstBound
+                responseData.coordinates = requestData.coordinates
+                responseData.personalizedRanking = requestData.personalizedRanking
+                return strongSelf.getBounds(requestData: responseData, configuration: configuration, service: strongSelf.syteService, catalog: catalog)
+            }.done { response in
+                completion(response)
+            }.catch { error in
+                completion(.failureResult(message: error.localizedDescription))
+            }
+        } catch let error {
+            SyteLogger.e(tag: tag, message: error.localizedDescription)
+            print(error.localizedDescription)
+            completion(.failureResult(message: error.localizedDescription))
+        }
+        
+    }
+    
+    private func prepareImageSearchRequestData(requestData: ImageSearch, configuration: SyteConfiguration) -> Promise<SyteResult<UrlImageSearch>> {
+        var size = 0
+        let imageSize = requestData.image.getImageSizeInKbAsJpeg()
+        size = imageSize > 0 ? imageSize : 0
+        return firstly {
+            ImageProcessor.compressToDataWithLoseQuality(image: requestData.image, size: size, scale: Utils.getImageScale(settings: sytePlatformSettings))
+        }.then { [weak self] imageData -> Promise<SyteResult<UrlImageSearch>>  in
+            guard let strongSelf = self,
+                  let finalImageData = imageData else { return .init(error: SyteError.generalError(message: "Image is too big.")) }
+            SyteLogger.i(tag: strongSelf.tag, message: "Compressed image size: \(finalImageData.getSizeInKB()), data: \(finalImageData)")
+            
+            return strongSelf.exifService.removeTags(accountId: configuration.getAccountId(),
+                                          signature: configuration.getApiSignature(),
+                                          imagePayload: finalImageData).map { response -> SyteResult<UrlImageSearch> in
+                                            return response
+                                          }
+        }
     }
     
     private func getBounds(requestData: UrlImageSearch, configuration: SyteConfiguration, service: SyteService, catalog: String?) -> Promise<SyteResult<BoundsResult>> {
@@ -124,8 +173,7 @@ public final class InitSyte {
             var url = URLComponents(string: firstBound)
             url?.queryItems = []
             let params = URLComponents(string: firstBound)
-            
-            print()
+
             for param in params?.queryItems ?? [] {
                 if param.name == "cats" || param.name == "crop" || param.name == "catalog" || param.name == "feed" { continue }
                 url?.queryItems?.append(param)
@@ -137,7 +185,7 @@ public final class InitSyte {
         let settingsCatalog = sytePlatformSettings?.data?.products?.syteapp?.features?.boundingBox?.cropper?.catalog
         
         return syteService.getOffers(offersUrl: actualUrl ?? "",
-                                     crop: coordinatesBase64 ?? "",
+                                     crop: coordinatesBase64,
                                      forceCats: cropEnabled ? Catalog.general.getName() : nil,
                                      catalog: cropEnabled ? settingsCatalog : nil).map { offers -> SyteResult<BoundsResult> in
                                         response.data?.firstBoundItemsResult = offers.data

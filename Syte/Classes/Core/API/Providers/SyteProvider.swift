@@ -10,7 +10,7 @@ import Moya
 enum SyteProvider: BaseProvider {
     case initialize(accountId: String)
     case getBounds(accountId: String, signature: String, userId: String?, sessionId: String?, syteAppRef: String, locale: String, catalog: String?, sku: String?, imageUrl: String, sessionSkus: String?, options: [String: String])
-    case getOffers(offersUrl: String, crop: String, forceCats: String?, catalog: String?)
+    case getOffers(offersUrl: String, crop: String?, forceCats: String?, catalog: String?)
     case getSimilars
     case getShopTheLook
     case getPersonalization

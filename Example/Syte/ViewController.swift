@@ -9,7 +9,7 @@
 import UIKit
 import Syte
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate {
     
     @IBOutlet private weak var textView: UITextView!
     
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(handleResponse(notification:)), name: NSNotification.Name(rawValue: "test_response"), object: nil)
     }
-
+    
     @IBAction private func sendInitializeRequestButtonPressed(_ sender: Any) {
         textView.text.removeAll()
         let configuration = SyteConfiguration(accountId: "9165", signature: "601c206d0a7f780efb9360f3")
@@ -53,9 +53,42 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction private func wildImageButtonPressed(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        present(pickerController, animated: true)
+    }
+    
     @objc private func handleResponse(notification: NSNotification) {
         resporseString.removeAll()
         resporseString +=  (notification.userInfo?["request"] as? String ?? "") + "\n" + (notification.userInfo?["data"] as? String ?? "")
     }
     
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+        picker.dismiss(animated: true)
+        
+        let data = ImageSearch(image: image)
+        syte.getBoundsWild(requestData: data) { response in
+            print(response)
+        }
+//        guard let url = URL(string: "https://cdn-images.farfetch-contents.com/13/70/55/96/13705596_18130188_1000.jpg") else { return }
+//        do {
+//            let data = try Data(contentsOf: url)
+//            let img = UIImage(data: data)
+//            guard let imgUnw = img else { return }
+//            let requestData = ImageSearch(image: imgUnw)
+//            syte.getBoundsWild(requestData: requestData) { response in
+//                print(response)
+//            }
+//        } catch {
+//            print(error.localizedDescription)
+//        }
+        
+    }
+    
 }
+
+extension UIViewController: UINavigationControllerDelegate {}

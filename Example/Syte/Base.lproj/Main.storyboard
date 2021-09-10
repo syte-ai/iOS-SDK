@@ -43,8 +43,21 @@
                                     <action selector="searchByImageUrlButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="wif-La-372"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0h-gg-trF">
+                                <rect key="frame" x="30" y="158" width="315" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="9qD-QG-YRM"/>
+                                </constraints>
+                                <state key="normal" title="Wild image">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="wildImageButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Bcw-VR-KWn"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwS-ol-P8D">
-                                <rect key="frame" x="20" y="168" width="335" height="479"/>
+                                <rect key="frame" x="20" y="222" width="335" height="425"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -57,11 +70,14 @@
                             <constraint firstItem="O4a-pr-TTh" firstAttribute="trailing" secondItem="Knz-bF-6ou" secondAttribute="trailing" id="5eT-ZB-TJM"/>
                             <constraint firstItem="O4a-pr-TTh" firstAttribute="top" secondItem="Knz-bF-6ou" secondAttribute="bottom" constant="10" id="5iE-kx-oSQ"/>
                             <constraint firstItem="Knz-bF-6ou" firstAttribute="leading" secondItem="FVU-Zt-UGU" secondAttribute="leading" constant="30" id="Ain-Zo-M3A"/>
-                            <constraint firstItem="TwS-ol-P8D" firstAttribute="top" secondItem="O4a-pr-TTh" secondAttribute="bottom" constant="20" id="JQp-td-9Iy"/>
+                            <constraint firstItem="N0h-gg-trF" firstAttribute="top" secondItem="O4a-pr-TTh" secondAttribute="bottom" constant="10" id="MUu-5Y-7oU"/>
                             <constraint firstItem="FVU-Zt-UGU" firstAttribute="bottom" secondItem="TwS-ol-P8D" secondAttribute="bottom" constant="20" id="P9K-pa-DNl"/>
                             <constraint firstItem="FVU-Zt-UGU" firstAttribute="trailing" secondItem="TwS-ol-P8D" secondAttribute="trailing" constant="20" id="PKJ-z1-23y"/>
+                            <constraint firstItem="N0h-gg-trF" firstAttribute="trailing" secondItem="O4a-pr-TTh" secondAttribute="trailing" id="X3c-3l-QNt"/>
                             <constraint firstItem="O4a-pr-TTh" firstAttribute="height" secondItem="Knz-bF-6ou" secondAttribute="height" id="YX2-cE-DWw"/>
+                            <constraint firstItem="N0h-gg-trF" firstAttribute="leading" secondItem="O4a-pr-TTh" secondAttribute="leading" id="ZWb-xO-EYW"/>
                             <constraint firstItem="O4a-pr-TTh" firstAttribute="leading" secondItem="Knz-bF-6ou" secondAttribute="leading" id="isU-3C-Gk7"/>
+                            <constraint firstItem="TwS-ol-P8D" firstAttribute="top" secondItem="N0h-gg-trF" secondAttribute="bottom" constant="20" id="jox-NK-Nra"/>
                             <constraint firstItem="Knz-bF-6ou" firstAttribute="top" secondItem="FVU-Zt-UGU" secondAttribute="top" constant="50" id="jr6-o6-O9N"/>
                             <constraint firstItem="TwS-ol-P8D" firstAttribute="leading" secondItem="FVU-Zt-UGU" secondAttribute="leading" constant="20" id="lnf-tt-aoX"/>
                             <constraint firstItem="FVU-Zt-UGU" firstAttribute="trailing" secondItem="Knz-bF-6ou" secondAttribute="trailing" constant="30" id="nku-XK-Rvh"/>

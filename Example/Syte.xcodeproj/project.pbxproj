@@ -14,6 +14,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7523474C26CFB9CB00543108 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7523474B26CFB9CB00543108 /* .swiftlint.yml */; };
+		75799D7E26EB9BF1009A4EAB /* SyteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75799D7D26EB9BF1009A4EAB /* SyteManager.swift */; };
 		A7DBC8D112B277B74E57C95C /* Pods_Syte_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F888A5C2BFB67A89992C1 /* Pods_Syte_Example.framework */; };
 		E0FC5A9FFE75FAEB9F0BCB64 /* Pods_Syte_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D9CA0277ED8499B61096F5 /* Pods_Syte_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7523474B26CFB9CB00543108 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		75799D7D26EB9BF1009A4EAB /* SyteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteManager.swift; sourceTree = "<group>"; };
 		9D17F746196644FB54D9059A /* Pods-Syte_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.debug.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A090D36AF9FA49AB8E2BA72E /* Pods-Syte_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.release.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B03E19EF11970A7255FDC794 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		607FACD21AFB9204008FA782 /* Example for Syte */ = {
 			isa = PBXGroup;
 			children = (
+				75799D7C26EB9AE8009A4EAB /* Core */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -151,6 +154,14 @@
 				18F2BE282F5FEC541A7B7815 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		75799D7C26EB9AE8009A4EAB /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				75799D7D26EB9BF1009A4EAB /* SyteManager.swift */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 		B9C968AA4C57A3B6DEA7FAA8 /* Frameworks */ = {
@@ -367,6 +378,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				75799D7E26EB9BF1009A4EAB /* SyteManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

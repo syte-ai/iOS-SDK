@@ -9,13 +9,13 @@ import Foundation
 
 public class ImageSearch {
     
-    private(set) var imageUri: String
+    private(set) var image: UIImage
     public var coordinates: CropCoordinates?
     public var retrieveOffersForTheFirstBound = true
     public var personalizedRanking = false
     
-    public init(uri: String) {
-        imageUri = uri
+    public init(image: UIImage) {
+        self.image = image
     }
     
 }
