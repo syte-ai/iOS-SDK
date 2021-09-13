@@ -46,4 +46,12 @@ extension SyteResult {
         return syteResult
     }
     
+    static func successResult<T>(data: T, code: Int) -> SyteResult<T> {
+        let syteResult = SyteResult<T>()
+        syteResult.data = data
+        syteResult.isSuccessful = true
+        syteResult.resultCode = code
+        return syteResult
+    }
+    
 }

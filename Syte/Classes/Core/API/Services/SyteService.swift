@@ -31,17 +31,13 @@ public class SyteService: SyteServiceProtocol {
             let result = SyteResult<SytePlatformSettings>()
             result.resultCode = response.statusCode
             do {
+                _ = try response.filterSuccessfulStatusCodes()
                 let settings = try response.map(SytePlatformSettings.self)
-                // TODO: Test data, remove later
-                let stringResponse = (try? response.mapString()) ?? ""
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "test_response"),
-                                                object: nil,
-                                                userInfo: ["request": "initialize", "data": stringResponse])
-                //
                 result.data = settings
                 result.isSuccessful = true
             } catch {
-                result.errorMessage = error.localizedDescription
+                let stringResponse = try? response.mapString()
+                result.errorMessage = stringResponse ?? error.localizedDescription
             }
             return result
         }
@@ -54,18 +50,15 @@ public class SyteService: SyteServiceProtocol {
             let result = SyteResult<BoundsResult>()
             result.resultCode = response.statusCode
             do {
+                _ = try response.filterSuccessfulStatusCodes()
                 let mapString = try response.mapString().replacingOccurrences(of: imageUrl, with: "bounds")
-                // TODO: Test data, remove later
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "test_response"),
-                                                object: nil,
-                                                userInfo: ["request": "getBounds", "data": mapString])
-                //
                 let formattedResponse = Response(statusCode: response.statusCode, data: mapString.data(using: .utf8) ?? Data())
                 let bounds = try formattedResponse.map(BoundsResult.self)
                 result.data = bounds
                 result.isSuccessful = true
             } catch {
-                result.errorMessage = error.localizedDescription
+                let stringResponse = try? response.mapString()
+                result.errorMessage = stringResponse ?? error.localizedDescription
             }
             return result
         }
@@ -76,17 +69,13 @@ public class SyteService: SyteServiceProtocol {
             let result = SyteResult<ItemsResult>()
             result.resultCode = response.statusCode
             do {
-                // TODO: Test data, remove later
-                let stringResponse = (try? response.mapString()) ?? ""
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "test_response"),
-                                                object: nil,
-                                                userInfo: ["request": "getOffers", "data": stringResponse])
-                //
+                _ = try response.filterSuccessfulStatusCodes()
                 let item = try response.map(ItemsResult.self)
                 result.data = item
                 result.isSuccessful = true
             } catch {
-                result.errorMessage = error.localizedDescription
+                let stringResponse = try? response.mapString()
+                result.errorMessage = stringResponse ?? error.localizedDescription
             }
             return result
         }

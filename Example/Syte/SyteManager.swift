@@ -13,7 +13,6 @@ class SyteMaganer {
     
     static let shared = SyteMaganer()
     
-    private let syte = InitSyte()
     
     private init() {}
     

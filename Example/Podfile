@@ -4,6 +4,7 @@ platform :ios, '10.0'
 
 target 'Syte_Example' do
   pod 'Syte', :path => '../'
+  pod 'SVProgressHUD'
 
   target 'Syte_Tests' do
     inherit! :search_paths

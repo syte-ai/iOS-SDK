@@ -1,5 +1,5 @@
 //
-//  InitSyte.swift
+//  Syte.swift
 //  Syte
 //
 //  Created by Artur Tarasenko on 18.08.2021.
@@ -9,9 +9,9 @@
 import Foundation
 import PromiseKit
 
-public final class InitSyte {
+public final class Syte {
     
-    private let tag = String(describing: InitSyte.self)
+    private static let tag = String(describing: Syte.self)
     
     private enum SyteState {
         case idle, initialized
@@ -23,44 +23,37 @@ public final class InitSyte {
     private var sytePlatformSettings: SytePlatformSettings?
     private var state = SyteState.idle
     
-    public init() {}
+    private init() {}
     
-    public func startSession(configuration: SyteConfiguration, completion: @escaping (SyteResult<Bool>) -> Void) {
-        renewTimestamp()
+    public static func initialize(configuration: SyteConfiguration, completion: @escaping (SyteResult<Syte>) -> Void) {
         do {
             try InputValidator.validateInput(configuration: configuration)
-            self.configuration = configuration
+            
+            let syte = Syte()
+            syte.configuration = configuration
             
             firstly {
-                syteService.initialize(accoundId: configuration.getAccountId())
-            }.then { [weak self] response -> Promise<Void> in
+                syte.syteService.initialize(accoundId: configuration.getAccountId())
+            }.then { response -> Promise<SyteResult<SytePlatformSettings>> in
                 if response.isSuccessful {
-                    self?.sytePlatformSettings = response.data
-                    return Promise { seal in
-                        seal.fulfill(())
-                    }
+                    syte.sytePlatformSettings = response.data
+                    return .value(response)
                 } else {
                     throw SyteError.initializationFailed(message: "")
                 }
-            }.done { [weak self] _ in
-                self?.state = .initialized
-                completion(.successResult)
+            }.done { result in
+                syte.state = .initialized
+                //                if (mState == SyteState.INITIALIZED) {
+                //                                fireEvent(new EventInitialization());
+                //                            }
+                completion(.successResult(data: syte, code: result.resultCode))
                 
-                // TODO: fireEvent && getTextSearchClient
-                //                        fireEvent(new EventInitialization());
-                //                                        getTextSearchClient().getPopularSearchAsync(mConfiguration.getLocale(), result -> {
-                //                                            if (result.isSuccessful && result.data != null && mConfiguration != null) {
-                //                                                mConfiguration.getStorage().addPopularSearch(result.data, mConfiguration.getLocale());
-                //                                            }
-                //                                        });
-                
-            }.catch { [weak self] error in
-                self?.state = .idle
+            }.catch { error in
+                syte.state = .idle
                 completion(.failureResult(message: error.localizedDescription))
             }
         } catch let error {
-            state = .idle
-            SyteLogger.e(tag: tag, message: error.localizedDescription)
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
             completion(.failureResult(message: error.localizedDescription))
         }
     }
@@ -82,7 +75,7 @@ public final class InitSyte {
                 completion(.failureResult(message: error.localizedDescription))
             }
         } catch let error {
-            SyteLogger.e(tag: tag, message: error.localizedDescription)
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
             print(error.localizedDescription)
             completion(.failureResult(message: error.localizedDescription))
         }
@@ -111,7 +104,7 @@ public final class InitSyte {
                 completion(.failureResult(message: error.localizedDescription))
             }
         } catch let error {
-            SyteLogger.e(tag: tag, message: error.localizedDescription)
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
             print(error.localizedDescription)
             completion(.failureResult(message: error.localizedDescription))
         }
@@ -127,13 +120,13 @@ public final class InitSyte {
         }.then { [weak self] imageData -> Promise<SyteResult<UrlImageSearch>>  in
             guard let strongSelf = self,
                   let finalImageData = imageData else { return .init(error: SyteError.generalError(message: "Image is too big.")) }
-            SyteLogger.i(tag: strongSelf.tag, message: "Compressed image size: \(finalImageData.getSizeInKB()), data: \(finalImageData)")
+            SyteLogger.i(tag: Syte.tag, message: "Compressed image size: \(finalImageData.getSizeInKB()), data: \(finalImageData)")
             
             return strongSelf.exifService.removeTags(accountId: configuration.getAccountId(),
-                                          signature: configuration.getApiSignature(),
-                                          imagePayload: finalImageData).map { response -> SyteResult<UrlImageSearch> in
-                                            return response
-                                          }
+                                                     signature: configuration.getApiSignature(),
+                                                     imagePayload: finalImageData).map { response -> SyteResult<UrlImageSearch> in
+                                                        return response
+                                                     }
         }
     }
     
@@ -169,11 +162,11 @@ public final class InitSyte {
         
         if let crop = requestData.coordinates {
             coordinatesBase64 = crop.toString().data(using: .utf8)?.base64EncodedString()
-            SyteLogger.i(tag: tag, message: "Encoded coordinates: " + (coordinatesBase64 ?? "-"))
+            SyteLogger.i(tag: Syte.tag, message: "Encoded coordinates: " + (coordinatesBase64 ?? "-"))
             var url = URLComponents(string: firstBound)
             url?.queryItems = []
             let params = URLComponents(string: firstBound)
-
+            
             for param in params?.queryItems ?? [] {
                 if param.name == "cats" || param.name == "crop" || param.name == "catalog" || param.name == "feed" { continue }
                 url?.queryItems?.append(param)

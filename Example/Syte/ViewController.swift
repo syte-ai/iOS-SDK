@@ -11,84 +11,122 @@ import Syte
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate {
     
-    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var tableView: UITableView!
     
-    private let syte = InitSyte()
+    public enum SyteScreens: Int, CaseIterable {
+        
+        case configuration = 0, url, wild, similars, shopTheLook, personalizations, events, autocomplete, popupar, textSearch
+        
+        func title() -> String {
+            switch self {
+            case .configuration:
+                return "CONFIGURATION"
+            case .url:
+                return "URL SEARCH"
+            case .wild:
+                return "WILD SEARCH"
+            case .similars:
+                return "GET SIMILARS"
+            case .shopTheLook:
+                return "SHOP THE LOOK"
+            case .personalizations:
+                return "PERSONALIZATION"
+            case .events:
+                return "FIRE EVENTS"
+            case .autocomplete:
+                return "AUTOCOMPLETE"
+            case .popupar:
+                return "POPULAR SEARCHES"
+            case .textSearch:
+                return "TEXT SEARCH"
+            }
+        }
+        
+    }
+    
+    private var syte: Syte?
     private var resporseString = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(handleResponse(notification:)), name: NSNotification.Name(rawValue: "test_response"), object: nil)
+        configuteTableView()
+        initSyte()
     }
     
-    @IBAction private func sendInitializeRequestButtonPressed(_ sender: Any) {
-        textView.text.removeAll()
+    private func configuteTableView() {
+        tableView.tableFooterView = UIView()
+        tableView.registerNib(with: SyteExampleTableViewCell.self)
+    }
+    
+    private func initSyte() {
         let configuration = SyteConfiguration(accountId: "9165", signature: "601c206d0a7f780efb9360f3")
-        textView.text = "InitializeRequest\n accountId = 9165\n signature = 601c206d0a7f780efb9360f3\n"
-        syte.startSession(configuration: configuration) { [weak self] result in
-            let settings = self?.syte.getSytePlatformSettings()
-            var text = "---Result---\n\n\(result.data == true ? "Success" : "Failure")\n\n"
-            text += "---Response data---\n\n"
-            text += self?.resporseString ?? ""
-            text += "\n\n---Parsed data---\n\n"
-            text += String(describing: settings)
-            self?.textView.text += text
+        Syte.initialize(configuration: configuration) { [weak self] result in
+            guard let strongSelf = self else { return }
+            guard let data = result.data else { return }
+            strongSelf.syte = data
+            strongSelf.tableView.reloadData()
         }
     }
-    
-    @IBAction func searchByImageUrlButtonPressed(_ sender: Any) {
-        textView.text.removeAll()
-        let imageSearchRequestData = UrlImageSearch(imageUrl: "https://cdn-images.farfetch-contents.com/13/70/55/96/13705596_18130188_1000.jpg", productType: .discoveryButton)
-        imageSearchRequestData.sku = "13705596"
-        imageSearchRequestData.coordinates = CropCoordinates(x1: 0.35371503233909607, y1: 0.32111090421676636, x2: 0.6617449522018433, y2: 0.6626847386360168)
-        textView.text = "Search By ImageUrl\n imageUrl = https://cdn-images.farfetch-contents.com/13/70/55/96/13705596_18130188_1000.jpg\n sku = 13705596\n crop = x1: 0.35371503233909607, y1: 0.32111090421676636, x2: 0.6617449522018433, y2: 0.6626847386360168\n"
-        imageSearchRequestData.retrieveOffersForTheFirstBound = true
-        syte.getBounds(requestData: imageSearchRequestData) { [weak self] result in
-            var text = "---Result---\n\n\(result.isSuccessful == true ? "Success" : "Failure")\n\n"
-            text += "---Response data---\n\n"
-            text += self?.resporseString ?? ""
-            text += "\n\n---Parsed data---\n\n"
-            text += String(describing: result.data)
-            self?.textView.text += text
+    // swiftlint:disable cyclomatic_complexity
+    private func switchToScreen(type: SyteScreens) {
+        guard let syte = syte else { return }
+        switch type {
+        case .configuration:
+            let vc = MainStoryboard.configurationViewController
+            navigationController?.pushViewController(vc, animated: true)
+        case .url:
+            let vc = MainStoryboard.urlSearchViewController
+            vc.setSyte(syte)
+            navigationController?.pushViewController(vc, animated: true)
+        case .wild:
+            let vc = MainStoryboard.wildSearchViewController
+            vc.setSyte(syte)
+            navigationController?.pushViewController(vc, animated: true)
+        case .similars:
+            break
+        case .shopTheLook:
+            break
+        case .personalizations:
+            break
+        case .events:
+            break
+        case .autocomplete:
+            break
+        case .popupar:
+            break
+        case .textSearch:
+            break
         }
     }
+    // swiftlint:enableb cyclomatic_complexity
     
-    @IBAction private func wildImageButtonPressed(_ sender: Any) {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.mediaTypes = ["public.image"]
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true)
+}
+
+// MARK: UITableViewDataSource
+
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SyteScreens.allCases.count
     }
     
-    @objc private func handleResponse(notification: NSNotification) {
-        resporseString.removeAll()
-        resporseString +=  (notification.userInfo?["request"] as? String ?? "") + "\n" + (notification.userInfo?["data"] as? String ?? "")
-    }
-    
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-        picker.dismiss(animated: true)
-        
-        let data = ImageSearch(image: image)
-        syte.getBoundsWild(requestData: data) { response in
-            print(response)
-        }
-//        guard let url = URL(string: "https://cdn-images.farfetch-contents.com/13/70/55/96/13705596_18130188_1000.jpg") else { return }
-//        do {
-//            let data = try Data(contentsOf: url)
-//            let img = UIImage(data: data)
-//            guard let imgUnw = img else { return }
-//            let requestData = ImageSearch(image: imgUnw)
-//            syte.getBoundsWild(requestData: requestData) { response in
-//                print(response)
-//            }
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: SyteExampleTableViewCell = tableView.dequeueReusableCell(indexPath: indexPath)
+        let exapmleValue = SyteScreens(rawValue: indexPath.row) ?? .configuration
+        cell.setButtonTitle(title: exapmleValue.title())
+        return cell
     }
     
 }
 
-extension UIViewController: UINavigationControllerDelegate {}
+// MARK: UITableViewDelegate
+
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+        guard let exapmleValue = SyteScreens(rawValue: indexPath.row) else { return }
+        switchToScreen(type: exapmleValue)
+    }
+    
+}
