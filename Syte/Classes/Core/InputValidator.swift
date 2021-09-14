@@ -22,8 +22,8 @@ class InputValidator {
 //    }
 
     public static func validateInput(configuration: SyteConfiguration) throws {
-        guard configuration.getAccountId().isEmpty == false else { throw SyteError.generalError(message: "Account ID can not be empty.") }
-        guard configuration.getApiSignature().isEmpty == false else { throw SyteError.generalError(message: "Signature can not be empty.") }
+        guard configuration.accountId.isEmpty == false else { throw SyteError.generalError(message: "Account ID can not be empty.") }
+        guard configuration.signature.isEmpty == false else { throw SyteError.generalError(message: "Signature can not be empty.") }
     }
     
     public static func validateInput(requestData: SimilarProducts) throws {
@@ -40,8 +40,8 @@ class InputValidator {
 //        guard let data = requestData else { throw SyteError.generalError(message: "Request data can not be null.") }
 //    }
     
-    public static func validateInput(string: String?) throws {
-        guard let stringValue = string, stringValue.isEmpty == false else { throw SyteError.generalError(message: "Viewed product can not be empty.") }
+    public static func validateInput(string: String) throws {
+        guard string.isEmpty == false else { throw SyteError.generalError(message: "Viewed product can not be empty.") }
     }
 
 }

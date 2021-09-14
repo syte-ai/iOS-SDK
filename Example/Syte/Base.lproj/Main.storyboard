@@ -68,17 +68,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Will be soon :)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3i-zN-hUg">
-                                <rect key="frame" x="133" y="323" width="108" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dR0-w4-T4N">
+                                <rect key="frame" x="20" y="20" width="335" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="en_US" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x5E-4f-w0N">
+                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sc4-Wz-cF0" customClass="RoundedButton" customModule="Syte_Example" customModuleProvider="target">
+                                        <rect key="frame" x="177.5" y="0.0" width="157.5" height="40"/>
+                                        <state key="normal" title="Set locale"/>
+                                        <connections>
+                                            <action selector="setLocaleButtonPressed:" destination="tH6-Ms-cXa" eventType="touchUpInside" id="JAt-VZ-rUe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8z9-Zs-LUx"/>
+                                    <constraint firstItem="x5E-4f-w0N" firstAttribute="height" secondItem="dR0-w4-T4N" secondAttribute="height" id="RgU-eT-tKM"/>
+                                    <constraint firstItem="sc4-Wz-cF0" firstAttribute="height" secondItem="dR0-w4-T4N" secondAttribute="height" id="efK-UM-1C7"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="32t-gW-uKH">
+                                <rect key="frame" x="20" y="80" width="335" height="40"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="sku" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wbY-Yq-mpz">
+                                        <rect key="frame" x="0.0" y="0.0" width="157.5" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkw-Ts-4iI" customClass="RoundedButton" customModule="Syte_Example" customModuleProvider="target">
+                                        <rect key="frame" x="177.5" y="0.0" width="157.5" height="40"/>
+                                        <state key="normal" title="Add SKU"/>
+                                        <connections>
+                                            <action selector="addSkuButtonPressed:" destination="tH6-Ms-cXa" eventType="touchUpInside" id="PnL-BV-GTn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5ZA-dM-PlY"/>
+                                    <constraint firstItem="wbY-Yq-mpz" firstAttribute="height" secondItem="32t-gW-uKH" secondAttribute="height" id="Izy-vA-tQh"/>
+                                    <constraint firstItem="lkw-Ts-4iI" firstAttribute="height" secondItem="32t-gW-uKH" secondAttribute="height" id="vxa-FB-6Ir"/>
+                                </constraints>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OtL-qG-TvY">
+                                <rect key="frame" x="20" y="140" width="335" height="507"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tH6-Ms-cXa" id="H1D-Eb-g8e"/>
+                                    <outlet property="delegate" destination="tH6-Ms-cXa" id="E4H-nO-paq"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kwd-Gm-2os"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="32t-gW-uKH" firstAttribute="top" secondItem="dR0-w4-T4N" secondAttribute="bottom" constant="20" id="5po-Nj-gLt"/>
+                            <constraint firstItem="32t-gW-uKH" firstAttribute="leading" secondItem="kwd-Gm-2os" secondAttribute="leading" constant="20" id="FW9-Av-U0F"/>
+                            <constraint firstItem="OtL-qG-TvY" firstAttribute="leading" secondItem="kwd-Gm-2os" secondAttribute="leading" constant="20" id="Piy-lp-iaP"/>
+                            <constraint firstItem="kwd-Gm-2os" firstAttribute="trailing" secondItem="32t-gW-uKH" secondAttribute="trailing" constant="20" id="WRc-SG-q58"/>
+                            <constraint firstItem="kwd-Gm-2os" firstAttribute="trailing" secondItem="OtL-qG-TvY" secondAttribute="trailing" constant="20" id="a92-yc-ezB"/>
+                            <constraint firstItem="OtL-qG-TvY" firstAttribute="top" secondItem="32t-gW-uKH" secondAttribute="bottom" constant="20" id="aLU-gS-oL3"/>
+                            <constraint firstItem="dR0-w4-T4N" firstAttribute="top" secondItem="kwd-Gm-2os" secondAttribute="top" constant="20" id="eXB-kc-D9x"/>
+                            <constraint firstItem="kwd-Gm-2os" firstAttribute="trailing" secondItem="dR0-w4-T4N" secondAttribute="trailing" constant="20" id="luz-qp-qXe"/>
+                            <constraint firstItem="kwd-Gm-2os" firstAttribute="bottom" secondItem="OtL-qG-TvY" secondAttribute="bottom" constant="20" id="q5t-Yj-S4G"/>
+                            <constraint firstItem="dR0-w4-T4N" firstAttribute="leading" secondItem="kwd-Gm-2os" secondAttribute="leading" constant="20" id="s9R-49-L4Y"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="localeTextField" destination="x5E-4f-w0N" id="xsl-Jf-e8D"/>
+                        <outlet property="skuTextField" destination="wbY-Yq-mpz" id="Tk0-qK-3Ci"/>
+                        <outlet property="tableView" destination="OtL-qG-TvY" id="dAJ-Ib-63u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E1w-pz-o9X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

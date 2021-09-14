@@ -12,6 +12,8 @@ import SVProgressHUD
 
 class UrlSearchViewController: UIViewController {
     
+    // MARK: Outlets
+    
     @IBOutlet private weak var urlTextField: UITextField!
     @IBOutlet private weak var skuTextField: UITextField!
     @IBOutlet private weak var x1TextField: UITextField!
@@ -21,14 +23,10 @@ class UrlSearchViewController: UIViewController {
     @IBOutlet private weak var fetchFirstBoundSegmentControll: UISegmentedControl!
     @IBOutlet private weak var responseTextView: UITextView!
     
-    private var syte: Syte?
-    
-    func setSyte(_ syte: Syte) {
-        self.syte = syte
-    }
+    // MARK: Actions
     
     @IBAction private func getBoundsButtonPressed(_ sender: Any) {
-        guard let syte = syte else { return }
+        guard SyteMaganer.shared.isInitialized else { return }
         SVProgressHUD.show()
         responseTextView.text?.removeAll()
         let imageSearchRequestData = UrlImageSearch(imageUrl: urlTextField.text ?? "", productType: .discoveryButton)
@@ -42,11 +40,11 @@ class UrlSearchViewController: UIViewController {
         }
         
         imageSearchRequestData.retrieveOffersForTheFirstBound = fetchFirstBoundSegmentControll.selectedSegmentIndex == 0
-        syte.getBounds(requestData: imageSearchRequestData) { [weak self] result in
-            var text = "---Result---\n\n\(result.isSuccessful == true ? "Success" : "Failure")\n\n"
-            text += "\n\n---Error---\n\n\(result.errorMessage ?? "No errors")"
+        SyteMaganer.shared.getBounds(requestData: imageSearchRequestData) { [weak self] result in
+            var text = "---Result---\n\n\(result?.isSuccessful == true ? "Success" : "Failure")\n\n"
+            text += "\n\n---Error---\n\n\(result?.errorMessage ?? "No errors")"
             text += "\n\n---Parsed data---\n\n"
-            text += String(describing: result.data)
+            text += String(describing: result?.data)
             self?.responseTextView.text = text
             self?.responseTextView.isHidden = false
             SVProgressHUD.dismiss()

@@ -62,6 +62,8 @@ public final class SyteLogger {
 }
 
 extension OSLog {
+    
     private static var subsystem = Bundle.main.bundleIdentifier ?? ""
     static let syte = OSLog(subsystem: subsystem, category: "SYTE")
+    
 }

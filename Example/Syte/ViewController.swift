@@ -44,7 +44,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
         
     }
     
-    private var syte: Syte?
     private var resporseString = ""
     
     override func viewDidLoad() {
@@ -59,28 +58,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     }
     
     private func initSyte() {
-        let configuration = SyteConfiguration(accountId: "9165", signature: "601c206d0a7f780efb9360f3")
-        Syte.initialize(configuration: configuration) { [weak self] result in
+        SyteMaganer.shared.initialize { [weak self] in
             guard let strongSelf = self else { return }
-            guard let data = result.data else { return }
-            strongSelf.syte = data
             strongSelf.tableView.reloadData()
         }
     }
     // swiftlint:disable cyclomatic_complexity
     private func switchToScreen(type: SyteScreens) {
-        guard let syte = syte else { return }
+        guard SyteMaganer.shared.isInitialized else { return }
         switch type {
         case .configuration:
             let vc = MainStoryboard.configurationViewController
             navigationController?.pushViewController(vc, animated: true)
         case .url:
             let vc = MainStoryboard.urlSearchViewController
-            vc.setSyte(syte)
             navigationController?.pushViewController(vc, animated: true)
         case .wild:
             let vc = MainStoryboard.wildSearchViewController
-            vc.setSyte(syte)
             navigationController?.pushViewController(vc, animated: true)
         case .similars:
             break

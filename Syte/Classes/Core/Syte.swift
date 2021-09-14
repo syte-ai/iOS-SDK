@@ -11,6 +11,8 @@ import PromiseKit
 
 public final class Syte {
     
+    // MARK: Private properties
+    
     private static let tag = String(describing: Syte.self)
     
     private enum SyteState {
@@ -23,6 +25,17 @@ public final class Syte {
     private var sytePlatformSettings: SytePlatformSettings?
     private var state = SyteState.idle
     
+    // MARK: Public properties
+    
+    public var logLevel: SyteLogger.LogLevel {
+        get {
+            return SyteLogger.getLogLevel()
+        }
+        set {
+            SyteLogger.setLogLevel(newValue)
+        }
+    }
+    
     private init() {}
     
     public static func initialize(configuration: SyteConfiguration, completion: @escaping (SyteResult<Syte>) -> Void) {
@@ -33,7 +46,7 @@ public final class Syte {
             syte.configuration = configuration
             
             firstly {
-                syte.syteService.initialize(accoundId: configuration.getAccountId())
+                syte.syteService.initialize(accoundId: configuration.accountId)
             }.then { response -> Promise<SyteResult<SytePlatformSettings>> in
                 if response.isSuccessful {
                     syte.sytePlatformSettings = response.data
@@ -111,6 +124,30 @@ public final class Syte {
         
     }
     
+    public func getConfiguration() -> SyteConfiguration? {
+        return configuration
+    }
+    
+    public func setConfiguration(configuration: SyteConfiguration) throws {
+        try verifyInitialized()
+        self.configuration = configuration
+        
+    }
+    
+    public func getSytePlatformSettings() -> SytePlatformSettings? {
+        return state == .initialized ? sytePlatformSettings : nil
+    }
+    
+    public func addViewedItem(sku: String) throws {
+        try verifyInitialized()
+        try InputValidator.validateInput(string: sku)
+        configuration?.addViewedProduct(sessionSku: sku)
+    }
+    
+    public func getViewedProducts() -> Set<String> {
+        return configuration?.getViewedProducts() ?? Set<String>()
+    }
+    
     private func prepareImageSearchRequestData(requestData: ImageSearch, configuration: SyteConfiguration) -> Promise<SyteResult<UrlImageSearch>> {
         var size = 0
         let imageSize = requestData.image.getImageSizeInKbAsJpeg()
@@ -122,8 +159,8 @@ public final class Syte {
                   let finalImageData = imageData else { return .init(error: SyteError.generalError(message: "Image is too big.")) }
             SyteLogger.i(tag: Syte.tag, message: "Compressed image size: \(finalImageData.getSizeInKB()), data: \(finalImageData)")
             
-            return strongSelf.exifService.removeTags(accountId: configuration.getAccountId(),
-                                                     signature: configuration.getApiSignature(),
+            return strongSelf.exifService.removeTags(accountId: configuration.accountId,
+                                                     signature: configuration.signature,
                                                      imagePayload: finalImageData).map { response -> SyteResult<UrlImageSearch> in
                                                         return response
                                                      }
@@ -132,12 +169,12 @@ public final class Syte {
     
     private func getBounds(requestData: UrlImageSearch, configuration: SyteConfiguration, service: SyteService, catalog: String?) -> Promise<SyteResult<BoundsResult>> {
         return firstly {
-            syteService.getBounds(accountId: configuration.getAccountId(),
-                                  signature: configuration.getApiSignature(),
-                                  userId: requestData.personalizedRanking ? configuration.getUserId() : nil,
-                                  sessionId: requestData.personalizedRanking ? String(configuration.getSessionId()) : nil,
+            syteService.getBounds(accountId: configuration.accountId,
+                                  signature: configuration.signature,
+                                  userId: requestData.personalizedRanking ? configuration.userId : nil,
+                                  sessionId: requestData.personalizedRanking ? String(configuration.sessionId) : nil,
                                   syteAppRef: requestData.productType.getName(),
-                                  locale: configuration.getLocale(),
+                                  locale: configuration.locale,
                                   catalog: catalog,
                                   sku: requestData.sku,
                                   imageUrl: requestData.imageUrl,
@@ -184,20 +221,6 @@ public final class Syte {
                                         response.data?.firstBoundItemsResult = offers.data
                                         return response
                                      }
-    }
-    
-    public func getConfiguration() -> SyteConfiguration? {
-        return configuration
-    }
-    
-    public func setConfiguration(configuration: SyteConfiguration) throws {
-        try verifyInitialized()
-        self.configuration = configuration
-        
-    }
-    
-    public func getSytePlatformSettings() -> SytePlatformSettings? {
-        return state == .initialized ? sytePlatformSettings : nil
     }
     
     private func verifyInitialized() throws {

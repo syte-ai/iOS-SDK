@@ -16,12 +16,7 @@ class WildSearchViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet private weak var responseTextView: UITextView!
     @IBOutlet private weak var fetchOffersSegmentControll: UISegmentedControl!
     
-    private var syte: Syte?
     private var imageToSend: UIImage?
-    
-    func setSyte(_ syte: Syte) {
-        self.syte = syte
-    }
     
     // MARK: UIImagePickerControllerDelegate
     
@@ -44,16 +39,16 @@ class WildSearchViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction private func getBoundsButtonPressed(_ sender: Any) {
-        guard let syte = syte else { return }
+        guard SyteMaganer.shared.isInitialized else { return }
         guard let image = imageToSend else { return }
         SVProgressHUD.show()
         let data = ImageSearch(image: image)
         data.retrieveOffersForTheFirstBound = fetchOffersSegmentControll.selectedSegmentIndex == 0
-        syte.getBoundsWild(requestData: data) { [weak self] response in
-            var text = "---Result---\n\n\(response.isSuccessful == true ? "Success" : "Failure")\n\n"
-            text += "\n\n---Error---\n\n\(response.errorMessage ?? "No errors")"
+        SyteMaganer.shared.getBoundsWild(requestData: data) { [weak self] response in
+            var text = "---Result---\n\n\(response?.isSuccessful == true ? "Success" : "Failure")\n\n"
+            text += "\n\n---Error---\n\n\(response?.errorMessage ?? "No errors")"
             text += "\n\n---Parsed data---\n\n"
-            text += String(describing: response.data)
+            text += String(describing: response?.data)
             self?.responseTextView.text = text
             self?.responseTextView.isHidden = false
             SVProgressHUD.dismiss()

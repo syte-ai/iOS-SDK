@@ -9,7 +9,7 @@
 import Foundation
 import SwiftKeychainWrapper
 
-public class SyteStorage {
+class SyteStorage {
     
     private static let tag = String(describing: SyteStorage.self)
     private let storage = KeychainWrapper.standard
@@ -41,10 +41,6 @@ public class SyteStorage {
         storage.set(0, forKey: sessionIdTimestampKey)
     }
     
-    public func clearViewedProducts() {
-        storage.set("", forKey: viewedProductsKey)
-    }
-    
     public func getUserId() -> String {
         var userId = ""
         userId = storage.string(forKey: userIdPrefKey) ?? ""
@@ -55,6 +51,10 @@ public class SyteStorage {
         storage.set(userId, forKey: userIdPrefKey)
         
         return userId
+    }
+    
+    public func clearViewedProducts() {
+        storage.set("", forKey: viewedProductsKey)
     }
     
     public func addViewedProduct(sessionSku: String) {
