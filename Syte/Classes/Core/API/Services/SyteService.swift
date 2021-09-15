@@ -27,6 +27,8 @@ class SyteService: SyteServiceProtocol {
     // TODO: remmove "(plugins: [NetworkLoggerPlugin(verbose: true)])" on release
     private let service = MoyaProvider<SyteProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
+    
+    
     func initialize(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>> {
         service.request(.initialize(accountId: accoundId)).map { response -> SyteResult<SytePlatformSettings> in
             let result = SyteResult<SytePlatformSettings>()

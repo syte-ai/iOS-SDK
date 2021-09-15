@@ -147,6 +147,10 @@
 		754AB16126F224C10047CA8F /* EventTextShowResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16026F224C10047CA8F /* EventTextShowResults.swift */; };
 		754AB16326F22C000047CA8F /* EventsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16226F22C000047CA8F /* EventsProvider.swift */; };
 		754AB16526F22DEF0047CA8F /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16426F22DEF0047CA8F /* EventsService.swift */; };
+		754AB16826F23C990047CA8F /* SyteRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16726F23C990047CA8F /* SyteRemoteDataSource.swift */; };
+		754AB16A26F23CD00047CA8F /* BaseRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16926F23CD00047CA8F /* BaseRemoteDataSource.swift */; };
+		754AB16C26F274BD0047CA8F /* EventsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16B26F274BD0047CA8F /* EventsRemoteDataSource.swift */; };
+		754AB16F26F276FB0047CA8F /* ImageSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16E26F276FB0047CA8F /* ImageSearchClient.swift */; };
 		773A2BAB056D4C4298199E54F9CEB587 /* V11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80B0DA1049AD7C6C3C693FA6DB460F /* V11.swift */; };
 		78191F48A2998A81DFD47882797253EB /* Placement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0C4574BF917115CB0043220D559212 /* Placement.swift */; };
 		78C5EA5FA7443A15595C859E8B1D7FE3 /* NoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974343E308D12DA44D645CEE2341830 /* NoError.swift */; };
@@ -548,6 +552,10 @@
 		754AB16026F224C10047CA8F /* EventTextShowResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTextShowResults.swift; sourceTree = "<group>"; };
 		754AB16226F22C000047CA8F /* EventsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsProvider.swift; sourceTree = "<group>"; };
 		754AB16426F22DEF0047CA8F /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
+		754AB16726F23C990047CA8F /* SyteRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteRemoteDataSource.swift; sourceTree = "<group>"; };
+		754AB16926F23CD00047CA8F /* BaseRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRemoteDataSource.swift; sourceTree = "<group>"; };
+		754AB16B26F274BD0047CA8F /* EventsRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsRemoteDataSource.swift; sourceTree = "<group>"; };
+		754AB16E26F276FB0047CA8F /* ImageSearchClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchClient.swift; sourceTree = "<group>"; };
 		75E6A39EE2AAAFB4273DE5879451EA76 /* Price.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		7745837951170E05D643CC51644115E0 /* Pods-Syte_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Syte_Tests.modulemap"; sourceTree = "<group>"; };
 		779C2E88B7E0DB96B32110D1603CA09C /* Syte-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Syte-dummy.m"; sourceTree = "<group>"; };
@@ -898,6 +906,8 @@
 		4C430E845FF882B04E7155BFE2A7EF0E /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				754AB16D26F276EE0047CA8F /* Clients */,
+				754AB16626F23C8E0047CA8F /* DataSources */,
 				9A423A2BBC023FD7B646625BB9CADCC3 /* ImageProcessor.swift */,
 				F25E1FD91BBA26608002D90B64598F95 /* InputValidator.swift */,
 				934EDEC0075F340BD46B8B148C44FE35 /* Syte.swift */,
@@ -1032,6 +1042,24 @@
 				754AB14826F21DC20047CA8F /* Product.swift */,
 			);
 			path = Events;
+			sourceTree = "<group>";
+		};
+		754AB16626F23C8E0047CA8F /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				754AB16926F23CD00047CA8F /* BaseRemoteDataSource.swift */,
+				754AB16726F23C990047CA8F /* SyteRemoteDataSource.swift */,
+				754AB16B26F274BD0047CA8F /* EventsRemoteDataSource.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		754AB16D26F276EE0047CA8F /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				754AB16E26F276FB0047CA8F /* ImageSearchClient.swift */,
+			);
+			path = Clients;
 			sourceTree = "<group>";
 		};
 		87CD56EDB5E4F8CF2B3E5E92742051DB /* Pods-Syte_Tests */ = {
@@ -1972,6 +2000,7 @@
 				11CE7B87F88091745E1CB7661206A247 /* Enum + Extensions.swift in Sources */,
 				FF21FEA8DFE8F54582FE26772079BAED /* EventsTag.swift in Sources */,
 				754AB14326F21BDE0047CA8F /* EventCameraButtonClick.swift in Sources */,
+				754AB16A26F23CD00047CA8F /* BaseRemoteDataSource.swift in Sources */,
 				F44C8CA132FF7DB8702B8FA52DE95A9B /* ExifProvider.swift in Sources */,
 				754AB14926F21DC20047CA8F /* Product.swift in Sources */,
 				F6EC9BDBC22767F358F702917F51CF94 /* ExifService.swift in Sources */,
@@ -2044,7 +2073,9 @@
 				50057AC3D58F5B7FD55BB6352E76F027 /* SyteProductType.swift in Sources */,
 				B2D97408B0AB6B12A0B2452433476BBD /* SyteProvider.swift in Sources */,
 				28CF66B77C1A0B11AA57FCEF20A73B20 /* SyteResult.swift in Sources */,
+				754AB16C26F274BD0047CA8F /* EventsRemoteDataSource.swift in Sources */,
 				03A7B81B751BAB3F8628628006BE0C9E /* SyteService.swift in Sources */,
+				754AB16F26F276FB0047CA8F /* ImageSearchClient.swift in Sources */,
 				A70505DE26206C6DEEF04537CA9CFF54 /* SyteStorage.swift in Sources */,
 				D0188D12F15F8E0330114F1AD4CC8372 /* TextSearch.swift in Sources */,
 				8FD657338F4C55643C983F8E043C01BD /* TextSearchEventType.swift in Sources */,
@@ -2056,6 +2087,7 @@
 				5C34DE2F99A0AC5BC04584F1876B14F5 /* UrlImageSearch.swift in Sources */,
 				6F5CD83FEACA567A16C51CEC8C1689B0 /* Utils.swift in Sources */,
 				773A2BAB056D4C4298199E54F9CEB587 /* V11.swift in Sources */,
+				754AB16826F23C990047CA8F /* SyteRemoteDataSource.swift in Sources */,
 				7E70E69F746287E89E2E901B063E8568 /* ViewsCount.swift in Sources */,
 				503147DC9416BCFF6A363DD56073190A /* VisualSearchCTA.swift in Sources */,
 				D20705893DA1AB5660C0913ED5CECE53 /* WeightsItem.swift in Sources */,

@@ -33,12 +33,12 @@ class SyteMaganer {
     
     public func getBounds(requestData: UrlImageSearch, completion: @escaping (SyteResult<BoundsResult>?) -> Void) {
         guard let syte = syte else { completion(nil); return }
-        syte.getBounds(requestData: requestData, completion: completion)
+        syte.getBounds(imageSearch: requestData, completion: completion)
     }
     
     public func getBoundsWild(requestData: ImageSearch, completion: @escaping (SyteResult<BoundsResult>?) -> Void) {
         guard let syte = syte else { completion(nil); return }
-        syte.getBoundsWild(requestData: requestData, completion: completion)
+        syte.getBounds(imageSearch: requestData, completion: completion)
     }
     
     public func fire(event: BaseSyteEvent) {
