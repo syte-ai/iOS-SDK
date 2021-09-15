@@ -50,6 +50,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
         super.viewDidLoad()
         configuteTableView()
         initSyte()
+        
+        let event = EventBBClick(imageUrl: "url", category: "category", gender: "gender", catalog: Catalog.general.getName(), pageName: "sdk-test")
+        let string = event.getRequestBodyString()
+        
+        let event1 = EventCheckoutComplete(id: "1", value: 2, currency: "USD", productList: [Product(sku: "test", quantity: 2, price: 2)], pageName: "sdk-test")
+        let string1 = event1.getRequestBodyString()
+        
+        
+        print()
     }
     
     private func configuteTableView() {

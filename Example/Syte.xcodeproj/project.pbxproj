@@ -14,18 +14,18 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7523474C26CFB9CB00543108 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7523474B26CFB9CB00543108 /* .swiftlint.yml */; };
-		754AB10926EF771A0047CA8F /* UITableView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB10826EF771A0047CA8F /* UITableView + Extensions.swift */; };
-		754AB10B26EF77480047CA8F /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB10A26EF77480047CA8F /* UIView+Nib.swift */; };
-		754AB10D26EF7DA10047CA8F /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB10C26EF7DA10047CA8F /* UIStoryboard+Extension.swift */; };
-		754AB10F26EF7DD50047CA8F /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB10E26EF7DD40047CA8F /* NSObject+Extension.swift */; };
-		754AB11326EF7F0B0047CA8F /* MainStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB11226EF7F0B0047CA8F /* MainStoryboard.swift */; };
-		75799D7E26EB9BF1009A4EAB /* SyteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75799D7D26EB9BF1009A4EAB /* SyteManager.swift */; };
-		75C4DA9526EF729D00CEC922 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C4DA9426EF729D00CEC922 /* RoundedButton.swift */; };
-		75C4DA9826EF741000CEC922 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C4DA9726EF741000CEC922 /* ConfigurationViewController.swift */; };
-		75C4DA9A26EF742100CEC922 /* UrlSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C4DA9926EF742100CEC922 /* UrlSearchViewController.swift */; };
-		75C4DA9C26EF742B00CEC922 /* WildSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C4DA9B26EF742B00CEC922 /* WildSearchViewController.swift */; };
-		75C4DAA126EF75B800CEC922 /* SyteExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C4DAA026EF75B800CEC922 /* SyteExampleTableViewCell.swift */; };
-		75C4DAA326EF75BD00CEC922 /* SyteExampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75C4DAA226EF75BD00CEC922 /* SyteExampleTableViewCell.xib */; };
+		754AB13026F2193C0047CA8F /* MainStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB11E26F2193C0047CA8F /* MainStoryboard.swift */; };
+		754AB13126F2193C0047CA8F /* WildSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12026F2193C0047CA8F /* WildSearchViewController.swift */; };
+		754AB13226F2193C0047CA8F /* UrlSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12126F2193C0047CA8F /* UrlSearchViewController.swift */; };
+		754AB13326F2193C0047CA8F /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12226F2193C0047CA8F /* ConfigurationViewController.swift */; };
+		754AB13426F2193C0047CA8F /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12426F2193C0047CA8F /* NSObject+Extension.swift */; };
+		754AB13526F2193C0047CA8F /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12526F2193C0047CA8F /* UIStoryboard+Extension.swift */; };
+		754AB13626F2193C0047CA8F /* UITableView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12626F2193C0047CA8F /* UITableView + Extensions.swift */; };
+		754AB13726F2193C0047CA8F /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12726F2193C0047CA8F /* UIView+Nib.swift */; };
+		754AB13826F2193C0047CA8F /* SyteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12826F2193C0047CA8F /* SyteManager.swift */; };
+		754AB13926F2193C0047CA8F /* SyteExampleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12C26F2193C0047CA8F /* SyteExampleTableViewCell.swift */; };
+		754AB13A26F2193C0047CA8F /* SyteExampleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 754AB12D26F2193C0047CA8F /* SyteExampleTableViewCell.xib */; };
+		754AB13B26F2193C0047CA8F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12F26F2193C0047CA8F /* RoundedButton.swift */; };
 		A7DBC8D112B277B74E57C95C /* Pods_Syte_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F888A5C2BFB67A89992C1 /* Pods_Syte_Example.framework */; };
 		E0FC5A9FFE75FAEB9F0BCB64 /* Pods_Syte_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D9CA0277ED8499B61096F5 /* Pods_Syte_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -45,7 +45,6 @@
 		370E4DB44CC264014BBA52FC /* Syte.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Syte.podspec; path = ../Syte.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		44D9CA0277ED8499B61096F5 /* Pods_Syte_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Syte_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* Syte_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Syte_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,18 +54,19 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7523474B26CFB9CB00543108 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		754AB10826EF771A0047CA8F /* UITableView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extensions.swift"; sourceTree = "<group>"; };
-		754AB10A26EF77480047CA8F /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
-		754AB10C26EF7DA10047CA8F /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
-		754AB10E26EF7DD40047CA8F /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
-		754AB11226EF7F0B0047CA8F /* MainStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStoryboard.swift; sourceTree = "<group>"; };
-		75799D7D26EB9BF1009A4EAB /* SyteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteManager.swift; sourceTree = "<group>"; };
-		75C4DA9426EF729D00CEC922 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		75C4DA9726EF741000CEC922 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
-		75C4DA9926EF742100CEC922 /* UrlSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlSearchViewController.swift; sourceTree = "<group>"; };
-		75C4DA9B26EF742B00CEC922 /* WildSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WildSearchViewController.swift; sourceTree = "<group>"; };
-		75C4DAA026EF75B800CEC922 /* SyteExampleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteExampleTableViewCell.swift; sourceTree = "<group>"; };
-		75C4DAA226EF75BD00CEC922 /* SyteExampleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyteExampleTableViewCell.xib; sourceTree = "<group>"; };
+		754AB11E26F2193C0047CA8F /* MainStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainStoryboard.swift; sourceTree = "<group>"; };
+		754AB12026F2193C0047CA8F /* WildSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WildSearchViewController.swift; sourceTree = "<group>"; };
+		754AB12126F2193C0047CA8F /* UrlSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSearchViewController.swift; sourceTree = "<group>"; };
+		754AB12226F2193C0047CA8F /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		754AB12426F2193C0047CA8F /* NSObject+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		754AB12526F2193C0047CA8F /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		754AB12626F2193C0047CA8F /* UITableView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView + Extensions.swift"; sourceTree = "<group>"; };
+		754AB12726F2193C0047CA8F /* UIView+Nib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
+		754AB12826F2193C0047CA8F /* SyteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyteManager.swift; sourceTree = "<group>"; };
+		754AB12C26F2193C0047CA8F /* SyteExampleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyteExampleTableViewCell.swift; sourceTree = "<group>"; };
+		754AB12D26F2193C0047CA8F /* SyteExampleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SyteExampleTableViewCell.xib; sourceTree = "<group>"; };
+		754AB12F26F2193C0047CA8F /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		754AB13C26F219AC0047CA8F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D17F746196644FB54D9059A /* Pods-Syte_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.debug.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A090D36AF9FA49AB8E2BA72E /* Pods-Syte_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.release.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B03E19EF11970A7255FDC794 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -131,25 +131,16 @@
 		607FACD21AFB9204008FA782 /* Example for Syte */ = {
 			isa = PBXGroup;
 			children = (
-				754AB11026EF7ED20047CA8F /* Classes */,
-				75799D7C26EB9AE8009A4EAB /* Core */,
+				754AB11C26F2193C0047CA8F /* Classes */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				754AB13C26F219AC0047CA8F /* Info.plist */,
 			);
 			name = "Example for Syte";
 			path = Syte;
-			sourceTree = "<group>";
-		};
-		607FACD31AFB9204008FA782 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				607FACD41AFB9204008FA782 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		607FACE81AFB9204008FA782 /* Tests */ = {
@@ -179,86 +170,79 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		754AB10726EF77020047CA8F /* Extensions */ = {
+		754AB11C26F2193C0047CA8F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				754AB10826EF771A0047CA8F /* UITableView + Extensions.swift */,
-				754AB10A26EF77480047CA8F /* UIView+Nib.swift */,
-				754AB10C26EF7DA10047CA8F /* UIStoryboard+Extension.swift */,
-				754AB10E26EF7DD40047CA8F /* NSObject+Extension.swift */,
+				754AB11D26F2193C0047CA8F /* Storyboards */,
+				754AB11F26F2193C0047CA8F /* View Controllers */,
+				754AB12326F2193C0047CA8F /* Extensions */,
+				754AB12926F2193C0047CA8F /* Views */,
+				754AB12826F2193C0047CA8F /* SyteManager.swift */,
 			);
-			name = Extensions;
+			path = Classes;
 			sourceTree = "<group>";
 		};
-		754AB11026EF7ED20047CA8F /* Classes */ = {
+		754AB11D26F2193C0047CA8F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				754AB11126EF7EE80047CA8F /* Storyboards */,
-				75C4DA9626EF73F800CEC922 /* View Controllers */,
-				75C4DA9226EF728000CEC922 /* Views */,
-				754AB10726EF77020047CA8F /* Extensions */,
+				754AB11E26F2193C0047CA8F /* MainStoryboard.swift */,
 			);
-			name = Classes;
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		754AB11126EF7EE80047CA8F /* Storyboards */ = {
+		754AB11F26F2193C0047CA8F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				754AB11226EF7F0B0047CA8F /* MainStoryboard.swift */,
+				754AB12026F2193C0047CA8F /* WildSearchViewController.swift */,
+				754AB12126F2193C0047CA8F /* UrlSearchViewController.swift */,
+				754AB12226F2193C0047CA8F /* ConfigurationViewController.swift */,
 			);
-			name = Storyboards;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		75799D7C26EB9AE8009A4EAB /* Core */ = {
+		754AB12326F2193C0047CA8F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				75799D7D26EB9BF1009A4EAB /* SyteManager.swift */,
+				754AB12426F2193C0047CA8F /* NSObject+Extension.swift */,
+				754AB12526F2193C0047CA8F /* UIStoryboard+Extension.swift */,
+				754AB12626F2193C0047CA8F /* UITableView + Extensions.swift */,
+				754AB12726F2193C0047CA8F /* UIView+Nib.swift */,
 			);
-			name = Core;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
-		75C4DA9226EF728000CEC922 /* Views */ = {
+		754AB12926F2193C0047CA8F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				75C4DA9E26EF75A100CEC922 /* Cells */,
-				75C4DA9326EF728600CEC922 /* RoundedButton */,
+				754AB12A26F2193C0047CA8F /* Cells */,
+				754AB12E26F2193C0047CA8F /* RoundedButton */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		75C4DA9326EF728600CEC922 /* RoundedButton */ = {
+		754AB12A26F2193C0047CA8F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				75C4DA9426EF729D00CEC922 /* RoundedButton.swift */,
+				754AB12B26F2193C0047CA8F /* SyteExampleTableViewCell */,
 			);
-			name = RoundedButton;
+			path = Cells;
 			sourceTree = "<group>";
 		};
-		75C4DA9626EF73F800CEC922 /* View Controllers */ = {
+		754AB12B26F2193C0047CA8F /* SyteExampleTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				75C4DA9726EF741000CEC922 /* ConfigurationViewController.swift */,
-				75C4DA9926EF742100CEC922 /* UrlSearchViewController.swift */,
-				75C4DA9B26EF742B00CEC922 /* WildSearchViewController.swift */,
+				754AB12C26F2193C0047CA8F /* SyteExampleTableViewCell.swift */,
+				754AB12D26F2193C0047CA8F /* SyteExampleTableViewCell.xib */,
 			);
-			name = "View Controllers";
+			path = SyteExampleTableViewCell;
 			sourceTree = "<group>";
 		};
-		75C4DA9E26EF75A100CEC922 /* Cells */ = {
+		754AB12E26F2193C0047CA8F /* RoundedButton */ = {
 			isa = PBXGroup;
 			children = (
-				75C4DA9F26EF75A800CEC922 /* SyteExampleTableViewCell */,
+				754AB12F26F2193C0047CA8F /* RoundedButton.swift */,
 			);
-			name = Cells;
-			sourceTree = "<group>";
-		};
-		75C4DA9F26EF75A800CEC922 /* SyteExampleTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				75C4DAA026EF75B800CEC922 /* SyteExampleTableViewCell.swift */,
-				75C4DAA226EF75BD00CEC922 /* SyteExampleTableViewCell.xib */,
-			);
-			name = SyteExampleTableViewCell;
+			path = RoundedButton;
 			sourceTree = "<group>";
 		};
 		B9C968AA4C57A3B6DEA7FAA8 /* Frameworks */ = {
@@ -361,8 +345,8 @@
 			files = (
 				7523474C26CFB9CB00543108 /* .swiftlint.yml in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				754AB13A26F2193C0047CA8F /* SyteExampleTableViewCell.xib in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				75C4DAA326EF75BD00CEC922 /* SyteExampleTableViewCell.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,19 +460,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754AB13026F2193C0047CA8F /* MainStoryboard.swift in Sources */,
+				754AB13226F2193C0047CA8F /* UrlSearchViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				754AB10D26EF7DA10047CA8F /* UIStoryboard+Extension.swift in Sources */,
+				754AB13126F2193C0047CA8F /* WildSearchViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				75799D7E26EB9BF1009A4EAB /* SyteManager.swift in Sources */,
-				75C4DA9C26EF742B00CEC922 /* WildSearchViewController.swift in Sources */,
-				754AB11326EF7F0B0047CA8F /* MainStoryboard.swift in Sources */,
-				75C4DA9826EF741000CEC922 /* ConfigurationViewController.swift in Sources */,
-				75C4DAA126EF75B800CEC922 /* SyteExampleTableViewCell.swift in Sources */,
-				75C4DA9A26EF742100CEC922 /* UrlSearchViewController.swift in Sources */,
-				75C4DA9526EF729D00CEC922 /* RoundedButton.swift in Sources */,
-				754AB10B26EF77480047CA8F /* UIView+Nib.swift in Sources */,
-				754AB10926EF771A0047CA8F /* UITableView + Extensions.swift in Sources */,
-				754AB10F26EF7DD50047CA8F /* NSObject+Extension.swift in Sources */,
+				754AB13926F2193C0047CA8F /* SyteExampleTableViewCell.swift in Sources */,
+				754AB13826F2193C0047CA8F /* SyteManager.swift in Sources */,
+				754AB13326F2193C0047CA8F /* ConfigurationViewController.swift in Sources */,
+				754AB13526F2193C0047CA8F /* UIStoryboard+Extension.swift in Sources */,
+				754AB13426F2193C0047CA8F /* NSObject+Extension.swift in Sources */,
+				754AB13726F2193C0047CA8F /* UIView+Nib.swift in Sources */,
+				754AB13626F2193C0047CA8F /* UITableView + Extensions.swift in Sources */,
+				754AB13B26F2193C0047CA8F /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
