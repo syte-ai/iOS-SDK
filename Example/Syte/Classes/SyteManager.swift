@@ -41,6 +41,11 @@ class SyteMaganer {
         syte.getBoundsWild(requestData: requestData, completion: completion)
     }
     
+    public func fire(event: BaseSyteEvent) {
+        guard let syte = syte else { return }
+        syte.fire(event: event)
+    }
+    
     public func setSetViewedItem(sku: String) throws {
         try syte?.addViewedItem(sku: sku)
     }

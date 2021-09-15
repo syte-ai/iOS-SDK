@@ -13,8 +13,9 @@ protocol ExifServiceProtocol: class {
     
 }
 
-public class ExifService: ExifServiceProtocol {
+class ExifService: ExifServiceProtocol {
     
+    // TODO: remmove "(plugins: [NetworkLoggerPlugin(verbose: true)])" on release
     private let service = MoyaProvider<ExifProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     func removeTags(accountId: String, signature: String, imagePayload: Data) -> Promise<SyteResult<UrlImageSearch>> {
@@ -33,5 +34,5 @@ public class ExifService: ExifServiceProtocol {
             return result
         }
     }
-
+    
 }

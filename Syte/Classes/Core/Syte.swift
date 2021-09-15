@@ -22,6 +22,7 @@ public final class Syte {
     private var configuration: SyteConfiguration?
     private let syteService = SyteService()
     private let exifService = ExifService()
+    private let eventsService = EventsService()
     private var sytePlatformSettings: SytePlatformSettings?
     private var state = SyteState.idle
     
@@ -56,9 +57,7 @@ public final class Syte {
                 }
             }.done { result in
                 syte.state = .initialized
-                //                if (mState == SyteState.INITIALIZED) {
-                //                                fireEvent(new EventInitialization());
-                //                            }
+                syte.fire(event: EventInitialization())
                 completion(.successResult(data: syte, code: result.resultCode))
                 
             }.catch { error in
@@ -136,6 +135,35 @@ public final class Syte {
     
     public func getSytePlatformSettings() -> SytePlatformSettings? {
         return state == .initialized ? sytePlatformSettings : nil
+    }
+    
+    public func fire(event: BaseSyteEvent) {
+        renewTimestamp()
+        do {
+            try verifyInitialized()
+            
+            guard let configuration = configuration else { return }
+            
+            firstly {
+                eventsService.fire(event: event,
+                                   accountId: configuration.accountId,
+                                   signature: configuration.signature,
+                                   sessionId: String(configuration.sessionId),
+                                   userId: configuration.userId)
+            }.done { response in
+                SyteLogger.d(tag: Syte.tag, message: "Fire event response code - \(response.resultCode)")
+            }.catch { error in
+                SyteLogger.e(tag: Syte.tag, message: "Error while firing event: \(error.localizedDescription)")
+            }
+        } catch let error {
+            SyteLogger.e(tag: Syte.tag, message: "Error while firing event: \(error.localizedDescription)")
+            
+        }
+        
+        if event is EventPageView {
+            let casted = event as? EventPageView
+            try? addViewedItem(sku: casted?.sku ?? "")
+        }
     }
     
     public func addViewedItem(sku: String) throws {

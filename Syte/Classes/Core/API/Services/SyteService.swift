@@ -22,8 +22,9 @@ protocol SyteServiceProtocol: class {
     
 }
 
-public class SyteService: SyteServiceProtocol {
+class SyteService: SyteServiceProtocol {
     
+    // TODO: remmove "(plugins: [NetworkLoggerPlugin(verbose: true)])" on release
     private let service = MoyaProvider<SyteProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
     
     func initialize(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>> {

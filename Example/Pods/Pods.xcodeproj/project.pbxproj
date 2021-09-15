@@ -145,6 +145,8 @@
 		754AB15D26F2246C0047CA8F /* EventSimilarItemsOfferClick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB15C26F2246C0047CA8F /* EventSimilarItemsOfferClick.swift */; };
 		754AB15F26F224A70047CA8F /* EventSimilarItemsShowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB15E26F224A70047CA8F /* EventSimilarItemsShowLayout.swift */; };
 		754AB16126F224C10047CA8F /* EventTextShowResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16026F224C10047CA8F /* EventTextShowResults.swift */; };
+		754AB16326F22C000047CA8F /* EventsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16226F22C000047CA8F /* EventsProvider.swift */; };
+		754AB16526F22DEF0047CA8F /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB16426F22DEF0047CA8F /* EventsService.swift */; };
 		773A2BAB056D4C4298199E54F9CEB587 /* V11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A80B0DA1049AD7C6C3C693FA6DB460F /* V11.swift */; };
 		78191F48A2998A81DFD47882797253EB /* Placement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0C4574BF917115CB0043220D559212 /* Placement.swift */; };
 		78C5EA5FA7443A15595C859E8B1D7FE3 /* NoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E974343E308D12DA44D645CEE2341830 /* NoError.swift */; };
@@ -544,6 +546,8 @@
 		754AB15C26F2246C0047CA8F /* EventSimilarItemsOfferClick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSimilarItemsOfferClick.swift; sourceTree = "<group>"; };
 		754AB15E26F224A70047CA8F /* EventSimilarItemsShowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSimilarItemsShowLayout.swift; sourceTree = "<group>"; };
 		754AB16026F224C10047CA8F /* EventTextShowResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTextShowResults.swift; sourceTree = "<group>"; };
+		754AB16226F22C000047CA8F /* EventsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsProvider.swift; sourceTree = "<group>"; };
+		754AB16426F22DEF0047CA8F /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 		75E6A39EE2AAAFB4273DE5879451EA76 /* Price.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		7745837951170E05D643CC51644115E0 /* Pods-Syte_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Syte_Tests.modulemap"; sourceTree = "<group>"; };
 		779C2E88B7E0DB96B32110D1603CA09C /* Syte-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Syte-dummy.m"; sourceTree = "<group>"; };
@@ -803,6 +807,7 @@
 			children = (
 				36F66BE77284FEA2DEADB649F4365FB7 /* ExifService.swift */,
 				5EE46B65CEDFAAC73AF40054C8524FE5 /* SyteService.swift */,
+				754AB16426F22DEF0047CA8F /* EventsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1321,6 +1326,7 @@
 				DB261408F5AD43046C9B502B2EA15B5C /* BaseProvider.swift */,
 				5671DDB0A0482306AD802BA05CC2FD55 /* ExifProvider.swift */,
 				35DB80D6B978B02CC4238EEA908F1A58 /* SyteProvider.swift */,
+				754AB16226F22C000047CA8F /* EventsProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -1985,6 +1991,7 @@
 				AAAE680126893FAD6A34CE803C3D121A /* IconHoverAnimation.swift in Sources */,
 				8FB598DB84D34E57B259172A4FF7A17F /* ImageProcessor.swift in Sources */,
 				A43F91D42E9BD2EC3549AE294180EF06 /* ImageSearch.swift in Sources */,
+				754AB16526F22DEF0047CA8F /* EventsService.swift in Sources */,
 				7D92F4AED0F24EBDC5C9FFAFC0F138B4 /* InputValidator.swift in Sources */,
 				F9F1F23EAD413FDB454C9CC4DB5BA2EC /* Item.swift in Sources */,
 				754AB14526F21C4A0047CA8F /* EventCameraButtonImpression.swift in Sources */,
@@ -2012,6 +2019,7 @@
 				754AB15F26F224A70047CA8F /* EventSimilarItemsShowLayout.swift in Sources */,
 				539C6F585D426AB47E8A6EA0EBF93916 /* RecommendationReturnField.swift in Sources */,
 				2400957167BC2D5EDCAFF108C68376D8 /* Recommendations.swift in Sources */,
+				754AB16326F22C000047CA8F /* EventsProvider.swift in Sources */,
 				B3E3F28EB1B6F8B38246E9E4E024D641 /* ReflectedStringConvertible + Extension.swift in Sources */,
 				4070619346EDA75063584E663E868B61 /* RelatedItems.swift in Sources */,
 				9A05D0F819B9094AE03CA417DE328C07 /* Relevance.swift in Sources */,
