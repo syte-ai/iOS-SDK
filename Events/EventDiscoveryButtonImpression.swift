@@ -9,7 +9,7 @@ import Foundation
 
 public class EventDiscoveryButtonImpression: BaseSyteEvent {
     
-    public init(imageSrc: String, placement: String, pageName: String) {
+    public init(pageName: String) {
         super.init(name: "fe_discovery_button_impression", syteUrlReferer: pageName, tag: .discoveryButton)
     }
     

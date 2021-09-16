@@ -63,6 +63,79 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
             strongSelf.tableView.reloadData()
         }
     }
+    
+    // swiftlint:disable function_body_length
+    private func fireEvents() {
+        let eventCheckoutStart = EventCheckoutStart(price: 2,
+                                                    currency: "UAH",
+                                                    productList: [Product(sku: "test", quantity: 2, price: 2)],
+                                                    pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventCheckoutStart)
+        
+        let eventBBClick = EventBBClick(imageUrl: "url",
+                                        category: "category",
+                                        gender: "gender",
+                                        catalog: Catalog.general.getName(),
+                                        pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventBBClick)
+        
+        let eventBBShowLayout = EventBBShowLayout(imageUrl: "url", numOfBBs: 2, pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventBBShowLayout)
+        
+        let eventBBShowResults = EventBBShowResults(imageUrl: "url", category: "category", resultsCount: 2, pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventBBShowResults)
+                                    
+        let eventCameraButtonClick = EventCameraButtonClick(placement: Placement.default.getName(), pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventCameraButtonClick)
+        
+        let eventCameraButtonImpression = EventCameraButtonImpression(pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventCameraButtonImpression)
+        
+        let eventCheckoutComplete = EventCheckoutComplete(id: "1",
+                                                          value: 2,
+                                                          currency: "USD",
+                                                          productList: [Product(sku: "test", quantity: 2, price: 2)],
+                                                          pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventCheckoutComplete)
+                                    
+        let eventDiscoveryButtonClick = EventDiscoveryButtonClick(imageSrc: "src", placement: Placement.default.getName(), pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventDiscoveryButtonClick)
+        
+        let eventDiscoveryButtonImpression = EventDiscoveryButtonImpression(pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventDiscoveryButtonImpression)
+                                    
+        let eventOfferClick = EventOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventOfferClick)
+        
+        let eventPageView = EventPageView(sku: "PZZ70556-105", pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventPageView)
+        
+        let eventProductsAddedToCart = EventProductsAddedToCart(productList: [Product(sku: "test", quantity: 2, price: 2)], pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventProductsAddedToCart)
+        
+        let eventShopTheLookOfferClick = EventShopTheLookOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventShopTheLookOfferClick)
+        
+        let eventShopTheLookShowLayout = EventShopTheLookShowLayout(resultsCount: 3, pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventShopTheLookShowLayout)
+                                    
+        let eventSimilarItemsOfferClick = EventSimilarItemsOfferClick(sku: "sku", position: 1, pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventSimilarItemsOfferClick)
+        
+        let eventSimilarItemsShowLayout = EventSimilarItemsShowLayout(resultsCount: 2, pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventSimilarItemsShowLayout)
+        
+        let eventTextShowResults = EventTextShowResults(query: "text",
+                                                        type: TextSearchEventType.popularSearch.getName(),
+                                                        exactCount: 10,
+                                                        pageName: "sdk-test")
+        SyteMaganer.shared.fire(event: eventTextShowResults)
+        
+        let baseEvent = BaseSyteEvent(name: "custom_event", syteUrlReferer: "sdk-test", tag: EventsTag.syte_ios_sdk)
+        SyteMaganer.shared.fire(event: baseEvent)
+    }
+    // swiftlint:enable function_body_length
+    
     // swiftlint:disable cyclomatic_complexity
     private func switchToScreen(type: SyteScreens) {
         guard SyteMaganer.shared.isInitialized else { return }
@@ -83,7 +156,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
         case .personalizations:
             break
         case .events:
-            break
+            fireEvents()
         case .autocomplete:
             break
         case .popupar:

@@ -19,7 +19,7 @@ public class EventBBShowResults: BaseSyteEvent {
         case resultsCount = "results_count"
     }
     
-    public init(imageUrl: String, category: String, resultsCount: Int, catalog: String, pageName: String) {
+    public init(imageUrl: String, category: String, resultsCount: Int, pageName: String) {
         self.imageUrl = imageUrl
         self.category = category
         self.resultsCount = resultsCount

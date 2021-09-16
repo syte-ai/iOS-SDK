@@ -18,7 +18,7 @@ public class EventTextShowResults: BaseSyteEvent {
         case exactCount = "exact_count"
     }
     
-    public init(query: String, type: String, exactCount: Int, catalog: String, pageName: String) {
+    public init(query: String, type: String, exactCount: Int, pageName: String) {
         self.query = query
         self.type = type
         self.exactCount = exactCount
