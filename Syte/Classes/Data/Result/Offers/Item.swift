@@ -9,21 +9,21 @@ import Foundation
 
 public class Item: Codable, ReflectedStringConvertible {
     
-    private(set) var floatPrice: Double?
-    private(set) var originalPrice: String?
-    private(set) var parentSku: String?
-    private(set) var merchant: String?
-    private(set) var description: String?
-    private(set) var offer: String?
-    private(set) var originalData: [String: JSONValue]?
-    private(set) var price: String?
-    private(set) var imageUrl: String?
-    private(set) var bbCategories: [String]?
-    private(set) var id: String?
-    private(set) var floatOriginalPrice: Double?
-    private(set) var categories: [String]?
-    private(set) var sku: String?
-    private(set) var brand: String?
+    private(set) public var floatPrice: Double?
+    private(set) public var originalPrice: String?
+    private(set) public var parentSku: String?
+    private(set) public var merchant: String?
+    private(set) public var description: String?
+    private(set) public var offer: String?
+    private(set) public var originalData: [String: JSONValue]?
+    private(set) public var price: String?
+    private(set) public var imageUrl: String?
+    private(set) public var bbCategories: [String]?
+    private(set) public var id: String?
+    private(set) public var floatOriginalPrice: Double?
+    private(set) public var categories: [String]?
+    private(set) public var sku: String?
+    private(set) public var brand: String?
     
     enum CodingKeys: String, CodingKey {
         case floatPrice, originalPrice, merchant, description, offer, price, imageUrl, bbCategories, id, floatOriginalPrice, categories, sku, brand

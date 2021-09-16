@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import Toast_Swift
 
 class ConfigurationViewController: UIViewController {
     
@@ -30,12 +31,14 @@ class ConfigurationViewController: UIViewController {
     @IBAction private func setLocaleButtonPressed(_ sender: Any) {
         guard let text = localeTextField.text else { return }
         SyteMaganer.shared.setLocale(text)
+        view.makeToast("Locale changed to \(text)")
     }
     
     @IBAction private func addSkuButtonPressed(_ sender: Any) {
         guard let text = skuTextField.text else { return }
         do {
             try SyteMaganer.shared.setSetViewedItem(sku: text)
+            view.makeToast("Sku added: \(text)")
             tableView.reloadData()
         } catch {
             SVProgressHUD.showError(withStatus: error.localizedDescription)

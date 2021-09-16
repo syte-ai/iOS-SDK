@@ -23,10 +23,12 @@ PODS:
     - PromiseKit
     - SwiftKeychainWrapper
     - SwiftLint
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - SVProgressHUD
   - Syte (from `../`)
+  - Toast-Swift
 
 SPEC REPOS:
   trunk:
@@ -37,6 +39,7 @@ SPEC REPOS:
     - SVProgressHUD
     - SwiftKeychainWrapper
     - SwiftLint
+    - Toast-Swift
 
 EXTERNAL SOURCES:
   Syte:
@@ -51,7 +54,8 @@ SPEC CHECKSUMS:
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
   Syte: 071386d5a799e465dd3a26528a47dccadce42625
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: d07f6b270bc6055a9da9fe79449f920578e8ebaa
+PODFILE CHECKSUM: a7a701fb0f8eeaf04dfd29063f38c17f5258fe62
 
 COCOAPODS: 1.10.2

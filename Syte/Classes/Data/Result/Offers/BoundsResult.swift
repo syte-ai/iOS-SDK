@@ -9,8 +9,8 @@ import Foundation
 
 public class BoundsResult: Codable, ReflectedStringConvertible {
     
-    private(set) var bounds: [Bound]?
-    var firstBoundItemsResult: ItemsResult?
+    private(set) public var bounds: [Bound]?
+    public var firstBoundItemsResult: ItemsResult?
     
     enum CodingKeys: String, CodingKey {
         case bounds

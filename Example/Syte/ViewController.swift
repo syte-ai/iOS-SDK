@@ -8,6 +8,7 @@
 
 import UIKit
 import Syte
+import Toast_Swift
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate {
     
@@ -133,6 +134,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
         
         let baseEvent = BaseSyteEvent(name: "custom_event", syteUrlReferer: "sdk-test", tag: EventsTag.syte_ios_sdk)
         SyteMaganer.shared.fire(event: baseEvent)
+        
+        view.makeToast("Events fired!")
     }
     // swiftlint:enable function_body_length
     

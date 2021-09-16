@@ -316,21 +316,22 @@
                                     <action selector="getBoundsButtonPressed:" destination="RA2-XQ-ifD" eventType="touchUpInside" id="UwF-FO-3Q1"/>
                                 </connections>
                             </button>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ei6-ds-ENU">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="szp-WC-z8t">
                                 <rect key="frame" x="20" y="20" width="335" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="separatorColor" systemColor="systemRedColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="RA2-XQ-ifD" id="eKt-dp-0sz"/>
+                                    <outlet property="delegate" destination="RA2-XQ-ifD" id="jSC-Do-6Da"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7lQ-py-8qw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ei6-ds-ENU" firstAttribute="top" secondItem="7lQ-py-8qw" secondAttribute="top" constant="20" id="2B5-JW-VP1"/>
                             <constraint firstItem="7lQ-py-8qw" firstAttribute="trailing" secondItem="2ga-s3-U9c" secondAttribute="trailing" constant="20" id="3WW-kQ-X4e"/>
                             <constraint firstItem="YWD-Hr-1Ze" firstAttribute="top" secondItem="z53-Wv-S4e" secondAttribute="bottom" constant="20" id="3d8-Mr-AdB"/>
-                            <constraint firstItem="7lQ-py-8qw" firstAttribute="trailing" secondItem="Ei6-ds-ENU" secondAttribute="trailing" constant="20" id="82f-g7-bLQ"/>
+                            <constraint firstItem="szp-WC-z8t" firstAttribute="top" secondItem="7lQ-py-8qw" secondAttribute="top" constant="20" id="9ex-4f-Hun"/>
                             <constraint firstItem="7zT-hb-USN" firstAttribute="top" secondItem="2ga-s3-U9c" secondAttribute="bottom" constant="10" id="9i5-Dq-ZxN"/>
                             <constraint firstItem="2ga-s3-U9c" firstAttribute="leading" secondItem="7lQ-py-8qw" secondAttribute="leading" constant="20" id="GUg-nC-388"/>
                             <constraint firstItem="7lQ-py-8qw" firstAttribute="trailing" secondItem="vZA-X3-GIc" secondAttribute="trailing" constant="20" id="KKQ-e8-yNd"/>
@@ -340,15 +341,16 @@
                             <constraint firstItem="YWD-Hr-1Ze" firstAttribute="leading" secondItem="z53-Wv-S4e" secondAttribute="leading" id="Uyh-r6-lf3"/>
                             <constraint firstItem="VY1-MP-pwp" firstAttribute="leading" secondItem="7lQ-py-8qw" secondAttribute="leading" constant="20" id="VEM-na-0qs"/>
                             <constraint firstItem="7lQ-py-8qw" firstAttribute="trailing" secondItem="YBo-6j-dCb" secondAttribute="trailing" constant="20" id="Wop-Dx-YaF"/>
+                            <constraint firstItem="7lQ-py-8qw" firstAttribute="bottom" secondItem="szp-WC-z8t" secondAttribute="bottom" constant="20" id="X0u-V0-fdC"/>
                             <constraint firstItem="z53-Wv-S4e" firstAttribute="top" secondItem="7lQ-py-8qw" secondAttribute="top" constant="20" id="aIf-c5-VDU"/>
                             <constraint firstItem="VY1-MP-pwp" firstAttribute="top" secondItem="7zT-hb-USN" secondAttribute="bottom" constant="20" id="e23-tO-Tbp"/>
                             <constraint firstItem="z53-Wv-S4e" firstAttribute="leading" secondItem="7lQ-py-8qw" secondAttribute="leading" constant="20" id="fQ8-cG-88U"/>
+                            <constraint firstItem="szp-WC-z8t" firstAttribute="leading" secondItem="7lQ-py-8qw" secondAttribute="leading" constant="20" id="gs8-dV-PSS"/>
                             <constraint firstItem="vZA-X3-GIc" firstAttribute="leading" secondItem="7lQ-py-8qw" secondAttribute="leading" constant="20" id="gxm-yg-Qgi"/>
                             <constraint firstItem="7lQ-py-8qw" firstAttribute="trailing" secondItem="VY1-MP-pwp" secondAttribute="trailing" constant="20" id="hO9-iM-8d0"/>
-                            <constraint firstItem="Ei6-ds-ENU" firstAttribute="leading" secondItem="7lQ-py-8qw" secondAttribute="leading" constant="20" id="iar-74-8cL"/>
-                            <constraint firstItem="7lQ-py-8qw" firstAttribute="bottom" secondItem="Ei6-ds-ENU" secondAttribute="bottom" constant="20" id="k1c-7K-h4u"/>
                             <constraint firstItem="2ga-s3-U9c" firstAttribute="top" secondItem="YBo-6j-dCb" secondAttribute="bottom" constant="20" id="mJh-N8-dPt"/>
                             <constraint firstItem="vZA-X3-GIc" firstAttribute="height" secondItem="z53-Wv-S4e" secondAttribute="height" id="man-SJ-xVk"/>
+                            <constraint firstItem="7lQ-py-8qw" firstAttribute="trailing" secondItem="szp-WC-z8t" secondAttribute="trailing" constant="20" id="oUg-pB-cbK"/>
                             <constraint firstItem="7lQ-py-8qw" firstAttribute="trailing" secondItem="z53-Wv-S4e" secondAttribute="trailing" constant="20" id="qwg-PV-Omu"/>
                             <constraint firstItem="7lQ-py-8qw" firstAttribute="trailing" secondItem="7zT-hb-USN" secondAttribute="trailing" constant="20" id="u7U-e3-bHP"/>
                             <constraint firstItem="YBo-6j-dCb" firstAttribute="leading" secondItem="7lQ-py-8qw" secondAttribute="leading" constant="20" id="xcv-qE-w80"/>
@@ -357,8 +359,8 @@
                     </view>
                     <connections>
                         <outlet property="fetchFirstBoundSegmentControll" destination="7zT-hb-USN" id="rla-dw-1OL"/>
-                        <outlet property="responseTextView" destination="Ei6-ds-ENU" id="DKB-dm-R7v"/>
                         <outlet property="skuTextField" destination="vZA-X3-GIc" id="ODS-SR-RyU"/>
+                        <outlet property="tableView" destination="szp-WC-z8t" id="b31-Ix-eD9"/>
                         <outlet property="urlTextField" destination="z53-Wv-S4e" id="kzo-cd-5Mr"/>
                         <outlet property="x1TextField" destination="qxf-BQ-jpi" id="QDb-38-ihD"/>
                         <outlet property="x2TextField" destination="TaQ-ih-4eN" id="SYV-hk-i24"/>
@@ -418,42 +420,44 @@
                                     <action selector="getBoundsButtonPressed:" destination="btg-NZ-efW" eventType="touchUpInside" id="DjY-Y8-EG2"/>
                                 </connections>
                             </button>
-                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2B-LL-o2o">
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H9Q-YF-kFi">
                                 <rect key="frame" x="20" y="20" width="335" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <color key="separatorColor" systemColor="systemRedColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="btg-NZ-efW" id="EUr-5G-Vsq"/>
+                                    <outlet property="delegate" destination="btg-NZ-efW" id="xvq-3B-vbh"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VQs-TH-xHG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="opO-oV-P22" firstAttribute="width" secondItem="Qgy-Lv-Fpg" secondAttribute="width" multiplier="0.5" id="0Gp-by-ufW"/>
-                            <constraint firstItem="VQs-TH-xHG" firstAttribute="trailing" secondItem="Y2B-LL-o2o" secondAttribute="trailing" constant="20" id="1lF-LI-ptU"/>
-                            <constraint firstItem="Y2B-LL-o2o" firstAttribute="leading" secondItem="VQs-TH-xHG" secondAttribute="leading" constant="20" id="5Fs-hA-awW"/>
+                            <constraint firstItem="VQs-TH-xHG" firstAttribute="bottom" secondItem="H9Q-YF-kFi" secondAttribute="bottom" constant="20" id="9rL-kc-ZUv"/>
                             <constraint firstItem="9Pz-K9-sOB" firstAttribute="top" secondItem="opO-oV-P22" secondAttribute="bottom" constant="20" id="BTE-o6-eZP"/>
                             <constraint firstItem="LVO-7A-jpe" firstAttribute="top" secondItem="ykM-nK-xVh" secondAttribute="bottom" constant="20" id="CUR-md-bGh"/>
                             <constraint firstItem="ykM-nK-xVh" firstAttribute="leading" secondItem="VQs-TH-xHG" secondAttribute="leading" constant="20" id="EQN-TF-DSZ"/>
                             <constraint firstItem="VQs-TH-xHG" firstAttribute="trailing" secondItem="9Pz-K9-sOB" secondAttribute="trailing" constant="20" id="Fdf-2t-JmF"/>
                             <constraint firstItem="opO-oV-P22" firstAttribute="leading" secondItem="VQs-TH-xHG" secondAttribute="leading" constant="20" id="Gq0-lp-mBg"/>
-                            <constraint firstItem="Y2B-LL-o2o" firstAttribute="top" secondItem="VQs-TH-xHG" secondAttribute="top" constant="20" id="HcD-so-d6A"/>
+                            <constraint firstItem="H9Q-YF-kFi" firstAttribute="leading" secondItem="VQs-TH-xHG" secondAttribute="leading" constant="20" id="JOE-cX-TBh"/>
                             <constraint firstItem="VQs-TH-xHG" firstAttribute="trailing" secondItem="Edh-5S-RGs" secondAttribute="trailing" constant="20" id="Mhc-km-L4L"/>
+                            <constraint firstItem="VQs-TH-xHG" firstAttribute="trailing" secondItem="H9Q-YF-kFi" secondAttribute="trailing" constant="20" id="MyD-CA-Xzl"/>
                             <constraint firstItem="Edh-5S-RGs" firstAttribute="leading" secondItem="opO-oV-P22" secondAttribute="trailing" constant="10" id="XT2-Ht-jWu"/>
                             <constraint firstItem="opO-oV-P22" firstAttribute="top" secondItem="VQs-TH-xHG" secondAttribute="top" constant="20" id="dV2-Gl-eHn"/>
                             <constraint firstItem="VQs-TH-xHG" firstAttribute="trailing" secondItem="ykM-nK-xVh" secondAttribute="trailing" constant="20" id="hhy-Wt-jKE"/>
                             <constraint firstItem="VQs-TH-xHG" firstAttribute="trailing" secondItem="LVO-7A-jpe" secondAttribute="trailing" constant="20" id="jXG-vP-Ia3"/>
                             <constraint firstItem="9Pz-K9-sOB" firstAttribute="leading" secondItem="VQs-TH-xHG" secondAttribute="leading" constant="20" id="kYf-kB-Rib"/>
                             <constraint firstItem="Edh-5S-RGs" firstAttribute="centerY" secondItem="opO-oV-P22" secondAttribute="centerY" id="kcE-5b-Qu7"/>
+                            <constraint firstItem="H9Q-YF-kFi" firstAttribute="top" secondItem="VQs-TH-xHG" secondAttribute="top" constant="20" id="p9q-GH-Z7F"/>
                             <constraint firstItem="LVO-7A-jpe" firstAttribute="leading" secondItem="VQs-TH-xHG" secondAttribute="leading" constant="20" id="qm1-zA-NEJ"/>
-                            <constraint firstItem="VQs-TH-xHG" firstAttribute="bottom" secondItem="Y2B-LL-o2o" secondAttribute="bottom" constant="20" id="quj-pu-fKF"/>
                             <constraint firstItem="ykM-nK-xVh" firstAttribute="top" secondItem="9Pz-K9-sOB" secondAttribute="bottom" constant="10" id="spx-wQ-JrN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="fetchOffersSegmentControll" destination="ykM-nK-xVh" id="XpJ-Xc-Laq"/>
                         <outlet property="imageView" destination="opO-oV-P22" id="dGX-hI-hSh"/>
-                        <outlet property="responseTextView" destination="Y2B-LL-o2o" id="krS-Z6-SA7"/>
+                        <outlet property="tableView" destination="H9Q-YF-kFi" id="fMx-1t-CmS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htx-6U-LxT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -467,6 +471,9 @@
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
