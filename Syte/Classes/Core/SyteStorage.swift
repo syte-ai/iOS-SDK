@@ -19,6 +19,10 @@ class SyteStorage {
     private let sessionIdTimestampKey = "syte_session_id_time_pref"
     private let viewedProductsKey = "syte_viewed_products_pref"
     
+    init() {
+        clearViewedProducts()
+    }
+    
     public func getSessionId() -> Int {
         var sessionId = -1
         sessionId = storage.integer(forKey: sessionIdPrefKey) ?? 1

@@ -64,11 +64,11 @@ class WildSearchViewController: UIViewController, UIImagePickerControllerDelegat
         let data = ImageSearch(image: image)
         data.retrieveOffersForTheFirstBound = fetchOffersSegmentControll.selectedSegmentIndex == 0
         SyteMaganer.shared.getBoundsWild(requestData: data) { [weak self] response in
+            SVProgressHUD.dismiss()
+            self?.view.makeToast(response?.isSuccessful == true ? "Success" : "Failure: \(response?.errorMessage ?? "No Errors")")
             guard let bounds = response?.data else { return }
             self?.boundsResult = bounds
             self?.tableView.isHidden = false
-            self?.view.makeToast(response?.isSuccessful == true ? "Success" : "Failure: \(response?.errorMessage ?? "No Errors")")
-            SVProgressHUD.dismiss()
         }
     }
     

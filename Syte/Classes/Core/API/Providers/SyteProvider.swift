@@ -8,12 +8,19 @@
 import Moya
 
 enum SyteProvider: BaseProvider {
+    
     case initialize(accountId: String)
-    case getBounds(accountId: String, signature: String, userId: String?, sessionId: String?, syteAppRef: String, locale: String, catalog: String?, sku: String?, imageUrl: String, sessionSkus: String?, options: [String: String])
-    case getOffers(offersUrl: String, crop: String?, forceCats: String?, catalog: String?)
-    case getSimilars
-    case getShopTheLook
-    case getPersonalization
+    
+    case getBounds(parameters: GetBoundsParameters)
+    
+    case getOffers(parameters: GetOffersParameters)
+    
+    case getSimilars(parameters: GetSimilarsParameters)
+    
+    case getShopTheLook(parameters: GetShopTheLookParameters)
+    
+    case getPersonalization(parameters: GetPersonalizationParameters)
+    
 }
 
 extension SyteProvider: TargetType, AccessTokenAuthorizable {
@@ -23,8 +30,8 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
             fatalError("Base URL could not be configured.")
         }
         switch self {
-        case .getOffers(let offersUrl, _, _, _):
-            return URL(string: offersUrl) ?? base
+        case .getOffers(let parameters):
+            return URL(string: parameters.offersUrl) ?? base
         default:
             return base
         }
@@ -45,7 +52,6 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
             return "/v1.1/similars"
         case .getPersonalization:
             return "/v1.1/personalization"
-            
         }
     }
     
@@ -60,26 +66,17 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
     
     var task: Task {
         switch self {
-        case .getBounds(let accountId, let signature, let userId, let sessionId, let syteAppRef,
-                        let locale, let catalog, let sku, let imageUrl, let sessionSkus, let options):
-            var parameters: [String: Any] = [
-                "account_id": accountId,
-                "sig": signature,
-                "syte_uuid": userId,
-                "session_id": sessionId,
-                "syte_app_ref": syteAppRef,
-                "locale": locale,
-                "catalog": catalog,
-                "sku": sku,
-                "imageUrl": imageUrl,
-                "session_skus": sessionSkus
-            ].compactMapValues({$0})
+        case .getBounds(let parameters):
+            return .requestParameters(parameters: parameters.dictionaryRepresentation(), encoding: URLEncoding.queryString)
+        case .getOffers(let parameters):
+            return .requestParameters(parameters: parameters.dictionaryRepresentation(), encoding: URLEncoding.queryString)
+        case .getSimilars(let parameters):
+            return .requestParameters(parameters: parameters.dictionaryRepresentation(), encoding: URLEncoding.queryString)
+        case .getShopTheLook(let parameters):
+            return .requestParameters(parameters: parameters.dictionaryRepresentation(), encoding: URLEncoding.queryString)
+        case .getPersonalization(let parameters):
+            return .requestCompositeData(bodyData: parameters.body, urlParameters: parameters.dictionaryRepresentation())
             
-            parameters.merge(options) { (current, _) in current }
-            return .requestParameters(parameters: parameters as [String: Any], encoding: URLEncoding.queryString)
-        case .getOffers(_, let crop, let forecast, let catalog):
-            let parameters = ["crop": crop, "force_cats": forecast, "catalog": catalog].compactMapValues({$0})
-            return .requestParameters(parameters: parameters as [String: Any], encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }
@@ -91,6 +88,8 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
     
     var headers: [String: String]? {
         switch self {
+        case .getPersonalization:
+            return ["Content-type": "text/plain"]
         default:
             return ["Content-type": "application/json"]
         }

@@ -17,6 +17,7 @@ public class ShopTheLook {
     public var limitPerBound = -1
     public var syteOriginalItem: String?
     public var fieldsToReturn: RecommendationReturnField = .all
+    public var options = [String: String]()
     
     public init(sku: String, imageUrl: String) {
         self.sku = sku

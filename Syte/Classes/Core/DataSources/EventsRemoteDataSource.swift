@@ -33,5 +33,4 @@ class EventsRemoteDataSource: BaseRemoteDataSource {
         }
     }
     
-    
 }

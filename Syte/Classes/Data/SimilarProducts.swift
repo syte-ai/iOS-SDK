@@ -9,12 +9,13 @@ import Foundation
 
 public class SimilarProducts {
     
-    private(set) var sku: String
-    private(set) var imageUrl: String
+    private(set) public var sku: String
+    private(set) public var imageUrl: String
     public var personalizedRanking = false
     public var syteUrlReferer = "mobile_sdk"
     public var limit: Int = 7
     public var fieldsToReturn: RecommendationReturnField = .all
+    public var options = [String: String]()
 
     public init(sku: String, imageUrl: String) {
         self.sku = sku

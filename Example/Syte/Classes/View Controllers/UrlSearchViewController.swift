@@ -60,11 +60,11 @@ class UrlSearchViewController: UIViewController {
         
         imageSearchRequestData.retrieveOffersForTheFirstBound = fetchFirstBoundSegmentControll.selectedSegmentIndex == 0
         SyteMaganer.shared.getBounds(requestData: imageSearchRequestData) { [weak self] result in
+            SVProgressHUD.dismiss()
+            self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
             guard let bounds = result?.data else { return }
             self?.boundsResult = bounds
             self?.tableView.isHidden = false
-            self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
-            SVProgressHUD.dismiss()
         }
     }
     

@@ -28,6 +28,9 @@
 		754AB13B26F2193C0047CA8F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12F26F2193C0047CA8F /* RoundedButton.swift */; };
 		754AB17226F371740047CA8F /* SyteBoundsResponceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB17126F371740047CA8F /* SyteBoundsResponceTableViewCell.swift */; };
 		754AB17426F371790047CA8F /* SyteBoundsResponceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 754AB17326F371790047CA8F /* SyteBoundsResponceTableViewCell.xib */; };
+		7553D80B26F8BE7400E89D04 /* PersonalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553D80A26F8BE7400E89D04 /* PersonalizationViewController.swift */; };
+		75AAB96626F4CEF30094D100 /* SimilarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB96526F4CEF30094D100 /* SimilarsViewController.swift */; };
+		75AAB96826F8AA250094D100 /* ShopTheLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB96726F8AA240094D100 /* ShopTheLookViewController.swift */; };
 		A7DBC8D112B277B74E57C95C /* Pods_Syte_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F888A5C2BFB67A89992C1 /* Pods_Syte_Example.framework */; };
 		E0FC5A9FFE75FAEB9F0BCB64 /* Pods_Syte_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D9CA0277ED8499B61096F5 /* Pods_Syte_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +74,9 @@
 		754AB13C26F219AC0047CA8F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		754AB17126F371740047CA8F /* SyteBoundsResponceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteBoundsResponceTableViewCell.swift; sourceTree = "<group>"; };
 		754AB17326F371790047CA8F /* SyteBoundsResponceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SyteBoundsResponceTableViewCell.xib; sourceTree = "<group>"; };
+		7553D80A26F8BE7400E89D04 /* PersonalizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationViewController.swift; sourceTree = "<group>"; };
+		75AAB96526F4CEF30094D100 /* SimilarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarsViewController.swift; sourceTree = "<group>"; };
+		75AAB96726F8AA240094D100 /* ShopTheLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTheLookViewController.swift; sourceTree = "<group>"; };
 		9D17F746196644FB54D9059A /* Pods-Syte_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.debug.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A090D36AF9FA49AB8E2BA72E /* Pods-Syte_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.release.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B03E19EF11970A7255FDC794 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -200,6 +206,9 @@
 				754AB12026F2193C0047CA8F /* WildSearchViewController.swift */,
 				754AB12126F2193C0047CA8F /* UrlSearchViewController.swift */,
 				754AB12226F2193C0047CA8F /* ConfigurationViewController.swift */,
+				75AAB96526F4CEF30094D100 /* SimilarsViewController.swift */,
+				75AAB96726F8AA240094D100 /* ShopTheLookViewController.swift */,
+				7553D80A26F8BE7400E89D04 /* PersonalizationViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -486,10 +495,13 @@
 				754AB13926F2193C0047CA8F /* SyteExampleTableViewCell.swift in Sources */,
 				754AB13826F2193C0047CA8F /* SyteManager.swift in Sources */,
 				754AB13326F2193C0047CA8F /* ConfigurationViewController.swift in Sources */,
+				75AAB96826F8AA250094D100 /* ShopTheLookViewController.swift in Sources */,
+				7553D80B26F8BE7400E89D04 /* PersonalizationViewController.swift in Sources */,
 				754AB13526F2193C0047CA8F /* UIStoryboard+Extension.swift in Sources */,
 				754AB13426F2193C0047CA8F /* NSObject+Extension.swift in Sources */,
 				754AB13726F2193C0047CA8F /* UIView+Nib.swift in Sources */,
 				754AB13626F2193C0047CA8F /* UITableView + Extensions.swift in Sources */,
+				75AAB96626F4CEF30094D100 /* SimilarsViewController.swift in Sources */,
 				754AB13B26F2193C0047CA8F /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

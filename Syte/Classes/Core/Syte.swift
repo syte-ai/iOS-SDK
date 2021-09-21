@@ -25,6 +25,7 @@ public final class Syte {
     private let eventsRemoteDataSource: EventsRemoteDataSource
     private var sytePlatformSettings: SytePlatformSettings?
     private var imageSearchClient: ImageSearchClient?
+    private var productRecommendationClient: ProductRecommendationClient?
     private var state = SyteState.idle
     
     // MARK: Public properties
@@ -72,6 +73,8 @@ public final class Syte {
                 strongSelf.sytePlatformSettings = settings
                 strongSelf.imageSearchClient = ImageSearchClient(syteRemoteDataSource: strongSelf.syteRemoteDataSource,
                                                                  sytePlatformSettings: settings)
+                strongSelf.productRecommendationClient = ProductRecommendationClient(syteRemoteDataSource: strongSelf.syteRemoteDataSource,
+                                                                                     sytePlatformSettings: settings)
                 strongSelf.state = .initialized
                 strongSelf.fire(event: EventInitialization())
             } else {
@@ -113,6 +116,39 @@ public final class Syte {
             try verifyInitialized()
             guard let client = imageSearchClient else { completion(.syteNotInilialized); return }
             client.getBounds(requestData: imageSearch, completion: completion)
+        } catch let error {
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
+            completion(.failureResult(message: error.localizedDescription))
+        }
+    }
+    
+    public func getSimilarProducts(similarProducts: SimilarProducts, completion: @escaping (SyteResult<SimilarProductsResult>) -> Void) {
+        do {
+            try verifyInitialized()
+            guard let client = productRecommendationClient else { completion(.syteNotInilialized); return }
+            client.getSimilarProducts(similarProducts: similarProducts, completion: completion)
+        } catch let error {
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
+            completion(.failureResult(message: error.localizedDescription))
+        }
+    }
+    
+    public func getShopTheLook(shopTheLook: ShopTheLook, completion: @escaping (SyteResult<ShopTheLookResult>) -> Void) {
+        do {
+            try verifyInitialized()
+            guard let client = productRecommendationClient else { completion(.syteNotInilialized); return }
+            client.getShopTheLook(shopTheLook: shopTheLook, completion: completion)
+        } catch let error {
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
+            completion(.failureResult(message: error.localizedDescription))
+        }
+    }
+    
+    public func getPersonalization(personalization: Personalization, completion: @escaping (SyteResult<PersonalizationResult>) -> Void) {
+        do {
+            try verifyInitialized()
+            guard let client = productRecommendationClient else { completion(.syteNotInilialized); return }
+            client.getPersonalization(personalization: personalization, completion: completion)
         } catch let error {
             SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
             completion(.failureResult(message: error.localizedDescription))

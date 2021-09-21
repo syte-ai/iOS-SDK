@@ -153,11 +153,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
             let vc = MainStoryboard.wildSearchViewController
             navigationController?.pushViewController(vc, animated: true)
         case .similars:
-            break
+            let vc = MainStoryboard.similarsViewController
+            navigationController?.pushViewController(vc, animated: true)
         case .shopTheLook:
-            break
+            let vc = MainStoryboard.shopTheLookViewController
+            navigationController?.pushViewController(vc, animated: true)
         case .personalizations:
-            break
+            let vc = MainStoryboard.personalizationViewController
+            navigationController?.pushViewController(vc, animated: true)
         case .events:
             fireEvents()
         case .autocomplete:

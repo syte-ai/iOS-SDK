@@ -41,6 +41,21 @@ class SyteMaganer {
         syte.getBounds(imageSearch: requestData, completion: completion)
     }
     
+    public func getSimilars(similarProducts: SimilarProducts, completion: @escaping (SyteResult<SimilarProductsResult>?) -> Void) {
+        guard let syte = syte else { return }
+        syte.getSimilarProducts(similarProducts: similarProducts, completion: completion)
+    }
+    
+    public func getShopTheLook(shopTheLook: ShopTheLook, completion: @escaping (SyteResult<ShopTheLookResult>?) -> Void) {
+        guard let syte = syte else { return }
+        syte.getShopTheLook(shopTheLook: shopTheLook, completion: completion)
+    }
+    
+    public func getPersonalization(personalization: Personalization, completion: @escaping (SyteResult<PersonalizationResult>?) -> Void) {
+        guard let syte = syte else { return }
+        syte.getPersonalization(personalization: personalization, completion: completion)
+    }
+    
     public func fire(event: BaseSyteEvent) {
         guard let syte = syte else { return }
         syte.fire(event: event)

@@ -28,4 +28,22 @@ class MainStoryboard: UIStoryboard {
         return controller
     }
     
+    static var similarsViewController: SimilarsViewController {
+        let controller: SimilarsViewController = instance.instantiate()
+        
+        return controller
+    }
+    
+    static var shopTheLookViewController: ShopTheLookViewController {
+        let controller: ShopTheLookViewController = instance.instantiate()
+        
+        return controller
+    }
+    
+    static var personalizationViewController: PersonalizationViewController {
+        let controller: PersonalizationViewController = instance.instantiate()
+        
+        return controller
+    }
+    
 }

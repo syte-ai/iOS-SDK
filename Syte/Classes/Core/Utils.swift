@@ -9,12 +9,12 @@ import Foundation
 
 class Utils {
     
-    public static func viewedProductsString(viewedProducts: Set<String>) -> String? {
+    static func viewedProductsString(viewedProducts: Set<String>) -> String? {
         guard viewedProducts.isEmpty == false else { return nil }
         return viewedProducts.joined(separator: ",")
     }
     
-    public static func getImageScale(settings: SytePlatformSettings?) -> ImageProcessor.Scale {
+    static func getImageScale(settings: SytePlatformSettings?) -> ImageProcessor.Scale {
         guard let settings = settings else { return .medium }
         let imageScale = settings.data?.products?.syteapp?.features?.cameraHandler?.photoReductionSize ?? ""
         var scale: ImageProcessor.Scale = .small
@@ -30,6 +30,26 @@ class Utils {
             scale = .medium
         }
         return scale
+    }
+    
+    static func viewedProductsJSONArray(viewedProducts: Set<String>) -> String? {
+        guard viewedProducts.isEmpty == false else { return nil }
+        var string = "["
+        for sku in viewedProducts {
+            string += "\""
+            string += sku
+            string += "\""
+            string += ","
+        }
+        string.removeLast()
+        string += "]"
+        return string
+    }
+    
+    static func viewedProductsJSONArray(sku: String?) -> String? {
+        guard let sku = sku else { return nil }
+        return "[\(sku)]"
+        
     }
     
 }
