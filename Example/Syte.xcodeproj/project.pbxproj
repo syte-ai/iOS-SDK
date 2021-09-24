@@ -14,6 +14,9 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7523474C26CFB9CB00543108 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7523474B26CFB9CB00543108 /* .swiftlint.yml */; };
+		75475E0C26FB400B0057E450 /* AutoCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75475E0B26FB400B0057E450 /* AutoCompleteViewController.swift */; };
+		75475E0E26FB6D110057E450 /* PopularSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75475E0D26FB6D110057E450 /* PopularSearchViewController.swift */; };
+		75475E7426FCD3940057E450 /* TextSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75475E7326FCD3940057E450 /* TextSearchViewController.swift */; };
 		754AB13026F2193C0047CA8F /* MainStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB11E26F2193C0047CA8F /* MainStoryboard.swift */; };
 		754AB13126F2193C0047CA8F /* WildSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12026F2193C0047CA8F /* WildSearchViewController.swift */; };
 		754AB13226F2193C0047CA8F /* UrlSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754AB12126F2193C0047CA8F /* UrlSearchViewController.swift */; };
@@ -59,6 +62,9 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7523474B26CFB9CB00543108 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		75475E0B26FB400B0057E450 /* AutoCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteViewController.swift; sourceTree = "<group>"; };
+		75475E0D26FB6D110057E450 /* PopularSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularSearchViewController.swift; sourceTree = "<group>"; };
+		75475E7326FCD3940057E450 /* TextSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSearchViewController.swift; sourceTree = "<group>"; };
 		754AB11E26F2193C0047CA8F /* MainStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainStoryboard.swift; sourceTree = "<group>"; };
 		754AB12026F2193C0047CA8F /* WildSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WildSearchViewController.swift; sourceTree = "<group>"; };
 		754AB12126F2193C0047CA8F /* UrlSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSearchViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +215,9 @@
 				75AAB96526F4CEF30094D100 /* SimilarsViewController.swift */,
 				75AAB96726F8AA240094D100 /* ShopTheLookViewController.swift */,
 				7553D80A26F8BE7400E89D04 /* PersonalizationViewController.swift */,
+				75475E0B26FB400B0057E450 /* AutoCompleteViewController.swift */,
+				75475E0D26FB6D110057E450 /* PopularSearchViewController.swift */,
+				75475E7326FCD3940057E450 /* TextSearchViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -492,12 +501,15 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				754AB13126F2193C0047CA8F /* WildSearchViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				75475E0E26FB6D110057E450 /* PopularSearchViewController.swift in Sources */,
 				754AB13926F2193C0047CA8F /* SyteExampleTableViewCell.swift in Sources */,
 				754AB13826F2193C0047CA8F /* SyteManager.swift in Sources */,
 				754AB13326F2193C0047CA8F /* ConfigurationViewController.swift in Sources */,
 				75AAB96826F8AA250094D100 /* ShopTheLookViewController.swift in Sources */,
+				75475E7426FCD3940057E450 /* TextSearchViewController.swift in Sources */,
 				7553D80B26F8BE7400E89D04 /* PersonalizationViewController.swift in Sources */,
 				754AB13526F2193C0047CA8F /* UIStoryboard+Extension.swift in Sources */,
+				75475E0C26FB400B0057E450 /* AutoCompleteViewController.swift in Sources */,
 				754AB13426F2193C0047CA8F /* NSObject+Extension.swift in Sources */,
 				754AB13726F2193C0047CA8F /* UIView+Nib.swift in Sources */,
 				754AB13626F2193C0047CA8F /* UITableView + Extensions.swift in Sources */,

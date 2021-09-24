@@ -28,8 +28,21 @@ class InputValidator {
         guard requestData.imageUrl.isEmpty == false else { throw SyteError.generalError(message: "Image URL can not be empty.") }
     }
     
+    public static func validateInput(requestData: TextSearch) throws {
+        guard requestData.query.isEmpty == false else { throw SyteError.generalError(message: "Query can not be empty.") }
+    }
+    
     public static func validateInput(string: String) throws {
         guard string.isEmpty == false else { throw SyteError.generalError(message: "Viewed product can not be empty.") }
+    }
+    
+    public static func validateInput(query: String, lang: String) throws {
+        guard query.isEmpty == false else { throw SyteError.generalError(message: "Query can not be empty.") }
+        guard lang.isEmpty == false else { throw SyteError.generalError(message: "Query can not be empty.") }
+    }
+    
+    public static func validateInput(lang: String) throws {
+        guard lang.isEmpty == false else { throw SyteError.generalError(message: "Query can not be empty.") }
     }
     
 }

@@ -18,6 +18,7 @@ class ConfigurationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Configuration"
         localeTextField.text = SyteMaganer.shared.getLocale()
         configureTableView()
     }
@@ -44,22 +45,43 @@ class ConfigurationViewController: UIViewController {
             SVProgressHUD.showError(withStatus: error.localizedDescription)
         }
     }
-
+    
 }
 
 // MARK: UITableViewDataSource
 
 extension ConfigurationViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SyteMaganer.shared.getViewedProducts().count
+        if section == 0 {
+            return SyteMaganer.shared.getViewedProducts().count
+        } else {
+            return SyteMaganer.shared.getSearchHistory().count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let values = SyteMaganer.shared.getViewedProducts().sorted()
-        cell.textLabel?.text = values[indexPath.row]
+        if indexPath.section == 0 {
+            let values = SyteMaganer.shared.getViewedProducts().sorted()
+            cell.textLabel?.text = values[indexPath.row]
+        } else {
+            let values = SyteMaganer.shared.getSearchHistory().sorted()
+            cell.textLabel?.text = values[indexPath.row]
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "SKU'S"
+        } else {
+            return "SEARCH HISTORY"
+        }
     }
     
 }

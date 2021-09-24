@@ -46,4 +46,22 @@ class MainStoryboard: UIStoryboard {
         return controller
     }
     
+    static var autoCompleteViewController: AutoCompleteViewController {
+        let controller: AutoCompleteViewController = instance.instantiate()
+        
+        return controller
+    }
+    
+    static var popularSearchViewController: PopularSearchViewController {
+        let controller: PopularSearchViewController = instance.instantiate()
+        
+        return controller
+    }
+    
+    static var textSearchViewController: TextSearchViewController {
+        let controller: TextSearchViewController = instance.instantiate()
+        
+        return controller
+    }
+    
 }

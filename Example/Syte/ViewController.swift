@@ -164,11 +164,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
         case .events:
             fireEvents()
         case .autocomplete:
-            break
+            let vc = MainStoryboard.autoCompleteViewController
+            navigationController?.pushViewController(vc, animated: true)
         case .popupar:
-            break
+            let vc = MainStoryboard.popularSearchViewController
+            navigationController?.pushViewController(vc, animated: true)
         case .textSearch:
-            break
+            let vc = MainStoryboard.textSearchViewController
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     // swiftlint:enableb cyclomatic_complexity

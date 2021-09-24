@@ -26,6 +26,7 @@ class PersonalizationViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        title = "Personalization"
         configureTableView()
     }
     

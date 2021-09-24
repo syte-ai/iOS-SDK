@@ -26,6 +26,7 @@ public final class Syte {
     private var sytePlatformSettings: SytePlatformSettings?
     private var imageSearchClient: ImageSearchClient?
     private var productRecommendationClient: ProductRecommendationClient?
+    private var textSearchClient: TextSearchClient?
     private var state = SyteState.idle
     
     // MARK: Public properties
@@ -75,6 +76,8 @@ public final class Syte {
                                                                  sytePlatformSettings: settings)
                 strongSelf.productRecommendationClient = ProductRecommendationClient(syteRemoteDataSource: strongSelf.syteRemoteDataSource,
                                                                                      sytePlatformSettings: settings)
+                strongSelf.textSearchClient = TextSearchClient(syteRemoteDataSource: strongSelf.syteRemoteDataSource,
+                                                               allowAutoCompletionQueue: strongSelf.configuration.allowAutoCompletionQueue)
                 strongSelf.state = .initialized
                 strongSelf.fire(event: EventInitialization())
             } else {
@@ -155,6 +158,39 @@ public final class Syte {
         }
     }
     
+    public func getAutoComplete(query: String, lang: String?, completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
+        do {
+            try verifyInitialized()
+            guard let client = textSearchClient else { completion(.syteNotInilialized); return }
+            client.getAutoComplete(query: query, lang: lang ?? configuration.locale, completion: completion)
+        } catch let error {
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
+            completion(.failureResult(message: error.localizedDescription))
+        }
+    }
+    
+    public func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
+        do {
+            try verifyInitialized()
+            guard let client = textSearchClient else { completion(.syteNotInilialized); return }
+            client.getPopularSearch(lang: lang, completion: completion)
+        } catch let error {
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
+            completion(.failureResult(message: error.localizedDescription))
+        }
+    }
+    
+    public func getTextSearch(textSearch: TextSearch, completion: @escaping (SyteResult<TextSearchResult>) -> Void) {
+        do {
+            try verifyInitialized()
+            guard let client = textSearchClient else { completion(.syteNotInilialized); return }
+            client.getTextSearch(textSearch: textSearch, completion: completion)
+        } catch let error {
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
+            completion(.failureResult(message: error.localizedDescription))
+        }
+    }
+    
     public func getConfiguration() -> SyteConfiguration? {
         return configuration
     }
@@ -190,6 +226,11 @@ public final class Syte {
     
     public func getViewedProducts() -> Set<String> {
         return configuration.getViewedProducts()
+    }
+    
+    public func getRecentTextSearches() -> [String] {
+        let terms = configuration.getStorage().getTextSearchTerms()
+        return terms.components(separatedBy: ",")
     }
     
     private func verifyInitialized() throws {

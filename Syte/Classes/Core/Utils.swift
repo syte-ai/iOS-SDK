@@ -52,4 +52,25 @@ class Utils {
         
     }
     
+    static func textSearchTermsString(terms: [String]) -> String? {
+        guard terms.isEmpty == false else { return nil }
+        return terms.joined(separator: ",")
+    }
+    
+    static func generateFiltersString(filters: TextSearchFilters) -> String? {
+        guard !filters.isEmpty else { return nil }
+        var string = "{"
+        for filter in filters {
+            string += "\"\(filter.key)\":["
+            for filterValue in filter.value {
+                string += "\"\(filterValue)\","
+            }
+            string.removeLast()
+            string += "]"
+        }
+        string.removeLast()
+        string += "}"
+        return string
+    }
+    
 }

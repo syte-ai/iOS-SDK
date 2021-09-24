@@ -33,6 +33,8 @@ class UrlSearchViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Url Search"
         configureTableView()
     }
     

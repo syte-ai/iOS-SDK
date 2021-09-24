@@ -21,6 +21,12 @@ enum SyteProvider: BaseProvider {
     
     case getPersonalization(parameters: GetPersonalizationParameters)
     
+    case getPopularSearch(parameters: GetPopularSearchParameters)
+    
+    case getTextSearch(parameters: GetTextSearchParameters)
+    
+    case getAutoComplete(parameters: GetAutoCompleteParameters)
+    
 }
 
 extension SyteProvider: TargetType, AccessTokenAuthorizable {
@@ -52,6 +58,12 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
             return "/v1.1/similars"
         case .getPersonalization:
             return "/v1.1/personalization"
+        case .getPopularSearch(let parameters):
+            return "/search/\(parameters.accountId)/popularSearches"
+        case .getTextSearch(let parameters):
+            return "/search/\(parameters.accountId)/items"
+        case .getAutoComplete(let parameters):
+            return "/search/\(parameters.accountId)/autocomplete"
         }
     }
     
@@ -76,7 +88,12 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
             return .requestParameters(parameters: parameters.dictionaryRepresentation(), encoding: URLEncoding.queryString)
         case .getPersonalization(let parameters):
             return .requestCompositeData(bodyData: parameters.body, urlParameters: parameters.dictionaryRepresentation())
-            
+        case .getPopularSearch(let parameters):
+            return .requestParameters(parameters: parameters.dictionaryRepresentation(), encoding: URLEncoding.queryString)
+        case .getTextSearch(let parameters):
+            return .requestParameters(parameters: parameters.dictionaryRepresentation(), encoding: URLEncoding.queryString)
+        case .getAutoComplete(let parameters):
+            return .requestParameters(parameters: parameters.dictionaryRepresentation(), encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }

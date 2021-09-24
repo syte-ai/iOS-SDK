@@ -20,6 +20,8 @@ protocol SyteServiceProtocol: class {
     
     func getShopTheLook(parameters: GetShopTheLookParameters) -> Promise<SyteResult<ShopTheLookResult>>
     
+    func getAutoComplete(parameters: GetAutoCompleteParameters) -> Promise<SyteResult<AutoCompleteResult>>
+    
 }
 
 class SyteService: SyteServiceProtocol {
@@ -64,6 +66,18 @@ class SyteService: SyteServiceProtocol {
     
     func getPersonalization(parameters: GetPersonalizationParameters) -> Promise<SyteResult<PersonalizationResult>> {
         return sendRequestWithDefaultHandling(request: .getPersonalization(parameters: parameters))
+    }
+    
+    func getAutoComplete(parameters: GetAutoCompleteParameters) -> Promise<SyteResult<AutoCompleteResult>> {
+        return sendRequestWithDefaultHandling(request: .getAutoComplete(parameters: parameters))
+    }
+    
+    func getPopularSearch(parameters: GetPopularSearchParameters) -> Promise<SyteResult<[String]>> {
+        return sendRequestWithDefaultHandling(request: .getPopularSearch(parameters: parameters))
+    }
+    
+    func getTextSearch(parameters: GetTextSearchParameters) -> Promise<SyteResult<TextSearchResult>> {
+        return sendRequestWithDefaultHandling(request: .getTextSearch(parameters: parameters))
     }
     
     private func sendRequestWithDefaultHandling<T: Codable>(request: SyteProvider) -> Promise<SyteResult<T>> {

@@ -28,6 +28,8 @@ class WildSearchViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Wild Search"
         configureTableView()
     }
     

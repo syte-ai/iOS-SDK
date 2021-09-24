@@ -23,6 +23,8 @@ public final class SyteConfiguration {
         return storage.getSessionId()
     }
     
+    public var allowAutoCompletionQueue = true
+    
     private var storage: SyteStorage
     
     /**

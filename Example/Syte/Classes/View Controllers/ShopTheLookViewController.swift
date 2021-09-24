@@ -30,6 +30,8 @@ class ShopTheLookViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Shop The Look"
         configureTableView()
     }
     

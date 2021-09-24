@@ -30,6 +30,8 @@ class SimilarsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Similars"
         configureTableView()
     }
     

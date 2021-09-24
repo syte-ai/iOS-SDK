@@ -15,9 +15,11 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     private let syteService = SyteService()
     private let exifService = ExifService()
     private let recommendationRemoteDataSource: RecommendationRemoteDataSource
+    private let textSearchRemoteDataSource: TextSearchRemoteDataSource
     
     override init(configuration: SyteConfiguration) {
         recommendationRemoteDataSource = RecommendationRemoteDataSource(configuration: configuration, syteService: syteService)
+        textSearchRemoteDataSource = TextSearchRemoteDataSource(configuration: configuration, syteService: syteService)
         super.init(configuration: configuration)
     }
     
@@ -97,6 +99,23 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
                             completion: @escaping (SyteResult<PersonalizationResult>) -> Void) {
         renewTimestamp()
         recommendationRemoteDataSource.getPersonalization(personalization: personalization, completion: completion)
+    }
+    
+    func getAutoComplete(query: String,
+                         lang: String,
+                         completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
+        renewTimestamp()
+        textSearchRemoteDataSource.getAutoComplete(query: query, lang: lang, completion: completion)
+    }
+    
+    func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
+        renewTimestamp()
+        textSearchRemoteDataSource.getPopularSearchAsync(lang: lang, completion: completion)
+    }
+    
+    func getTextSearch(textSearch: TextSearch, completion: @escaping (SyteResult<TextSearchResult>) -> Void) {
+        renewTimestamp()
+        textSearchRemoteDataSource.getTextSearch(textSearch: textSearch, completion: completion)
     }
     
     private func prepareImageSearchRequestData(requestData: ImageSearch, sytePlatformSettings: SytePlatformSettings) -> Promise<SyteResult<UrlImageSearch>> {
