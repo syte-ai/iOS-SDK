@@ -14,8 +14,6 @@ extension UIImage {
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = ByteCountFormatter.Units.useKB
         formatter.countStyle = ByteCountFormatter.CountStyle.file
-        let imageSize = formatter.string(fromByteCount: Int64(data.count))
-        print("ImageSize(KB): \(imageSize)")
         return Int(Int64(data.count) / 1024)
     }
     

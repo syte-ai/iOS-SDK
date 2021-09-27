@@ -15,8 +15,11 @@ protocol EventsServiceProtocol: class {
 
 class EventsService: EventsServiceProtocol {
     
-    // TODO: remmove "(plugins: [NetworkLoggerPlugin(verbose: true)])" on release
+#if DEBUG
     private let service = MoyaProvider<EventsProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
+#else
+    private let service = MoyaProvider<EventsProvider>
+#endif
     
     func fire(event: BaseSyteEvent, accountId: String, signature: String, sessionId: String, userId: String) -> Promise<SyteResult<Bool>> {
         let body = event.getRequestBodyString().data(using: .utf8) ?? Data()

@@ -16,9 +16,9 @@ class TextSearchClient {
     private let syteRemoteDataSource: SyteRemoteDataSource
     
     private var isAutoCompleteAvailable = true
-    private var nextQuery: (query: String?,
-                            lang: String?,
-                            completion: ((SyteResult<AutoCompleteResult>) -> Void)?) = (nil, nil, nil)
+    private var nextQuery: (query: String,
+                            lang: String,
+                            completion: ((SyteResult<AutoCompleteResult>) -> Void))?
     
     var allowAutoCompletionQueue = false
     
@@ -64,11 +64,9 @@ class TextSearchClient {
     
     private func checkAutoUpdateQueue() {
         isAutoCompleteAvailable = true
-        guard let query = nextQuery.query,
-              let lang = nextQuery.lang,
-              let completion = nextQuery.completion else { return }
-        getAutoComplete(query: query, lang: lang, completion: completion)
-        nextQuery = (nil, nil, nil)
+        guard let query = nextQuery else { return }
+        getAutoComplete(query: query.query, lang: query.lang, completion: query.completion)
+        nextQuery = nil
     }
     
 }

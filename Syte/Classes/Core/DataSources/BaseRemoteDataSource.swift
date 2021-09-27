@@ -13,7 +13,7 @@ class BaseRemoteDataSource {
     
     var configuration: SyteConfiguration
     
-    init(configuration:  SyteConfiguration) {
+    init(configuration: SyteConfiguration) {
         self.configuration = configuration
     }
 

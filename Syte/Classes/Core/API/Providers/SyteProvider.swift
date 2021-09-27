@@ -32,9 +32,7 @@ enum SyteProvider: BaseProvider {
 extension SyteProvider: TargetType, AccessTokenAuthorizable {
     
     var baseURL: URL {
-        guard let base = URL(string: "https://cdn.syteapi.com") else {
-            fatalError("Base URL could not be configured.")
-        }
+        let base = URL(string: "https://cdn.syteapi.com")!
         switch self {
         case .getOffers(let parameters):
             return URL(string: parameters.offersUrl) ?? base

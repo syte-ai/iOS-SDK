@@ -18,40 +18,33 @@ class ImageProcessor {
     
     static let scaleQuality: Int = 20
     static let smallImageMaxSize: Int = 300
-    static let smallImageMaxWidth: CGFloat = 500
-    static let smallImageMaxHeight: CGFloat = 1000
-    static let mediumImageMaxWidth: CGFloat = 1400
-    static let mediumImageMaxHeight: CGFloat = 1400
-    static let largeImageMaxWidth: CGFloat = 2000
-    static let largeImageMaxHeight: CGFloat = 2000
+    static let smallSize = CGSize(width: 500, height: 1000)
+    static let mediumSize = CGSize(width: 1400, height: 1400)
+    static let largeSize = CGSize(width: 2000, height: 2000)
     
     init() {}
     
     static func resize(image: UIImage, size: Int, scale: Scale) -> UIImage {
-        var height: CGFloat = 0
-        var width: CGFloat = 0
+        var sizeResult = CGSize()
         let resultScale: Scale = size > smallImageMaxSize ? scale : .small
         
         switch resultScale {
         case .small:
-            height = smallImageMaxHeight
-            width = smallImageMaxWidth
+            sizeResult = smallSize
         case .medium:
-            height = mediumImageMaxHeight
-            width = mediumImageMaxWidth
+            sizeResult = mediumSize
         case .large:
-            height = largeImageMaxHeight
-            width = largeImageMaxWidth
+            sizeResult = largeSize
         }
         
-        return resizeImage(image, to: CGSize(width: width, height: height))
+        return resizeImage(image, to: sizeResult)
     }
     
     static func compressToDataWithLoseQuality(image: UIImage, size: Int, scale: Scale) -> Promise<Data?> {
         Promise { seal in
             let compressed = resize(image: image, size: size, scale: scale)
             let compressedJpegData = UIImageJPEGRepresentation(compressed, 1)
-            guard compressed.getImageSizeInKbAsJpeg() > smallImageMaxSize else { seal.fulfill(compressedJpegData); return }
+            guard compressed.getImageSizeInKbAsJpeg() > smallImageMaxSize else { return seal.fulfill(compressedJpegData) }
             guard let currentImageSize = compressedJpegData?.count else { return seal.fulfill(nil) }
             
             let maxByte = smallImageMaxSize * 1000
@@ -127,13 +120,6 @@ class ImageProcessor {
         
         image.draw(in: CGRect(origin: CGPoint.zero, size: size))
         return UIGraphicsGetImageFromCurrentImageContext() ?? image
-    }
-    
-    static func getMeta(image: UIImage) {
-        guard let data = UIImageJPEGRepresentation(image, 1),
-              let source = CGImageSourceCreateWithData(data as CFData, nil) else { return}
-        let metadata = CGImageSourceCopyPropertiesAtIndex(source, 0, nil)
-        print("LOG: \n\(String(describing: metadata))")
     }
     
 }

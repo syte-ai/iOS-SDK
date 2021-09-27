@@ -39,5 +39,4 @@ class ImageSearchClient {
                                        completion: completion)
     }
     
-    
 }

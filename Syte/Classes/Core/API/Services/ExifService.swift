@@ -15,8 +15,11 @@ protocol ExifServiceProtocol: class {
 
 class ExifService: ExifServiceProtocol {
     
-    // TODO: remmove "(plugins: [NetworkLoggerPlugin(verbose: true)])" on release
+#if DEBUG
     private let service = MoyaProvider<ExifProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
+#else
+    private let service = MoyaProvider<ExifProvider>
+#endif
     
     func removeTags(accountId: String, signature: String, imagePayload: Data) -> Promise<SyteResult<UrlImageSearch>> {
         service.request(.removeTags(accountId: accountId, signature: signature, imagePayload: imagePayload)).map { response -> SyteResult<UrlImageSearch> in

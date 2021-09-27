@@ -21,10 +21,7 @@ enum EventsProvider: BaseProvider {
 extension EventsProvider: TargetType, AccessTokenAuthorizable {
     
     var baseURL: URL {
-        guard let base = URL(string: "https://syteapi.com") else {
-            fatalError("Base URL could not be configured.")
-        }
-        return base
+        return URL(string: "https://syteapi.com")!
     }
     
     var path: String {

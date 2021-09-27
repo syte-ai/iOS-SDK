@@ -26,8 +26,11 @@ protocol SyteServiceProtocol: class {
 
 class SyteService: SyteServiceProtocol {
     
-    // TODO: remmove "(plugins: [NetworkLoggerPlugin(verbose: true)])" on release
+#if DEBUG
     private let service = MoyaProvider<SyteProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
+#else
+    private let service = MoyaProvider<SyteProvider>
+#endif
     
     func initialize(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>> {
         return sendRequestWithDefaultHandling(request: .initialize(accountId: accoundId))
@@ -82,11 +85,11 @@ class SyteService: SyteServiceProtocol {
     
     private func sendRequestWithDefaultHandling<T: Codable>(request: SyteProvider) -> Promise<SyteResult<T>> {
         service.request(request).map { response -> SyteResult<T> in
-            return self.handleDefaultResponse(response: response)
+            return Self.mapDefaultResponse(response: response)
         }
     }
     
-    private func handleDefaultResponse<T: Codable>(response: Response) -> SyteResult<T> {
+    private static func mapDefaultResponse<T: Codable>(response: Response) -> SyteResult<T> {
         let result = SyteResult<T>()
         result.resultCode = response.statusCode
         do {

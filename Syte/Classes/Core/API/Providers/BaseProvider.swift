@@ -13,11 +13,7 @@ protocol BaseProvider {}
 extension BaseProvider {
     
     var baseURL: URL {
-        guard let url = URL(string: "https://cdn.syteapi.com") else {
-            fatalError("Base URL could not be configured.")
-        }
-        
-        return url
+        return URL(string: "https://cdn.syteapi.com")!
     }
     
     var path: String {

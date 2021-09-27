@@ -110,7 +110,7 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     
     func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
         renewTimestamp()
-        textSearchRemoteDataSource.getPopularSearchAsync(lang: lang, completion: completion)
+        textSearchRemoteDataSource.getPopularSearch(lang: lang, completion: completion)
     }
     
     func getTextSearch(textSearch: TextSearch, completion: @escaping (SyteResult<TextSearchResult>) -> Void) {

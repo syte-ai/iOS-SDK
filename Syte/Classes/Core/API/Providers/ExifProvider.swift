@@ -14,10 +14,7 @@ enum ExifProvider: BaseProvider {
 extension ExifProvider: TargetType, AccessTokenAuthorizable {
     
     var baseURL: URL {
-        guard let base = URL(string: "https://imagemod.syteapi.com/") else {
-            fatalError("Base URL could not be configured.")
-        }
-        return base
+        return URL(string: "https://imagemod.syteapi.com/")!
     }
     
     var path: String {

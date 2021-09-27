@@ -32,7 +32,7 @@ class TextSearchRemoteDataSource: BaseRemoteDataSource {
         }
     }
     
-    func getPopularSearchAsync(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
+    func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
         let configData = configuration.getStorage().getPopularSearch(lang: lang)
         if  !configData.isEmpty {
             completion(.successResult(data: [configData], code: 200))

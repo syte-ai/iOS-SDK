@@ -38,6 +38,16 @@ extension SyteResult where T == Bool {
 
 extension SyteResult {
     
+    func mapData<V>(_ closure: (SyteResult<T>) -> V?) -> SyteResult<V> {
+        let result = SyteResult<V>()
+        result.resultCode = resultCode
+        result.errorMessage = errorMessage
+        result.isSuccessful = isSuccessful
+        result.data = closure(self)
+        
+        return result
+    }
+    
     static var syteNotInilialized: SyteResult<T> {
         let syteResult = SyteResult<T>()
         syteResult.data = nil

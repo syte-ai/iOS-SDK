@@ -17,11 +17,10 @@ struct GetPopularSearchParameters {
         let parametersWithOptionals: [String: Any?] = [
             "account_id": accountId,
             "sig": signature,
-            "lang": lang,
+            "lang": lang
         ]
         let parameters: [String: Any] = parametersWithOptionals.compactMapValues({$0})
         return parameters
     }
     
 }
-
