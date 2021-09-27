@@ -31,8 +31,10 @@ In order to use this SDK, please contact Syte for your account ID and signature.
 To start using the Syte SDK, instantiate the SyteConfiguration object and pass your API credentials to its constructor. 
 Your credentials can be found in Syte’s Platform - Settings - API Keys.
 Then use the created instance to set the locale.
+```swift  
 let configuration = SyteConfiguration(accountId: <account_id>, signature: <api_signature>)
 configuration.locale = <locale>
+```
 
 Then you'll need to initialize Syte class passing the configuration instance and the callback:
 
