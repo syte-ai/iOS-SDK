@@ -72,9 +72,9 @@ For image search:
 
 For Url image search:
 
-    `syte.getBounds(requestData: <UrlImageSearch>) { [weak self] result in
+    syte.getBounds(requestData: <UrlImageSearch>) { [weak self] result in
         // Handle response, result type is SyteResult<BoundsResult> 
-    }`
+    }
     
 For image search:
 
@@ -83,7 +83,7 @@ For image search:
     }
 
 3. Retrieve Items for a bound:
-
+        
     syte.getItemsForBound(bound: <Bound>, cropCoordinates: <CropCoordinates>) { result in
         // Handle response, result type is SyteResult<ItemsResult> 
     }
