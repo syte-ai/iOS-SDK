@@ -84,7 +84,7 @@ For image search:
 
 3. Retrieve Items for a bound:
         
-    syte.getItemsForBound(bound: <Bound value>, cropCoordinates: <CropCoordinates>) { result in
+    syte.getItemsForBound(bound: Bound, cropCoordinates: CropCoordinates) { result in
         // Handle response, result type is SyteResult<ItemsResult> 
     }
    
