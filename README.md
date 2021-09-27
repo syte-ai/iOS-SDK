@@ -87,7 +87,7 @@ For image search:
     syte.getItemsForBound(bound: <Bound>, cropCoordinates: <CropCoordinates>) { result in
         // Handle response, result type is SyteResult<ItemsResult> 
     }
-
+    
 You can pass CropCoordinates instance instead of *nil* here to enable the crop functionality. Example:
 
     let coordinates = CropCoordinates(x1: 0.2, y1: 0.2, x2: 0.8, y2: 0.8) // The coordinates should be relative ranging from 0.0 to 1.0
