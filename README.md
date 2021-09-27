@@ -61,29 +61,35 @@ To use the image Search functionality do the following:
 1. Create dedicated class instance and pass the required data.
 
 For Url image search:
+
     let imageSearchRequestData = UrlImageSearch(imageUrl: <image url>, productType: <SyteProductType>)
     
 For image search:
+
     let imageSearchRequestData = ImageSearch(image: <UIImage>)
 
 2. Retrieve bounds:
 
 For Url image search:
+
     syte.getBounds(requestData: <UrlImageSearch>) { [weak self] result in
         // Handle response, result type is SyteResult<BoundsResult> 
     }
     
 For image search:
+
     syte.getBounds(requestData: <ImageSearch>) { [weak self] result in
         // Handle response, result type is SyteResult<BoundsResult> 
     }
 
 3. Retrieve Items for a bound:
+
     syte.getItemsForBound(bound: <Bound>, cropCoordinates: <CropCoordinates>) { result in
         // Handle response, result type is SyteResult<ItemsResult> 
     }
 
 You can pass CropCoordinates instance instead of *nil* here to enable the crop functionality. Example:
+
     let coordinates = CropCoordinates(x1: 0.2, y1: 0.2, x2: 0.8, y2: 0.8) // The coordinates should be relative ranging from 0.0 to 1.0
     syte.getItemsForBound(bound: <Bound>, cropCoordinates: coordinates) { result in
                     // Handle response, result type is SyteResult<ItemsResult> 
