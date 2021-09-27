@@ -84,9 +84,9 @@ For image search:
 
 3. Retrieve Items for a bound:
         
-    `syte.getItemsForBound(bound: <Bound>, cropCoordinates: <CropCoordinates>) { result in
+    syte.getItemsForBound(bound: <Bound>, cropCoordinates: <CropCoordinates>) { result in
         // Handle response, result type is SyteResult<ItemsResult> 
-    }`
+    }
    
         
 You can pass CropCoordinates instance instead of *nil* here to enable the crop functionality. Example:
