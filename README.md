@@ -83,10 +83,11 @@ For image search:
     }
 
 3. Retrieve Items for a bound:
-        
+    ```swift  
     syte.getItemsForBound(bound: Bound, cropCoordinates: CropCoordinates) { result in
+    // Handle response
     }
-   
+    ```
         
 You can pass CropCoordinates instance instead of *nil* here to enable the crop functionality. Example:
 
