@@ -6,6 +6,7 @@ target 'Syte_Example' do
   pod 'Syte', :path => '../'
   pod 'SVProgressHUD'
   pod 'Toast-Swift'
+  pod 'IQKeyboardManagerSwift'
 
   target 'Syte_Tests' do
     inherit! :search_paths
