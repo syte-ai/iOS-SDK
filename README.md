@@ -102,8 +102,19 @@ syte.getItemsForBound(bound: <Bound>, cropCoordinates: coordinates) { result in
 
 **NOTE**
 Items for the first bound will be retrieved by default.
-Use **urlImageSearch.retrieveOffersForTheFirstBound = false**  or **imageSearch.retrieveOffersForTheFirstBound = false** to disable this behaviour.
-To get the items for the first bound use the BoundsResult.firstBoundItemsResult variable.
+Use 
+```swift
+urlImageSearch.retrieveOffersForTheFirstBound = false
+```
+or
+```swift
+imageSearch.retrieveOffersForTheFirstBound = false
+```
+ to disable this behaviour.
+To get the items for the first bound use the 
+```swift 
+BoundsResult.firstBoundItemsResult``` 
+variable.
 
 # Product Recommendations
 To use the "Recommendations" functionality, do the following:
@@ -114,14 +125,29 @@ To use the "Recommendations" functionality, do the following:
 *   `getShopTheLook(shopTheLook: ShopTheLook, completion: @escaping (SyteResult<ShopTheLookResult>) -> Void)`
 *   `getPersonalization(personalization: Personalization, completion: @escaping (SyteResult<PersonalizationResult>) -> Void)`
 
-**NOTE:** You must add at least one product ID to use the "Personalization" functionality. To do this use the **Syte.addViewedItem(String)** method.
+**NOTE:** You must add at least one product ID to use the "Personalization" functionality. To do this use the 
+```swift
+Syte.addViewedItem(String)
+``` 
+method.
 
 # Personalized ranking
 
 Enabling the personalized ranking will attach the list of viewed products to the requests. 
-To add a product to the list of viewed ones use the **Syte.addViewedItem(String)** method.
-To enable this functionality use the **personalizedRanking = true** variable. 
-It is supported in the following classes: **UrlImageSearch, ImageSearch, ShopTheLook, SimilarProducts**.
+To add a product to the list of viewed ones use the
+```swift
+Syte.addViewedItem(String)
+```
+method.
+To enable this functionality use the 
+```swift
+personalizedRanking = true
+```
+variable. 
+It is supported in the following classes: 
+```swift
+UrlImageSearch, ImageSearch, ShopTheLook, SimilarProducts
+```
 Personalized ranking is disabled by default.
 
 # Data Collection
