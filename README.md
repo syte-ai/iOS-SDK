@@ -113,7 +113,8 @@ imageSearch.retrieveOffersForTheFirstBound = false
  to disable this behaviour.
 To get the items for the first bound use the 
 ```swift 
-BoundsResult.firstBoundItemsResult``` 
+BoundsResult.firstBoundItemsResult
+``` 
 variable.
 
 # Product Recommendations
