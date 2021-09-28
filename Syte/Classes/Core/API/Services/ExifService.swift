@@ -10,7 +10,6 @@ import PromiseKit
 
 protocol ExifServiceProtocol: class {
     func removeTags(accountId: String, signature: String, imagePayload: Data) -> Promise<SyteResult<UrlImageSearch>>
-    
 }
 
 class ExifService: ExifServiceProtocol {
@@ -18,7 +17,7 @@ class ExifService: ExifServiceProtocol {
 #if DEBUG
     private let service = MoyaProvider<ExifProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
 #else
-    private let service = MoyaProvider<ExifProvider>
+    private let service = MoyaProvider<ExifProvider>()
 #endif
     
     func removeTags(accountId: String, signature: String, imagePayload: Data) -> Promise<SyteResult<UrlImageSearch>> {

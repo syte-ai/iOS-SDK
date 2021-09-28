@@ -29,7 +29,7 @@ class SyteService: SyteServiceProtocol {
 #if DEBUG
     private let service = MoyaProvider<SyteProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
 #else
-    private let service = MoyaProvider<SyteProvider>
+    private let service = MoyaProvider<SyteProvider>()
 #endif
     
     func initialize(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>> {

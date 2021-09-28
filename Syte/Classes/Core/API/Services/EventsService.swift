@@ -10,7 +10,6 @@ import PromiseKit
 
 protocol EventsServiceProtocol: class {
     func fire(event: BaseSyteEvent, accountId: String, signature: String, sessionId: String, userId: String) -> Promise<SyteResult<Bool>>
-    
 }
 
 class EventsService: EventsServiceProtocol {
@@ -18,7 +17,7 @@ class EventsService: EventsServiceProtocol {
 #if DEBUG
     private let service = MoyaProvider<EventsProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
 #else
-    private let service = MoyaProvider<EventsProvider>
+    private let service = MoyaProvider<EventsProvider>()
 #endif
     
     func fire(event: BaseSyteEvent, accountId: String, signature: String, sessionId: String, userId: String) -> Promise<SyteResult<Bool>> {
@@ -31,19 +30,19 @@ class EventsService: EventsServiceProtocol {
                                           userId: userId,
                                           syteUrlReferer: event.syteUrlReferer,
                                           body: body)).map { response -> SyteResult<Bool> in
-                                            let result = SyteResult<Bool>()
-                                            result.resultCode = response.statusCode
-                                            do {
-                                                _ = try response.filterSuccessfulStatusCodes()
-                                                result.data = true
-                                                result.isSuccessful = true
-                                            } catch {
-                                                let stringResponse = try? response.mapString()
-                                                result.errorMessage = stringResponse ?? error.localizedDescription
-                                                result.data = false
-                                            }
-                                            return result
-                                          }
+            let result = SyteResult<Bool>()
+            result.resultCode = response.statusCode
+            do {
+                _ = try response.filterSuccessfulStatusCodes()
+                result.data = true
+                result.isSuccessful = true
+            } catch {
+                let stringResponse = try? response.mapString()
+                result.errorMessage = stringResponse ?? error.localizedDescription
+                result.data = false
+            }
+            return result
+        }
     }
     
 }
