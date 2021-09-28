@@ -35,8 +35,7 @@ class TextSearchRemoteDataSource: BaseRemoteDataSource {
     func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
         let configData = configuration.getStorage().getPopularSearch(lang: lang)
         if  !configData.isEmpty {
-            completion(.successResult(data: [configData], code: 200))
-            return
+            return completion(.successResult(data: configData.components(separatedBy: ","), code: 200))
         }
         firstly {
             syteService.getPopularSearch(parameters: .init(accountId: configuration.accountId,
