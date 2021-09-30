@@ -81,7 +81,7 @@ class SyteMaganer {
         return syte?.getRecentTextSearches() ?? []
     }
     
-    public func setSetViewedItem(sku: String) throws {
+    public func addViewedItem(sku: String) throws {
         try syte?.addViewedItem(sku: sku)
     }
     

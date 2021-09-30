@@ -12,7 +12,7 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BaseTests.swift */; };
 		7523474C26CFB9CB00543108 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7523474B26CFB9CB00543108 /* .swiftlint.yml */; };
 		75475E0C26FB400B0057E450 /* AutoCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75475E0B26FB400B0057E450 /* AutoCompleteViewController.swift */; };
 		75475E0E26FB6D110057E450 /* PopularSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75475E0D26FB6D110057E450 /* PopularSearchViewController.swift */; };
@@ -34,6 +34,8 @@
 		7553D80B26F8BE7400E89D04 /* PersonalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553D80A26F8BE7400E89D04 /* PersonalizationViewController.swift */; };
 		75AAB96626F4CEF30094D100 /* SimilarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB96526F4CEF30094D100 /* SimilarsViewController.swift */; };
 		75AAB96826F8AA250094D100 /* ShopTheLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB96726F8AA240094D100 /* ShopTheLookViewController.swift */; };
+		75CE617627034FB500B38D75 /* SyteConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE617527034FB500B38D75 /* SyteConfigurationTests.swift */; };
+		75CE61782704671E00B38D75 /* SyteStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE61772704671E00B38D75 /* SyteStorageTests.swift */; };
 		A7DBC8D112B277B74E57C95C /* Pods_Syte_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F888A5C2BFB67A89992C1 /* Pods_Syte_Example.framework */; };
 		E0FC5A9FFE75FAEB9F0BCB64 /* Pods_Syte_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D9CA0277ED8499B61096F5 /* Pods_Syte_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -60,7 +62,7 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* Syte_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Syte_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* BaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		7523474B26CFB9CB00543108 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		75475E0B26FB400B0057E450 /* AutoCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteViewController.swift; sourceTree = "<group>"; };
 		75475E0D26FB6D110057E450 /* PopularSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularSearchViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,8 @@
 		7553D80A26F8BE7400E89D04 /* PersonalizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizationViewController.swift; sourceTree = "<group>"; };
 		75AAB96526F4CEF30094D100 /* SimilarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarsViewController.swift; sourceTree = "<group>"; };
 		75AAB96726F8AA240094D100 /* ShopTheLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTheLookViewController.swift; sourceTree = "<group>"; };
+		75CE617527034FB500B38D75 /* SyteConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteConfigurationTests.swift; sourceTree = "<group>"; };
+		75CE61772704671E00B38D75 /* SyteStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteStorageTests.swift; sourceTree = "<group>"; };
 		9D17F746196644FB54D9059A /* Pods-Syte_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.debug.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A090D36AF9FA49AB8E2BA72E /* Pods-Syte_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.release.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B03E19EF11970A7255FDC794 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -162,7 +166,9 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* BaseTests.swift */,
+				75CE617527034FB500B38D75 /* SyteConfigurationTests.swift */,
+				75CE61772704671E00B38D75 /* SyteStorageTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -524,7 +530,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* BaseTests.swift in Sources */,
+				75CE617627034FB500B38D75 /* SyteConfigurationTests.swift in Sources */,
+				75CE61782704671E00B38D75 /* SyteStorageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -52,8 +52,7 @@ class Utils {
         
     }
     
-    static func textSearchTermsString(terms: [String]) -> String? {
-        guard terms.isEmpty == false else { return nil }
+    static func textSearchTermsString(terms: [String]) -> String {
         return terms.joined(separator: ",")
     }
     

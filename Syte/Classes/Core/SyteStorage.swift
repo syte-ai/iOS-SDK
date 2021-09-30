@@ -37,6 +37,7 @@ class SyteStorage {
         storage.set(sessionId, forKey: sessionIdPrefKey)
         renewSessionIdTimestamp()
         clearViewedProducts()
+        clearPopularSearch()
         
         return sessionId
     }
@@ -80,7 +81,7 @@ class SyteStorage {
         let joined = data.joined(separator: ",")
         storage.set(joined, forKey: popularSearchKey + lang)
         let popularSearchLang = storage.string(forKey: popularSearchLangKey) ?? ""
-        storage.set(popularSearchLangKey, forKey: popularSearchLang.isEmpty ? lang : popularSearchLang + "," + lang)
+        storage.set(popularSearchLang.isEmpty ? lang : popularSearchLang + "," + lang, forKey: popularSearchLangKey)
     }
     
     func getPopularSearch(lang: String) -> String {
@@ -89,25 +90,23 @@ class SyteStorage {
     
     func clearPopularSearch() {
         let langs = storage.string(forKey: popularSearchLangKey) ?? ""
-        if !langs.isEmpty {
-            for lang in langs.components(separatedBy: ",") {
-                storage.set("", forKey: popularSearchKey + lang)
-            }
-            storage.set("", forKey: popularSearchLangKey)
+        guard !langs.isEmpty else { return }
+        for lang in langs.components(separatedBy: ",") {
+            storage.set("", forKey: popularSearchKey + lang)
         }
+        storage.set("", forKey: popularSearchLangKey)
     }
     
     func addTextSearchTerm(term: String) {
         var textSearchTerms = storage.string(forKey: textSearchTermKey) ?? ""
-        if !textSearchTerms.isEmpty {
-            if textSearchTerms.components(separatedBy: ",").count >= textSearchTermCount {
-                var termsList = textSearchTerms.components(separatedBy: ",")
-                termsList.removeLast()
-                let resultString = Utils.textSearchTermsString(terms: termsList)
-                textSearchTerms = resultString ?? ""
-            }
-        }
-        storage.set(textSearchTerms.isEmpty ? term : term + "," + textSearchTerms, forKey: textSearchTermKey)
+        defer { storage.set(textSearchTerms.isEmpty ? term : term + "," + textSearchTerms, forKey: textSearchTermKey) }
+        guard !textSearchTerms.isEmpty else { return }
+        
+        var termsList = textSearchTerms.components(separatedBy: ",")
+        guard termsList.count >= textSearchTermCount else { return }
+        
+        termsList.removeLast()
+        textSearchTerms = Utils.textSearchTermsString(terms: termsList)
     }
     
     func getTextSearchTerms() -> String {
