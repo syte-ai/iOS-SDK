@@ -54,6 +54,21 @@ API used: https://cdn.syteapi.com/accounts/[account_id]
 
 To retrieve the instance of SytePlatformSettings use the syte.getSytePlatformSettings() method.
 
+For get recent searches:
+```swift
+syte.getRecentTextSearches()
+```
+
+For set viewed item:
+```swift
+syte.addViewedItem(sku: <String>)
+```
+
+Get all viewed items:
+```swift
+syte.getViewedProducts()
+```
+
 ## Image Search
 
 Object detection ("bounds") and a similarity search ("Items") per object detected in the image. 
