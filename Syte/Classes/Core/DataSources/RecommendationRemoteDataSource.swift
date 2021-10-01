@@ -73,7 +73,9 @@ class RecommendationRemoteDataSource: BaseRemoteDataSource {
                                                          imageUrl: shopTheLook.imageUrl,
                                                          options: shopTheLook.options))
         }.done { result in
-            completion(result)
+            let shopTheLookResult = result
+            shopTheLookResult.data?.sytePlatformSettings = sytePlatformSettings
+            completion(shopTheLookResult)
         }.catch { error in
             completion(.failureResult(message: error.localizedDescription))
         }

@@ -54,13 +54,13 @@ class SimilarsViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func getSimilarsButtonPressed(_ sender: Any) {
-        guard SyteMaganer.shared.isInitialized else { return }
+        guard SyteManager.shared.isInitialized else { return }
         guard let sku = skuTextField.text else { return }
         guard let imageUrl = urlTextField.text else { return }
         SVProgressHUD.show()
         
         let similarProducts = SimilarProducts(sku: sku, imageUrl: imageUrl)
-        similarProducts.personalizedRanking = !SyteMaganer.shared.getViewedProducts().isEmpty
+        similarProducts.personalizedRanking = !SyteManager.shared.getViewedProducts().isEmpty
         
         guard validateInputs() else {
             view.makeToast("Wrong input")
@@ -76,7 +76,7 @@ class SimilarsViewController: UIViewController {
             similarProducts.syteUrlReferer = referer
         }
         
-        SyteMaganer.shared.getSimilars(similarProducts: similarProducts) { [weak self] result in
+        SyteManager.shared.getSimilars(similarProducts: similarProducts) { [weak self] result in
             SVProgressHUD.dismiss()
             self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
             guard let items = result?.data else { return }

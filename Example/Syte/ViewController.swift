@@ -59,7 +59,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     }
     
     private func initSyte() {
-        SyteMaganer.shared.initialize { [weak self] in
+        SyteManager.shared.initialize { [weak self] in
             guard let strongSelf = self else { return }
             strongSelf.tableView.reloadData()
         }
@@ -71,69 +71,69 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
                                                     currency: "UAH",
                                                     productList: [Product(sku: "test", quantity: 2, price: 2)],
                                                     pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventCheckoutStart)
+        SyteManager.shared.fire(event: eventCheckoutStart)
         
         let eventBBClick = EventBBClick(imageUrl: "url",
                                         category: "category",
                                         gender: "gender",
                                         catalog: Catalog.general.getName(),
                                         pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventBBClick)
+        SyteManager.shared.fire(event: eventBBClick)
         
         let eventBBShowLayout = EventBBShowLayout(imageUrl: "url", numOfBBs: 2, pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventBBShowLayout)
+        SyteManager.shared.fire(event: eventBBShowLayout)
         
         let eventBBShowResults = EventBBShowResults(imageUrl: "url", category: "category", resultsCount: 2, pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventBBShowResults)
+        SyteManager.shared.fire(event: eventBBShowResults)
                                     
         let eventCameraButtonClick = EventCameraButtonClick(placement: Placement.default.getName(), pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventCameraButtonClick)
+        SyteManager.shared.fire(event: eventCameraButtonClick)
         
         let eventCameraButtonImpression = EventCameraButtonImpression(pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventCameraButtonImpression)
+        SyteManager.shared.fire(event: eventCameraButtonImpression)
         
         let eventCheckoutComplete = EventCheckoutComplete(id: "1",
                                                           value: 2,
                                                           currency: "USD",
                                                           productList: [Product(sku: "test", quantity: 2, price: 2)],
                                                           pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventCheckoutComplete)
+        SyteManager.shared.fire(event: eventCheckoutComplete)
                                     
         let eventDiscoveryButtonClick = EventDiscoveryButtonClick(imageSrc: "src", placement: Placement.default.getName(), pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventDiscoveryButtonClick)
+        SyteManager.shared.fire(event: eventDiscoveryButtonClick)
         
         let eventDiscoveryButtonImpression = EventDiscoveryButtonImpression(pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventDiscoveryButtonImpression)
+        SyteManager.shared.fire(event: eventDiscoveryButtonImpression)
                                     
         let eventOfferClick = EventOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventOfferClick)
+        SyteManager.shared.fire(event: eventOfferClick)
         
         let eventPageView = EventPageView(sku: "PZZ70556-105", pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventPageView)
+        SyteManager.shared.fire(event: eventPageView)
         
         let eventProductsAddedToCart = EventProductsAddedToCart(productList: [Product(sku: "test", quantity: 2, price: 2)], pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventProductsAddedToCart)
+        SyteManager.shared.fire(event: eventProductsAddedToCart)
         
         let eventShopTheLookOfferClick = EventShopTheLookOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventShopTheLookOfferClick)
+        SyteManager.shared.fire(event: eventShopTheLookOfferClick)
         
         let eventShopTheLookShowLayout = EventShopTheLookShowLayout(resultsCount: 3, pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventShopTheLookShowLayout)
+        SyteManager.shared.fire(event: eventShopTheLookShowLayout)
                                     
         let eventSimilarItemsOfferClick = EventSimilarItemsOfferClick(sku: "sku", position: 1, pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventSimilarItemsOfferClick)
+        SyteManager.shared.fire(event: eventSimilarItemsOfferClick)
         
         let eventSimilarItemsShowLayout = EventSimilarItemsShowLayout(resultsCount: 2, pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventSimilarItemsShowLayout)
+        SyteManager.shared.fire(event: eventSimilarItemsShowLayout)
         
         let eventTextShowResults = EventTextShowResults(query: "text",
                                                         type: TextSearchEventType.popularSearch.getName(),
                                                         exactCount: 10,
                                                         pageName: "sdk-test")
-        SyteMaganer.shared.fire(event: eventTextShowResults)
+        SyteManager.shared.fire(event: eventTextShowResults)
         
         let baseEvent = BaseSyteEvent(name: "custom_event", syteUrlReferer: "sdk-test", tag: EventsTag.syte_ios_sdk)
-        SyteMaganer.shared.fire(event: baseEvent)
+        SyteManager.shared.fire(event: baseEvent)
         
         view.makeToast("Events fired!")
     }
@@ -141,7 +141,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     
     // swiftlint:disable cyclomatic_complexity
     private func switchToScreen(type: SyteScreens) {
-        guard SyteMaganer.shared.isInitialized else { return }
+        guard SyteManager.shared.isInitialized else { return }
         switch type {
         case .configuration:
             let vc = MainStoryboard.configurationViewController

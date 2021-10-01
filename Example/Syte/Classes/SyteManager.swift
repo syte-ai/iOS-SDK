@@ -9,12 +9,12 @@
 import Foundation
 import Syte
 
-class SyteMaganer {
+class SyteManager {
     
-    static let shared = SyteMaganer()
+    static let shared = SyteManager()
     
     var isInitialized: Bool {
-        return SyteMaganer.shared.syte != nil
+        return SyteManager.shared.syte != nil
     }
     
     private var syte: Syte?
@@ -25,8 +25,8 @@ class SyteMaganer {
         let configuration = SyteConfiguration(accountId: "9165", signature: "601c206d0a7f780efb9360f3")
         Syte.initialize(configuration: configuration) { [weak self] result in
             guard let strongSelf = self else { return }
-            guard let data = result.data else { return }
-            strongSelf.syte = data
+            guard let syteInstance = result.data else { return }
+            strongSelf.syte = syteInstance
             completion()
         }
     }

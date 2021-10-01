@@ -68,14 +68,14 @@ public final class Syte {
     }
     
     /**
-     Retrieves items.
+     Retrieves items: Get similar items per bounding box detected in the image.
      
      - parameters:
-        - bound: The list of Bounds can be retrieved from the result of getBounds call.
-        - cropCoordinates: Pass to enable crop. Pass null to disregard crop.
+        - bound: The list of detected Bounds can be retrieved from the result of getBounds call.
+        - cropCoordinates: Pass crop coordinates to enable image cropping. Pass nil to disregard crop.
         - completion: `SyteResult<ItemsResult>`.
      */
-    public func getItemsForBound(bound: Bound, cropCoordinates: CropCoordinates, completion: @escaping (SyteResult<ItemsResult>) -> Void) {
+    public func getItemsForBound(bound: Bound, cropCoordinates: CropCoordinates?, completion: @escaping (SyteResult<ItemsResult>) -> Void) {
         do {
             try verifyInitialized()
             guard let client = imageSearchClient else { return completion(.syteNotInilialized) }
@@ -87,7 +87,7 @@ public final class Syte {
     }
     
     /**
-     Retrieves bounds
+     Retrieves bounds: Returns a list of all objects (bounds) detected in the image. Each bound includes the category name it belongs to and the coordinates (x,y) of the object.
      
      - parameters:
         - imageSearch: `ImageSearch`
@@ -105,7 +105,7 @@ public final class Syte {
     }
     
     /**
-     Retrieves bounds
+     Retrieves bounds: Returns a list of all objects (bounds) detected in the image. Each bound includes the category name it belongs to and the coordinates (x,y) of the object.
      
      - parameters:
         - imageSearch: `UrlImageSearch`
@@ -123,7 +123,7 @@ public final class Syte {
     }
     
     /**
-     Make 'Similars' call
+     Make 'Similars' call: Receives a product SKU and returns a list of similar products.
      
      - parameters:
         - similarProducts: `SimilarProducts`
@@ -141,7 +141,7 @@ public final class Syte {
     }
     
     /**
-     Make 'Shop the look' call
+     Make 'Shop the look' call: Receives a product SKU and returns a list of similar products for all the items in the image (besides the PDP item).
      
      - parameters:
         - shopTheLook: `ShopTheLook`
@@ -159,7 +159,7 @@ public final class Syte {
     }
     
     /**
-     Make 'Personalization' call
+     Make 'Personalization' call: Receives a list of visited SKUs and the current SKU, the engine will return a list of recommended products for this user, according to the defined model for the account.
      
      - parameters:
         - personalization: `Personalization`

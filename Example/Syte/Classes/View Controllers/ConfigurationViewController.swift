@@ -19,7 +19,7 @@ class ConfigurationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Configuration"
-        localeTextField.text = SyteMaganer.shared.getLocale()
+        localeTextField.text = SyteManager.shared.getLocale()
         configureTableView()
     }
     
@@ -31,14 +31,14 @@ class ConfigurationViewController: UIViewController {
     
     @IBAction private func setLocaleButtonPressed(_ sender: Any) {
         guard let text = localeTextField.text else { return }
-        SyteMaganer.shared.setLocale(text)
+        SyteManager.shared.setLocale(text)
         view.makeToast("Locale changed to \(text)")
     }
     
     @IBAction private func addSkuButtonPressed(_ sender: Any) {
         guard let text = skuTextField.text else { return }
         do {
-            try SyteMaganer.shared.addViewedItem(sku: text)
+            try SyteManager.shared.addViewedItem(sku: text)
             view.makeToast("Sku added: \(text)")
             tableView.reloadData()
         } catch {
@@ -58,19 +58,19 @@ extension ConfigurationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return SyteMaganer.shared.getViewedProducts().count
+            return SyteManager.shared.getViewedProducts().count
         } else {
-            return SyteMaganer.shared.getSearchHistory().count
+            return SyteManager.shared.getSearchHistory().count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         if indexPath.section == 0 {
-            let values = SyteMaganer.shared.getViewedProducts().sorted()
+            let values = SyteManager.shared.getViewedProducts().sorted()
             cell.textLabel?.text = values[indexPath.row]
         } else {
-            let values = SyteMaganer.shared.getSearchHistory().sorted()
+            let values = SyteManager.shared.getSearchHistory().sorted()
             cell.textLabel?.text = values[indexPath.row]
         }
         return cell

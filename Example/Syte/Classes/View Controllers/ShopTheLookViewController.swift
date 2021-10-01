@@ -54,13 +54,13 @@ class ShopTheLookViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func getShopTheLookButtonPressed(_ sender: Any) {
-        guard SyteMaganer.shared.isInitialized else { return }
+        guard SyteManager.shared.isInitialized else { return }
         guard let sku = skuTextField.text else { return }
         guard let imageUrl = urlTextField.text else { return }
         SVProgressHUD.show()
         
         let shopTheLook = ShopTheLook(sku: sku, imageUrl: imageUrl)
-        shopTheLook.personalizedRanking = !SyteMaganer.shared.getViewedProducts().isEmpty
+        shopTheLook.personalizedRanking = !SyteManager.shared.getViewedProducts().isEmpty
         
         guard validateInputs() else {
             view.makeToast("Wrong input")
@@ -76,7 +76,7 @@ class ShopTheLookViewController: UIViewController {
             shopTheLook.syteUrlReferer = referer
         }
         
-        SyteMaganer.shared.getShopTheLook(shopTheLook: shopTheLook) { [weak self] result in
+        SyteManager.shared.getShopTheLook(shopTheLook: shopTheLook) { [weak self] result in
             SVProgressHUD.dismiss()
             self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
             guard let items = result?.data else { return }

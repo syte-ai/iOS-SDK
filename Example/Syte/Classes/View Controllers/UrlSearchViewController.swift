@@ -47,7 +47,7 @@ class UrlSearchViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func getBoundsButtonPressed(_ sender: Any) {
-        guard SyteMaganer.shared.isInitialized else { return }
+        guard SyteManager.shared.isInitialized else { return }
         SVProgressHUD.show()
         
         let imageSearchRequestData = UrlImageSearch(imageUrl: urlTextField.text ?? "", productType: .discoveryButton)
@@ -61,7 +61,7 @@ class UrlSearchViewController: UIViewController {
         }
         
         imageSearchRequestData.retrieveOffersForTheFirstBound = fetchFirstBoundSegmentControll.selectedSegmentIndex == 0
-        SyteMaganer.shared.getBounds(requestData: imageSearchRequestData) { [weak self] result in
+        SyteManager.shared.getBounds(requestData: imageSearchRequestData) { [weak self] result in
             SVProgressHUD.dismiss()
             self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
             guard let bounds = result?.data else { return }

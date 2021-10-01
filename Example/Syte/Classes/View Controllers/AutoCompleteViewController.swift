@@ -35,9 +35,9 @@ class AutoCompleteViewController: UIViewController {
     }
     
     private func getAutocomplete(with text: String) {
-        guard SyteMaganer.shared.isInitialized else { return }
+        guard SyteManager.shared.isInitialized else { return }
     
-        SyteMaganer.shared.getAutoComplete(query: text, lang: nil) { [weak self] result in
+        SyteManager.shared.getAutoComplete(query: text, lang: nil) { [weak self] result in
             guard let items = result?.data else { return }
             self?.result = items
         }
