@@ -12,19 +12,19 @@ import Foundation
  */
 public enum RecommendationReturnField: String {
     /**
-     * Return only image URL and product ID (SKU). All other fields will be null!
+     Return only image URL and product ID (SKU). All other fields will be null!
      */
     case imageUrlAndSku = "imageUrl,sku"
     /**
-     * Return only image URL. All other fields will be null!
+     Return only image URL. All other fields will be null!
      */
     case imageUrl = "imageUrl"
     /**
-     * Return only product ID (SKU). All other fields in will be null!
+     Return only product ID (SKU). All other fields in will be null!
      */
     case sku = "sku"
     /**
-     * Return all fields.
+     Return all fields.
      */
     case all = "*"
     

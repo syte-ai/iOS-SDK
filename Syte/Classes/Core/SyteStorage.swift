@@ -30,7 +30,7 @@ class SyteStorage {
     
     func getSessionId() -> Int {
         var sessionId = -1
-        sessionId = storage.integer(forKey: sessionIdPrefKey) ?? 1
+        sessionId = storage.integer(forKey: sessionIdPrefKey) ?? -1
         guard sessionId == -1 || needNewSessionId() else { return sessionId }
         
         sessionId = Int(Double.random(in: 0.0...1.0) * 100000000)

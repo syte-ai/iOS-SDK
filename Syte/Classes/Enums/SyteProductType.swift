@@ -7,9 +7,12 @@
 
 import Foundation
 
+/**
+ Default Syte products types.
+ */
 public enum SyteProductType: String {
     
     case camera = "camera"
     case discoveryButton = "discovery_button"
- 
+    
 }

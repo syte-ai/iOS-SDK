@@ -7,10 +7,17 @@
 
 import Foundation
 
+/**
+ A class that represents the result for 'Shop the look' call
+ */
 public class ShopTheLookResult: Codable, ReflectedStringConvertible {
     
+    // Array of ShopTheLookResponseItem
     private(set) public var items: [ShopTheLookResponseItem]?
+    
+    // Fallback value
     private(set) public var fallback: String?
+    
     public var sytePlatformSettings: SytePlatformSettings?
     
     enum CodingKeys: String, CodingKey {
@@ -18,10 +25,19 @@ public class ShopTheLookResult: Codable, ReflectedStringConvertible {
         case items = "response"
     }
     
+    /**
+     Get list of all retrieved items. If zip is true, the items will be shuffled.
+     - Returns: [Items]
+     */
     public func getItemsForAllLabels() -> [Item] {
         return getItemsForAllLabels(forceZip: sytePlatformSettings?.data?.products?.syteapp?.features?.shopTheLook?.zip ?? false)
     }
     
+    /**
+     Get list of all retrieved items. If zip is true, the items will be shuffled.
+     - Parameter forceZip: true to shuffle items
+     - Returns: [Items]
+     */
     public func getItemsForAllLabels(forceZip: Bool) -> [Item] {
         guard let items = items else { return [] }
         var itemList = [Item]()

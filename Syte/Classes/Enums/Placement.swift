@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Default Syte widget placements.
+ */
 public enum Placement: String {
     
     case `default` = "default"

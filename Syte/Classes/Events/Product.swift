@@ -7,10 +7,18 @@
 
 import Foundation
 
+/**
+ Product passed to some of the default events.
+ */
 public class Product: Codable {
     
+    // Product ID
     private let sku: String
+    
+    // Product quantity
     private let quantity: Int
+    
+    // Product price
     private let price: Double
     
     enum CodingKeys: String, CodingKey {

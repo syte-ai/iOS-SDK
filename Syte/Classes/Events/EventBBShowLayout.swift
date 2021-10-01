@@ -7,9 +7,15 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a Bounding Boxes layout is visible for user after fetching bounds for an image
+ */
 public class EventBBShowLayout: BaseSyteEvent {
     
+    // Url of image used
     private let imageUrl: String
+    
+    // the number of bounds returned from bounds request
     private let numOfBBs: Int
     
     enum CodingKeys: String, CodingKey {

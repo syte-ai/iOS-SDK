@@ -8,11 +8,21 @@
 
 import Foundation
 
+/**
+ Generic wrapper for the API result.
+ */
 public class SyteResult<T> {
     
+    // Data returned by the API.
     public var data: T?
+    
+    // Response result code.
     public var resultCode = -1
+    
+    // Indicates whether the response is successful.
     public var isSuccessful = false
+    
+    // Holds the error message if there is any.
     public var errorMessage: String?
     
 }

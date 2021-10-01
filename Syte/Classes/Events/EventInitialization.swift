@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ The event is fired once the session is started
+ */
 public class EventInitialization: BaseSyteEvent {
     
     public init() {

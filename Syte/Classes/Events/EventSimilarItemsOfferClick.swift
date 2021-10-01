@@ -7,9 +7,15 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a user clicks on item in Similar Items carousel
+ */
 public class EventSimilarItemsOfferClick: BaseSyteEvent {
     
+    // Unique identifier of product sent to Syte before
     private let sku: String
+    
+    // Index of the result in the results list
     private let position: Int
     
     enum CodingKeys: String, CodingKey {

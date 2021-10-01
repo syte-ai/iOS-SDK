@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a user adds a products to cart
+ */
 public class EventProductsAddedToCart: BaseSyteEvent {
     
     private let products: [Product]

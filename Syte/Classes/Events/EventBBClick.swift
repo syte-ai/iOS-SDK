@@ -7,11 +7,21 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a bound selected
+ */
 public class EventBBClick: BaseSyteEvent {
     
+    // Url of image used
     private let imageUrl: String
+    
+    // The bound category as returned in the bounds request
     private let category: String
+    
+    // The bounds gender as returned by Syte
     private let gender: String
+    
+    // The selected bound catalog.
     private let catalog: String
     
     enum CodingKeys: String, CodingKey {

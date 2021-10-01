@@ -7,11 +7,21 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a user complete his checkout process
+ */
 public class EventCheckoutComplete: BaseSyteEvent {
     
+    // Unique id of transaction
     private let id: String
+    
+    // Array of product objects
     private let products: [Product]
+    
+    // Total cost of a cart for checkout including delivery fee
     private let value: Double
+    
+    // currency of checkout
     private let currency: String
     
     enum CodingKeys: String, CodingKey {

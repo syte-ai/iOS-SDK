@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Default tags for Syte events.
+ */
 public enum EventsTag: String {
     
     case camera = "camera"

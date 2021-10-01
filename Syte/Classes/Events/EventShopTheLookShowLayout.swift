@@ -7,8 +7,12 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a shop the look carousel is visible
+ */
 public class EventShopTheLookShowLayout: BaseSyteEvent {
     
+    // The number of displayed results
     private let resultsCount: Int
     
     enum CodingKeys: String, CodingKey {

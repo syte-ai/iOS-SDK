@@ -11,10 +11,19 @@ protocol RequestableEvent {
     func getRequestBodyString() -> String
 }
 
+/**
+ Class represents Base Syte event. Extend this class and override getRequestBodyString()
+ to create a custom event.
+ */
 public class BaseSyteEvent: RequestableEvent, Codable {
     
+    // Syte URL referer
     let syteUrlReferer: String
+    
+    // Event name
     let name: String
+    
+    // Array of event tags
     private(set) var eventsTags: [String] = []
     
     enum CodingKeys: String, CodingKey {
@@ -47,10 +56,12 @@ public class BaseSyteEvent: RequestableEvent, Codable {
         try container.encode(eventsTags, forKey: .eventsTags)
     }
     
+    // Get array of tags converted to string (comma separated)
     public func getTagsString() -> String {
         return eventsTags.joined(separator: ",")
     }
     
+    // Getter for request body string
     public func getRequestBodyString() -> String {
         return ""
     }

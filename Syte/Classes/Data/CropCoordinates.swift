@@ -7,6 +7,10 @@
 
 import Foundation
 
+/**
+ It is used to define a specific image bounds to retrieve the data for.
+ The coordinates must be relative in range from 0 to 1.
+ */
 public class CropCoordinates {
     
     private var x1: Double = 0

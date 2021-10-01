@@ -7,9 +7,15 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a user clicks on discovery button
+ */
 public class EventDiscoveryButtonClick: BaseSyteEvent {
     
+    // The path to the image that discovery button refers to
     private let imageSrc: String
+    
+    // Placement
     private let placement: String
     
     enum CodingKeys: String, CodingKey {

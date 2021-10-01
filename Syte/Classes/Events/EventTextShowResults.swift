@@ -7,10 +7,18 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time results for a specific text search are shown
+ */
 public class EventTextShowResults: BaseSyteEvent {
     
+    // User search query
     private let query: String
+    
+    // TextSearchEventType
     private let type: String
+    
+    // The number of displayed results
     private let exactCount: Int
     
     enum CodingKeys: String, CodingKey {

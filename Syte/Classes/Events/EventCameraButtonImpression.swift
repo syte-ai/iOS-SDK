@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time camera button becomes visible to a user / enters user viewport.
+ */
 public class EventCameraButtonImpression: BaseSyteEvent {
     
     public init(pageName: String) {

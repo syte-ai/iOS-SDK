@@ -7,10 +7,18 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a results for specific bound from the image are shown
+ */
 public class EventBBShowResults: BaseSyteEvent {
     
+    // Url of image used
     private let imageUrl: String
+    
+    // The bound category as returned in the bounds request
     private let category: String
+    
+    // The number of returned results in the offers request
     private let resultsCount: Int
     
     enum CodingKeys: String, CodingKey {

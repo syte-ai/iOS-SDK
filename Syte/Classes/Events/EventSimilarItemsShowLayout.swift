@@ -7,8 +7,12 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a similar items carousel is visible
+ */
 public class EventSimilarItemsShowLayout: BaseSyteEvent {
     
+    // The number of displayed results
     private let resultsCount: Int
     
     enum CodingKeys: String, CodingKey {

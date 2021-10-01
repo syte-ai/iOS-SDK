@@ -7,8 +7,12 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a user opens a new page (on the web) or visit an app screen on mobile apps
+ */
 public class EventPageView: BaseSyteEvent {
     
+    // Product ID
     public let sku: String
     
     enum CodingKeys: String, CodingKey {

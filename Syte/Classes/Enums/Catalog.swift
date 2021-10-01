@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Default Syte product catalogs.
+ */
 public enum Catalog: String {
     
     case general

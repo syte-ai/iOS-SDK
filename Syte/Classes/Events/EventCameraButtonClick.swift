@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ This event should be sent to Syte every time a user clicks on camera button
+ */
 public class EventCameraButtonClick: BaseSyteEvent {
     
     private let placement: String
