@@ -36,13 +36,12 @@ class TextSearchViewController: UIViewController {
     }
     
     private func search(text: String) {
-        guard SyteManager.shared.isInitialized else { return }
         SVProgressHUD.show()
         
         SyteManager.shared.getTextSearch(query: text) { [weak self] result in
             SVProgressHUD.dismiss()
-            self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
-            guard let items = result?.data else { return }
+            self?.view.makeToast(result.isSuccessful ? "Success" : "Failure: \(result.errorMessage ?? "No Errors")")
+            guard let items = result.data else { return }
             self?.result = items
         }
     }

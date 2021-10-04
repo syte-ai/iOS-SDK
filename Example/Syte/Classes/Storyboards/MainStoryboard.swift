@@ -64,4 +64,10 @@ class MainStoryboard: UIStoryboard {
         return controller
     }
     
+    static var settingsViewController: SettingsViewController {
+        let controller: SettingsViewController = instance.instantiate()
+        
+        return controller
+    }
+    
 }

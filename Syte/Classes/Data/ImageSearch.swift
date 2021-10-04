@@ -24,6 +24,12 @@ public class ImageSearch {
     // Enabling the personalized ranking will use the list of viewed products (skus viewed during the session) and apply a behavioral match ranking strategy on the set of results.
     public var personalizedRanking = false
     
+    // User generated image will be scaled according to this value.
+    // Small - width: 500, height: 1000
+    // Medium - width: 1400, height: 1400
+    // Large - width: 2000, height: 2000
+    public var scale: ImageScale = .medium
+    
     public init(image: UIImage) {
         self.image = image
     }

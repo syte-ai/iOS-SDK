@@ -14,24 +14,6 @@ class Utils {
         return viewedProducts.joined(separator: ",")
     }
     
-    static func getImageScale(settings: SytePlatformSettings?) -> ImageProcessor.Scale {
-        guard let settings = settings else { return .medium }
-        let imageScale = settings.data?.products?.syteapp?.features?.cameraHandler?.photoReductionSize ?? ""
-        var scale: ImageProcessor.Scale = .small
-        
-        switch imageScale.lowercased() {
-        case "small":
-            scale = .small
-        case "medium":
-            scale = .medium
-        case "large":
-            scale = .large
-        default:
-            scale = .medium
-        }
-        return scale
-    }
-    
     static func viewedProductsJSONArray(viewedProducts: Set<String>) -> String? {
         guard viewedProducts.isEmpty == false else { return nil }
         var string = "["

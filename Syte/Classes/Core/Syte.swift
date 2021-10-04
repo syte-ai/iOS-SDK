@@ -23,11 +23,10 @@ public final class Syte {
     
     private let syteRemoteDataSource: SyteRemoteDataSource
     private let eventsRemoteDataSource: EventsRemoteDataSource
-    private var sytePlatformSettings: SytePlatformSettings?
-    private var imageSearchClient: ImageSearchClient?
-    private var productRecommendationClient: ProductRecommendationClient?
-    private var textSearchClient: TextSearchClient?
-    private var state = SyteState.idle
+    private var imageSearchClient: ImageSearchClient
+    private var productRecommendationClient: ProductRecommendationClient
+    private var textSearchClient: TextSearchClient
+//    private var state = SyteState.idle
     
     /**
      Set/Get log level.
@@ -41,31 +40,48 @@ public final class Syte {
         }
     }
     
-    private init(configuration: SyteConfiguration) {
-        self.configuration = configuration
-        syteRemoteDataSource = SyteRemoteDataSource(configuration: configuration)
-        eventsRemoteDataSource = EventsRemoteDataSource(configuration: configuration)
+    public init?(configuration: SyteConfiguration) {
+        do {
+            try InputValidator.validateInput(configuration: configuration)
+            
+            self.configuration = configuration
+            syteRemoteDataSource = SyteRemoteDataSource(configuration: configuration)
+            eventsRemoteDataSource = EventsRemoteDataSource(configuration: configuration)
+            imageSearchClient = ImageSearchClient(syteRemoteDataSource: syteRemoteDataSource)
+            productRecommendationClient = ProductRecommendationClient(syteRemoteDataSource: syteRemoteDataSource)
+            textSearchClient = TextSearchClient(syteRemoteDataSource: syteRemoteDataSource,
+                                                allowAutoCompletionQueue: configuration.allowAutoCompletionQueue)
+        } catch let error {
+            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
+            return nil
+        }
     }
+    
+//    private init(configuration: SyteConfiguration) {
+//        self.configuration = configuration
+//        syteRemoteDataSource = SyteRemoteDataSource(configuration: configuration)
+//        eventsRemoteDataSource = EventsRemoteDataSource(configuration: configuration)
+//    }
     
     /**
      Creates a new instance of the `Syte` class and triggers the start session call.
      
      - Returns: A new instance of the `Syte`.
      */
-    public static func initialize(configuration: SyteConfiguration, completion: @escaping (SyteResult<Syte>) -> Void) {
-        do {
-            try InputValidator.validateInput(configuration: configuration)
-            
-            let syte = Syte(configuration: configuration)
-            syte.startSession { syteResult in
-                completion(syteResult.mapData { $0.isSuccessful ? syte : nil})
-            }
-            
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
-    }
+//    public static func initialize(configuration: SyteConfiguration, completion: @escaping (SyteResult<Syte>) -> Void) {
+//        do {
+//            try InputValidator.validateInput(configuration: configuration)
+//
+//            let syte = Syte(configuration: configuration)
+//            syte.startSession { syteResult in
+//                completion(syteResult.mapData { $0.isSuccessful ? syte : nil})
+//            }
+//
+//        } catch let error {
+//            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
+//            completion(.failureResult(message: error.localizedDescription))
+//        }
+//    }
     
     /**
      Retrieves items: Get similar items per bounding box detected in the image.
@@ -75,15 +91,10 @@ public final class Syte {
         - cropCoordinates: Pass crop coordinates to enable image cropping. Pass nil to disregard crop.
         - completion: `SyteResult<ItemsResult>`.
      */
-    public func getItemsForBound(bound: Bound, cropCoordinates: CropCoordinates?, completion: @escaping (SyteResult<ItemsResult>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = imageSearchClient else { return completion(.syteNotInilialized) }
-            client.getItemsForBound(bound: bound, cropCoordinates: cropCoordinates, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
+    public func getItemsForBound(bound: Bound,
+                                 cropCoordinates: CropCoordinates?,
+                                 completion: @escaping (SyteResult<ItemsResult>) -> Void) {
+        imageSearchClient.getItemsForBound(bound: bound, cropCoordinates: cropCoordinates, completion: completion)
     }
     
     /**
@@ -94,14 +105,8 @@ public final class Syte {
         - completion: `SyteResult<BoundsResult>`.
      */
     public func getBounds(imageSearch: ImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = imageSearchClient else { return completion(.syteNotInilialized) }
-            client.getBounds(requestData: imageSearch, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
+        imageSearchClient.getBounds(requestData: imageSearch, completion: completion)
+        
     }
     
     /**
@@ -112,14 +117,7 @@ public final class Syte {
         - completion: `SyteResult<BoundsResult>`.
      */
     public func getBounds(imageSearch: UrlImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = imageSearchClient else { return completion(.syteNotInilialized) }
-            client.getBounds(requestData: imageSearch, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
+        imageSearchClient.getBounds(requestData: imageSearch, completion: completion)
     }
     
     /**
@@ -129,15 +127,10 @@ public final class Syte {
         - similarProducts: `SimilarProducts`
         - completion: `SyteResult<SimilarProductsResult>`.
      */
-    public func getSimilarProducts(similarProducts: SimilarProducts, completion: @escaping (SyteResult<SimilarProductsResult>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = productRecommendationClient else { return completion(.syteNotInilialized) }
-            client.getSimilarProducts(similarProducts: similarProducts, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
+    public func getSimilarProducts(similarProducts: SimilarProducts,
+                                   completion: @escaping (SyteResult<SimilarProductsResult>) -> Void) {
+        productRecommendationClient.getSimilarProducts(similarProducts: similarProducts, completion: completion)
+        
     }
     
     /**
@@ -147,15 +140,9 @@ public final class Syte {
         - shopTheLook: `ShopTheLook`
         - completion: `SyteResult<ShopTheLookResult>`.
      */
-    public func getShopTheLook(shopTheLook: ShopTheLook, completion: @escaping (SyteResult<ShopTheLookResult>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = productRecommendationClient else { return completion(.syteNotInilialized) }
-            client.getShopTheLook(shopTheLook: shopTheLook, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
+    public func getShopTheLook(shopTheLook: ShopTheLook,
+                               completion: @escaping (SyteResult<ShopTheLookResult>) -> Void) {
+        productRecommendationClient.getShopTheLook(shopTheLook: shopTheLook, completion: completion)
     }
     
     /**
@@ -165,15 +152,9 @@ public final class Syte {
         - personalization: `Personalization`
         - completion: `SyteResult<PersonalizationResult>`.
      */
-    public func getPersonalization(personalization: Personalization, completion: @escaping (SyteResult<PersonalizationResult>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = productRecommendationClient else { return completion(.syteNotInilialized) }
-            client.getPersonalization(personalization: personalization, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
+    public func getPersonalization(personalization: Personalization,
+                                   completion: @escaping (SyteResult<PersonalizationResult>) -> Void) {
+        productRecommendationClient.getPersonalization(personalization: personalization, completion: completion)
     }
     
     /**
@@ -184,14 +165,7 @@ public final class Syte {
         - completion: `SyteResult<[String]>`.
      */
     public func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = textSearchClient else { return completion(.syteNotInilialized) }
-            client.getPopularSearch(lang: lang, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
+        textSearchClient.getPopularSearch(lang: lang, completion: completion)
     }
 
     /**
@@ -202,14 +176,7 @@ public final class Syte {
         - completion: `SyteResult<TextSearchResult>`.
      */
     public func getTextSearch(textSearch: TextSearch, completion: @escaping (SyteResult<TextSearchResult>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = textSearchClient else { return completion(.syteNotInilialized) }
-            client.getTextSearch(textSearch: textSearch, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
-        }
+        textSearchClient.getTextSearch(textSearch: textSearch, completion: completion)
     }
     
     /**
@@ -227,14 +194,21 @@ public final class Syte {
         - lang: Locale to retrieve the searches for.
         - completion: `SyteResult<AutoCompleteResult>`.
      */
-    public func getAutoComplete(query: String, lang: String?, completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
-        do {
-            try verifyInitialized()
-            guard let client = textSearchClient else { return completion(.syteNotInilialized) }
-            client.getAutoComplete(query: query, lang: lang ?? configuration.locale, completion: completion)
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-            completion(.failureResult(message: error.localizedDescription))
+    public func getAutoComplete(query: String,
+                                lang: String?,
+                                completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
+        textSearchClient.getAutoComplete(query: query, lang: lang ?? configuration.locale, completion: completion)
+    }
+    
+    /**
+     Retrieves the Syte Platform Settings.
+     
+     - Parameter completion: `SyteResult<SytePlatformSettings>`.
+     */
+    public func getSytePlatformSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
+        syteRemoteDataSource.getSettings { response in
+            guard response.isSuccessful else { return completion(.failureResult(message: "Can't fetch syte platform settings.")) }
+            completion(response.mapData { $0.data })
         }
     }
     
@@ -244,7 +218,7 @@ public final class Syte {
      - Returns: `SyteConfiguration`.
      
      */
-    public func getConfiguration() -> SyteConfiguration? {
+    public func getConfiguration() -> SyteConfiguration {
         return configuration
     }
     
@@ -256,22 +230,12 @@ public final class Syte {
      - Throws: `SyteError.initializationFailed`
      
      */
-    public func setConfiguration(configuration: SyteConfiguration) throws {
-        try verifyInitialized()
+    public func setConfiguration(configuration: SyteConfiguration) {
         self.configuration = configuration
         syteRemoteDataSource.setConfiguration(configuration)
         eventsRemoteDataSource.setConfiguration(configuration)
-        textSearchClient?.allowAutoCompletionQueue = configuration.allowAutoCompletionQueue
+        textSearchClient.allowAutoCompletionQueue = configuration.allowAutoCompletionQueue
         
-    }
-    
-    /**
-     Getter for SytePlatformSettings. Method will return nil if the session was not started!
-     
-     - Returns: `SytePlatformSettings`.
-     */
-    public func getSytePlatformSettings() -> SytePlatformSettings? {
-        return state == .initialized ? sytePlatformSettings : nil
     }
     
     /**
@@ -282,14 +246,9 @@ public final class Syte {
      
      */
     public func fire(event: BaseSyteEvent) {
-        do {
-            try verifyInitialized()
-            eventsRemoteDataSource.fire(event: event)
-            if let casted = event as? EventPageView {
-                try? addViewedItem(sku: casted.sku)
-            }
-        } catch let error {
-            SyteLogger.e(tag: Syte.tag, message: "Error while firing event: \(error.localizedDescription)")
+        eventsRemoteDataSource.fire(event: event)
+        if let casted = event as? EventPageView {
+            try? addViewedItem(sku: casted.sku)
         }
     }
     
@@ -301,7 +260,6 @@ public final class Syte {
      
      */
     public func addViewedItem(sku: String) throws {
-        try verifyInitialized()
         try InputValidator.validateInput(string: sku)
         configuration.addViewedProduct(sessionSku: sku)
     }
@@ -327,31 +285,6 @@ public final class Syte {
     public func getRecentTextSearches() -> [String] {
         let terms = configuration.getStorage().getTextSearchTerms()
         return terms.components(separatedBy: ",")
-    }
-    
-    private func startSession(completion: @escaping (SyteResult<Bool>) -> Void) {
-        syteRemoteDataSource.initialize { [weak self] response in
-            guard let strongSelf = self else { return completion(.failureResult(message: "Can't fetch syte platform settings.")) }
-            if response.isSuccessful {
-                guard let settings = response.data else { return completion(.failureResult(message: "Can't fetch syte platform settings.")) }
-                strongSelf.sytePlatformSettings = settings
-                strongSelf.imageSearchClient = ImageSearchClient(syteRemoteDataSource: strongSelf.syteRemoteDataSource,
-                                                                 sytePlatformSettings: settings)
-                strongSelf.productRecommendationClient = ProductRecommendationClient(syteRemoteDataSource: strongSelf.syteRemoteDataSource,
-                                                                                     sytePlatformSettings: settings)
-                strongSelf.textSearchClient = TextSearchClient(syteRemoteDataSource: strongSelf.syteRemoteDataSource,
-                                                               allowAutoCompletionQueue: strongSelf.configuration.allowAutoCompletionQueue)
-                strongSelf.state = .initialized
-                strongSelf.fire(event: EventInitialization())
-            } else {
-                strongSelf.state = .idle
-            }
-            completion(response.mapData { $0.isSuccessful })
-        }
-    }
-    
-    private func verifyInitialized() throws {
-        guard state == .initialized else { throw SyteError.initializationFailed(message: "Syte is not initialized.")}
     }
     
 }

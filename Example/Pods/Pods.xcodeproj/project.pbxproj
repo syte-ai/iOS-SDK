@@ -181,6 +181,7 @@
 		74341DA37F4B926FDF4CB2599CAC547A /* IQUIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDBFF4CE033F87D788683F2DE2CE70B /* IQUIViewController+Additions.swift */; };
 		74966798184A9F88906DBE8231AAE2AD /* AddToCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35726543901258CE9FC426BF8B738641 /* AddToCart.swift */; };
 		753C8C42CEFBED94E1F1E752955F0254 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90C3B3B4866D2C34D0BE7593BFDB8B2 /* Foundation.framework */; };
+		7544077D270B27810067712E /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544077C270B27810067712E /* ImageScale.swift */; };
 		76A5830B3873FE021D8F8F7119D3EBAA /* SyteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8025D6CAE77C8C8722A05F5C0FD1169D /* SyteStorage.swift */; };
 		7759F4C22CF2C27E45BE608175DC6189 /* BaseSyteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897A8F8DDA6C6E85E5E9A645BB1F1498 /* BaseSyteEvent.swift */; };
 		77BAAE3D0B0122961D4E4000BF46D9CA /* AutoCompleteResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759C50F266AFEB0108369B653453B073 /* AutoCompleteResult.swift */; };
@@ -675,6 +676,7 @@
 		74E784D8255BAF119B5E869882E4DC32 /* when.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = when.swift; path = Sources/when.swift; sourceTree = "<group>"; };
 		74F151E13B4495B5FAB7F1CC57399FDB /* TargetType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TargetType.swift; path = Sources/Moya/TargetType.swift; sourceTree = "<group>"; };
 		74FBE7CFF668739A1188207888063E5A /* Moya.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Moya.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7544077C270B27810067712E /* ImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScale.swift; sourceTree = "<group>"; };
 		759C50F266AFEB0108369B653453B073 /* AutoCompleteResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AutoCompleteResult.swift; sourceTree = "<group>"; };
 		7615147D2567389091E7774AA75D2A81 /* RecommendationRemoteDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RecommendationRemoteDataSource.swift; sourceTree = "<group>"; };
 		7745837951170E05D643CC51644115E0 /* Pods-Syte_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Syte_Tests.modulemap"; sourceTree = "<group>"; };
@@ -1502,6 +1504,7 @@
 				9D84636FD5DD477B8CD74B17BDAE26C2 /* SyteProductType.swift */,
 				28EB4845E5131424790A503CED66BF31 /* TextSearchEventType.swift */,
 				48629EAC67AC3B3A72DCC8D87C96FA63 /* TextSearchSorting.swift */,
+				7544077C270B27810067712E /* ImageScale.swift */,
 			);
 			name = Enums;
 			path = Syte/Classes/Enums;
@@ -2564,6 +2567,7 @@
 				08AB8A867DA9EBD68442F64D2952C8DC /* EventCheckoutStart.swift in Sources */,
 				7D35005DE301DD4F74F08368AC91977A /* EventDiscoveryButtonClick.swift in Sources */,
 				3A09B6CD8C3294B2F258207B1A8EC369 /* EventDiscoveryButtonImpression.swift in Sources */,
+				7544077D270B27810067712E /* ImageScale.swift in Sources */,
 				FC5F3B74EFD7B025C6A774A275852BF0 /* EventInitialization.swift in Sources */,
 				D6BA96823231989A76CAA6F80108FB01 /* EventOfferClick.swift in Sources */,
 				828FEC717A9016F1B743071A420D639F /* EventPageView.swift in Sources */,

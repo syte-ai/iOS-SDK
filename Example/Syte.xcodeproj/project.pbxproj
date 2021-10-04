@@ -15,6 +15,7 @@
 		607FACEC1AFB9204008FA782 /* BaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* BaseTests.swift */; };
 		7523474C26CFB9CB00543108 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7523474B26CFB9CB00543108 /* .swiftlint.yml */; };
 		7544077B270B01E70067712E /* SyteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544077A270B01E70067712E /* SyteTests.swift */; };
+		7544077F270B40B10067712E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7544077E270B40B10067712E /* SettingsViewController.swift */; };
 		75475E0C26FB400B0057E450 /* AutoCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75475E0B26FB400B0057E450 /* AutoCompleteViewController.swift */; };
 		75475E0E26FB6D110057E450 /* PopularSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75475E0D26FB6D110057E450 /* PopularSearchViewController.swift */; };
 		75475E7426FCD3940057E450 /* TextSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75475E7326FCD3940057E450 /* TextSearchViewController.swift */; };
@@ -66,6 +67,7 @@
 		607FACEB1AFB9204008FA782 /* BaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTests.swift; sourceTree = "<group>"; };
 		7523474B26CFB9CB00543108 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		7544077A270B01E70067712E /* SyteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteTests.swift; sourceTree = "<group>"; };
+		7544077E270B40B10067712E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		75475E0B26FB400B0057E450 /* AutoCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompleteViewController.swift; sourceTree = "<group>"; };
 		75475E0D26FB6D110057E450 /* PopularSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularSearchViewController.swift; sourceTree = "<group>"; };
 		75475E7326FCD3940057E450 /* TextSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSearchViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				75475E0B26FB400B0057E450 /* AutoCompleteViewController.swift */,
 				75475E0D26FB6D110057E450 /* PopularSearchViewController.swift */,
 				75475E7326FCD3940057E450 /* TextSearchViewController.swift */,
+				7544077E270B40B10067712E /* SettingsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 			files = (
 				754AB13026F2193C0047CA8F /* MainStoryboard.swift in Sources */,
 				754AB13226F2193C0047CA8F /* UrlSearchViewController.swift in Sources */,
+				7544077F270B40B10067712E /* SettingsViewController.swift in Sources */,
 				754AB17226F371740047CA8F /* SyteBoundsResponceTableViewCell.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				754AB13126F2193C0047CA8F /* WildSearchViewController.swift in Sources */,

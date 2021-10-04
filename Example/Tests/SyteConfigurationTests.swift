@@ -10,21 +10,25 @@ import XCTest
 @testable import Syte
 
 class SyteConfigurationTests: BaseTests {
-
+    
     func testSessionSkus() throws {
-        try syte?.addViewedItem(sku: "test1")
-        try syte?.addViewedItem(sku: "test2")
-        try syte?.addViewedItem(sku: "test3")
+        let configuration = SyteConfiguration(accountId: "", signature: "")
+        configuration.addViewedProduct(sessionSku: "")
+        configuration.addViewedProduct(sessionSku: "test1")
+        configuration.addViewedProduct(sessionSku: "test2")
+        configuration.addViewedProduct(sessionSku: "test3")
         let testArray: Set<String> = ["test1", "test2", "test3"]
-        XCTAssertEqual(testArray, configuration?.getViewedProducts())
+        XCTAssertEqual(testArray, configuration.getViewedProducts())
     }
     
-    func testSessionSkusStringSimilarInput() throws {
-        try syte?.addViewedItem(sku: "test1")
-        try syte?.addViewedItem(sku: "test2")
-        try syte?.addViewedItem(sku: "test1")
+    func testSessionSkusStringSimilarInput() throws {   
+        let configuration = SyteConfiguration(accountId: "", signature: "")
+        configuration.addViewedProduct(sessionSku: "")
+        configuration.addViewedProduct(sessionSku: "test1")
+        configuration.addViewedProduct(sessionSku: "test2")
+        configuration.addViewedProduct(sessionSku: "test1")
         let testArray: Set<String> = ["test1", "test2"]
-        XCTAssertEqual(testArray, configuration?.getViewedProducts())
+        XCTAssertEqual(testArray, configuration.getViewedProducts())
     }
     
 }

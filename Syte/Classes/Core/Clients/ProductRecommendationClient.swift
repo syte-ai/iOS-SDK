@@ -11,10 +11,8 @@ import PromiseKit
 class ProductRecommendationClient {
     
     private let syteRemoteDataSource: SyteRemoteDataSource
-    private let sytePlatformSettings: SytePlatformSettings
     
-    init(syteRemoteDataSource: SyteRemoteDataSource, sytePlatformSettings: SytePlatformSettings) {
-        self.sytePlatformSettings = sytePlatformSettings
+    init(syteRemoteDataSource: SyteRemoteDataSource) {
         self.syteRemoteDataSource = syteRemoteDataSource
     }
     
@@ -30,7 +28,7 @@ class ProductRecommendationClient {
     func getShopTheLook(shopTheLook: ShopTheLook, completion: @escaping (SyteResult<ShopTheLookResult>) -> Void) {
         do {
             try InputValidator.validateInput(requestData: shopTheLook)
-            syteRemoteDataSource.getShopTheLook(shopTheLook: shopTheLook, settings: sytePlatformSettings, completion: completion)
+            syteRemoteDataSource.getShopTheLook(shopTheLook: shopTheLook, completion: completion)
         } catch let error {
             completion(.failureResult(message: error.localizedDescription))
         }

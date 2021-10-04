@@ -9,7 +9,7 @@ import Moya
 
 enum SyteProvider: BaseProvider {
     
-    case initialize(accountId: String)
+    case getSettings(accountId: String)
     
     case getBounds(parameters: GetBoundsParameters)
     
@@ -44,7 +44,7 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
     
     var path: String {
         switch self {
-        case .initialize(let accountId):
+        case .getSettings(let accountId):
             return "/accounts/\(accountId)"
         case .getBounds:
             return "/v1.1/offers/bb"

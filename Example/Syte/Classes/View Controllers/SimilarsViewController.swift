@@ -54,7 +54,6 @@ class SimilarsViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func getSimilarsButtonPressed(_ sender: Any) {
-        guard SyteManager.shared.isInitialized else { return }
         guard let sku = skuTextField.text else { return }
         guard let imageUrl = urlTextField.text else { return }
         SVProgressHUD.show()
@@ -78,8 +77,8 @@ class SimilarsViewController: UIViewController {
         
         SyteManager.shared.getSimilars(similarProducts: similarProducts) { [weak self] result in
             SVProgressHUD.dismiss()
-            self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
-            guard let items = result?.data else { return }
+            self?.view.makeToast(result.isSuccessful ? "Success" : "Failure: \(result.errorMessage ?? "No Errors")")
+            guard let items = result.data else { return }
             self?.items = items
             self?.tableView.isHidden = false
         }

@@ -51,7 +51,6 @@ class RecommendationRemoteDataSource: BaseRemoteDataSource {
     }
     
     func getShopTheLook(shopTheLook: ShopTheLook,
-                        sytePlatformSettings: SytePlatformSettings,
                         completion: @escaping (SyteResult<ShopTheLookResult>) -> Void) {
         firstly {
             syteService.getShopTheLook(parameters: .init(accountId: configuration.accountId,
@@ -74,7 +73,6 @@ class RecommendationRemoteDataSource: BaseRemoteDataSource {
                                                          options: shopTheLook.options))
         }.done { result in
             let shopTheLookResult = result
-            shopTheLookResult.data?.sytePlatformSettings = sytePlatformSettings
             completion(shopTheLookResult)
         }.catch { error in
             completion(.failureResult(message: error.localizedDescription))

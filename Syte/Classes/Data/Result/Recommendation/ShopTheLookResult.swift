@@ -18,8 +18,6 @@ public class ShopTheLookResult: Codable, ReflectedStringConvertible {
     // Fallback value
     private(set) public var fallback: String?
     
-    public var sytePlatformSettings: SytePlatformSettings?
-    
     enum CodingKeys: String, CodingKey {
         case fallback
         case items = "response"
@@ -30,7 +28,7 @@ public class ShopTheLookResult: Codable, ReflectedStringConvertible {
      - Returns: [Items]
      */
     public func getItemsForAllLabels() -> [Item] {
-        return getItemsForAllLabels(forceZip: sytePlatformSettings?.data?.products?.syteapp?.features?.shopTheLook?.zip ?? false)
+        return getItemsForAllLabels(forceZip: false)
     }
     
     /**

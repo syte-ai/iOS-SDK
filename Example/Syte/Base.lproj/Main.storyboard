@@ -425,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yif-39-hEa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="713"/>
+            <point key="canvasLocation" x="673" y="713"/>
         </scene>
         <!--Wild Search View Controller-->
         <scene sceneID="4IA-Dn-Oqz">
@@ -517,7 +517,53 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htx-6U-LxT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1818" y="713"/>
+            <point key="canvasLocation" x="1358" y="713"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="OAt-Mm-tNe">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="VsD-g8-Rmt" customClass="SettingsViewController" customModule="Syte_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0gC-ot-gAu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="732-d5-aFF" customClass="RoundedButton" customModule="Syte_Example" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="335" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="qWq-BZ-VTY"/>
+                                </constraints>
+                                <state key="normal" title="GET SETTINGS"/>
+                                <connections>
+                                    <action selector="getSettingsButtonPressed:" destination="VsD-g8-Rmt" eventType="touchUpInside" id="Qa0-lt-W0S"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xb8-bP-rTh">
+                                <rect key="frame" x="20" y="80" width="335" height="567"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8dE-xR-5vF"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8dE-xR-5vF" firstAttribute="trailing" secondItem="732-d5-aFF" secondAttribute="trailing" constant="20" id="DWA-1P-WiP"/>
+                            <constraint firstItem="8dE-xR-5vF" firstAttribute="bottom" secondItem="Xb8-bP-rTh" secondAttribute="bottom" constant="20" id="ZUT-B6-eLI"/>
+                            <constraint firstItem="Xb8-bP-rTh" firstAttribute="top" secondItem="732-d5-aFF" secondAttribute="bottom" constant="20" id="bnW-eC-xMb"/>
+                            <constraint firstItem="Xb8-bP-rTh" firstAttribute="leading" secondItem="8dE-xR-5vF" secondAttribute="leading" constant="20" id="dBs-HJ-5iS"/>
+                            <constraint firstItem="732-d5-aFF" firstAttribute="leading" secondItem="8dE-xR-5vF" secondAttribute="leading" constant="20" id="jbw-gJ-eJh"/>
+                            <constraint firstItem="732-d5-aFF" firstAttribute="top" secondItem="8dE-xR-5vF" secondAttribute="top" constant="20" id="smB-Wo-f6s"/>
+                            <constraint firstItem="8dE-xR-5vF" firstAttribute="trailing" secondItem="Xb8-bP-rTh" secondAttribute="trailing" constant="20" id="zUD-KY-whK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="Xb8-bP-rTh" id="qY7-Gf-m7u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Txf-hl-5lr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2054" y="713"/>
         </scene>
         <!--Similars View Controller-->
         <scene sceneID="zoF-1D-ckx">

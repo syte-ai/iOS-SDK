@@ -39,15 +39,14 @@ class PersonalizationViewController: UIViewController {
     // MARK: Actions
     
     @IBAction private func getPersonalizationButtonPressed(_ sender: Any) {
-        guard SyteManager.shared.isInitialized else { return }
         SVProgressHUD.show()
 
         let personalization = Personalization()
     
         SyteManager.shared.getPersonalization(personalization: personalization) { [weak self] result in
             SVProgressHUD.dismiss()
-            self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
-            guard let items = result?.data else { return }
+            self?.view.makeToast(result.isSuccessful ? "Success" : "Failure: \(result.errorMessage ?? "No Errors")")
+            guard let items = result.data else { return }
             self?.items = items
             self?.tableView.isHidden = false
         }

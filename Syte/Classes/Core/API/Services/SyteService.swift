@@ -10,7 +10,7 @@ import PromiseKit
 
 protocol SyteServiceProtocol: class {
     
-    func initialize(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>>
+    func getSettings(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>>
     
     func getBounds(parameters: GetBoundsParameters) -> Promise<SyteResult<BoundsResult>>
     
@@ -32,8 +32,8 @@ class SyteService: SyteServiceProtocol {
     private let service = MoyaProvider<SyteProvider>()
 #endif
     
-    func initialize(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>> {
-        return sendRequestWithDefaultHandling(request: .initialize(accountId: accoundId))
+    func getSettings(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>> {
+        return sendRequestWithDefaultHandling(request: .getSettings(accountId: accoundId))
     }
     
     func getBounds(parameters: GetBoundsParameters) -> Promise<SyteResult<BoundsResult>> {

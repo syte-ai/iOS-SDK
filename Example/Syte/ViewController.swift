@@ -16,8 +16,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     
     public enum SyteScreens: Int, CaseIterable {
         
-        case configuration = 0, url, wild, similars, shopTheLook, personalizations, events, autocomplete, popupar, textSearch
-        
+        case configuration = 0, url, wild, similars, shopTheLook, personalizations, events, autocomplete, popupar, textSearch, settings
+        // swiftlint:disable cyclomatic_complexity
         func title() -> String {
             switch self {
             case .configuration:
@@ -40,8 +40,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
                 return "POPULAR SEARCHES"
             case .textSearch:
                 return "TEXT SEARCH"
+            case .settings:
+                return "SETTINGS"
             }
         }
+        // swiftlint:enable cyclomatic_complexity
         
     }
     
@@ -50,19 +53,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         configuteTableView()
-        initSyte()
     }
     
     private func configuteTableView() {
         tableView.tableFooterView = UIView()
         tableView.registerNib(with: SyteExampleTableViewCell.self)
-    }
-    
-    private func initSyte() {
-        SyteManager.shared.initialize { [weak self] in
-            guard let strongSelf = self else { return }
-            strongSelf.tableView.reloadData()
-        }
+        tableView.reloadData()
     }
     
     // swiftlint:disable function_body_length
@@ -85,7 +81,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
         
         let eventBBShowResults = EventBBShowResults(imageUrl: "url", category: "category", resultsCount: 2, pageName: "sdk-test")
         SyteManager.shared.fire(event: eventBBShowResults)
-                                    
+        
         let eventCameraButtonClick = EventCameraButtonClick(placement: Placement.default.getName(), pageName: "sdk-test")
         SyteManager.shared.fire(event: eventCameraButtonClick)
         
@@ -98,13 +94,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
                                                           productList: [Product(sku: "test", quantity: 2, price: 2)],
                                                           pageName: "sdk-test")
         SyteManager.shared.fire(event: eventCheckoutComplete)
-                                    
+        
         let eventDiscoveryButtonClick = EventDiscoveryButtonClick(imageSrc: "src", placement: Placement.default.getName(), pageName: "sdk-test")
         SyteManager.shared.fire(event: eventDiscoveryButtonClick)
         
         let eventDiscoveryButtonImpression = EventDiscoveryButtonImpression(pageName: "sdk-test")
         SyteManager.shared.fire(event: eventDiscoveryButtonImpression)
-                                    
+        
         let eventOfferClick = EventOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
         SyteManager.shared.fire(event: eventOfferClick)
         
@@ -119,7 +115,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
         
         let eventShopTheLookShowLayout = EventShopTheLookShowLayout(resultsCount: 3, pageName: "sdk-test")
         SyteManager.shared.fire(event: eventShopTheLookShowLayout)
-                                    
+        
         let eventSimilarItemsOfferClick = EventSimilarItemsOfferClick(sku: "sku", position: 1, pageName: "sdk-test")
         SyteManager.shared.fire(event: eventSimilarItemsOfferClick)
         
@@ -139,9 +135,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     }
     // swiftlint:enable function_body_length
     
-    // swiftlint:disable cyclomatic_complexity
     private func switchToScreen(type: SyteScreens) {
-        guard SyteManager.shared.isInitialized else { return }
         switch type {
         case .configuration:
             let vc = MainStoryboard.configurationViewController
@@ -172,9 +166,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
         case .textSearch:
             let vc = MainStoryboard.textSearchViewController
             navigationController?.pushViewController(vc, animated: true)
+        case .settings:
+            let vc = MainStoryboard.settingsViewController
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
-    // swiftlint:enableb cyclomatic_complexity
     
 }
 

@@ -60,15 +60,14 @@ class WildSearchViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     @IBAction private func getBoundsButtonPressed(_ sender: Any) {
-        guard SyteManager.shared.isInitialized else { return }
         guard let image = imageToSend else { return }
         SVProgressHUD.show()
         let data = ImageSearch(image: image)
         data.retrieveOffersForTheFirstBound = fetchOffersSegmentControll.selectedSegmentIndex == 0
         SyteManager.shared.getBoundsWild(requestData: data) { [weak self] response in
             SVProgressHUD.dismiss()
-            self?.view.makeToast(response?.isSuccessful == true ? "Success" : "Failure: \(response?.errorMessage ?? "No Errors")")
-            guard let bounds = response?.data else { return }
+            self?.view.makeToast(response.isSuccessful ? "Success" : "Failure: \(response.errorMessage ?? "No Errors")")
+            guard let bounds = response.data else { return }
             self?.boundsResult = bounds
             self?.tableView.isHidden = false
         }

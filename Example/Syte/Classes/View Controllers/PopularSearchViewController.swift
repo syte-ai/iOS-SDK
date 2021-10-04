@@ -35,13 +35,12 @@ class PopularSearchViewController: UIViewController {
     }
     
     private func getPopularSearches() {
-        guard SyteManager.shared.isInitialized else { return }
         SVProgressHUD.show()
         
         SyteManager.shared.getPopularSearch(lang: SyteManager.shared.getLocale()) { [weak self] result in
             SVProgressHUD.dismiss()
-            self?.view.makeToast(result?.isSuccessful == true ? "Success" : "Failure: \(result?.errorMessage ?? "No Errors")")
-            guard let items = result?.data else { return }
+            self?.view.makeToast(result.isSuccessful ? "Success" : "Failure: \(result.errorMessage ?? "No Errors")")
+            guard let items = result.data else { return }
             self?.result = items
         }
     }

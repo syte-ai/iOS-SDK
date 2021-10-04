@@ -23,10 +23,10 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
         super.init(configuration: configuration)
     }
     
-    func initialize(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
+    func getSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
         renewTimestamp()
         firstly {
-            syteService.initialize(accoundId: configuration.accountId)
+            syteService.getSettings(accoundId: configuration.accountId)
         }.done { result in
             completion(result)
         }.catch { error in
@@ -36,11 +36,10 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     
     func getOffers(offersUrl: String,
                    crop: CropCoordinates?,
-                   sytePlatformSettings: SytePlatformSettings,
                    completion: @escaping (SyteResult<ItemsResult>) -> Void) {
         renewTimestamp()
         firstly {
-            generateOffersCall(offersUrl: offersUrl, cropCoordinates: crop, sytePlatformSettings: sytePlatformSettings)
+            generateOffersCall(offersUrl: offersUrl, cropCoordinates: crop)
         }.done { response in
             completion(response)
         }.catch { error in
@@ -50,12 +49,10 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     }
     
     func getBounds(requestData: UrlImageSearch,
-                   sytePlatformSettings: SytePlatformSettings,
                    completion: @escaping (SyteResult<BoundsResult>) -> Void) {
         renewTimestamp()
-        let catalog = sytePlatformSettings.data?.products?.syteapp?.features?.boundingBox?.cropper?.catalog
         firstly {
-            getBounds(requestData: requestData, sytePlatformSettings: sytePlatformSettings, catalog: catalog)
+            getBounds(requestData: requestData)
         }.done { response in
             completion(response)
         }.catch { error in
@@ -64,20 +61,17 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     }
     
     func getBoundsWild(requestData: ImageSearch,
-                       sytePlatformSettings: SytePlatformSettings,
                        completion: @escaping (SyteResult<BoundsResult>) -> Void) {
         renewTimestamp()
-        
-        let catalog = sytePlatformSettings.data?.products?.syteapp?.features?.boundingBox?.cropper?.catalog
         firstly {
-            prepareImageSearchRequestData(requestData: requestData, sytePlatformSettings: sytePlatformSettings)
+            prepareImageSearchRequestData(requestData: requestData)
         }.then { [weak self] response -> Promise<SyteResult<BoundsResult>>  in
             guard let strongSelf = self else { throw SyteError.generalError(message: "Something went wrong.") }
             guard let responseData = response.data else { throw SyteError.generalError(message: "Exif removal service returned empty body.") }
             responseData.retrieveOffersForTheFirstBound = requestData.retrieveOffersForTheFirstBound
             responseData.coordinates = requestData.coordinates
             responseData.personalizedRanking = requestData.personalizedRanking
-            return strongSelf.getBounds(requestData: responseData, sytePlatformSettings: sytePlatformSettings, catalog: catalog)
+            return strongSelf.getBounds(requestData: responseData)
         }.done { response in
             completion(response)
         }.catch { error in
@@ -90,9 +84,9 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
         recommendationRemoteDataSource.getSimilarProducts(similarProducts: similarProducts, completion: completion)
     }
     
-    func getShopTheLook(shopTheLook: ShopTheLook, settings: SytePlatformSettings, completion: @escaping (SyteResult<ShopTheLookResult>) -> Void) {
+    func getShopTheLook(shopTheLook: ShopTheLook, completion: @escaping (SyteResult<ShopTheLookResult>) -> Void) {
         renewTimestamp()
-        recommendationRemoteDataSource.getShopTheLook(shopTheLook: shopTheLook, sytePlatformSettings: settings, completion: completion)
+        recommendationRemoteDataSource.getShopTheLook(shopTheLook: shopTheLook, completion: completion)
     }
     
     func getPersonalization(personalization: Personalization,
@@ -118,14 +112,14 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
         textSearchRemoteDataSource.getTextSearch(textSearch: textSearch, completion: completion)
     }
     
-    private func prepareImageSearchRequestData(requestData: ImageSearch, sytePlatformSettings: SytePlatformSettings) -> Promise<SyteResult<UrlImageSearch>> {
+    private func prepareImageSearchRequestData(requestData: ImageSearch) -> Promise<SyteResult<UrlImageSearch>> {
         var size = 0
         let imageSize = requestData.image.getImageSizeInKbAsJpeg()
         size = imageSize > 0 ? imageSize : 0
         return firstly {
             ImageProcessor.compressToDataWithLoseQuality(image: requestData.image,
                                                          size: size,
-                                                         scale: Utils.getImageScale(settings: sytePlatformSettings))
+                                                         scale: requestData.scale)
         }.then { [weak self] imageData -> Promise<SyteResult<UrlImageSearch>>  in
             guard let strongSelf = self,
                   let finalImageData = imageData else { return .init(error: SyteError.generalError(message: "Image is too big.")) }
@@ -134,12 +128,12 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
             return strongSelf.exifService.removeTags(accountId: strongSelf.configuration.accountId,
                                                      signature: strongSelf.configuration.signature,
                                                      imagePayload: finalImageData).map { response -> SyteResult<UrlImageSearch> in
-                                                        return response
-                                                     }
+                return response
+            }
         }
     }
     
-    private func getBounds(requestData: UrlImageSearch, sytePlatformSettings: SytePlatformSettings, catalog: String?) -> Promise<SyteResult<BoundsResult>> {
+    private func getBounds(requestData: UrlImageSearch) -> Promise<SyteResult<BoundsResult>> {
         return firstly {
             syteService.getBounds(parameters: .init(accountId: configuration.accountId,
                                                     signature: configuration.signature,
@@ -147,7 +141,6 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
                                                     sessionId: requestData.personalizedRanking ? String(configuration.sessionId) : nil,
                                                     syteAppRef: requestData.productType.getName(),
                                                     locale: configuration.locale,
-                                                    catalog: catalog,
                                                     sku: requestData.sku,
                                                     imageUrl: requestData.imageUrl,
                                                     sessionSkus: requestData.personalizedRanking ?
@@ -155,29 +148,26 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
                                                     options: requestData.options))
         }.then { [weak self] response -> Promise<SyteResult<BoundsResult>>  in
             guard let strongSelf = self else { return .value(response) }
-            return strongSelf.handleBoundsResult(response, requestData: requestData, sytePlatformSettings: sytePlatformSettings)
+            return strongSelf.handleBoundsResult(response, requestData: requestData)
         }
     }
     
     private func handleBoundsResult(_ response: SyteResult<BoundsResult>,
-                                    requestData: UrlImageSearch,
-                                    sytePlatformSettings: SytePlatformSettings) -> Promise<SyteResult<BoundsResult>> {
+                                    requestData: UrlImageSearch) -> Promise<SyteResult<BoundsResult>> {
         guard let data = response.data,
               let bound = data.bounds,
               let firstBound = bound.first?.offersUrl,
               requestData.retrieveOffersForTheFirstBound else { return .value(response) }
         
         return generateOffersCall(offersUrl: firstBound,
-                                  cropCoordinates: requestData.coordinates,
-                                  sytePlatformSettings: sytePlatformSettings).map { offers -> SyteResult<BoundsResult> in
+                                  cropCoordinates: requestData.coordinates).map { offers -> SyteResult<BoundsResult> in
                                     response.data?.firstBoundItemsResult = offers.data
                                     return response
                                   }
     }
     
     private func generateOffersCall(offersUrl: String,
-                                    cropCoordinates: CropCoordinates?,
-                                    sytePlatformSettings: SytePlatformSettings) -> Promise<SyteResult<ItemsResult>> {
+                                    cropCoordinates: CropCoordinates?) -> Promise<SyteResult<ItemsResult>> {
         let cropEnabled = cropCoordinates != nil
         var actualUrl: String?
         var coordinatesBase64: String?
@@ -197,12 +187,10 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
         } else {
             actualUrl = offersUrl
         }
-        let settingsCatalog = sytePlatformSettings.data?.products?.syteapp?.features?.boundingBox?.cropper?.catalog
         
         return syteService.getOffers(parameters: .init(offersUrl: actualUrl ?? "",
                                                        crop: coordinatesBase64,
-                                                       forceCats: cropEnabled ? Catalog.general.getName() : nil,
-                                                       catalog: cropEnabled ? settingsCatalog : nil))
+                                                       forceCats: cropEnabled ? Catalog.general.getName() : nil))
         
     }
     

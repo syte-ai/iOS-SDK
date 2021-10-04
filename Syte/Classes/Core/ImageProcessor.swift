@@ -12,10 +12,6 @@ class ImageProcessor {
     
     private let tag = String(describing: ImageProcessor.self)
     
-    public enum Scale {
-        case small, medium, large
-    }
-    
     static let scaleQuality: Int = 20
     static let smallImageMaxSize: Int = 300
     static let smallSize = CGSize(width: 500, height: 1000)
@@ -24,9 +20,9 @@ class ImageProcessor {
     
     init() {}
     
-    static func resize(image: UIImage, size: Int, scale: Scale) -> UIImage {
+    static func resize(image: UIImage, size: Int, scale: ImageScale) -> UIImage {
         var sizeResult = CGSize()
-        let resultScale: Scale = size > smallImageMaxSize ? scale : .small
+        let resultScale: ImageScale = size > smallImageMaxSize ? scale : .small
         
         switch resultScale {
         case .small:
@@ -40,7 +36,7 @@ class ImageProcessor {
         return resizeImage(image, to: sizeResult)
     }
     
-    static func compressToDataWithLoseQuality(image: UIImage, size: Int, scale: Scale) -> Promise<Data?> {
+    static func compressToDataWithLoseQuality(image: UIImage, size: Int, scale: ImageScale) -> Promise<Data?> {
         Promise { seal in
             let compressed = resize(image: image, size: size, scale: scale)
             let compressedJpegData = UIImageJPEGRepresentation(compressed, 1)
@@ -65,7 +61,7 @@ class ImageProcessor {
         }
     }
     
-    static func compressToDataWithLoseResolution(image: UIImage, size: Int, scale: Scale) -> Promise<Data?> {
+    static func compressToDataWithLoseResolution(image: UIImage, size: Int, scale: ImageScale) -> Promise<Data?> {
         Promise { seal in
             let compressed = resize(image: image, size: size, scale: scale)
             guard compressed.getImageSizeInKbAsJpeg() > smallImageMaxSize else { seal.fulfill(UIImageJPEGRepresentation(compressed, 1)); return }

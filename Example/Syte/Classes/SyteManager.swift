@@ -13,88 +13,77 @@ class SyteManager {
     
     static let shared = SyteManager()
     
-    var isInitialized: Bool {
-        return SyteManager.shared.syte != nil
-    }
+    private var syte: Syte
     
-    private var syte: Syte?
-    
-    private init() {}
-    
-    public func initialize(_ completion: @escaping () -> Void) {
+    private init() {
         let configuration = SyteConfiguration(accountId: "9165", signature: "601c206d0a7f780efb9360f3")
-        Syte.initialize(configuration: configuration) { [weak self] result in
-            guard let strongSelf = self else { return }
-            guard let syteInstance = result.data else { return }
-            strongSelf.syte = syteInstance
-            completion()
-        }
+        syte = Syte(configuration: configuration)!
     }
     
-    public func getBounds(requestData: UrlImageSearch, completion: @escaping (SyteResult<BoundsResult>?) -> Void) {
-        guard let syte = syte else { return completion(nil) }
+    public func getBounds(requestData: UrlImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
         syte.getBounds(imageSearch: requestData, completion: completion)
     }
     
-    public func getBoundsWild(requestData: ImageSearch, completion: @escaping (SyteResult<BoundsResult>?) -> Void) {
-        guard let syte = syte else { return completion(nil) }
+    public func getBoundsWild(requestData: ImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
+        
         syte.getBounds(imageSearch: requestData, completion: completion)
     }
     
-    public func getSimilars(similarProducts: SimilarProducts, completion: @escaping (SyteResult<SimilarProductsResult>?) -> Void) {
-        guard let syte = syte else { return completion(nil) }
+    public func getSimilars(similarProducts: SimilarProducts,
+                            completion: @escaping (SyteResult<SimilarProductsResult>) -> Void) {
         syte.getSimilarProducts(similarProducts: similarProducts, completion: completion)
     }
     
-    public func getShopTheLook(shopTheLook: ShopTheLook, completion: @escaping (SyteResult<ShopTheLookResult>?) -> Void) {
-        guard let syte = syte else { return completion(nil) }
+    public func getShopTheLook(shopTheLook: ShopTheLook, completion: @escaping (SyteResult<ShopTheLookResult>) -> Void) {
         syte.getShopTheLook(shopTheLook: shopTheLook, completion: completion)
     }
     
-    public func getPersonalization(personalization: Personalization, completion: @escaping (SyteResult<PersonalizationResult>?) -> Void) {
-        guard let syte = syte else { return completion(nil) }
+    public func getPersonalization(personalization: Personalization,
+                                   completion: @escaping (SyteResult<PersonalizationResult>) -> Void) {
         syte.getPersonalization(personalization: personalization, completion: completion)
     }
     
-    public func getAutoComplete(query: String, lang: String?, completion: @escaping (SyteResult<AutoCompleteResult>?) -> Void) {
-        guard let syte = syte else { return completion(nil) }
+    public func getAutoComplete(query: String,
+                                lang: String?,
+                                completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
         syte.getAutoComplete(query: query, lang: lang, completion: completion)
     }
     
-    public func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>?) -> Void) {
-        guard let syte = syte else { return completion(nil) }
+    public func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
         syte.getPopularSearch(lang: lang, completion: completion)
     }
     
-    public func getTextSearch(query: String, completion: @escaping (SyteResult<TextSearchResult>?) -> Void) {
-        guard let syte = syte else { return completion(nil) }
-        let textSearchData = TextSearch(query: query, lang: syte.getConfiguration()?.locale ?? "en_US")
+    public func getTextSearch(query: String, completion: @escaping (SyteResult<TextSearchResult>) -> Void) {
+        let textSearchData = TextSearch(query: query, lang: syte.getConfiguration().locale)
         syte.getTextSearch(textSearch: textSearchData, completion: completion)
     }
     
+    public func getSytePlatformSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
+        syte.getSytePlatformSettings(completion: completion)
+    }
+    
     public func fire(event: BaseSyteEvent) {
-        guard let syte = syte else { return }
         syte.fire(event: event)
     }
     
     public func getSearchHistory() -> [String] {
-        return syte?.getRecentTextSearches() ?? []
+        return syte.getRecentTextSearches()
     }
     
     public func addViewedItem(sku: String) throws {
-        try syte?.addViewedItem(sku: sku)
+        try syte.addViewedItem(sku: sku)
     }
     
     public func getViewedProducts() -> [String] {
-        return Array(syte?.getViewedProducts() ?? [])
+        return Array(syte.getViewedProducts())
     }
     
     public func setLocale(_ locale: String) {
-        syte?.getConfiguration()?.locale = locale
+        syte.getConfiguration().locale = locale
     }
     
     public func getLocale() -> String {
-        return syte?.getConfiguration()?.locale ?? ""
+        return syte.getConfiguration().locale
     }
     
 }

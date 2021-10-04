@@ -15,7 +15,6 @@ struct GetBoundsParameters {
     let sessionId: String?
     let syteAppRef: String
     let locale: String
-    let catalog: String?
     let sku: String?
     let imageUrl: String
     let sessionSkus: String?
@@ -29,7 +28,6 @@ struct GetBoundsParameters {
             "session_id": sessionId,
             "syte_app_ref": syteAppRef,
             "locale": locale,
-            "catalog": catalog,
             "sku": sku,
             "imageUrl": imageUrl,
             "session_skus": sessionSkus
