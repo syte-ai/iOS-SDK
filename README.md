@@ -1,4 +1,4 @@
-# Syte
+# Syte iOS SDK
 
  [![CI Status](https://img.shields.io/travis/arturtarasenko/Syte.svg?style=flat)](https://travis-ci.org/arturtarasenko/Syte)
  [![Version](https://img.shields.io/cocoapods/v/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
