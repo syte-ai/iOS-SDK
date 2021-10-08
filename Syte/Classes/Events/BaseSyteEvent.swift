@@ -67,3 +67,16 @@ public class BaseSyteEvent: RequestableEvent, Codable {
     }
     
 }
+
+// MARK: Extension
+
+extension BaseSyteEvent: Equatable {
+    
+    public static func == (lhs: BaseSyteEvent, rhs: BaseSyteEvent) -> Bool {
+        return lhs.syteUrlReferer == rhs.syteUrlReferer
+        && lhs.name == rhs.name
+        && lhs.eventsTags == rhs.eventsTags
+            
+    }
+    
+}

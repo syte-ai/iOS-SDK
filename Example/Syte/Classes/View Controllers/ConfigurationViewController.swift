@@ -38,7 +38,7 @@ class ConfigurationViewController: UIViewController {
     @IBAction private func addSkuButtonPressed(_ sender: Any) {
         guard let text = skuTextField.text else { return }
         do {
-            try SyteManager.shared.addViewedItem(sku: text)
+            try SyteManager.shared.addViewedProduct(sku: text)
             view.makeToast("Sku added: \(text)")
             tableView.reloadData()
         } catch {

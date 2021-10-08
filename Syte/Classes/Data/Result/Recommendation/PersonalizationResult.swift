@@ -12,7 +12,7 @@ import Foundation
  */
 public class PersonalizationResult: Codable, ReflectedStringConvertible {
     
-    // Retrieved items
+    /// Retrieved items
     private(set) public var data: [Item]?
     
     enum CodingKeys: String, CodingKey {

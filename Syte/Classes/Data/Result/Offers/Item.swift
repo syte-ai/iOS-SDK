@@ -12,49 +12,49 @@ import Foundation
  */
 public class Item: Codable, ReflectedStringConvertible {
     
-    // Float price
+    /// Float price
     private(set) public var floatPrice: Double?
     
-    // Original price
+    /// Original price
     private(set) public var originalPrice: String?
     
-    // Parent SKU (product ID)
+    /// Parent SKU (product ID)
     private(set) public var parentSku: String?
     
-    // Merchant
+    /// Merchant
     private(set) public var merchant: String?
     
-    // Description
+    /// Description
     private(set) public var description: String?
     
-    // Item Url
+    /// Item Url
     private(set) public var offer: String?
     
-    // Original data. This data can be unique for each account ID
+    /// Original data. This data can be unique for each account ID
     private(set) public var originalData: [String: JSONValue]?
     
-    // Price
+    /// Price
     private(set) public var price: String?
     
-    // Image Url
+    /// Image Url
     private(set) public var imageUrl: String?
     
-    // BB categories
+    /// BB categories
     private(set) public var bbCategories: [String]?
     
-    // ID
+    /// ID
     private(set) public var id: String?
     
-    // Float original price
+    /// Float original price
     private(set) public var floatOriginalPrice: Double?
     
-    // Categories
+    /// Categories
     private(set) public var categories: [String]?
     
-    // SKU (product ID)
+    /// SKU (product ID)
     private(set) public var sku: String?
     
-    // Brand
+    /// Brand
     private(set) public var brand: String?
     
     enum CodingKeys: String, CodingKey {

@@ -12,10 +12,10 @@ import Foundation
  */
 public class ShopTheLookResult: Codable, ReflectedStringConvertible {
     
-    // Array of ShopTheLookResponseItem
+    /// Array of ShopTheLookResponseItem
     private(set) public var items: [ShopTheLookResponseItem]?
     
-    // Fallback value
+    /// Fallback value
     private(set) public var fallback: String?
     
     enum CodingKeys: String, CodingKey {
@@ -54,7 +54,7 @@ public class ShopTheLookResult: Codable, ReflectedStringConvertible {
             maxIdx = values.count - 1
         }
         
-        for i in 0..<maxIdx {
+        for i in 0...maxIdx {
             for item in items {
                 if let values = item.items, values.count > i {
                     itemList.append(values[i])

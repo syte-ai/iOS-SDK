@@ -22,7 +22,7 @@ class SettingsViewController: UIViewController {
     private func getSettings() {
         textView.text = ""
         SVProgressHUD.show()
-        SyteManager.shared.getSytePlatformSettings { [weak self] result in
+        SyteManager.shared.getPlatformSettings { [weak self] result in
             SVProgressHUD.dismiss()
             self?.view.makeToast(result.isSuccessful ? "Success" : "Failure: \(result.errorMessage ?? "No Errors")")
             guard let settings = result.data else { return }

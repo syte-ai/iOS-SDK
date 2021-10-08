@@ -15,10 +15,6 @@ public final class Syte {
     
     private static let tag = String(describing: Syte.self)
     
-    private enum SyteState {
-        case idle, initialized
-    }
-    
     private var configuration: SyteConfiguration
     
     private let syteRemoteDataSource: SyteRemoteDataSource
@@ -26,17 +22,16 @@ public final class Syte {
     private var imageSearchClient: ImageSearchClient
     private var productRecommendationClient: ProductRecommendationClient
     private var textSearchClient: TextSearchClient
-//    private var state = SyteState.idle
     
     /**
      Set/Get log level.
      */
     public var logLevel: SyteLogger.LogLevel {
         get {
-            return SyteLogger.getLogLevel()
+            return SyteLogger.logLevel
         }
         set {
-            SyteLogger.setLogLevel(newValue)
+            SyteLogger.logLevel = newValue
         }
     }
     
@@ -56,32 +51,6 @@ public final class Syte {
             return nil
         }
     }
-    
-//    private init(configuration: SyteConfiguration) {
-//        self.configuration = configuration
-//        syteRemoteDataSource = SyteRemoteDataSource(configuration: configuration)
-//        eventsRemoteDataSource = EventsRemoteDataSource(configuration: configuration)
-//    }
-    
-    /**
-     Creates a new instance of the `Syte` class and triggers the start session call.
-     
-     - Returns: A new instance of the `Syte`.
-     */
-//    public static func initialize(configuration: SyteConfiguration, completion: @escaping (SyteResult<Syte>) -> Void) {
-//        do {
-//            try InputValidator.validateInput(configuration: configuration)
-//
-//            let syte = Syte(configuration: configuration)
-//            syte.startSession { syteResult in
-//                completion(syteResult.mapData { $0.isSuccessful ? syte : nil})
-//            }
-//
-//        } catch let error {
-//            SyteLogger.e(tag: Syte.tag, message: error.localizedDescription)
-//            completion(.failureResult(message: error.localizedDescription))
-//        }
-//    }
     
     /**
      Retrieves items: Get similar items per bounding box detected in the image.
@@ -104,7 +73,7 @@ public final class Syte {
         - imageSearch: `ImageSearch`
         - completion: `SyteResult<BoundsResult>`.
      */
-    public func getBounds(imageSearch: ImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
+    public func getBoundsForImage(imageSearch: ImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
         imageSearchClient.getBounds(requestData: imageSearch, completion: completion)
         
     }
@@ -116,7 +85,7 @@ public final class Syte {
         - imageSearch: `UrlImageSearch`
         - completion: `SyteResult<BoundsResult>`.
      */
-    public func getBounds(imageSearch: UrlImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
+    public func getBoundsForImageUrl(imageSearch: UrlImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
         imageSearchClient.getBounds(requestData: imageSearch, completion: completion)
     }
     
@@ -164,7 +133,7 @@ public final class Syte {
         - lang: Locale to retrieve the searches for.
         - completion: `SyteResult<[String]>`.
      */
-    public func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
+    public func getPopularSearches(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
         textSearchClient.getPopularSearch(lang: lang, completion: completion)
     }
 
@@ -194,9 +163,9 @@ public final class Syte {
         - lang: Locale to retrieve the searches for.
         - completion: `SyteResult<AutoCompleteResult>`.
      */
-    public func getAutoComplete(query: String,
-                                lang: String?,
-                                completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
+    public func getAutoCompleteForTextSearch(query: String,
+                                             lang: String?,
+                                             completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
         textSearchClient.getAutoComplete(query: query, lang: lang ?? configuration.locale, completion: completion)
     }
     
@@ -205,7 +174,7 @@ public final class Syte {
      
      - Parameter completion: `SyteResult<SytePlatformSettings>`.
      */
-    public func getSytePlatformSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
+    public func getPlatformSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
         syteRemoteDataSource.getSettings { response in
             guard response.isSuccessful else { return completion(.failureResult(message: "Can't fetch syte platform settings.")) }
             completion(response.mapData { $0.data })
@@ -248,7 +217,7 @@ public final class Syte {
     public func fire(event: BaseSyteEvent) {
         eventsRemoteDataSource.fire(event: event)
         if let casted = event as? EventPageView {
-            try? addViewedItem(sku: casted.sku)
+            try? addViewedProduct(sku: casted.sku)
         }
     }
     
@@ -259,7 +228,7 @@ public final class Syte {
      - Throws: `SyteError.initializationFailed`
      
      */
-    public func addViewedItem(sku: String) throws {
+    public func addViewedProduct(sku: String) throws {
         try InputValidator.validateInput(string: sku)
         configuration.addViewedProduct(sessionSku: sku)
     }

@@ -12,10 +12,10 @@ import Foundation
  */
 public class ShopTheLookResponseItem: Codable, ReflectedStringConvertible {
     
-    // Array of items
+    /// Array of items
     private(set) public var items: [Item]?
     
-    // Label
+    /// Label
     private(set) public var label: String?
     
     enum CodingKeys: String, CodingKey {

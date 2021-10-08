@@ -15,20 +15,9 @@ public final class SyteLogger {
         case verbose, info, debug, warn, error
     }
     
-    private static var logLevel = LogLevel.verbose
     private static let syteKeyword = ":SYTE:"
     
-    private static func appendTag(tag: String) -> String {
-        return syteKeyword + tag
-    }
-    
-    public static func setLogLevel(_ level: LogLevel) {
-        logLevel = level
-    }
-    
-    public static func getLogLevel() -> LogLevel {
-        return logLevel
-    }
+    public static var logLevel = LogLevel.verbose
     
     public static func v(tag: String, message: String) {
         guard logLevel == .verbose else { return }

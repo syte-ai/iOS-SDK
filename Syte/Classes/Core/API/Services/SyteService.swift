@@ -26,11 +26,11 @@ protocol SyteServiceProtocol: class {
 
 class SyteService: SyteServiceProtocol {
     
-#if DEBUG
-    private let service = MoyaProvider<SyteProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
-#else
+//#if DEBUG
+//    private let service = MoyaProvider<SyteProvider>(plugins: [NetworkLoggerPlugin(verbose: true)])
+//#else
     private let service = MoyaProvider<SyteProvider>()
-#endif
+//#endif
     
     func getSettings(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>> {
         return sendRequestWithDefaultHandling(request: .getSettings(accountId: accoundId))

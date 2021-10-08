@@ -64,7 +64,7 @@ class WildSearchViewController: UIViewController, UIImagePickerControllerDelegat
         SVProgressHUD.show()
         let data = ImageSearch(image: image)
         data.retrieveOffersForTheFirstBound = fetchOffersSegmentControll.selectedSegmentIndex == 0
-        SyteManager.shared.getBoundsWild(requestData: data) { [weak self] response in
+        SyteManager.shared.getBoundsForImage(requestData: data) { [weak self] response in
             SVProgressHUD.dismiss()
             self?.view.makeToast(response.isSuccessful ? "Success" : "Failure: \(response.errorMessage ?? "No Errors")")
             guard let bounds = response.data else { return }

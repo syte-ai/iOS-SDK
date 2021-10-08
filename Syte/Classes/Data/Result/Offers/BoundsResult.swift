@@ -12,7 +12,7 @@ import Foundation
  */
 public class BoundsResult: Codable, ReflectedStringConvertible {
     
-    /* List of retrieved bounds. */
+    /// List of retrieved bounds.
     private(set) public var bounds: [Bound]?
     
     /**

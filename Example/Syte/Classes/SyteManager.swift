@@ -20,17 +20,22 @@ class SyteManager {
         syte = Syte(configuration: configuration)!
     }
     
-    public func getBounds(requestData: UrlImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
-        syte.getBounds(imageSearch: requestData, completion: completion)
+    public func getBoundsForImageUrl(requestData: UrlImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
+        syte.getBoundsForImageUrl(imageSearch: requestData, completion: completion)
     }
     
-    public func getBoundsWild(requestData: ImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
-        
-        syte.getBounds(imageSearch: requestData, completion: completion)
+    public func getItemsForBound(bound: Bound,
+                                 cropCoordinates: CropCoordinates?,
+                                 completion: @escaping (SyteResult<ItemsResult>) -> Void) {
+        syte.getItemsForBound(bound: bound, cropCoordinates: cropCoordinates, completion: completion)
     }
     
-    public func getSimilars(similarProducts: SimilarProducts,
-                            completion: @escaping (SyteResult<SimilarProductsResult>) -> Void) {
+    public func getBoundsForImage(requestData: ImageSearch, completion: @escaping (SyteResult<BoundsResult>) -> Void) {
+        syte.getBoundsForImage(imageSearch: requestData, completion: completion)
+    }
+    
+    public func getSimilarProducts(similarProducts: SimilarProducts,
+                                   completion: @escaping (SyteResult<SimilarProductsResult>) -> Void) {
         syte.getSimilarProducts(similarProducts: similarProducts, completion: completion)
     }
     
@@ -43,23 +48,23 @@ class SyteManager {
         syte.getPersonalization(personalization: personalization, completion: completion)
     }
     
-    public func getAutoComplete(query: String,
-                                lang: String?,
-                                completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
-        syte.getAutoComplete(query: query, lang: lang, completion: completion)
+    public func getAutoCompleteForTextSearch(query: String,
+                                             lang: String?,
+                                             completion: @escaping (SyteResult<AutoCompleteResult>) -> Void) {
+        syte.getAutoCompleteForTextSearch(query: query, lang: lang, completion: completion)
     }
     
-    public func getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
-        syte.getPopularSearch(lang: lang, completion: completion)
+    public func getPopularSearches(lang: String, completion: @escaping (SyteResult<[String]>) -> Void) {
+        syte.getPopularSearches(lang: lang, completion: completion)
     }
     
-    public func getTextSearch(query: String, completion: @escaping (SyteResult<TextSearchResult>) -> Void) {
-        let textSearchData = TextSearch(query: query, lang: syte.getConfiguration().locale)
+    public func getTextSearch(query: String, lang: String?, completion: @escaping (SyteResult<TextSearchResult>) -> Void) {
+        let textSearchData = TextSearch(query: query, lang: lang ?? syte.getConfiguration().locale)
         syte.getTextSearch(textSearch: textSearchData, completion: completion)
     }
     
-    public func getSytePlatformSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
-        syte.getSytePlatformSettings(completion: completion)
+    public func getPlatformSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
+        syte.getPlatformSettings(completion: completion)
     }
     
     public func fire(event: BaseSyteEvent) {
@@ -70,8 +75,8 @@ class SyteManager {
         return syte.getRecentTextSearches()
     }
     
-    public func addViewedItem(sku: String) throws {
-        try syte.addViewedItem(sku: sku)
+    public func addViewedProduct(sku: String) throws {
+        try syte.addViewedProduct(sku: sku)
     }
     
     public func getViewedProducts() -> [String] {

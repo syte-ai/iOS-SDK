@@ -135,6 +135,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
     }
     // swiftlint:enable function_body_length
     
+    // swiftlint:disable cyclomatic_complexity
     private func switchToScreen(type: SyteScreens) {
         switch type {
         case .configuration:
@@ -171,6 +172,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    // swiftlint:enable cyclomatic_complexity
     
 }
 

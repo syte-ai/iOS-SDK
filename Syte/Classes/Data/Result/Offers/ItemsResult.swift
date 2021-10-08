@@ -12,13 +12,13 @@ import Foundation
  */
 public class ItemsResult: Codable, ReflectedStringConvertible {
     
-    // Array of items
+    /// Array of items
     private(set) public var items: [Item]?
     
-    // Currency symbol
+    /// Currency symbol
     private(set) public var currencySymbol: String?
     
-    // Currency Tla
+    /// Currency Tla
     private(set) public var currencyTla: String?
     
     enum CodingKeys: String, CodingKey {

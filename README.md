@@ -1,9 +1,9 @@
 # Syte iOS SDK
 
- [![CI Status](https://img.shields.io/travis/arturtarasenko/Syte.svg?style=flat)](https://travis-ci.org/arturtarasenko/Syte)
- [![Version](https://img.shields.io/cocoapods/v/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
- [![License](https://img.shields.io/cocoapods/l/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
- [![Platform](https://img.shields.io/cocoapods/p/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
+[![CI Status](https://img.shields.io/travis/arturtarasenko/Syte.svg?style=flat)](https://travis-ci.org/arturtarasenko/Syte)
+[![Version](https://img.shields.io/cocoapods/v/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
+[![License](https://img.shields.io/cocoapods/l/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
+[![Platform](https://img.shields.io/cocoapods/p/Syte.svg?style=flat)](https://cocoapods.org/pods/Syte)
 
 ## Example
 
@@ -39,13 +39,7 @@ configuration.locale = <locale>
 Then you'll need to initialize Syte class passing the configuration instance and the callback:
 
 ```swift  
-var syte: Syte?
-Syte.initialize(configuration: configuration) { [weak self] result in
-guard let strongSelf = self else { return }
-guard let data = result.data else { return }
-syte = data
-completion()
-}
+var syte: Syte? = Syte(configuration: configuration)
 ```
 
 Event fires automatically: https://syteapi.com/et?name=syte_init&account_id=[account_id]&session_id=[session_id]&sig=[api_signature]&syte_uuid=[user_id]&build_num=&lang=&tags=syte_ios_sdk&syte_url_referer=[app_name]
@@ -59,9 +53,9 @@ For get recent searches:
 syte.getRecentTextSearches()
 ```
 
-For set viewed item:
+For set viewed product:
 ```swift
-syte.addViewedItem(sku: <String>)
+syte.addViewedProduct(sku: <String>)
 ```
 
 Get all viewed items:
@@ -90,13 +84,13 @@ let imageSearchRequestData = ImageSearch(image: <UIImage>)
 
 For Url image search:
 ```swift  
-syte.getBounds(requestData: <UrlImageSearch>) { [weak self] result in
+syte.getBoundsForImageUrl(requestData: <UrlImageSearch>) { [weak self] result in
 // Handle response, result type is SyteResult<BoundsResult> 
 }
 ```
 For image search:
 ```swift  
-syte.getBounds(requestData: <ImageSearch>) { [weak self] result in
+syte.getBoundsForImage(requestData: <ImageSearch>) { [weak self] result in
 // Handle response, result type is SyteResult<BoundsResult> 
 }
 ```
@@ -125,7 +119,7 @@ or
 ```swift
 imageSearch.retrieveOffersForTheFirstBound = false
 ```
- to disable this behaviour.
+to disable this behaviour.
 To get the items for the first bound use the 
 ```swift 
 BoundsResult.firstBoundItemsResult
@@ -143,7 +137,7 @@ To use the "Recommendations" functionality, do the following:
 
 **NOTE:** You must add at least one product ID to use the "Personalization" functionality. To do this use the 
 ```swift
-Syte.addViewedItem(String)
+Syte.addViewedProduct(String)
 ``` 
 method.
 
@@ -152,7 +146,7 @@ method.
 Enabling the personalized ranking will attach the list of viewed products to the requests. 
 To add a product to the list of viewed ones use the
 ```swift
-Syte.addViewedItem(String)
+Syte.addViewedProduct(String)
 ```
 method.
 To enable this functionality use the 
@@ -180,7 +174,7 @@ There are 3 main features:
 
 1. Popular Searches. Will retrieve the list of the most popular searches.
 ```swift  
-syte.getPopularSearch(lang: String, completion: @escaping (SyteResult<[String]>) -> Void)
+syte.getPopularSearches(lang: String, completion: @escaping (SyteResult<[String]>) -> Void)
 ```
 2. Text search. Will retrieve the results for the specified query.
 ```swift  
@@ -190,10 +184,16 @@ To retrieve a list of recent text searches use syte.getRecentTextSearches() meth
 
 3. Auto-complete. Text auto-completion functionality.
 ```swift  
-syte.getAutoComplete("query", "en_US") { [weak self] result in
+syte.getAutoCompleteForTextSearch("query", "en_US") { [weak self] result in
 // Handle response, result type is SyteResult<AutoCompleteResult>
 }
 ```
+
+# Platform settings
+To retrieve the Syte Platform Settings use:
+```swift  
+syte.getPlatformSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void)
+```     
 
 ## Author
 

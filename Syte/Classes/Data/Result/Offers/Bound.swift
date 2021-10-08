@@ -12,25 +12,25 @@ import Foundation
  */
 public class Bound: Codable, ReflectedStringConvertible {
     
-    // Item Url
+    /// Item Url
     private(set) public var offersUrl: String?
     
-    // Gender
+    /// Gender
     private(set) public var gender: String?
     
-    // Catalog
+    /// Catalog
     private(set) public var catalog: String?
     
-    // Bound center
+    /// Bound center
     private(set) public var center: [Double]?
     
-    // Label
+    /// Label
     private(set) public var label: String?
     
-    // Top left point coordinates
+    /// Top left point coordinates
     private(set) public var b0: [Double]?
     
-    // Bottom right point coordinates
+    /// Bottom right point coordinates
     private(set) public var b1: [Double]?
     
     enum CodingKeys: String, CodingKey {

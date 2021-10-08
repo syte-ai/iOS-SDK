@@ -180,7 +180,7 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
             let params = URLComponents(string: offersUrl)
             
             for param in params?.queryItems ?? [] {
-                if param.name == "cats" || param.name == "crop" || param.name == "catalog" || param.name == "feed" { continue }
+                if param.name == "cats" || param.name == "crop" || param.name == "feed" { continue }
                 url?.queryItems?.append(param)
             }
             actualUrl = url?.string

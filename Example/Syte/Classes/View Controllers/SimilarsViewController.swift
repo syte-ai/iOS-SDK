@@ -75,7 +75,7 @@ class SimilarsViewController: UIViewController {
             similarProducts.syteUrlReferer = referer
         }
         
-        SyteManager.shared.getSimilars(similarProducts: similarProducts) { [weak self] result in
+        SyteManager.shared.getSimilarProducts(similarProducts: similarProducts) { [weak self] result in
             SVProgressHUD.dismiss()
             self?.view.makeToast(result.isSuccessful ? "Success" : "Failure: \(result.errorMessage ?? "No Errors")")
             guard let items = result.data else { return }
