@@ -36,7 +36,7 @@ let configuration = SyteConfiguration(accountId: <account_id>, signature: <api_s
 configuration.locale = <locale>
 ```
 
-Then you'll need to initialize Syte class passing the configuration instance and the callback:
+Then you'll need to initialize Syte class passing the configuration instance :
 
 ```swift  
 var syte: Syte? = Syte(configuration: configuration)

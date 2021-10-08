@@ -40,6 +40,9 @@
 		758B971D270C6BC800B9C3AE /* EventsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758B971C270C6BC800B9C3AE /* EventsTests.swift */; };
 		75AAB96626F4CEF30094D100 /* SimilarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB96526F4CEF30094D100 /* SimilarsViewController.swift */; };
 		75AAB96826F8AA250094D100 /* ShopTheLookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AAB96726F8AA240094D100 /* ShopTheLookViewController.swift */; };
+		75CB6996271053EA00E7D85C /* JsonValueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB6995271053EA00E7D85C /* JsonValueTests.swift */; };
+		75CB699827105D3D00E7D85C /* ImageProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB699727105D3D00E7D85C /* ImageProcessorTests.swift */; };
+		75CB699A2710634300E7D85C /* SyteResultTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CB69992710634300E7D85C /* SyteResultTests.swift */; };
 		75CE617627034FB500B38D75 /* SyteConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE617527034FB500B38D75 /* SyteConfigurationTests.swift */; };
 		75CE61782704671E00B38D75 /* SyteStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CE61772704671E00B38D75 /* SyteStorageTests.swift */; };
 		A7DBC8D112B277B74E57C95C /* Pods_Syte_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82F888A5C2BFB67A89992C1 /* Pods_Syte_Example.framework */; };
@@ -97,6 +100,9 @@
 		758B971C270C6BC800B9C3AE /* EventsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTests.swift; sourceTree = "<group>"; };
 		75AAB96526F4CEF30094D100 /* SimilarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarsViewController.swift; sourceTree = "<group>"; };
 		75AAB96726F8AA240094D100 /* ShopTheLookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTheLookViewController.swift; sourceTree = "<group>"; };
+		75CB6995271053EA00E7D85C /* JsonValueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonValueTests.swift; sourceTree = "<group>"; };
+		75CB699727105D3D00E7D85C /* ImageProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessorTests.swift; sourceTree = "<group>"; };
+		75CB69992710634300E7D85C /* SyteResultTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteResultTests.swift; sourceTree = "<group>"; };
 		75CE617527034FB500B38D75 /* SyteConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteConfigurationTests.swift; sourceTree = "<group>"; };
 		75CE61772704671E00B38D75 /* SyteStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyteStorageTests.swift; sourceTree = "<group>"; };
 		9D17F746196644FB54D9059A /* Pods-Syte_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Syte_Example.debug.xcconfig"; path = "Target Support Files/Pods-Syte_Example/Pods-Syte_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +192,9 @@
 				7572DA9D270DA5F400FC61C8 /* ProvidersTests.swift */,
 				755712D4270F008C00FF794B /* LoggerTests.swift */,
 				755712D6270F08CB00FF794B /* UtilsTests.swift */,
+				75CB6995271053EA00E7D85C /* JsonValueTests.swift */,
+				75CB699727105D3D00E7D85C /* ImageProcessorTests.swift */,
+				75CB69992710634300E7D85C /* SyteResultTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -549,9 +558,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75CB699A2710634300E7D85C /* SyteResultTests.swift in Sources */,
+				75CB6996271053EA00E7D85C /* JsonValueTests.swift in Sources */,
 				607FACEC1AFB9204008FA782 /* BaseTests.swift in Sources */,
 				75CE617627034FB500B38D75 /* SyteConfigurationTests.swift in Sources */,
 				758B971D270C6BC800B9C3AE /* EventsTests.swift in Sources */,
+				75CB699827105D3D00E7D85C /* ImageProcessorTests.swift in Sources */,
 				7544077B270B01E70067712E /* SyteTests.swift in Sources */,
 				7572DA9E270DA5F400FC61C8 /* ProvidersTests.swift in Sources */,
 				755712D5270F008C00FF794B /* LoggerTests.swift in Sources */,

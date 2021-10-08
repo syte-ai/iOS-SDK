@@ -196,8 +196,6 @@ public final class Syte {
      
      - Parameter configuration: SyteConfiguration
      
-     - Throws: `SyteError.initializationFailed`
-     
      */
     public func setConfiguration(configuration: SyteConfiguration) {
         self.configuration = configuration
@@ -211,7 +209,6 @@ public final class Syte {
      Send event to Syte. Can be used to send either predefined events or a custom event.
      
      - Parameter event: Extend `BaseSyteEvent` to send custom events.
-     - Throws: `SyteError.initializationFailed`
      
      */
     public func fire(event: BaseSyteEvent) {
@@ -225,7 +222,6 @@ public final class Syte {
      Save product ID into the local storage. All saved viewed products will be used for personalization.
      
      - Parameter sku: Product ID.
-     - Throws: `SyteError.initializationFailed`
      
      */
     public func addViewedProduct(sku: String) throws {
@@ -237,7 +233,6 @@ public final class Syte {
      Get all product IDs that were viewed during this session.
      
      - Returns: list of product IDs.
-     - Throws: `SyteError.initializationFailed`
      
      */
     public func getViewedProducts() -> Set<String> {

@@ -58,13 +58,6 @@ extension SyteResult {
         return result
     }
     
-    static var syteNotInilialized: SyteResult<T> {
-        let syteResult = SyteResult<T>()
-        syteResult.data = nil
-        syteResult.errorMessage = "Syte is not initialized."
-        return syteResult
-    }
-    
     static func failureResult<T>(message: String) -> SyteResult<T> {
         let syteResult = SyteResult<T>()
         syteResult.data = nil

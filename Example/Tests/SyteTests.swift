@@ -315,6 +315,8 @@ class SyteTests: BaseTests {
             XCTAssertNotNil(result.data)
             XCTAssertTrue(result.isSuccessful)
             XCTAssertEqual(result.resultCode, 200)
+            let error = result.data?.error?.values()
+            XCTAssertNil(error)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 60)

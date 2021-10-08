@@ -10,15 +10,11 @@ import PromiseKit
 
 class ImageProcessor {
     
-    private let tag = String(describing: ImageProcessor.self)
-    
     static let scaleQuality: Int = 20
     static let smallImageMaxSize: Int = 300
     static let smallSize = CGSize(width: 500, height: 1000)
     static let mediumSize = CGSize(width: 1400, height: 1400)
     static let largeSize = CGSize(width: 2000, height: 2000)
-    
-    init() {}
     
     static func resize(image: UIImage, size: Int, scale: ImageScale) -> UIImage {
         var sizeResult = CGSize()
@@ -58,55 +54,6 @@ class ImageProcessor {
                 iterationImageData = newImage
             }
             seal.fulfill(iterationImageData)
-        }
-    }
-    
-    static func compressToDataWithLoseResolution(image: UIImage, size: Int, scale: ImageScale) -> Promise<Data?> {
-        Promise { seal in
-            let compressed = resize(image: image, size: size, scale: scale)
-            guard compressed.getImageSizeInKbAsJpeg() > smallImageMaxSize else { seal.fulfill(UIImageJPEGRepresentation(compressed, 1)); return }
-            DispatchQueue.global(qos: .userInitiated).async {
-                
-                guard let currentImageSize = UIImageJPEGRepresentation(image, 1.0)?.count else {
-                    return seal.fulfill(nil)
-                }
-                let maxByte = smallImageMaxSize * 1000
-                var iterationImage: UIImage? = image
-                var iterationImageData: Data?
-                var iterationImageSize = currentImageSize
-                var iterationCompression: CGFloat = 1.0
-                
-                while iterationImageSize > maxByte && iterationCompression > 0.01 {
-                    let percantageDecrease = getPercantageToDecreaseTo(forDataCount: iterationImageSize)
-                    
-                    let canvasSize = CGSize(width: image.size.width * iterationCompression,
-                                            height: image.size.height * iterationCompression)
-                    UIGraphicsBeginImageContextWithOptions(canvasSize, false, image.scale)
-                    defer { UIGraphicsEndImageContext() }
-                    image.draw(in: CGRect(origin: .zero, size: canvasSize))
-                    iterationImage = UIGraphicsGetImageFromCurrentImageContext()
-                    
-                    guard let iterationImg = iterationImage,
-                          let newImage = UIImageJPEGRepresentation(iterationImg, 1.0) else {
-                        return seal.fulfill(nil)
-                    }
-                    iterationImageSize = newImage.count
-                    iterationCompression -= percantageDecrease
-                    iterationImageData = newImage
-                }
-                seal.fulfill(iterationImageData)
-            }
-        }
-    }
-    
-    private static func getPercantageToDecreaseTo(forDataCount dataCount: Int) -> CGFloat {
-        switch dataCount {
-        case 0..<3000000:
-            return 0.05
-        case 3000000..<10000000:
-            return 0.1
-        default:
-            return 0.2
         }
     }
     

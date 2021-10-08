@@ -10,12 +10,11 @@ import Foundation
 enum SyteError: Error {
     
     case wrongInput(message: String)
-    case initializationFailed(message: String)
     case generalError(message: String)
     
     var localizedDescription: String {
         switch self {
-        case .generalError(let message), .wrongInput(let message), .initializationFailed(let message):
+        case .generalError(let message), .wrongInput(let message):
             return message
         }
     }
@@ -25,7 +24,7 @@ enum SyteError: Error {
 extension SyteError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .generalError(let message), .wrongInput(let message), .initializationFailed(let message):
+        case .generalError(let message), .wrongInput(let message):
             return NSLocalizedString(message, comment: "")
         }
     }

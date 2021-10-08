@@ -22,144 +22,214 @@ class EventsTests: BaseTests {
     }
 
     func testEventCheckoutStart() throws {
-        let eventCheckoutStart = EventCheckoutStart(price: 2,
+        let event = EventCheckoutStart(price: 2,
                                                     currency: "UAH",
                                                     productList: [Product(sku: "test", quantity: 2, price: 2)],
                                                     pageName: "sdk-test")
         
-        let data = try encoder.encode(eventCheckoutStart)
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventCheckoutStart.self, from: data)
-        XCTAssertEqual(eventCheckoutStart, decodedEvent)
+        let testBody = """
+        {"value":2,"currency":"UAH","eventsTags":["ecommerce"],"syteUrlReferer":"sdk-test","name":"checkout_start","products":[{"sku":"test","quantity":2,"price":2}]}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventBBClick() throws {
-        let eventBBClick = EventBBClick(imageUrl: "url",
+        let event = EventBBClick(imageUrl: "url",
                                         category: "category",
                                         gender: "gender",
                                         catalog: Catalog.general.getName(),
                                         pageName: "sdk-test")
-        let data = try encoder.encode(eventBBClick)
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventBBClick.self, from: data)
-        XCTAssertEqual(eventBBClick, decodedEvent)
+        let testBody = """
+        {"gender":"gender","eventsTags":["camera"],"category":"category","image_url":"url","syteUrlReferer":"sdk-test","name":"fe_bb_bb_click","catalog":"general"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventBBShowLayout() throws {
-        let eventBBShowLayout = EventBBShowLayout(imageUrl: "url", numOfBBs: 2, pageName: "sdk-test")
-        let data = try encoder.encode(eventBBShowLayout)
+        let event = EventBBShowLayout(imageUrl: "url", numOfBBs: 2, pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventBBShowLayout.self, from: data)
-        XCTAssertEqual(eventBBShowLayout, decodedEvent)
+        let testBody = """
+        {"eventsTags":["camera"],"image_url":"url","syteUrlReferer":"sdk-test","num_of_bbs":2,"name":"fe_bb_show_layout"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventBBShowResults() throws {
-        let eventBBShowResults = EventBBShowResults(imageUrl: "url", category: "category", resultsCount: 2, pageName: "sdk-test")
-        let data = try encoder.encode(eventBBShowResults)
+        let event = EventBBShowResults(imageUrl: "url", category: "category", resultsCount: 2, pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventBBShowResults.self, from: data)
-        XCTAssertEqual(eventBBShowResults, decodedEvent)
+        let testBody = """
+        {"name":"fe_bb_show_results","eventsTags":["camera"],"image_url":"url","syteUrlReferer":"sdk-test","results_count":2,"category":"category"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventCameraButtonClick() throws {
-        let eventCameraButtonClick = EventCameraButtonClick(placement: Placement.default.getName(), pageName: "sdk-test")
-        let data = try encoder.encode(eventCameraButtonClick)
+        let event = EventCameraButtonClick(placement: Placement.default.getName(), pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventCameraButtonClick.self, from: data)
         let testBody = """
         {\"placement\":\"default\",\"eventsTags\":[\"camera\"],\"syteUrlReferer\":\"sdk-test\",\"name\":\"fe_camera_button_click\"}
         """
-        let body = eventCameraButtonClick.getRequestBodyString()
-        XCTAssertEqual(eventCameraButtonClick, decodedEvent)
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(event, decodedEvent)
         XCTAssertEqual(testBody, body)
     }
     
     func testEventCameraButtonImpression() throws {
-        let eventCameraButtonImpression = EventCameraButtonImpression(pageName: "sdk-test")
-        let data = try encoder.encode(eventCameraButtonImpression)
+        let event = EventCameraButtonImpression(pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventCameraButtonImpression.self, from: data)
-        XCTAssertEqual(eventCameraButtonImpression, decodedEvent)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventCheckoutComplete() throws {
-        let eventCheckoutComplete = EventCheckoutComplete(id: "1",
+        let event = EventCheckoutComplete(id: "1",
                                                           value: 2,
                                                           currency: "USD",
                                                           productList: [Product(sku: "test", quantity: 2, price: 2)],
                                                           pageName: "sdk-test")
-        let data = try encoder.encode(eventCheckoutComplete)
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventCheckoutComplete.self, from: data)
-        XCTAssertEqual(eventCheckoutComplete, decodedEvent)
+        let testBody = """
+        {"eventsTags":["ecommerce"],"products":[{"sku":"test","quantity":2,"price":2}],"id":"1","value":2,"currency":"USD","syteUrlReferer":"sdk-test","name":"checkout_complete"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventDiscoveryButtonClick() throws {
-        let eventDiscoveryButtonClick = EventDiscoveryButtonClick(imageSrc: "src", placement: Placement.default.getName(), pageName: "sdk-test")
-        let data = try encoder.encode(eventDiscoveryButtonClick)
+        let event = EventDiscoveryButtonClick(imageSrc: "src", placement: Placement.default.getName(), pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventDiscoveryButtonClick.self, from: data)
-        XCTAssertEqual(eventDiscoveryButtonClick, decodedEvent)
+        let testBody = """
+        {"imageSrc":"src","placement":"default","syteUrlReferer":"sdk-test","name":"fe_discovery_button_click","eventsTags":["discovery_button"]}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventDiscoveryButtonImpression() throws {
-        let eventDiscoveryButtonImpression = EventDiscoveryButtonImpression(pageName: "sdk-test")
-        let data = try encoder.encode(eventDiscoveryButtonImpression)
+        let event = EventDiscoveryButtonImpression(pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventDiscoveryButtonImpression.self, from: data)
-        XCTAssertEqual(eventDiscoveryButtonImpression, decodedEvent)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventOfferClick() throws {
-        let eventOfferClick = EventOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
-        let data = try encoder.encode(eventOfferClick)
+        let event = EventOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventOfferClick.self, from: data)
-        XCTAssertEqual(eventOfferClick, decodedEvent)
+        let testBody = """
+        {"name":"fe_offer_click","eventsTags":["discovery_button","camera"],"syteUrlReferer":"sdk-test","position":123,"sku":"sku"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventPageView() throws {
-        let eventPageView = EventPageView(sku: "TEST-SKU-PAGE-View", pageName: "sdk-test")
-        let data = try encoder.encode(eventPageView)
+        let event = EventPageView(sku: "TEST-SKU-PAGE-View", pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventPageView.self, from: data)
-        XCTAssertEqual(eventPageView, decodedEvent)
-        syte.fire(event: eventPageView)
+        XCTAssertEqual(event, decodedEvent)
+        syte.fire(event: event)
         XCTAssertTrue(syte.getViewedProducts().contains(where: { $0 == "TEST-SKU-PAGE-View" }))
+        let testBody = """
+        {"eventsTags":["ecommerce"],"syteUrlReferer":"sdk-test","name":"fe_page_view","sku":"TEST-SKU-PAGE-View"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
     }
     
     func testEventProductsAddedToCart() throws {
-        let eventProductsAddedToCart = EventProductsAddedToCart(productList: [Product(sku: "test", quantity: 2, price: 2)], pageName: "sdk-test")
-        let data = try encoder.encode(eventProductsAddedToCart)
+        let event = EventProductsAddedToCart(productList: [Product(sku: "test", quantity: 2, price: 2)], pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventProductsAddedToCart.self, from: data)
-        XCTAssertEqual(eventProductsAddedToCart, decodedEvent)
+        let testBody = """
+        {"eventsTags":["ecommerce"],"syteUrlReferer":"sdk-test","name":"products_added_to_cart","products":[{"sku":"test","quantity":2,"price":2}]}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventShopTheLookOfferClick() throws {
-        let eventShopTheLookOfferClick = EventShopTheLookOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
-        let data = try encoder.encode(eventShopTheLookOfferClick)
+        let event = EventShopTheLookOfferClick(sku: "sku", position: 123, pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventShopTheLookOfferClick.self, from: data)
-        XCTAssertEqual(eventShopTheLookOfferClick, decodedEvent)
+        let testBody = """
+        {"name":"fe_offer_click","eventsTags":["shop_the_look"],"syteUrlReferer":"sdk-test","position":123,"sku":"sku"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventShopTheLookShowLayout() throws {
-        let eventShopTheLookShowLayout = EventShopTheLookShowLayout(resultsCount: 3, pageName: "sdk-test")
-        let data = try encoder.encode(eventShopTheLookShowLayout)
+        let event = EventShopTheLookShowLayout(resultsCount: 3, pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventShopTheLookShowLayout.self, from: data)
-        XCTAssertEqual(eventShopTheLookShowLayout, decodedEvent)
+        let testBody = """
+        {"eventsTags":["shop_the_look"],"syteUrlReferer":"sdk-test","results_count":3,"name":"fe_stl_show_layout"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventSimilarItemsOfferClick() throws {
-        let eventSimilarItemsOfferClick = EventSimilarItemsOfferClick(sku: "sku", position: 1, pageName: "sdk-test")
-        let data = try encoder.encode(eventSimilarItemsOfferClick)
+        let event = EventSimilarItemsOfferClick(sku: "sku", position: 1, pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventSimilarItemsOfferClick.self, from: data)
-        XCTAssertEqual(eventSimilarItemsOfferClick, decodedEvent)
+        let testBody = """
+        {"name":"fe_offer_click","eventsTags":["similar_items"],"syteUrlReferer":"sdk-test","position":1,"sku":"sku"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventSimilarItemsShowLayout() throws {
-        let eventSimilarItemsShowLayout = EventSimilarItemsShowLayout(resultsCount: 2, pageName: "sdk-test")
-        let data = try encoder.encode(eventSimilarItemsShowLayout)
+        let event = EventSimilarItemsShowLayout(resultsCount: 2, pageName: "sdk-test")
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventSimilarItemsShowLayout.self, from: data)
-        XCTAssertEqual(eventSimilarItemsShowLayout, decodedEvent)
+        let testBody = """
+        {"eventsTags":["similar_items"],"syteUrlReferer":"sdk-test","results_count":2,"name":"fe_si_show_layout"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testEventTextShowResults() throws {
-        let eventTextShowResults = EventTextShowResults(query: "text",
+        let event = EventTextShowResults(query: "text",
                                                         type: TextSearchEventType.popularSearch.getName(),
                                                         exactCount: 10,
                                                         pageName: "sdk-test")
-        let data = try encoder.encode(eventTextShowResults)
+        let data = try encoder.encode(event)
         let decodedEvent = try decoder.decode(EventTextShowResults.self, from: data)
-        XCTAssertEqual(eventTextShowResults, decodedEvent)
+        let testBody = """
+        {"eventsTags":["text_search"],"query":"text","exact_count":10,"type":"popular_search","syteUrlReferer":"sdk-test","name":"fe_text_show_results"}
+        """
+        let body = event.getRequestBodyString()
+        XCTAssertEqual(testBody, body)
+        XCTAssertEqual(event, decodedEvent)
     }
     
     func testBaseSyteEvent() throws {

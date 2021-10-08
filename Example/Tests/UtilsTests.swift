@@ -13,9 +13,13 @@ class UtilsTests: XCTestCase {
 
     func testUtils() throws {
         let viewedProductsSet: Set<String> = ["test1", "test2"]
-        XCTAssertEqual(Utils.viewedProductsString(viewedProducts: viewedProductsSet), "test1,test2")
+        let viewedProductsString = Utils.viewedProductsString(viewedProducts: viewedProductsSet)
+        let viewedProductsStringCorrect = viewedProductsString == "test2,test1" || viewedProductsString == "test1,test2"
+        let viewedProductsJson = Utils.viewedProductsJSONArray(viewedProducts: viewedProductsSet)
+        let viewedProductsJsonCorrect = viewedProductsJson == "[\"test2\",\"test1\"]" || viewedProductsJson == "[\"test1\",\"test2\"]"
+        XCTAssertTrue(viewedProductsStringCorrect)
         XCTAssertEqual(Utils.viewedProductsString(viewedProducts: []), nil)
-        XCTAssertEqual(Utils.viewedProductsJSONArray(viewedProducts: viewedProductsSet), "[\"test1\",\"test2\"]")
+        XCTAssertTrue(viewedProductsJsonCorrect)
         XCTAssertEqual(Utils.viewedProductsJSONArray(viewedProducts: []), nil)
         XCTAssertEqual(Utils.viewedProductsJSONArray(sku: "testSKU"), "[testSKU]")
         XCTAssertEqual(Utils.viewedProductsJSONArray(sku: nil), nil)
