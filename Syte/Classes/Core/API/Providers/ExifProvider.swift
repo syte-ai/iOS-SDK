@@ -36,7 +36,7 @@ extension ExifProvider: TargetType, AccessTokenAuthorizable {
         }
     }
     
-    var authorizationType: AuthorizationType {
+    var authorizationType: AuthorizationType? {
         return .bearer
     }
     
@@ -45,6 +45,10 @@ extension ExifProvider: TargetType, AccessTokenAuthorizable {
         default:
             return ["Content-type": "application/json"]
         }
+    }
+    
+    var sampleData: Data {
+        return Data()
     }
     
 }

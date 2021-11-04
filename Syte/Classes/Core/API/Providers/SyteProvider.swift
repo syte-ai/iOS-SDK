@@ -97,7 +97,7 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
         }
     }
     
-    var authorizationType: AuthorizationType {
+    var authorizationType: AuthorizationType? {
         return .bearer
     }
     
@@ -108,6 +108,10 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
         default:
             return ["Content-type": "application/json"]
         }
+    }
+    
+    var sampleData: Data {
+        return Data()
     }
     
 }

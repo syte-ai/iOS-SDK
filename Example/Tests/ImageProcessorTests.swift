@@ -12,9 +12,9 @@ import XCTest
 class ImageProcessorTests: XCTestCase {
 
     func testImageProcessor() throws {
-        let imageSmall = ImageProcessor.resize(image: UIImage(), size: 500, scale: .small)
-        let imageMedium = ImageProcessor.resize(image: UIImage(), size: 500, scale: .medium)
-        let imageLarge = ImageProcessor.resize(image: UIImage(), size: 500, scale: .large)
+        _ = ImageProcessor.resize(image: UIImage(), size: 500, scale: .small)
+        _ = ImageProcessor.resize(image: UIImage(), size: 500, scale: .medium)
+        _ = ImageProcessor.resize(image: UIImage(), size: 500, scale: .large)
     }
 
 }

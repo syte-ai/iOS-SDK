@@ -1,11 +1,10 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.4.4)
   - IQKeyboardManagerSwift (6.5.6)
-  - Moya (13.0.1):
-    - Moya/Core (= 13.0.1)
-  - Moya/Core (13.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.1)
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
+    - Alamofire (~> 5.0)
   - PromiseKit (6.15.3):
     - PromiseKit/CorePromise (= 6.15.3)
     - PromiseKit/Foundation (= 6.15.3)
@@ -15,11 +14,10 @@ PODS:
     - PromiseKit/CorePromise
   - PromiseKit/UIKit (6.15.3):
     - PromiseKit/CorePromise
-  - Result (4.1.0)
   - SVProgressHUD (2.2.5)
   - SwiftKeychainWrapper (4.0.1)
-  - SwiftLint (0.43.1)
-  - Syte (0.1.0):
+  - SwiftLint (0.45.0)
+  - Syte (1.0.0-beta1):
     - Moya
     - PromiseKit
     - SwiftKeychainWrapper
@@ -38,7 +36,6 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Moya
     - PromiseKit
-    - Result
     - SVProgressHUD
     - SwiftKeychainWrapper
     - SwiftLint
@@ -49,15 +46,14 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: f3b09a368f1582ab751b3fff5460276e0d2cf5c9
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
-  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
-  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
-  Syte: 071386d5a799e465dd3a26528a47dccadce42625
+  SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
+  Syte: b14491c90dc823cd473ed81a5b66a0e2507bc815
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
 PODFILE CHECKSUM: 921624ec802f0cb4025ee1a507d2076b5697ed81

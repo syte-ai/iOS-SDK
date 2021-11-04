@@ -51,7 +51,7 @@ extension EventsProvider: TargetType, AccessTokenAuthorizable {
         }
     }
     
-    var authorizationType: AuthorizationType {
+    var authorizationType: AuthorizationType? {
         return .bearer
     }
     
@@ -60,6 +60,10 @@ extension EventsProvider: TargetType, AccessTokenAuthorizable {
         default:
             return ["Content-type": "application/octet-stream"]
         }
+    }
+    
+    var sampleData: Data {
+        return Data()
     }
     
 }
