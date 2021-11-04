@@ -17,7 +17,7 @@ Syte is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'Syte'
+pod 'Syte', :git => 'https://github.com/syte-ai/iOS-SDK.git'
 ```
 
 ## Account Credentials
