@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Syte'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0-beta1'
   s.summary          = 'A short description of Syte.'
 
 # This description is used to generate tags and improve search results.
