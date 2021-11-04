@@ -42,8 +42,6 @@ Then you'll need to initialize Syte class passing the configuration instance :
 var syte: Syte? = Syte(configuration: configuration)
 ```
 
-Event fires automatically: https://syteapi.com/et?name=syte_init&account_id=[account_id]&session_id=[session_id]&sig=[api_signature]&syte_uuid=[user_id]&build_num=&lang=&tags=syte_ios_sdk&syte_url_referer=[app_name]
-
 API used: https://cdn.syteapi.com/accounts/[account_id]
 
 To retrieve the instance of SytePlatformSettings use the syte.getSytePlatformSettings() method.
