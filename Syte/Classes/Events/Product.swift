@@ -33,6 +33,7 @@ public class Product: Codable {
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
         sku = try container.decode(String.self, forKey: .sku)
         quantity = try container.decode(Int.self, forKey: .quantity)
         price = try container.decode(Double.self, forKey: .price)
@@ -40,6 +41,7 @@ public class Product: Codable {
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        
         try container.encode(sku, forKey: .sku)
         try container.encode(quantity, forKey: .quantity)
         try container.encode(price, forKey: .price)

@@ -11,9 +11,11 @@ extension UIImage {
     
     func getImageSizeInKbAsJpeg() -> Int {
         guard let data = UIImageJPEGRepresentation(self, 1) else { return -1 }
+        
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = ByteCountFormatter.Units.useKB
         formatter.countStyle = ByteCountFormatter.CountStyle.file
+        
         return Int(Int64(data.count) / 1024)
     }
     

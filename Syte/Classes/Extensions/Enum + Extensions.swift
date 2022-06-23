@@ -10,7 +10,7 @@ import Foundation
 extension RawRepresentable where RawValue == String {
     
     public func getName() -> String {
-        return rawValue
+        rawValue
     }
     
 }

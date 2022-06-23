@@ -13,31 +13,31 @@ protocol BaseProvider {}
 extension BaseProvider {
     
     var baseURL: URL {
-        return URL(string: "https://cdn.syteapi.com")!
+        URL(string: "https://cdn.syteapi.com")!
     }
     
     var path: String {
-        return ""
+        ""
     }
     
     var method: Moya.Method {
-        return .get
+        .get
     }
     
     var task: Task {
-        return .requestPlain
+        .requestPlain
     }
     
     var sampleData: Data {
-        return Data()
+        Data()
     }
     
     var headers: [String: String]? {
-        return ["Content-type": "application/json"]
+        ["Content-type": "application/json"]
     }
     
     var authorizationType: AuthorizationType {
-        return .basic
+        .basic
     }
     
 }

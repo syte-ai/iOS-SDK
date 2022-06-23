@@ -58,12 +58,12 @@ public class BaseSyteEvent: RequestableEvent, Codable {
     
     // Get array of tags converted to string (comma separated)
     public func getTagsString() -> String {
-        return eventsTags.joined(separator: ",")
+        eventsTags.joined(separator: ",")
     }
     
     // Getter for request body string
     public func getRequestBodyString() -> String {
-        return ""
+        ""
     }
     
 }

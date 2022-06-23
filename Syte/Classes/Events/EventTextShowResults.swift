@@ -30,19 +30,23 @@ public class EventTextShowResults: BaseSyteEvent {
         self.query = query
         self.type = type
         self.exactCount = exactCount
+        
         super.init(name: "fe_text_show_results", syteUrlReferer: pageName, tag: .textSearch)
     }
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
         query = try container.decode(String.self, forKey: .query)
         type = try container.decode(String.self, forKey: .type)
         exactCount = try container.decode(Int.self, forKey: .exactCount)
+        
         try super.init(from: decoder)
     }
     
     public override func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        
         try container.encode(query, forKey: .query)
         try container.encode(type, forKey: .type)
         try container.encode(exactCount, forKey: .exactCount)
@@ -53,6 +57,7 @@ public class EventTextShowResults: BaseSyteEvent {
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(self)
         let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
+        
         return json ?? ""
     }
     

@@ -31,19 +31,23 @@ public class EventBBShowResults: BaseSyteEvent {
         self.imageUrl = imageUrl
         self.category = category
         self.resultsCount = resultsCount
+        
         super.init(name: "fe_bb_show_results", syteUrlReferer: pageName, tag: .camera)
     }
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
         imageUrl = try container.decode(String.self, forKey: .imageUrl)
         category = try container.decode(String.self, forKey: .category)
         resultsCount = try container.decode(Int.self, forKey: .resultsCount)
+        
         try super.init(from: decoder)
     }
     
     public override func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        
         try container.encode(imageUrl, forKey: .imageUrl)
         try container.encode(category, forKey: .category)
         try container.encode(resultsCount, forKey: .resultsCount)
@@ -55,6 +59,7 @@ public class EventBBShowResults: BaseSyteEvent {
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(self)
         let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
+        
         return json ?? ""
     }
     

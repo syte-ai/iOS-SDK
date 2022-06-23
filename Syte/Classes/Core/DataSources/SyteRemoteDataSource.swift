@@ -20,13 +20,15 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     override init(configuration: SyteConfiguration) {
         recommendationRemoteDataSource = RecommendationRemoteDataSource(configuration: configuration, syteService: syteService)
         textSearchRemoteDataSource = TextSearchRemoteDataSource(configuration: configuration, syteService: syteService)
+        
         super.init(configuration: configuration)
     }
     
     func getSettings(completion: @escaping (SyteResult<SytePlatformSettings>) -> Void) {
         renewTimestamp()
+        
         firstly {
-            syteService.getSettings(accoundId: configuration.accountId)
+            syteService.getSettings(accountId: configuration.accountId)
         }.done { result in
             completion(result)
         }.catch { error in
@@ -38,6 +40,7 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
                    crop: CropCoordinates?,
                    completion: @escaping (SyteResult<ItemsResult>) -> Void) {
         renewTimestamp()
+        
         firstly {
             generateOffersCall(offersUrl: offersUrl, cropCoordinates: crop)
         }.done { response in
@@ -51,6 +54,7 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     func getBounds(requestData: UrlImageSearch,
                    completion: @escaping (SyteResult<BoundsResult>) -> Void) {
         renewTimestamp()
+        
         firstly {
             getBounds(requestData: requestData)
         }.done { response in
@@ -63,6 +67,7 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     func getBoundsWild(requestData: ImageSearch,
                        completion: @escaping (SyteResult<BoundsResult>) -> Void) {
         renewTimestamp()
+        
         firstly {
             prepareImageSearchRequestData(requestData: requestData)
         }.then { [weak self] response -> Promise<SyteResult<BoundsResult>>  in
@@ -116,6 +121,7 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
         var size = 0
         let imageSize = requestData.image.getImageSizeInKbAsJpeg()
         size = imageSize > 0 ? imageSize : 0
+        
         return firstly {
             ImageProcessor.compressToDataWithLoseQuality(image: requestData.image,
                                                          size: size,
@@ -134,7 +140,7 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
     }
     
     private func getBounds(requestData: UrlImageSearch) -> Promise<SyteResult<BoundsResult>> {
-        return firstly {
+        firstly {
             syteService.getBounds(parameters: .init(accountId: configuration.accountId,
                                                     signature: configuration.signature,
                                                     userId: requestData.personalizedRanking ? configuration.userId : nil,
@@ -161,9 +167,9 @@ class SyteRemoteDataSource: BaseRemoteDataSource {
         
         return generateOffersCall(offersUrl: firstBound,
                                   cropCoordinates: requestData.coordinates).map { offers -> SyteResult<BoundsResult> in
-                                    response.data?.firstBoundItemsResult = offers.data
-                                    return response
-                                  }
+            response.data?.firstBoundItemsResult = offers.data
+            return response
+        }
     }
     
     private func generateOffersCall(offersUrl: String,

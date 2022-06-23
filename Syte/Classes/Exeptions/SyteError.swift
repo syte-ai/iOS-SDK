@@ -22,10 +22,12 @@ enum SyteError: Error {
 }
 
 extension SyteError: LocalizedError {
+    
     public var errorDescription: String? {
         switch self {
         case .generalError(let message), .wrongInput(let message):
             return NSLocalizedString(message, comment: "")
         }
     }
+    
 }

@@ -21,7 +21,7 @@ enum EventsProvider: BaseProvider {
 extension EventsProvider: TargetType, AccessTokenAuthorizable {
     
     var baseURL: URL {
-        return URL(string: "https://syteapi.com")!
+        URL(string: "https://syteapi.com")!
     }
     
     var path: String {
@@ -32,7 +32,7 @@ extension EventsProvider: TargetType, AccessTokenAuthorizable {
     }
     
     var method: Moya.Method {
-        return .post
+        .post
     }
     
     var task: Task {
@@ -52,7 +52,7 @@ extension EventsProvider: TargetType, AccessTokenAuthorizable {
     }
     
     var authorizationType: AuthorizationType? {
-        return .bearer
+        .bearer
     }
     
     var headers: [String: String]? {
@@ -63,7 +63,7 @@ extension EventsProvider: TargetType, AccessTokenAuthorizable {
     }
     
     var sampleData: Data {
-        return Data()
+        Data()
     }
     
 }

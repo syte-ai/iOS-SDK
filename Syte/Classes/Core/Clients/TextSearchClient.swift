@@ -64,7 +64,9 @@ class TextSearchClient {
     
     private func checkAutoUpdateQueue() {
         isAutoCompleteAvailable = true
+        
         guard let query = nextQuery else { return }
+        
         getAutoComplete(query: query.query, lang: query.lang, completion: query.completion)
         nextQuery = nil
     }

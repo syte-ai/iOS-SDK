@@ -73,7 +73,7 @@ class SyteStorage {
     }
     
     func getViewedProducts() -> String {
-        return storage.string(forKey: viewedProductsKey) ?? ""
+        storage.string(forKey: viewedProductsKey) ?? ""
     }
     
     func addPopularSearch(data: [String], lang: String) {
@@ -85,7 +85,7 @@ class SyteStorage {
     }
     
     func getPopularSearch(lang: String) -> String {
-        return storage.string(forKey: popularSearchKey + lang) ?? ""
+        storage.string(forKey: popularSearchKey + lang) ?? ""
     }
     
     func clearPopularSearch() {
@@ -110,7 +110,7 @@ class SyteStorage {
     }
     
     func getTextSearchTerms() -> String {
-        return storage.string(forKey: textSearchTermKey) ?? ""
+        storage.string(forKey: textSearchTermKey) ?? ""
     }
     
     private func needNewSessionId() -> Bool {
@@ -120,7 +120,7 @@ class SyteStorage {
     }
     
     private func getCurrentMillis() -> Int {
-        return Int(NSDate().timeIntervalSince1970 * 1000)
+        Int(NSDate().timeIntervalSince1970 * 1000)
     }
     
     private func clear() {

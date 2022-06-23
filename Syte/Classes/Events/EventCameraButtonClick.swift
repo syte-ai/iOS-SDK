@@ -25,6 +25,7 @@ public class EventCameraButtonClick: BaseSyteEvent {
     
     required public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
         placement = try container.decode(String.self, forKey: .placement)
         
         try super.init(from: decoder)
@@ -32,8 +33,8 @@ public class EventCameraButtonClick: BaseSyteEvent {
     
     public override func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(placement, forKey: .placement)
         
+        try container.encode(placement, forKey: .placement)
         try super.encode(to: encoder)
     }
     
@@ -41,6 +42,7 @@ public class EventCameraButtonClick: BaseSyteEvent {
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(self)
         let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
+        
         return json ?? ""
     }
     

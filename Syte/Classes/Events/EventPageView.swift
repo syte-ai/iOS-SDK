@@ -42,6 +42,7 @@ public class EventPageView: BaseSyteEvent {
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(self)
         let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
+        
         return json ?? ""
     }
     

@@ -98,7 +98,7 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
     }
     
     var authorizationType: AuthorizationType? {
-        return .bearer
+        .bearer
     }
     
     var headers: [String: String]? {
@@ -111,7 +111,7 @@ extension SyteProvider: TargetType, AccessTokenAuthorizable {
     }
     
     var sampleData: Data {
-        return Data()
+        Data()
     }
     
 }

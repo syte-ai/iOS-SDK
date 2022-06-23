@@ -14,7 +14,7 @@ enum ExifProvider: BaseProvider {
 extension ExifProvider: TargetType, AccessTokenAuthorizable {
     
     var baseURL: URL {
-        return URL(string: "https://imagemod.syteapi.com/")!
+        URL(string: "https://imagemod.syteapi.com/")!
     }
     
     var path: String {
@@ -25,7 +25,7 @@ extension ExifProvider: TargetType, AccessTokenAuthorizable {
     }
     
     var method: Moya.Method {
-        return .put
+        .put
     }
     
     var task: Task {
@@ -37,7 +37,7 @@ extension ExifProvider: TargetType, AccessTokenAuthorizable {
     }
     
     var authorizationType: AuthorizationType? {
-        return .bearer
+        .bearer
     }
     
     var headers: [String: String]? {
@@ -48,7 +48,7 @@ extension ExifProvider: TargetType, AccessTokenAuthorizable {
     }
     
     var sampleData: Data {
-        return Data()
+        Data()
     }
     
 }

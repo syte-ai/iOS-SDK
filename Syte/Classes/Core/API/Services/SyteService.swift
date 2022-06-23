@@ -10,7 +10,7 @@ import PromiseKit
 
 protocol SyteServiceProtocol: class {
     
-    func getSettings(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>>
+    func getSettings(accountId: String) -> Promise<SyteResult<SytePlatformSettings>>
     
     func getBounds(parameters: GetBoundsParameters) -> Promise<SyteResult<BoundsResult>>
     
@@ -28,8 +28,8 @@ class SyteService: SyteServiceProtocol {
     
     private let service = MoyaProvider<SyteProvider>()
 
-    func getSettings(accoundId: String) -> Promise<SyteResult<SytePlatformSettings>> {
-        return sendRequestWithDefaultHandling(request: .getSettings(accountId: accoundId))
+    func getSettings(accountId: String) -> Promise<SyteResult<SytePlatformSettings>> {
+        return sendRequestWithDefaultHandling(request: .getSettings(accountId: accountId))
     }
     
     func getBounds(parameters: GetBoundsParameters) -> Promise<SyteResult<BoundsResult>> {
@@ -52,36 +52,36 @@ class SyteService: SyteServiceProtocol {
     }
     
     func getOffers(parameters: GetOffersParameters) -> Promise<SyteResult<ItemsResult>> {
-        return sendRequestWithDefaultHandling(request: .getOffers(parameters: parameters))
+        sendRequestWithDefaultHandling(request: .getOffers(parameters: parameters))
     }
     
     func getSimilars(parameters: GetSimilarsParameters) -> Promise<SyteResult<SimilarProductsResult>> {
-        return sendRequestWithDefaultHandling(request: .getSimilars(parameters: parameters))
+        sendRequestWithDefaultHandling(request: .getSimilars(parameters: parameters))
     }
     
     func getShopTheLook(parameters: GetShopTheLookParameters) -> Promise<SyteResult<ShopTheLookResult>> {
-        return sendRequestWithDefaultHandling(request: .getShopTheLook(parameters: parameters))
+        sendRequestWithDefaultHandling(request: .getShopTheLook(parameters: parameters))
     }
     
     func getPersonalization(parameters: GetPersonalizationParameters) -> Promise<SyteResult<PersonalizationResult>> {
-        return sendRequestWithDefaultHandling(request: .getPersonalization(parameters: parameters))
+        sendRequestWithDefaultHandling(request: .getPersonalization(parameters: parameters))
     }
     
     func getAutoComplete(parameters: GetAutoCompleteParameters) -> Promise<SyteResult<AutoCompleteResult>> {
-        return sendRequestWithDefaultHandling(request: .getAutoComplete(parameters: parameters))
+        sendRequestWithDefaultHandling(request: .getAutoComplete(parameters: parameters))
     }
     
     func getPopularSearch(parameters: GetPopularSearchParameters) -> Promise<SyteResult<[String]>> {
-        return sendRequestWithDefaultHandling(request: .getPopularSearch(parameters: parameters))
+        sendRequestWithDefaultHandling(request: .getPopularSearch(parameters: parameters))
     }
     
     func getTextSearch(parameters: GetTextSearchParameters) -> Promise<SyteResult<TextSearchResult>> {
-        return sendRequestWithDefaultHandling(request: .getTextSearch(parameters: parameters))
+        sendRequestWithDefaultHandling(request: .getTextSearch(parameters: parameters))
     }
     
     private func sendRequestWithDefaultHandling<T: Codable>(request: SyteProvider) -> Promise<SyteResult<T>> {
         service.request(request).map { response -> SyteResult<T> in
-            return Self.mapDefaultResponse(response: response)
+            Self.mapDefaultResponse(response: response)
         }
     }
     

@@ -36,14 +36,14 @@ public final class SyteConfiguration {
      User ID. This value is generated automatically.
      */
     public var userId: String {
-        return storage.getUserId()
+        storage.getUserId()
     }
     
     /**
      Session ID. This value is generated automatically.
      */
     public var sessionId: Int {
-        return storage.getSessionId()
+        storage.getSessionId()
     }
     
     /**
@@ -78,7 +78,7 @@ public final class SyteConfiguration {
     }
     
     func getStorage() -> SyteStorage {
-        return storage
+        storage
     }
     
 }

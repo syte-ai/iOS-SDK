@@ -28,7 +28,7 @@ public class ShopTheLookResult: Codable, ReflectedStringConvertible {
      - Returns: [Items]
      */
     public func getItemsForAllLabels() -> [Item] {
-        return getItemsForAllLabels(forceZip: false)
+        getItemsForAllLabels(forceZip: false)
     }
     
     /**

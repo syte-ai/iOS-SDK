@@ -32,6 +32,7 @@ public class EventShopTheLookShowLayout: BaseSyteEvent {
     
     public override func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        
         try container.encode(resultsCount, forKey: .resultsCount)
         try super.encode(to: encoder)
     }
@@ -40,6 +41,7 @@ public class EventShopTheLookShowLayout: BaseSyteEvent {
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(self)
         let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
+        
         return json ?? ""
     }
     

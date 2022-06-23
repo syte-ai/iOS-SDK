@@ -26,7 +26,7 @@ public class CropCoordinates {
     }
     
     public func toString() -> String {
-        return "{\"x\":\(x1)" + ",\"y\":\(y1)" + ",\"x2\":\(x2)" + ",\"y2\":\(y2)}"
+        "{\"x\":\(x1)" + ",\"y\":\(y1)" + ",\"x2\":\(x2)" + ",\"y2\":\(y2)}"
     }
     
 }

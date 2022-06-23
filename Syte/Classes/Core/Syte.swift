@@ -188,7 +188,7 @@ public final class Syte {
      
      */
     public func getConfiguration() -> SyteConfiguration {
-        return configuration
+        configuration
     }
     
     /**
@@ -213,9 +213,9 @@ public final class Syte {
      */
     public func fire(event: BaseSyteEvent) {
         eventsRemoteDataSource.fire(event: event)
-        if let casted = event as? EventPageView {
-            try? addViewedProduct(sku: casted.sku)
-        }
+        
+        guard let casted = event as? EventPageView else { return }
+        try? addViewedProduct(sku: casted.sku)
     }
     
     /**
@@ -236,7 +236,7 @@ public final class Syte {
      
      */
     public func getViewedProducts() -> Set<String> {
-        return configuration.getViewedProducts()
+        configuration.getViewedProducts()
     }
     
     /**
