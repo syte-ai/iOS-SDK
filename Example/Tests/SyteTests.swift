@@ -212,8 +212,8 @@ class SyteTests: BaseTests {
     
     func testShopTheLook() throws {
         let expectation = XCTestExpectation()
-        let shopTheLook = ShopTheLook(sku: "PZZ70556-105",
-                                      imageUrl: "https://sytestorageeu.blob.core.windows.net/text-static-feeds/boohoo_direct/PZZ70556-105.jpg?se=2023-10-31T19%3A05%3A46Z&sp=r&sv=2018-03-28&sr=b&sig=DQe1/iuTzLpl/hZhMzmb5jJF8qw41GdNlREzZvunw4k%3D")
+        let shopTheLook = ShopTheLook(sku: "DZZ20176-111-30",
+                                      imageUrl: "https://i.pinimg.com/564x/64/3c/a4/643ca42381f0133fe2d1375677d290e2.jpg")
         shopTheLook.personalizedRanking = !syte.getViewedProducts().isEmpty
         shopTheLook.limitPerBound = 4
         syte.getShopTheLook(shopTheLook: shopTheLook) { result in
@@ -221,7 +221,7 @@ class SyteTests: BaseTests {
             XCTAssertNotNil(result.data)
             XCTAssertTrue(result.isSuccessful)
             XCTAssertEqual(result.resultCode, 200)
-            let shopTheLookData = result.data!
+            guard let shopTheLookData = result.data else { return XCTFail("No shop the look data") }
             XCTAssertEqual(shopTheLookData.items?.first?.items?.count, 4)
             let allItems = shopTheLookData.getItemsForAllLabels()
             let allItemsForceZipFalse = shopTheLookData.getItemsForAllLabels(forceZip: false)
@@ -236,6 +236,7 @@ class SyteTests: BaseTests {
     func testGetPersonalization() throws {
         let expectation = XCTestExpectation()
         syte.getConfiguration().addViewedProduct(sessionSku: "PZZ70556-105")
+        syte.getConfiguration().addViewedProduct(sessionSku: "BL604T_Black")
         let personalization = Personalization()
         syte.getPersonalization(personalization: personalization) { result in
             XCTAssertNotNil(result)

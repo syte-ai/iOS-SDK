@@ -11,6 +11,6 @@ public class GetSkuConfig: Codable, ReflectedStringConvertible {
     
     public var skuProvidersOrder: [String]?
     public var shouldReportMissingSkus: Bool?
-    public var functionConfig: String?
+    public var functionConfig: JSONValue?
     
 }
