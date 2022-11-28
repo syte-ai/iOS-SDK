@@ -27,6 +27,7 @@ Pod::Spec.new do |s|
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
   #  s.static_framework = true
   s.ios.deployment_target = '10.0'
+  s.swift_versions = ['5']
 
   s.source_files = 'Syte/Classes/**/*'
   

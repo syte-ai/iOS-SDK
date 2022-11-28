@@ -35,7 +35,7 @@ class ImageProcessor {
     static func compressToDataWithLoseQuality(image: UIImage, size: Int, scale: ImageScale) -> Promise<Data?> {
         Promise { seal in
             let compressed = resize(image: image, size: size, scale: scale)
-            let compressedJpegData = UIImageJPEGRepresentation(compressed, 1)
+            let compressedJpegData = compressed.jpegData(compressionQuality: 1)
             guard compressed.getImageSizeInKbAsJpeg() > smallImageMaxSize else { return seal.fulfill(compressedJpegData) }
             guard let currentImageSize = compressedJpegData?.count else { return seal.fulfill(nil) }
             
@@ -48,7 +48,7 @@ class ImageProcessor {
             
             while iterationImageSize > maxByte && iterationCompression > 0.2 {
                 guard iterationCompression > 0.2,
-                      let newImage = UIImageJPEGRepresentation(compressed, iterationCompression) else { return seal.fulfill(nil) }
+                      let newImage = compressed.jpegData(compressionQuality: iterationCompression) else { return seal.fulfill(nil) }
                 iterationImageSize = newImage.count
                 iterationCompression -= step
                 iterationImageData = newImage
