@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /**
  Class that is used to configure the 'wild' image search.
