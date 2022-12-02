@@ -10,7 +10,7 @@ import Foundation
 extension UIImage {
     
     func getImageSizeInKbAsJpeg() -> Int {
-        guard let data = UIImageJPEGRepresentation(self, 1) else { return -1 }
+        guard let data = self.jpegData(compressionQuality: 1) else { return -1 }
         
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = ByteCountFormatter.Units.useKB
