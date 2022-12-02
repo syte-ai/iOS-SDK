@@ -5,10 +5,11 @@
 //  Created by Artur Tarasenko on 07.09.2021.
 //
 
+import Foundation
 import Moya
 import PromiseKit
 
-protocol ExifServiceProtocol: class {
+protocol ExifServiceProtocol: AnyObject {
     func removeTags(accountId: String, signature: String, imagePayload: Data) -> Promise<SyteResult<UrlImageSearch>>
 }
 

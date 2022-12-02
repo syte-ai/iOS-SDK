@@ -5,6 +5,7 @@
 //  Created by Artur Tarasenko on 15.09.2021.
 //
 
+import Foundation
 import Moya
 
 enum EventsProvider: BaseProvider {

@@ -5,10 +5,11 @@
 //  Created by Artur Tarasenko on 21.08.2021.
 //
 
+import Foundation
 import Moya
 import PromiseKit
 
-protocol SyteServiceProtocol: class {
+protocol SyteServiceProtocol: AnyObject {
     
     func getSettings(accountId: String) -> Promise<SyteResult<SytePlatformSettings>>
     

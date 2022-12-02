@@ -5,10 +5,11 @@
 //  Created by Artur Tarasenko on 15.09.2021.
 //
 
+import Foundation
 import Moya
 import PromiseKit
 
-protocol EventsServiceProtocol: class {
+protocol EventsServiceProtocol: AnyObject {
     func fire(event: BaseSyteEvent, accountId: String, signature: String, sessionId: String, userId: String) -> Promise<SyteResult<Bool>>
 }
 
