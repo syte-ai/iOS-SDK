@@ -20,6 +20,12 @@ it, simply add the following line to your Podfile:
 pod 'Syte', :git => 'https://github.com/syte-ai/iOS-SDK.git'
 ```
 
+Also, it is SwiftPM supportable. Add package to project with Xcode:
+
+ ```ruby
+ https://github.com/syte-ai/iOS-SDK.git
+ ```
+
 ## Account Credentials
 
 In order to use this SDK, please contact Syte for your account ID and signature.     
