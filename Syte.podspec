@@ -29,10 +29,10 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.swift_versions = ['5']
 
-  s.source_files = 'Syte/Classes/**/*'
+  s.source_files = 'Sources/iOS-SDK/Syte/Classes/**/*'
   
   # s.resource_bundles = {
-  #   'Syte' => ['Syte/Assets/*.png']
+  #   'Syte' => ['Sources/iOS-SDK/Syte/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
