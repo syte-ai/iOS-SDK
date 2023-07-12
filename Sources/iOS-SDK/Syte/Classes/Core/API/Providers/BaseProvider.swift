@@ -7,6 +7,7 @@
 //
 
 import Moya
+import Foundation
 
 protocol BaseProvider {}
 
