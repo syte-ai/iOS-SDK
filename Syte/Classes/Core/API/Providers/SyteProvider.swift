@@ -5,6 +5,7 @@
 //  Created by Artur Tarasenko on 21.08.2021.
 //
 
+import Foundation
 import Moya
 
 enum SyteProvider: BaseProvider {

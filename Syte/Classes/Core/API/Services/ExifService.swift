@@ -5,6 +5,7 @@
 //  Created by Artur Tarasenko on 07.09.2021.
 //
 
+import Foundation
 import Moya
 import PromiseKit
 
