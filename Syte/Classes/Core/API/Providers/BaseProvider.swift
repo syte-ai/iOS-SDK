@@ -6,8 +6,8 @@
 //  Copyright © 2021 Syte.ai. All rights reserved.
 //
 
-import Foundation
 import Moya
+import Foundation
 
 protocol BaseProvider {}
 
